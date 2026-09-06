@@ -6,3 +6,4 @@ Salvador Osorio Palma
 Natalia creó rama
 Alen
 Diego González Celis
+Fernando Angel Chalqueño Nava
