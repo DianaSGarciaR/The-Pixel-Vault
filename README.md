@@ -4,4 +4,5 @@ Nuestro proyecto consiste en un comercio en línea de mercancía oficial con tem
 Alberto Pedraza Pedraza
 Salvador Osorio Palma
 Natalia creó rama
+Alen
 Diego González Celis
