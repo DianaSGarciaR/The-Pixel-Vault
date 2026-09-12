@@ -1,0 +1,44 @@
+#navbar {
+    /*background-image: url("assets/navbarFondo.jpg") !important; */
+    background-image: url("navbarFondo.jpg") !important;
+    justify-content: center;
+    padding: 30px;
+    color: palevioletred;
+    box-shadow: 0 5px 5px rgb(0, 0, 0, 1.1);
+}
+
+/*! --------- INICIO:Animacion para brillo de letras --------- */
+/*? Animacion de titulo Navbar
+? animation y keyframespara: agregar el efecto de brillo 
+*/
+
+.magicalGlow {
+    /** animation
+    ? magicalGlow: Nombre de la animación
+    ? 1s: Tiempo
+    ? ease-in-out: Controla cómo cambia la velocidad
+    ? infinite: Se repite infinitamente
+    */
+  -webkit-animation: magicalGlow 1s ease-in-out infinite alternate;
+  -moz-animation: magicalGlow 1s ease-in-out infinite alternate;
+  animation: magicalGlow 1s ease-in-out infinite alternate;
+}
+/*
+? @keyframes [nameAnimacion]: Hace que una propiedad cambie desde un estado inicial hasta otro estado.
+? text-shadow : Propiedad para crear el efecto de luz de neón 
+*/
+@keyframes magicalGlow {
+  from { /* from: indica como empieza la animación */
+    /*? text-shadow: crea sombras alrededor*/
+    text-shadow: 0 0 10px #f12e75, 
+                0 0 20px #f143c6, 
+                0 0 30px #e60073;
+  }
+  to { /* to: indica como termina la animación */
+    text-shadow: 0 0 20px #e91aa1, 
+                0 0 30px #ff4da6, 
+                0 0 40px #ff4da6, 
+                0 0 50px #ff4da6;
+  }
+}
+/*! --------- FIN :Animacion para brillo de letras --------- */
