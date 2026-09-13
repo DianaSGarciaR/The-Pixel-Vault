@@ -486,3 +486,137 @@
     text-align: center;
   }
 }
+
+/** ============ SECCIÓN DE ESTILOS PARA LA DESCRIPCIÓN DEL PROYECTO Y LOS MISSION LOGS ======================
+/* ==========================================================================
+   MARCO NEÓN
+   ========================================================================== */
+.frame-demo{
+    position:relative;
+    width:520px; max-width:100%;
+    aspect-ratio: 2 / 1;
+    margin:0 auto;
+
+    /* NUEVO: convierte a .frame-demo en un "contenedor de consulta".
+       Esto habilita las unidades "cqi" que se usan más abajo en
+       ".content p", para que el tamaño de letra responda al ancho
+       REAL de cada marco (no al ancho de toda la pantalla). Es
+       necesario porque el marco grande de la introducción y los
+       marcos chicos de Misión/Visión/Valores miden distinto entre sí,
+       y cada uno necesita ajustarse a su propio tamaño. */
+    container-type: inline-size;
+}
+
+.frame-demo svg{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    display:block; overflow:visible;
+    pointer-events:none; /* el marco es decorativo, no debe bloquear clics sobre el texto */
+}
+
+.frame-path{
+    fill:none;
+    stroke: var(--cyan-accent);
+    stroke-linejoin: miter;
+    filter: url(#neon-glow);
+    animation: pulse 3.2s ease-in-out infinite;
+}
+@keyframes pulse{ 0%,100%{ opacity:1; } 50%{ opacity:.82; } }
+@media (prefers-reduced-motion: reduce){ .frame-path{ animation:none; } }
+
+/* CAMBIO IMPORTANTE: .content ya NO es position:absolute.
+   Antes "flotaba" encima del marco sin influir en su altura, así que
+   si el texto no cabía en el alto que daba aspect-ratio:2/1, sólo
+   quedaba recortado o aparecía una barra de scroll. Ahora es un
+   bloque normal dentro de .frame-demo: su propio tamaño (texto +
+   padding) es lo que determina cuánto debe medir .frame-demo. El SVG
+   sigue siendo absolute, así que no le afecta este cambio y sigue
+   cubriendo todo el marco. */
+.content{
+    position:relative;
+    z-index:1;
+    height:100%;
+    padding:15% 9%;
+    display:flex; align-items:center; justify-content:center;
+    overflow:visible; /* ya no hace falta recortar ni hacer scroll */
+}
+
+.content p{
+    margin:0;
+    font-family:'Quantico', monospace;
+
+    /* NUEVO: "cqi" = 1% del ancho del contenedor de consulta más
+       cercano (o sea, de .frame-demo). Antes se usaba "vw" (ancho de
+       la ventana), que no distingue entre el marco grande de la
+       introducción y los marcos chicos de las 3 columnas. Con "cqi",
+       cada marco ajusta su propio texto según su propio ancho,
+       automáticamente, sin necesitar un breakpoint distinto para
+       cada caso. */
+    font-size: clamp(0.72rem, 3.4cqi + 0.2rem, 1.1rem);
+    line-height:1.5; letter-spacing:.02em;
+    color: var(--yellow-accent); text-align:justify;
+}
+
+/* NOTA: antes existía aquí una regla aparte "#projectDesc { font-size:.9rem; ... }".
+   Se eliminó por dos motivos:
+   1) Un selector de ID (#projectDesc) tiene más especificidad que uno
+      de clase (.content p), así que SIEMPRE ganaba e ignoraba el
+      clamp() de arriba — esa era la causa real de que el texto de
+      Misión/Visión/Valores no se achicara y terminara cortado.
+   2) #projectDesc es también un <p> dentro de .content, así que la
+      regla ".content p" de arriba ya lo cubre; no hace falta
+      duplicar los estilos. */
+
+/* ==========================================================================
+   ADAPTACIÓN EN PANTALLAS PEQUEÑAS
+   ========================================================================== */
+@media (max-width: 767.98px){
+    .frame-demo{
+        /* Se quita la proporción fija 2:1: en vez de recortar contenido
+           que no cabe, el marco crece en altura lo que haga falta. */
+        aspect-ratio: unset;
+        height:auto;
+        width:100%;
+    }
+    .content{
+        height:auto;       /* ahora el propio texto define el alto */
+        padding:24px 20px; /* en móvil, un padding en px es más predecible que uno en % */
+    }
+}
+
+/* ==========================================================================
+   ÍCONOS (coin, misión, visión, valor, propósito)
+   ========================================================================== */
+/* NUEVO: agrupa los íconos de cada fila y evita que superen el alto
+   del marco vecino. Sustituye el escalonado anterior (align-self-start/
+   center/end + fila interna con columnas vacías), que ya no se usa. */
+.icon-pair{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:16px;
+
+    /* Las columnas de un .row de Bootstrap ya se estiran a la misma
+       altura por defecto (align-items:stretch es el valor inicial de
+       un contenedor flex). Al quitar los "align-self-*" que había
+       antes, esta columna vuelve a igualar su alto con el del marco
+       vecino, y height:100% aquí hace que ese alto se herede hacia
+       adentro para que "max-height:100%" en .badge-icon tenga de qué
+       porcentaje partir. */
+    height:100%;
+}
+.badge-icon{
+    max-height:100%;
+    max-width:45%;
+    object-fit:contain; /* conserva la proporción del ícono: nunca lo deforma ni lo recorta */
+    border-radius:.5rem;
+}
+
+#missionLogs{
+    font-family: 'Pixelify Sans';
+    color: var(--yellow-accent);
+    filter: url(#neon-glow2);
+}
+
+/**=============================FIN DE ESTILOS PARA DESCRIPCIÓN Y MISSION LOGS =================================
