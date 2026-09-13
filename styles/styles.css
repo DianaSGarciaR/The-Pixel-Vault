@@ -29,12 +29,12 @@
 }
 
 body {
-  background-color: #000B1E;
+  background-image: url("../assets/fondo.jpg");
   color: var(--text-main);
   margin: 0;
   padding: 0px;
-}
 
+}
 
 .pressStart {
   font-family: var(--font-pixel-header);
@@ -63,7 +63,7 @@ body {
 
 /*? Elementos del navbar: lado Izquierdo */
 #divNavLeft {
-  padding: 10px;
+  padding: 15px;
 }
 
 /*? Elementos del navbar: centrados  */
@@ -73,32 +73,52 @@ body {
 
 /*? Elementos del navbar: Derecho  */
 #divNavRight {
-  padding: 10px;
+  padding: 15px;
 }
 
 /*! --------- FIN: navbar --------- */
+
+.magicalGlowLogo {
+  /*
+  filter: drop-shadow(0 0 12px var(--yellow-accent));*/
+  animation: magicalGlowTextYellow 2s ease-in-out infinite alternate;
+
+}
+
+@keyframes magicalGlowTextYellow {
+  from {
+    /* from: indica como empieza la animación */
+    /*? text-shadow: crea sombras alrededor*/
+    filter: drop-shadow(0 0 1px var(--yellow-accent)) drop-shadow(0 0 15px var(--yellow-accent)) drop-shadow(0 0 20px var(--yellow-accent));
+  }
+
+  to {
+    /* to: indica como termina la animación */
+    filter: drop-shadow(0 0 10px var(--yellow-accent)) drop-shadow(0 0 15px var(--yellow-accent)) drop-shadow(0 0 20px var(--yellow-accent));
+  }
+}
 
 /*! --------- INICIO: Animacion para brillo de letras --------- */
 /*? Animacion de titulo Navbar
 ? animation y keyframespara: agregar el efecto de brillo 
 */
-.magicalGlow {
+.magicalGlowTextPink {
   /** animation
     ? magicalGlow: Nombre de la animación
     ? 1s: Tiempo
     ? ease-in-out: Controla cómo cambia la velocidad
     ? infinite: Se repite infinitamente
     */
-  -webkit-animation: magicalGlow 1s ease-in-out infinite alternate;
-  -moz-animation: magicalGlow 1s ease-in-out infinite alternate;
-  animation: magicalGlow 1s ease-in-out infinite alternate;
+  -webkit-animation: magicalGlowTextPink 1s ease-in-out infinite alternate;
+  -moz-animation: magicalGlowTextPink 1s ease-in-out infinite alternate;
+  animation: magicalGlowTextPink 1s ease-in-out infinite alternate;
 }
 
 /*
 ? @keyframes [nameAnimacion]: Hace que una propiedad cambie desde un estado inicial hasta otro estado.
 ? text-shadow : Propiedad para crear el efecto de luz de neón 
 */
-@keyframes magicalGlow {
+@keyframes magicalGlowTextPink {
   from {
     /* from: indica como empieza la animación */
     /*? text-shadow: crea sombras alrededor*/
@@ -134,7 +154,7 @@ body {
 
 .btnImg {
   background-image: url("../assets/botonmenu.png");
-  width: 100px;
+  width: 120px;
   height: auto;
 
 }
