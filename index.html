@@ -13,19 +13,64 @@
   <!-- ? ENLACES DE ARCHIVOS CSS-->
   <link rel="stylesheet" href="styles/styles.css" />
   <!-- Archivo para letras, tamaños, colores etc-->
+  <!--Link de fuente-->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Quantico:wght@400;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
 </head>
 
 <body>
   <!--* --------- INICIO: navbar --------- -->
-  <nav class="navbar bg-body-tertiary magicalGlow" id="navbar">
-    <div class="">
-      <h3>
-        <img src="./assets/logo.png" alt="logo" width="30" height="24">
-        THE PIXEL VAULT
-      </h3>
+  <nav class="navbar bg-body-tertiary" id="navbar">
+
+    <div id="divNavLeft">
+      <img src="./assets/navBarraRosa.png" alt="navBarraRosa" width="100" height="auto">
+      <br>
+      <img src="./assets/navBarraAzul.png" alt="navBarraAzul" width="100px" height="auto">
+    </div>
+
+    <div id="divNavCenter" class="magicalGlow">
+      <img src="./assets/ThePixelVaultLogo.png" alt="ThePixelVaultLogo" width="300px" height="auto">
+    </div>
+
+    <div id="divNavRight" class="nav-item dropdown">
+      <li>
+        <button id="btnMenu" type="button">
+          <img class="btnImg" src="assets/botonmenu.png" alt="">
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </li>
     </div>
   </nav>
   <!--* --------- FIN: navbar --------- -->
+
+  <!--Pruebas de fuentes-->
+  <main>
+    <div class="pressStart">
+      <h1>Hola mundo prueba 1 </h1>
+      <h2>Hola mundo prueba 2</h2>
+      <h3>Hola mundo prueba 3</h3>
+    </div>
+    <div class="pixelify">
+      <h1>Hola mundo prueba 1 </h1>
+      <h2>Hola mundo prueba 2</h2>
+      <h3>Hola mundo prueba 3</h3>
+    </div>
+    <div class="quantico">
+      <h1>Hola mundo prueba 1 </h1>
+      <h2>Hola mundo prueba 2</h2>
+      <h3>Hola mundo prueba 3</h3>
+    </div>
+  </main>
+  <!--Pruebas de fuentes-->
 
 
   <!--Inicio de pie de footer-->
