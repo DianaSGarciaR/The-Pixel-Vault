@@ -9,73 +9,628 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
   <!-- !FIN LINK BOOSTRAP-->
-
   <!-- ? ENLACES DE ARCHIVOS CSS-->
   <link rel="stylesheet" href="styles/acercaNosotros.css" />
   <!-- Archivo solo para diseño de cards, amnimacio ecpeificos solo para esta vista (archivo: acercaNosotros.html )-->
   <link rel="stylesheet" href="styles/styles.css" />
   <!-- Archivo para letras, tamaños, colores etc-->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+  </style>
 </head>
 
 <body>
   <!--* --------- INICIO: navbar --------- -->
-  <nav class="navbar bg-body-tertiary" id="navbar">
-
-    <div id="divNavLeft">
-      <img src="./assets/navBarraRosa.png" alt="navBarraRosa" width="100" height="auto">
-      <br>
-      <img src="./assets/navBarraAzul.png" alt="navBarraAzul" width="100px" height="auto">
-    </div>
-
-    <div id="divNavCenter" class="magicalGlow">
-      <img src="./assets/ThePixelVaultLogo.png" alt="ThePixelVaultLogo" width="300px" height="auto">
-    </div>
-
-    <div id="divNavRight" class="nav-item dropdown">
-      <li>
-        <button id="btnMenu" type="button">
-          <img class="btnImg" src="assets/botonmenu.png" alt="">
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-      </li>
-    </div>
-  </nav>
+  <main class="navThePixelVault"></main>
   <!--* --------- FIN: navbar --------- -->
 
-  <!--Una breve descripción del proyecto-->
-  <h1>Una breve descripción del proyecto</h1>
-  <!--Fin de una breve descripción del proyecto-->
+      <!-- *=========================================
+    * DESCRIPCIÓN DEL PROYECTO
+    * ============================================== -->
+    <br>
+    <div class="container text-center">
+        <div class="row">
+            <!-- CAMBIO: antes era col-3 / col-6 / col-3 en todas las
+                 pantallas. Ahora el marco ocupa el 100% del ancho en
+                 móvil (col-12) y solo se limita a la mitad a partir de
+                 pantallas grandes (col-lg-6), centrado con mx-auto. -->
+            <div class="col-12 col-lg-6 mx-auto">
+                <div class="frame-demo" id="frameDemo">
+                    <svg id="frameSvg" aria-hidden="true">
+                        <defs>
+                            <filter id="neon-glow" x="-60%" y="-60%" width="220%" height="220%">
+                                <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="blur1"/>
+                                <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur2"/>
+                                <feGaussianBlur in="SourceGraphic" stdDeviation="7"   result="blur3"/>
+                                <feMerge>
+                                    <feMergeNode in="blur3"/>
+                                    <feMergeNode in="blur2"/>
+                                    <feMergeNode in="blur1"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <defs>
+                            <filter id="neon-glow2" x="-60%" y="-60%" width="220%" height="220%">
+                                <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur1"/>
+                                <feMerge>
+                                    <feMergeNode in="blur1"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <path id="framePath" class="frame-path" />
+                    </svg>
+                    <div class="content">
+                        <p>The Pixel Vault es un colectivo de diseño e ingeniería web enfocado en la industria del videojuego. Nació durante un intensivo bootcamp de desarrollo donde diez creativos de distintas disciplinas unieron sus habilidades con una sola meta: crear interfaces inmersivas y experiencias digitales que estén a la altura de los mundos virtuales que representan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- *===========================================
+    * FIN DE LA DESCRIPCIÓN DEL PROYECTO
+    * ================================================ -->
+    <br>
+    <br>
+    <!-- *=========================================
+    * SECCIÓN MISSION LOGS
+    * ============================================== -->
 
-  <!--¿Quiénes somos?-->
-  <h1>¿Quiénes somos?</h1>
-  <!--¿Fin de quiénes somos?-->
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
 
-  <!--Misión-->
-  <h1>Misión</h1>
-  <!--Fin de misión-->
+            </div>
+            <div class="col align-self-center">
+                <h2 id="missionLogs">
+                    Mission Logs:
+                    <br>
+                    Escala y crecimiento
+                </h2>
+            </div>
+            <div class="col">
 
-  <!--Inicio de  visión-->
-  <h1>Visión</h1>
-  <!--Fin de  visión-->
+            </div>
+        </div>
+    </div>
 
-  <!--Inicio de perfiles del equipo (breve biografía, foto y papel en el proyecto).-->
-  <h1>Perfiles del equipo breve biografía, foto y papel en el proyecto</h1>
-  <!--Fin perfiles del equipo (breve biografía, foto y papel en el proyecto).-->
+    <!-- CAMBIO EN LAS 3 FILAS DE ABAJO:
+         1) col-4 (fijo en todas las pantallas) -> col-12 col-lg-4:
+            en móvil cada bloque ocupa todo el ancho y se apila; a
+            partir de pantallas grandes (lg, ≥992px) vuelven a quedar
+            3 en una fila, como antes.
+         2) Se quitaron los "align-self-start/center/end": eran los
+            que creaban el efecto escalonado. Al quitarlos, las
+            columnas vuelven al comportamiento por defecto de
+            Bootstrap (align-items:stretch), o sea, la misma altura
+            que el marco vecino — así "max-height:100%" en los
+            íconos (ver styles.css) tiene sentido.
+         3) La fila interna con columnas vacías para separar los
+            íconos (col-md-3 / col-md-6 / col-md-3) se reemplazó por
+            un solo contenedor ".icon-pair" que los centra con flexbox. -->
+    <div class="container text-center">
+        <div class="row align-items-stretch g-4">
+            <div class="col-12 col-lg-5">
+                <div class="frame-demo" id="frameDemo2">
+                    <svg id="frameSvg2" aria-hidden="true">
+                        <path id="framePath2" class="frame-path" />
+                    </svg>
+                    <div class="content">
+                        <p id="projectDesc">Problemática:
+                            <br>
+                            The Pixel Vault surge a partir de identificar inexistencia de una tienda que ofrezca una experiencia personalizada para los amantes de los videojuegos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-2 icon-pair align-self-center">
+                <img src="./assets/coin.jpeg" class="badge-icon" alt="coin.jpeg">
+                <img src="./assets/mision.jpeg" class="badge-icon" alt="mision.jpeg">
+            </div>
+            <div class="col-12 col-lg-5">
+                <div class="frame-demo" id="frameDemo3">
+                    <svg id="frameSvg3" aria-hidden="true">
+                        <path id="framePath3" class="frame-path" />
+                    </svg>
+                    <div class="content">
+                        <p id="projectDesc">Misión:
+                            <br>
+                            Ofrecer a la comunidad gamer una amplia gama de mercancía que les permita materializar su identidad con experiencias personalizadas, así como conectarla con nuevos descubrimientos que le sorprendan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="container text-center">
+        <div class="row align-items-stretch g-4">
+            <div class="col-12 col-lg-5">
+                <div class="frame-demo" id="frameDemo4">
+                    <svg id="frameSvg4" aria-hidden="true">
+                        <path id="framePath4" class="frame-path" />
+                    </svg>
+                    <div class="content">
+                        <p id="projectDesc">Visión:
+                            <br>
+                            Liderar a los puntos de encuentro para la comunidad gamer en México, siendo reconocidos por revitalizar el formato físico y ofrecer experiencias personalizadas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-2 icon-pair align-self-center">
+                <img src="./assets/vision.jpeg" class="badge-icon" alt="vision.jpeg">
+                <img src="./assets/valor.jpeg" class="badge-icon" alt="valor.jpeg">
+            </div>
+            <div class="col-12 col-lg-5">
+                <div class="frame-demo" id="frameDemo5">
+                    <svg id="frameSvg5" aria-hidden="true">
+                        <path id="framePath5" class="frame-path" />
+                    </svg>
+                    <div class="content">
+                        <p id="projectDesc">Valores:
+                            <br>
+                            Comunidad, autenticidad, transparencia, orientación al cliente, calidad, lealtad, sostenibilidad del formato físico, libre expresión y búsqueda de identidad.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="container text-center">
+        <div class="row align-items-stretch g-4">
+            <!-- Columna vacía solo para mantener el ritmo visual de 3
+                 columnas en escritorio; se oculta en móvil (d-none) para
+                 no dejar un espacio en blanco antes del contenido. -->
+            <div class="col-12 col-lg-5 d-none d-lg-block"></div>
+            <div class="col-12 col-lg-2 icon-pair align-self-center">
+                <img src="./assets/proposito.jpeg" class="badge-icon" alt="proposito.jpeg">
+            </div>
+            <div class="col-12 col-lg-5">
+                <div class="frame-demo" id="frameDemo6">
+                    <svg id="frameSvg6" aria-hidden="true">
+                        <path id="framePath6" class="frame-path" />
+                    </svg>
+                    <div class="content">
+                        <p id="projectDesc">¿Qué resolvemos?:
+                            <br>
+                            Te acercamos a tus videojuegos favoritos así como a las nuevas experiencias que anhelas descubrir, expresando tu identidad en cada compra.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- *=========================================
+    * FIN DE LA SECCIÓN MISSION LOGS
+    * ============================================== -->
+
+  <!--*-------------------Inicio de PERFILES DE EQUIPO----------------->
+
+  <figure class="team-section">
+    <svg id="bordeAzulPerfiles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" preserveAspectRatio="none"
+      aria-hidden="true">
+      <defs>
+        <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feMorphology in="SourceGraphic" operator="dilate" radius="2" result="expand" />
+          <feGaussianBlur in="expand" stdDeviation="5" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      <path
+        d="M 0 40 L 8 40 L 8 32 L 16 32 L 16 24 L 24 24 L 24 16 L 32 16 L 32 8 L 40 8 L 40 0 L 560 0 L 560 8 L 568 8 L 568 16 L 576 16 L 576 24 L 584 24 L 584 32 L 592 32 L 592 40 L 600 40 L 600 160 L 592 160 L 592 168 L 584 168 L 584 176 L 576 176 L 576 184 L 568 184 L 568 192 L 560 192 L 560 200 L 40 200 L 40 192 L 32 192 L 32 184 L 24 184 L 24 176 L 16 176 L 16 168 L 8 168 L 8 160 L 0 160 Z"
+        fill="rgba(5, 10, 20, 0.3)" stroke="#2DE2E6" stroke-width="6" vector-effect="non-scaling-stroke"
+        filter="url(#neon-glow)" />
+    </svg>
+    <div class="team-content">
+      <h1 class="team-title">Roster de la tripulación</h1>
+      <div class="row align-items-center team-layout">
+        <div class="col-12 col-lg-4 team-description-column">
+          <p>
+            Conoce a las mentes creativas detrás de THE PIXEL VAULT que dieron vida a una interfaz inmersiva en el
+            front-end, y los guardianes del control de calidad que mantuvieron el repositorio en orden cazando bugs.
+            Juntos unimos talento, café y pasión por los videojuegos para forjar este refugio digital desde cero. ¡El
+            viaje apenas comienza!
+          </p>
+        </div>
+        <div class="col-12 col-lg-8">
+          <div id="cardRosa">
+            <svg id="bordeRosaPerfiles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200"
+              preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <filter id="neon-glow-pink" x="-50%" y="-50%" width="200%" height="200%">
+                  <feMorphology in="SourceGraphic" operator="dilate" radius="2" result="expand" />
+                  <feGaussianBlur in="expand" stdDeviation="5" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+              <path
+                d="M 0 40 L 8 40 L 8 32 L 16 32 L 16 24 L 24 24 L 24 16 L 32 16 L 32 8 L 40 8 L 40 0 L 560 0 L 560 8 L 568 8 L 568 16 L 576 16 L 576 24 L 584 24 L 584 32 L 592 32 L 592 40 L 600 40 L 600 160 L 592 160 L 592 168 L 584 168 L 584 176 L 576 176 L 576 184 L 568 184 L 568 192 L 560 192 L 560 200 L 40 200 L 40 192 L 32 192 L 32 184 L 24 184 L 24 176 L 16 176 L 16 168 L 8 168 L 8 160 L 0 160 Z"
+                fill="rgba(5, 10, 20, 0.3)" stroke="#FF00FF" stroke-width="3" vector-effect="non-scaling-stroke"
+                filter="url(#neon-glow-pink)" />
+            </svg>
+            <div class="team-grid">
+              <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal1">
+                <img src="assets/botonBeto.png" class="img-fluid" alt="Abrir información de Beto" />
+              </button>
+              <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal2">
+                <img src="assets/botonAlen.png" class="img-fluid" alt="Abrir información de Alen" />
+              </button>
+              <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal3">
+                <img src="assets/botonJaz.png" class="img-fluid" alt="Abrir información de Jazmín" />
+              </button>
+              <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal4">
+                <img src="assets/botonDani.png" class="img-fluid" alt="Abrir información de Dani" />
+              </button>
+              <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal5">
+                <img src="assets/botonDiana.png" class="img-fluid" alt="Abrir información de Diana" />
+              </button>
+              <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal6">
+                <img src="assets/botonDiego.png" class="img-fluid" alt="Abrir información de Diego" />
+              </button>
+              <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal7">
+                <img src="assets/botonFer.png" class="img-fluid" alt="Abrir información de Fernando" />
+              </button>
+              <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal8">
+                <img src="assets/botonCarmen.png" class="img-fluid" alt="Abrir información de Carmen" />
+              </button>
+              <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal9">
+                <img src="assets/botonNat.png" class="img-fluid" alt="Abrir información de Natalia" />
+              </button>
+              <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal10">
+                <img src="assets/botonOsorio.png" class="img-fluid" alt="Abrir información de Osorio" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <!--*--------------------MODALES---------------------->
+
+  <!-- Modal Beto -->
+  <div class="modal fade" id="modal1" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalles del Tripulante</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="assets/cardBeto.png" class="modal-member-image" alt="cardBeto">
+          <div class="d-grid">
+            <p>Soy Desarrollador Full Stack Jr. y me encargo de conectar el *frontend* con la lógica del *backend* para
+              construir aplicaciones web sólidas. Con mi base en Física Aplicada y armas como Java y Python, analizo y
+              resuelvo cada reto técnico como si fuera un jefe de nivel. ¡Siempre listo para colaborar y subir de
+              experiencia en el equipo!</p>
+            <div class="links">
+              <a href="https://www.linkedin.com/in/alberto-pedraza-pedraza/" class="linkedin"><img
+                  src="assets/linkedin.png" id="linkedin" alt="logo Linkedin"></a>
+              <a href="https://github.com/Alberto-Pedraza" class="github"><img src="assets/github.png" id="github"
+                  alt="logo Github"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Alen -->
+  <div class="modal fade" id="modal2" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalles del Tripulante</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="assets/cardAlen.png" class="modal-member-image" alt="cardAlen">
+          <div class="d-grid">
+            <p>Desarrollador Java Full Stack Jr. con sólida experiencia en soporte técnico y resolución de fallas.
+              Especializado en analizar sistemas, optimizar procesos y aplicar código limpio (JavaScript, HTML, CSS,
+              Git). ¡Listo para aportar lógica y comunicación efectiva al equipo!</p>
+            <div class="links">
+              <a href="https://www.linkedin.com/in/alejandro-sanchez-mendoza/?locale=es" class="linkedin"><img
+                  src="assets/linkedin.png" id="linkedin" alt="logo Linkedin"></a>
+              <a href="https://github.com/13ale07" class="github"><img src="assets/github.png" id="github"
+                  alt="logo Github"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Jazmin -->
+  <div class="modal fade" id="modal3" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalles del Tripulante</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="assets/cardJaz.png" class="modal-member-image" alt="cardJaz">
+          <div class="d-grid">
+            <p>Desarrolladora Java Full Stack y estudiante de Ciencias de la Informática en el IPN, con bases sólidas en
+              Java, SQL, Git y análisis de datos (Certificación IBM). Apasionada por el código limpio y el trabajo en
+              equipo, ¡lista para transformar ideas en soluciones tecnológicas funcionales!</p>
+            <div class="links">
+              <a href="https://www.linkedin.com/in/blanca-jazmin-hern%C3%A1ndez-miranda/" class="linkedin"><img
+                  src="assets/linkedin.png" id="linkedin" alt="logo Linkedin"></a>
+              <a href="https://github.com/jazhn40-design" class="github"><img src="assets/github.png" id="github"
+                  alt="logo Github"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Daniel -->
+  <div class="modal fade" id="modal4" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalles del Tripulante</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="assets/cardDani.png" class="modal-member-image" alt="cardDani">
+          <div class="d-grid">
+            <p>Desarrollador Java Full Stack con experiencia en Python, FastAPI, SQL y Flutter para crear APIs REST e
+              integrar sistemas. Enfocado en consolidar su carrera en desarrollo web y metodologías ágiles, busca
+              aportar soluciones reales y eficientes en proyectos tecnológicos de alto impacto.</p>
+            <div class="links">
+              <a href="https://www.linkedin.com/in/danielcastroperez/" class="linkedin"><img src="assets/linkedin.png"
+                  id="linkedin" alt="logo Linkedin"></a>
+              <a href="https://github.com/DanielCastroPerez" class="github"><img src="assets/github.png" id="github"
+                  alt="logo Github"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Diana -->
+  <div class="modal fade" id="modal5" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalles del Tripulante</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="assets/cardDiana.png" class="modal-member-image" alt="cardDiana">
+          <div class="d-grid">
+            <p>Desarrolladora Java Full Stack experta en Java, Spring Boot, Angular y MySQL, con experiencia creando y
+              optimizando soluciones web empresariales (GitLab, Jira). Enfocada en la resolución de problemas y el
+              análisis de sistemas, ¡lista para aportar talento y crecer en un nuevo reto tecnológico!</p>
+            <div class="links">
+              <a href="https://www.linkedin.com/in/diana-sarai-garcia-ramirez/" class="linkedin"><img
+                  src="assets/linkedin.png" id="linkedin" alt="logo Linkedin"></a>
+              <a href="https://github.com/DianaSGarciaR" class="github"><img src="assets/github.png" id="github"
+                  alt="logo Github"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Diego -->
+  <div class="modal fade" id="modal6" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalles del Tripulante</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="assets/cardDiego.png" class="modal-member-image" alt="cardDiego">
+          <div class="d-grid">
+            <p>Desarrollador web y de videojuegos apasionado por fusionar la creatividad con la técnica. Con experiencia
+              en HTML, CSS, JavaScript, Bootstrap, Angular, Laravel, Unity y bases de datos (Git/GitHub), y
+              fortaleciendo su perfil como Java Full Stack en Generation. ¡Listo para afrontar nuevos retos y aportar
+              valor a cualquier equipo de tecnología!</p>
+            <div class="links">
+              <a href="https://www.linkedin.com/in/diegoglezc/" class="linkedin"><img src="assets/linkedin.png"
+                  id="linkedin" alt="logo Linkedin"></a>
+              <a href="https://github.com/DiegoG1608" class="github"><img src="assets/github.png" id="github"
+                  alt="logo Github"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Fernando -->
+  <div class="modal fade" id="modal7" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalles del Tripulante</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="assets/cardFer.png" class="modal-member-image" alt="cardFer">
+          <div class="d-grid">
+            <p>Especialista en desarrollo Java Fullstack (HTML, CSS, JS, Git, APIs) experta en transformar retos
+              técnicos en soluciones escalables. Fusiono mi experiencia en soporte y metodologías ágiles con una fuerte
+              vocación pedagógica y de liderazgo para optimizar procesos, conectar sistemas e impulsar proyectos con
+              impacto real.</p>
+            <div class="links">
+              <a href="https://www.linkedin.com/in/fernando--nava/" class="linkedin"><img src="assets/linkedin.png"
+                  id="linkedin" alt="logo Linkedin"></a>
+              <a href="https://github.com/FernandoNava2" class="github"><img src="assets/github.png" id="github"
+                  alt="logo Github"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Carmen -->
+  <div class="modal fade" id="modal8" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalles del Tripulante</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="assets/cardCarmen.png" class="modal-member-image" alt="cardCarmen">
+          <div class="d-grid">
+            <p>Desarrolladora Java Full Stack y especialista en Spring Boot, JavaScript y bases de datos. Con
+              experiencia en equipos ágiles (Scrum) y diseño de APIs, se enfoca en entregar software escalable y de alta
+              calidad que impulse directamente los objetivos del negocio.</p>
+            <div class="links">
+              <a href="https://www.linkedin.com/in/maria-del-carmen-galindo-ramirez/" class="linkedin"><img
+                  src="assets/linkedin.png" id="linkedin" alt="logo Linkedin"></a>
+              <a href="https://github.com/mariadelcarmengalindodev-afk" class="github"><img src="assets/github.png"
+                  id="github" alt="logo Github"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Natalia -->
+  <div class="modal fade" id="modal9" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalles del Tripulante</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="assets/cardNat.png" class="modal-member-image" alt="cardNat">
+          <div class="d-grid">
+            <p>Desarrolladora Java Full Stack apasionada por fusionar la precisión del código con un diseño visual
+              impecable. Experta en integrar lógica frontend y backend para optimizar componentes y acelerar flujos de
+              trabajo en equipo. ¡Lista para aportar innovación tecnológica a nuevos retos!</p>
+            <div class="links">
+              <a href="https://www.linkedin.com/in/nataliagonzalezcoca/" class="linkedin"><img src="assets/linkedin.png"
+                  id="linkedin" alt="logo Linkedin"></a>
+              <a href="https://github.com/NataliaGonzalezCoca" class="github"><img src="assets/github.png" id="github"
+                  alt="logo Github"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Osorio -->
+  <div class="modal fade" id="modal10" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalles del Tripulante</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="assets/cardOsorio.png" class="modal-member-image" alt="cardOsorio">
+          <div class="d-grid">
+            <p>Ingeniero en Tecnologías de la Información con más de 7 años de trayectoria en soporte, infraestructura y
+              asesoría técnica, enfocado ahora en el desarrollo Backend con Java. Con sólida formación en POO, bases de
+              datos relacionales, Spring Boot, APIs REST, Docker y metodologías ágiles.</p>
+            <div class="links">
+              <a href="https://www.linkedin.com/in/salvador-osorio-palma/" class="linkedin"><img
+                  src="assets/linkedin.png" id="linkedin" alt="logo Linkedin"></a>
+              <a href="https://github.com/osoriopalma" class="github"><img src="assets/github.png" id="github"
+                  alt="logo Github"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--*--------------INICIO FOOTER--------------------->
 
   <!--Inicio de pie de footer-->
-  <h1>Inicio de pie de footer</h1>
+
+  <footer class="footer-container">
+    <!-- Grilla principal de 4 columnas -->
+    <div class="footer-grid">
+
+      <!-- Columna 1: Marca -->
+      <div class="footer-brand">
+        <h2 class="brand-title">THE PIXEL VAULT</h2>
+        <p class="brand-subtitle">TIENDA RETRO DE VIDEOJUEGOS</p>
+        <p class="brand-description">
+          Tu tesoro de coleccionables físicos, videojuegos retro y cultura gamer. Valor, dinamismo y confianza en cada
+          entrega.
+        </p>
+      </div>
+
+      <!-- Columna 2: Navegación -->
+      <div class="footer-column">
+        <h3 class="column-title">NAVEGACIÓN</h3>
+        <ul class="footer-links">
+          <li><a href="#"><span class="play-icon">▶</span> Inicio</a></li>
+          <li><a href="#"><span class="play-icon">▶</span> Catálogo</a></li>
+          <li><a href="#"><span class="play-icon">▶</span> Novedades</a></li>
+          <li><a href="#"><span class="play-icon">▶</span> Ofertas</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: Colección -->
+      <div class="footer-column">
+        <h3 class="column-title">COLECCIÓN</h3>
+        <ul class="footer-links">
+          <li><a href="#"><span class="play-icon">▶</span> Consolas Retro</a></li>
+          <li><a href="#"><span class="play-icon">▶</span> Videojuegos</a></li>
+          <li><a href="#"><span class="play-icon">▶</span> Coleccionables</a></li>
+          <li><a href="#"><span class="play-icon">▶</span> Merchandising</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 4: Soporte -->
+      <div class="footer-column">
+        <h3 class="column-title">SOPORTE</h3>
+        <ul class="footer-links">
+          <li><a href="#"><span class="play-icon">▶</span> Envíos y Entregas</a></li>
+          <li><a href="#"><span class="play-icon">▶</span> Términos y Condiciones</a></li>
+          <li><a href="#"><span class="play-icon">▶</span> Política de Privacidad</a></li>
+          <li><a href="#"><span class="play-icon">▶</span> Contacto</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Barra Inferior fuera del grid -->
+    <div class="footer-bottom">
+      <p>&copy; 2026 <strong class="white-text">THE PIXEL VAULT</strong>. Todos los derechos reservados.</p>
+      <p class="credits">BY DEV CORE SOLUTIONS</p>
+    </div>
+  </footer>
+  </div>
   <!--Fin de pie de footer-->
 
   <!-- ! ENLACES DE ARCHIVOS JAVASCRIP-->
-  <script src="#"></script>
+  <script src="./javascript/globalElements.js"></script>
   <!-- ! FIN DE ENLACES DE ARCHIVOS JAVASCRIP-->
+   <script src="./javascript/acercaNosotrosApp.js"></script>
   <!-- !LINK BOOSTRAP-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"

@@ -29,12 +29,20 @@
 }
 
 body {
-  background-color: #000B1E;
-  color: var(--text-main);
-  margin: 0;
+  /* Hace que la página tenga como mínimo el alto de la pantalla */
+  min-height: 100vh;
   padding: 0px;
+  margin: 0;
+  /* Evita que aparezca scroll horizontal */
+  overflow-x: hidden;
+  color: var(--text-main);
+  /* Agrega un degradado oscuro sobre la imagen de fondo */
+  /* url() Agrega la imagen de fondo */
+  background:
+    linear-gradient(rgba(5, 10, 20, 0.45),
+      rgba(5, 10, 20, 0.75)),
+    url("../assets/fondo.jpg") center / cover fixed no-repeat;
 }
-
 
 .pressStart {
   font-family: var(--font-pixel-header);
@@ -63,7 +71,7 @@ body {
 
 /*? Elementos del navbar: lado Izquierdo */
 #divNavLeft {
-  padding: 10px;
+  padding: 15px;
 }
 
 /*? Elementos del navbar: centrados  */
@@ -73,7 +81,7 @@ body {
 
 /*? Elementos del navbar: Derecho  */
 #divNavRight {
-  padding: 10px;
+  padding: 15px;
 }
 
 /*! --------- FIN: navbar --------- */
@@ -217,27 +225,47 @@ body {
 
 /*! --------- FIN : Banner --------- */
 
+.magicalGlowLogo {
+  /*
+  filter: drop-shadow(0 0 12px var(--yellow-accent));*/
+  animation: magicalGlowTextYellow 2s ease-in-out infinite alternate;
+
+}
+
+@keyframes magicalGlowTextYellow {
+  from {
+    /* from: indica como empieza la animación */
+    /*? text-shadow: crea sombras alrededor*/
+    filter: drop-shadow(0 0 1px var(--yellow-accent)) drop-shadow(0 0 15px var(--yellow-accent)) drop-shadow(0 0 20px var(--yellow-accent));
+  }
+
+  to {
+    /* to: indica como termina la animación */
+    filter: drop-shadow(0 0 10px var(--yellow-accent)) drop-shadow(0 0 15px var(--yellow-accent)) drop-shadow(0 0 20px var(--yellow-accent));
+  }
+}
+
 /*! --------- INICIO: Animacion para brillo de letras --------- */
 /*? Animacion de titulo Navbar
 ? animation y keyframespara: agregar el efecto de brillo 
 */
-.magicalGlow {
+.magicalGlowTextPink {
   /** animation
     ? magicalGlow: Nombre de la animación
     ? 1s: Tiempo
     ? ease-in-out: Controla cómo cambia la velocidad
     ? infinite: Se repite infinitamente
     */
-  -webkit-animation: magicalGlow 1s ease-in-out infinite alternate;
-  -moz-animation: magicalGlow 1s ease-in-out infinite alternate;
-  animation: magicalGlow 1s ease-in-out infinite alternate;
+  -webkit-animation: magicalGlowTextPink 1s ease-in-out infinite alternate;
+  -moz-animation: magicalGlowTextPink 1s ease-in-out infinite alternate;
+  animation: magicalGlowTextPink 1s ease-in-out infinite alternate;
 }
 
 /*
 ? @keyframes [nameAnimacion]: Hace que una propiedad cambie desde un estado inicial hasta otro estado.
 ? text-shadow : Propiedad para crear el efecto de luz de neón 
 */
-@keyframes magicalGlow {
+@keyframes magicalGlowTextPink {
   from {
     /* from: indica como empieza la animación */
     /*? text-shadow: crea sombras alrededor*/
@@ -273,9 +301,26 @@ body {
 
 .btnImg {
   background-image: url("../assets/botonmenu.png");
-  width: 100px;
+  width: 120px;
   height: auto;
 
 }
 
 /*! --------- FIN: Boton Menu --------- */
+
+/*! --------- INICIO: Consultas de medios CSS --------- */
+/* Ocultar elementos despues del tamaño de un celular  */
+@media screen and (max-width: 540px) {
+
+  /* Se ocultan elentos del Navbar para copoplarlos en vistas de celular */
+  #divNavLeft,
+  #divNavRight {
+    display: none;
+  }
+
+  #navbar {
+    justify-content: center;
+  }
+}
+
+/*! --------- FIN: Consultas de medios CSS --------- */
