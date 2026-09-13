@@ -1,0 +1,380 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  color: #ffd23f;
+  font-family: "Inter", sans-serif;
+  background:
+    linear-gradient(
+      rgba(5, 10, 20, 0.45),
+      rgba(5, 10, 20, 0.75)
+    ),
+    url("../assets/fondo.jpg") center / cover fixed no-repeat;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Pixelify Sans", sans-serif;
+  filter: drop-shadow(0 0 11px #ece522);
+}
+
+p {
+  margin-top: 0;
+  color: #ffd23f !important;
+  font-family: "Inter", sans-serif !important;
+  font-size: 1.5rem !important;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.team-section {
+  position: relative;
+  z-index: 0;
+  width: calc(100% - 2rem);
+  max-width: 1250px;
+  min-height: 540px;
+  margin: 5rem auto;
+  padding: 4rem 3rem;
+  text-align: center;
+}
+
+.team-section > svg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.team-content {
+  position: relative;
+  z-index: 1;
+}
+
+.team-title {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 3rem;
+  color: #ffd23f;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  text-align: center;
+  text-shadow: 0 0 11px #ece522;
+}
+
+.team-layout {
+  position: relative;
+  z-index: 1;
+  min-height: 330px;
+  row-gap: 2rem;
+}
+
+.team-description-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  padding: 1.5rem;
+}
+
+.team-description-column p {
+  max-width: 420px;
+  margin: 0;
+  color: #ffd23f !important;
+  font-size: 1.2rem !important;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+#cardRosa {
+  position: relative;
+  z-index: 1;
+  min-height: 300px;
+  padding: 2.5rem 2rem;
+  border-radius: 1rem;
+}
+
+#bordeRosaPerfiles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#cardRosa .team-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.team-member {
+  display: block;
+  width: 100%;
+  max-width: 130px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+}
+
+.team-member:hover,
+.team-member:focus-visible {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 12px #ff00ff);
+  outline: none;
+}
+
+.team-member img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.modal-dialog-fixed {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  max-width: 700px;
+  min-height: calc(100% - 3.5rem);
+  margin: 1.75rem auto;
+}
+
+.modal-dialog-fixed .modal-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 80vh;
+  max-height: 80vh;
+  overflow: hidden;
+  color: #ffd23f;
+  border: 2px solid #ff00ff;
+  border-radius: 1rem;
+  background:
+    linear-gradient(
+      rgba(5, 10, 20, 0.4),
+      rgba(5, 10, 20, 0.65)
+    ),
+    url("../assets/fondoModal.jpg") center / cover no-repeat;
+  box-shadow:
+    0 0 12px rgba(255, 0, 255, 0.8),
+    0 0 30px rgba(255, 0, 255, 0.45);
+}
+
+.modal-dialog-fixed .modal-header {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 4.5rem;
+  padding: 1rem 4rem 1rem 1rem;
+  border-bottom: 1px solid rgba(255, 0, 255, 0.7);
+  background: rgba(5, 10, 20, 0.95);
+}
+
+.modal-dialog-fixed .modal-title {
+  position: relative;
+  z-index: 6;
+  width: 100%;
+  margin: 0;
+  color: #ffd23f !important;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-shadow: 0 0 10px #ffd23f;
+}
+
+.modal-dialog-fixed .btn-close {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  z-index: 7;
+  width: 1.2rem;
+  height: 1.2rem;
+  opacity: 1;
+  transform: translateY(-50%);
+}
+
+.modal-dialog-fixed .modal-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(80vh - 4.5rem);
+  min-height: 0;
+  padding: 1rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+.modal-member-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.modal-dialog-fixed .modal-content,
+.modal-dialog-fixed .modal-body {
+  overflow: hidden;
+}
+
+.modal-dialog-fixed .modal-body p {
+  overflow: hidden;
+}
+
+#linkedin {
+    width: 4rem;
+    margin-left: -10rem;
+}
+
+#github {
+    width: 4rem;
+    margin-left: -10rem;
+}
+
+#linkedin:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 12px #0378ff);
+    outline: none;
+}
+
+#github:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 12px #ff00ff);
+    outline: none;
+}
+
+/*Tablet*/
+
+@media (max-width: 991px) {
+  .team-section {
+    min-height: auto;
+    padding: 3rem 2rem;
+  }
+
+  .team-title {
+    margin-bottom: 2.5rem;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .team-description-column {
+    min-height: auto;
+    padding: 1rem 2rem;
+  }
+
+  .team-description-column p {
+    max-width: 700px;
+    text-align: center;
+  }
+
+  #cardRosa {
+    min-height: 300px;
+  }
+}
+
+/*Celular*/
+
+@media (max-width: 575px) {
+  .team-section {
+    width: calc(100% - 1rem);
+
+    margin: 3rem auto;
+    padding: 3rem 1rem;
+  }
+
+  .team-title {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  .team-description-column {
+    padding: 0.5rem;
+  }
+
+  .team-description-column p {
+    font-size: 1rem !important;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  #cardRosa {
+    min-height: 300px;
+    padding: 2rem 1rem;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .team-member {
+    max-width: 120px;
+  }
+
+  /* Modal en celular */
+  .modal-dialog-fixed {
+    width: 95%;
+    max-width: none;
+    min-height: calc(100% - 2rem);
+
+    margin: 1rem auto;
+  }
+
+  .modal-dialog-fixed .modal-content {
+    height: 85vh;
+    max-height: 85vh;
+  }
+
+  .modal-dialog-fixed .modal-header {
+    min-height: 4rem;
+    padding-right: 3.5rem;
+  }
+
+  .modal-dialog-fixed .modal-title {
+    font-size: 1.15rem;
+  }
+
+  .modal-dialog-fixed .modal-body {
+    height: calc(85vh - 4rem);
+    padding: 0.75rem;
+  }
+}
+/*Accesibilidad*/
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .team-member {
+    transition: none;
+  }
+}

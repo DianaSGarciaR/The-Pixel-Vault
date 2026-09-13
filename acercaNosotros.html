@@ -18,6 +18,7 @@
     <!-- Archivo solo para diseño de cards, amnimacio ecpeificos solo para esta vista (archivo: acercaNosotros.html )-->
     <link rel="stylesheet" href="styles/styles.css" />
     <!-- Archivo para letras, tamaños, colores etc-->
+    <style>@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');</style>
   </head>
   <body>
     <!--Inicio de natvar-->
@@ -40,9 +41,253 @@
     <h1>Visión</h1>
     <!--Fin de  visión-->
 
-    <!--Inicio de perfiles del equipo (breve biografía, foto y papel en el proyecto).-->
-    <h1>Perfiles del equipo breve biografía, foto y papel en el proyecto</h1>
-    <!--Fin perfiles del equipo (breve biografía, foto y papel en el proyecto).-->
+    <!--*Inicio de perfiles del equipo (breve biografía, foto y papel en el proyecto).-->
+
+<figure class="team-section">
+  <svg id="bordeAzulPerfiles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" preserveAspectRatio="none" aria-hidden="true"><defs><filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%"><feMorphology in="SourceGraphic" operator="dilate" radius="2" result="expand"/><feGaussianBlur in="expand" stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path d="M 0 40 L 8 40 L 8 32 L 16 32 L 16 24 L 24 24 L 24 16 L 32 16 L 32 8 L 40 8 L 40 0 L 560 0 L 560 8 L 568 8 L 568 16 L 576 16 L 576 24 L 584 24 L 584 32 L 592 32 L 592 40 L 600 40 L 600 160 L 592 160 L 592 168 L 584 168 L 584 176 L 576 176 L 576 184 L 568 184 L 568 192 L 560 192 L 560 200 L 40 200 L 40 192 L 32 192 L 32 184 L 24 184 L 24 176 L 16 176 L 16 168 L 8 168 L 8 160 L 0 160 Z" fill="rgba(5, 10, 20, 0.3)" stroke="#2DE2E6" stroke-width="6" vector-effect="non-scaling-stroke" filter="url(#neon-glow)"/></svg>
+  <div class="team-content">
+    <h1 class="team-title">Roster de la tripulación</h1>
+    <div class="row align-items-center team-layout">
+      <div class="col-12 col-lg-4 team-description-column">
+        <p>
+          Detrás de cada línea de código en The Pixel Vault hay un gremio de
+          programadores de élite. Hoy queremos presentarles a nuestra
+          tripulación, los coders que aceptaron la misión de forjar esta
+          plataforma desde cero.
+        </p>
+      </div>
+      <div class="col-12 col-lg-8">
+        <div id="cardRosa">
+          <svg id="bordeRosaPerfiles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" preserveAspectRatio="none" aria-hidden="true"><defs><filter id="neon-glow-pink" x="-50%" y="-50%" width="200%" height="200%"><feMorphology in="SourceGraphic" operator="dilate" radius="2" result="expand"/><feGaussianBlur in="expand" stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path d="M 0 40 L 8 40 L 8 32 L 16 32 L 16 24 L 24 24 L 24 16 L 32 16 L 32 8 L 40 8 L 40 0 L 560 0 L 560 8 L 568 8 L 568 16 L 576 16 L 576 24 L 584 24 L 584 32 L 592 32 L 592 40 L 600 40 L 600 160 L 592 160 L 592 168 L 584 168 L 584 176 L 576 176 L 576 184 L 568 184 L 568 192 L 560 192 L 560 200 L 40 200 L 40 192 L 32 192 L 32 184 L 24 184 L 24 176 L 16 176 L 16 168 L 8 168 L 8 160 L 0 160 Z" fill="rgba(5, 10, 20, 0.3)" stroke="#FF00FF" stroke-width="3" vector-effect="non-scaling-stroke" filter="url(#neon-glow-pink)"/></svg>
+          <div class="team-grid">
+            <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal1">
+              <img src="assets/botonBeto.png" class="img-fluid" alt="Abrir información de Beto"/>
+            </button>
+            <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal2">
+              <img src="assets/botonAlen.png" class="img-fluid" alt="Abrir información de Alen"/>
+            </button>
+            <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal3">
+              <img src="assets/botonJaz.png" class="img-fluid" alt="Abrir información de Jazmín"/>
+            </button>
+            <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal4">
+              <img src="assets/botonDani.png" class="img-fluid" alt="Abrir información de Dani"/>
+            </button>
+            <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal5">
+              <img src="assets/botonDiana.png" class="img-fluid" alt="Abrir información de Diana"/>
+            </button>
+            <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal6">
+              <img src="assets/botonDiego.png" class="img-fluid" alt="Abrir información de Diego"/>
+            </button>
+            <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal7">
+              <img src="assets/botonFer.png" class="img-fluid" alt="Abrir información de Fernando"/>
+            </button>
+            <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal8">
+              <img src="assets/botonCarmen.png" class="img-fluid" alt="Abrir información de Carmen"/>
+            </button>
+            <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal9">
+              <img src="assets/botonNat.png" class="img-fluid" alt="Abrir información de Natalia"/>
+            </button>
+            <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal10">
+              <img src="assets/botonOsorio.png" class="img-fluid" alt="Abrir información de Osorio"/>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</figure>
+<!--*--------------------MODALES---------------------->
+
+<!-- Modal Beto -->
+<div class="modal fade" id="modal1" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Detalles del Tripulante</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/cardBeto.png" class="modal-member-image" alt="cardBeto">
+        <div class="d-grid gap-3">
+          <a href="https://www.linkedin.com/in/alberto-pedraza-pedraza/" class="linkedin"><img src="assets/linkedin.png" id="linkedin" alt="logo Linkedin"></a>
+          <a href="https://github.com/Alberto-Pedraza" class="github"><img src="assets/github.png" id="github" alt="logo Github"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Alen -->
+<div class="modal fade" id="modal2" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Detalles del Tripulante</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/cardAlen.png" class="modal-member-image" alt="cardAlen">
+        <div class="d-grid gap-3">
+          <a href="https://www.linkedin.com/in/alejandro-sanchez-mendoza/?locale=es" class="linkedin"><img src="assets/linkedin.png" id="linkedin" alt="logo Linkedin"></a>
+          <a href="https://github.com/13ale07" class="github"><img src="assets/github.png" id="github" alt="logo Github"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Jazmin -->
+<div class="modal fade" id="modal3" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Detalles del Tripulante</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/cardJaz.png" class="modal-member-image" alt="cardJaz">
+        <div class="d-grid gap-3">
+          <a href="https://www.linkedin.com/in/blanca-jazmin-hern%C3%A1ndez-miranda/" class="linkedin"><img src="assets/linkedin.png" id="linkedin" alt="logo Linkedin"></a>
+          <a href="https://github.com/jazhn40-design" class="github"><img src="assets/github.png" id="github" alt="logo Github"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Daniel -->
+<div class="modal fade" id="modal4" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Detalles del Tripulante</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/cardDani.png" class="modal-member-image" alt="cardDani">
+        <div class="d-grid gap-3" style="margin-left: 5rem;">
+          <a href="https://www.linkedin.com/in/danielcastroperez/" class="linkedin"><img src="assets/linkedin.png" id="linkedin" alt="logo Linkedin"></a>
+          <a href="https://github.com/DanielCastroPerez" class="github"><img src="assets/github.png" id="github" alt="logo Github"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Diana -->
+<div class="modal fade" id="modal5" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Detalles del Tripulante</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/cardDiana.png" class="modal-member-image" alt="cardDiana">
+        <div class="d-grid gap-3">
+          <a href="https://www.linkedin.com/in/diana-sarai-garcia-ramirez/" class="linkedin"><img src="assets/linkedin.png" id="linkedin" alt="logo Linkedin"></a>
+          <a href="https://github.com/DianaSGarciaR" class="github"><img src="assets/github.png" id="github" alt="logo Github"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Diego -->
+<div class="modal fade" id="modal6" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Detalles del Tripulante</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/cardDiego.png" class="modal-member-image" alt="cardDiego">
+        <div class="d-grid gap-3">
+          <a href="https://www.linkedin.com/in/diegoglezc/" class="linkedin"><img src="assets/linkedin.png" id="linkedin" alt="logo Linkedin"></a>
+          <a href="https://github.com/DiegoG1608" class="github"><img src="assets/github.png" id="github" alt="logo Github"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Fernando -->
+<div class="modal fade" id="modal7" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Detalles del Tripulante</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/cardFer.png" class="modal-member-image" alt="cardFer">
+        <div class="d-grid gap-3">
+          <a href="https://www.linkedin.com/in/fernando--nava/" class="linkedin"><img src="assets/linkedin.png" id="linkedin" alt="logo Linkedin"></a>
+          <a href="https://github.com/FernandoNava2" class="github"><img src="assets/github.png" id="github" alt="logo Github"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Carmen -->
+<div class="modal fade" id="modal8" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Detalles del Tripulante</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/cardCarmen.png" class="modal-member-image" alt="cardCarmen">
+        <div class="d-grid gap-3">
+          <a href="https://www.linkedin.com/in/maria-del-carmen-galindo-ramirez/" class="linkedin"><img src="assets/linkedin.png" id="linkedin" alt="logo Linkedin"></a>
+          <a href="https://github.com/mariadelcarmengalindodev-afk" class="github"><img src="assets/github.png" id="github" alt="logo Github"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Natalia -->
+<div class="modal fade" id="modal9" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Detalles del Tripulante</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/cardNat.png" class="modal-member-image" alt="cardNat">
+        <div class="d-grid gap-3" style="margin-left: 4rem;">
+          <a href="https://www.linkedin.com/in/nataliagonzalezcoca/" class="linkedin"><img src="assets/linkedin.png" id="linkedin" alt="logo Linkedin"></a>
+          <a href="https://github.com/NataliaGonzalezCoca" class="github"><img src="assets/github.png" id="github" alt="logo Github"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Osorio -->
+<div class="modal fade" id="modal10" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Detalles del Tripulante</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/cardOsorio.png" class="modal-member-image" alt="cardOsorio">
+        <div class="d-grid gap-3">
+          <a href="https://www.linkedin.com/in/salvador-osorio-palma/" class="linkedin"><img src="assets/linkedin.png" id="linkedin" alt="logo Linkedin"></a>
+          <a href="https://github.com/osoriopalma" class="github"><img src="assets/github.png" id="github" alt="logo Github"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <!--*Fin perfiles del equipo (breve biografía, foto y papel en el proyecto).-->
 
     <!--Inicio de pie de footer-->
     <h1>Inicio de pie de footer</h1>
