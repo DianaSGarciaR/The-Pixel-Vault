@@ -29,11 +29,19 @@
 }
 
 body {
-  background-image: url("../assets/fondo.jpg");
-  color: var(--text-main);
-  margin: 0;
+  /* Hace que la página tenga como mínimo el alto de la pantalla */
+  min-height: 100vh;
   padding: 0px;
-
+  margin: 0;
+  /* Evita que aparezca scroll horizontal */
+  overflow-x: hidden;
+  color: var(--text-main);
+  /* Agrega un degradado oscuro sobre la imagen de fondo */
+  /* url() Agrega la imagen de fondo */
+  background:
+    linear-gradient(rgba(5, 10, 20, 0.45),
+      rgba(5, 10, 20, 0.75)),
+    url("../assets/fondo.jpg") center / cover fixed no-repeat;
 }
 
 .pressStart {
