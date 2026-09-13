@@ -1,33 +1,38 @@
+/* En este archivo se almacenna los estios globales es decir todos los elementos que se usan en todas las vistas */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Silkscreen&display=swap');
 
 :root {
   /* Para títulos principales*/
   --font-pixel-header: 'Press Start 2P', monospace;
-  
+
   /* Para subtítulos y encabezados de columna */
-  --font-pixel-sub: 'Pixelify Sans',monospace;
-  
+  --font-pixel-sub: 'Pixelify Sans', monospace;
+
   /* Para párrafos largos y enlaces */
-  --font-pixel-body: 'Quantico',sans-serif;
-} 
+  --font-pixel-body: 'Quantico', sans-serif;
+}
 
 
 
 :root {
-  --bg-color: #000B1E; /*background color */
-  --text-main: #E7E3F5; /*color del texto */
-  --text-bright: #ffffff; /*coor e texto más brillante*/
+  --bg-color: #000B1E;
+  /*background color */
+  --text-main: #E7E3F5;
+  /*color del texto */
+  --text-bright: #ffffff;
+  /*coor e texto más brillante*/
   --cyan-accent: #2DE2E6;
   --yellow-accent: #FFD23F;
   --border-color: #FF3EA5;
-  --panel-color: #171233; /*background más claro*/
+  --panel-color: #171233;
+  /*background más claro*/
 }
 
 body {
   background-color: #000B1E;
   color: var(--text-main);
   margin: 0;
-  padding: 40px;
+  padding: 0px;
 }
 
 
@@ -42,3 +47,113 @@ body {
 .quantico {
   font-family: var(--font-pixel-body);
 }
+
+
+/*! --------- INICIO: navbar --------- */
+#navbar {
+  /*background-image: url("assets/navbarFondo.jpg") !important; */
+  background-image: url("../assets/navbarFondo.jpg") !important;
+  padding: 0px;
+  margin: 0px;
+  color: var(--border-color);
+  /* Sombra del navbar */
+  box-shadow: 0 5px 5px rgb(0, 0, 0, 1.1);
+  grid-template-columns: auto auto auto;
+}
+
+/*? Elementos del navbar: lado Izquierdo */
+#divNavLeft {
+  padding: 10px;
+}
+
+/*? Elementos del navbar: centrados  */
+#divNavCenter {
+  justify-content: center;
+}
+
+/*? Elementos del navbar: Derecho  */
+#divNavRight {
+  padding: 10px;
+}
+
+/*! --------- FIN: navbar --------- */
+
+/*! --------- INICIO: Animacion para brillo de letras --------- */
+/*? Animacion de titulo Navbar
+? animation y keyframespara: agregar el efecto de brillo 
+*/
+.magicalGlow {
+  /** animation
+    ? magicalGlow: Nombre de la animación
+    ? 1s: Tiempo
+    ? ease-in-out: Controla cómo cambia la velocidad
+    ? infinite: Se repite infinitamente
+    */
+  -webkit-animation: magicalGlow 1s ease-in-out infinite alternate;
+  -moz-animation: magicalGlow 1s ease-in-out infinite alternate;
+  animation: magicalGlow 1s ease-in-out infinite alternate;
+}
+
+/*
+? @keyframes [nameAnimacion]: Hace que una propiedad cambie desde un estado inicial hasta otro estado.
+? text-shadow : Propiedad para crear el efecto de luz de neón 
+*/
+@keyframes magicalGlow {
+  from {
+    /* from: indica como empieza la animación */
+    /*? text-shadow: crea sombras alrededor*/
+    text-shadow: 0 0 10px var(--border-color),
+      0 0 20px #f143c6,
+      0 0 30px #e60073;
+  }
+
+  to {
+    /* to: indica como termina la animación */
+    text-shadow: 0 0 20px #e91aa1,
+      0 0 30px #ff4da6,
+      0 0 40px #ff4da6,
+      0 0 50px #ff4da6;
+  }
+}
+
+/*! --------- FIN :Animacion para brillo de letras --------- */
+
+/*! --------- INICIO: Boton Menu --------- */
+#btnMenu {
+  background-color: var(--panel-color);
+  margin: 0px;
+  padding: 0px;
+  /* Borde del boton que hace que se vea cuando se preciona 
+  border: none; */
+  /* Hacer que las esquinas se redonden */
+  border-radius: 5px;
+  /* Justificar el contenido*/
+  justify-content: left;
+
+}
+
+.btnImg {
+  background-image: url("../assets/botonmenu.png");
+  width: 100px;
+  height: auto;
+
+}
+
+/*! --------- FIN: Boton Menu --------- */
+
+/*! --------- INICIO: Consultas de medios CSS --------- */
+/* Ocultar elementos despues del tamaño de un celular  */
+@media screen and (max-width: 540px) {
+
+  /* Se ocultan elentos del Navbar para copoplarlos en vistas de celular */
+  #divNavLeft,
+  #divNavRight {
+    display: none;
+  }
+
+  #navbar {
+    justify-content: center;
+  }
+}
+
+/*! --------- FIN: Consultas de medios CSS --------- */
