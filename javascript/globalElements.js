@@ -27,13 +27,13 @@ const renderNavbar = () => {
     const navThePixelVault = `    <nav class="navbar bg-body-tertiary" id="navbar">
 
         <div id="divNavLeft">
-            <img src="./assets/navBarraRosa.png" alt="navBarraRosa" width="100" height="auto">
+            <img src="./assets/navBarraRosa.png" alt="navBarraRosa" width="150px" height="auto">
             <br>
-            <img src="./assets/navBarraAzul.png" alt="navBarraAzul" width="100px" height="auto">
+            <img src="./assets/navBarraAzul.png" alt="navBarraAzul" width="150px" height="auto">
         </div>
 
         <div id="divNavCenter" class="magicalGlow">
-            <img src="./assets/ThePixelVaultLogo.png" alt="ThePixelVaultLogo" width="300px" height="auto">
+            <img class="magicalGlowLogo" src="./assets/ThePixelVaultLogo.png" alt="ThePixelVaultLogo" width="300px" height="auto">
         </div>
 
         <div id="divNavRight">
