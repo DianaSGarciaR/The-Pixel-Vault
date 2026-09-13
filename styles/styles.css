@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Silkscreen&display=swap');
+
+:root {
+  /* Para títulos principales*/
+  --font-pixel-header: 'Press Start 2P', monospace;
+  
+  /* Para subtítulos y encabezados de columna */
+  --font-pixel-sub: 'Pixelify Sans',monospace;
+  
+  /* Para párrafos largos y enlaces */
+  --font-pixel-body: 'Quantico',sans-serif;
+} 
+
+
+
+:root {
+  --bg-color: #000B1E; /*background color */
+  --text-main: #E7E3F5; /*color del texto */
+  --text-bright: #ffffff; /*coor e texto más brillante*/
+  --cyan-accent: #2DE2E6;
+  --yellow-accent: #FFD23F;
+  --border-color: #FF3EA5;
+  --panel-color: #171233; /*background más claro*/
+}
+
+body {
+  background-color: #000B1E;
+  color: var(--text-main);
+  margin: 0;
+  padding: 40px;
+}
+
+
+.pressStart {
+  font-family: var(--font-pixel-header);
+}
+
+.pixelify {
+  font-family: var(--font-pixel-sub);
+}
+
+.quantico {
+  font-family: var(--font-pixel-body);
+}
