@@ -140,3 +140,20 @@ body {
 }
 
 /*! --------- FIN: Boton Menu --------- */
+
+/*! --------- INICIO: Consultas de medios CSS --------- */
+/* Ocultar elementos despues del tamaño de un celular  */
+@media screen and (max-width: 540px) {
+
+  /* Se ocultan elentos del Navbar para copoplarlos en vistas de celular */
+  #divNavLeft,
+  #divNavRight {
+    display: none;
+  }
+
+  #navbar {
+    justify-content: center;
+  }
+}
+
+/*! --------- FIN: Consultas de medios CSS --------- */

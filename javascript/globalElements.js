@@ -2,7 +2,7 @@
  * ! ELEMENTOS GLOBALES
   * Este archivo contiene los elementos globales reutilizables
   * que se utilizan en las diferentes vistas del proyecto,
-  * con el objetivo de evitar la duplicidad de código. * Como por ejemplo: 
+  * con el objetivo de evitar la duplicidad de código. 
  * ? Elementos:
  *    - Navbar
  *    - Footer
