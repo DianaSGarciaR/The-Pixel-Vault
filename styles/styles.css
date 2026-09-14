@@ -12,8 +12,12 @@
   --font-pixel-body: 'Quantico', sans-serif;
 }
 
-
-
+.head {
+  font-family: var(--font-pixel-header);
+}
+.fuente {
+  font-family: var(--font-pixel-body);
+}
 :root {
   --bg-color: #000B1E;
   /*background color */
@@ -96,7 +100,6 @@ body {
   margin: 20px auto;
   overflow: hidden;
   border-radius: 16px;
-  box-shadow: 0 0 25px rgba(45, 226, 230, 0.15);
 }
 
 /*Imagen del Marco Metálico */
