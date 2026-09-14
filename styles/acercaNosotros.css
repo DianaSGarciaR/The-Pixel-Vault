@@ -1,0 +1,622 @@
+
+.team-section {
+  position: relative;
+  z-index: 0;
+  width: calc(100% - 2rem);
+  max-width: 1250px;
+  min-height: 540px;
+  margin: 5rem auto;
+  padding: 4rem 3rem;
+  text-align: center;
+}
+
+.team-section > svg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.team-content {
+  position: relative;
+  z-index: 1;
+}
+
+.team-title {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 3rem;
+  color: #ffd23f;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  text-align: center;
+  text-shadow: 0 0 11px #ece522;
+}
+
+.team-layout {
+  position: relative;
+  z-index: 1;
+  min-height: 330px;
+  row-gap: 2rem;
+}
+
+.team-description-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  padding: 1.5rem;
+}
+
+.team-description-column p {
+  max-width: 420px;
+  margin: 0;
+  color: #ffd23f !important;
+  font-size: 1.2rem !important;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+#cardRosa {
+  position: relative;
+  z-index: 1;
+  min-height: 300px;
+  padding: 2.5rem 2rem;
+  border-radius: 1rem;
+}
+
+#bordeRosaPerfiles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#cardRosa .team-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.team-member {
+  display: block;
+  width: 100%;
+  max-width: 130px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+}
+
+.team-member:hover,
+.team-member:focus-visible {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 12px #ff00ff);
+  outline: none;
+}
+
+.team-member img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.modal-dialog-fixed {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  max-width: 700px;
+  min-height: calc(100% - 3.5rem);
+  margin: 1.75rem auto;
+}
+
+.modal-dialog-fixed .modal-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 80vh;
+  max-height: 80vh;
+  overflow: hidden;
+  color: #ffd23f;
+  border: 2px solid #ff00ff;
+  border-radius: 1rem;
+  background:
+    linear-gradient(
+      rgba(5, 10, 20, 0.4),
+      rgba(5, 10, 20, 0.65)
+    ),
+    url("../assets/fondoModal.jpg") center / cover no-repeat;
+  box-shadow:
+    0 0 12px rgba(255, 0, 255, 0.8),
+    0 0 30px rgba(255, 0, 255, 0.45);
+}
+
+.modal-dialog-fixed .modal-header {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 4.5rem;
+  padding: 1rem 4rem 1rem 1rem;
+  border-bottom: 1px solid rgba(255, 0, 255, 0.7);
+  background: rgba(5, 10, 20, 0.95);
+}
+
+.modal-dialog-fixed .modal-title {
+  position: relative;
+  z-index: 6;
+  width: 100%;
+  margin: 0;
+  color: #ffd23f !important;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-shadow: 0 0 10px #ffd23f;
+}
+
+.modal-dialog-fixed .btn-close {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  z-index: 7;
+  width: 1.2rem;
+  height: 1.2rem;
+  opacity: 1;
+  transform: translateY(-50%);
+}
+
+.modal-dialog-fixed .modal-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(80vh - 4.5rem);
+  min-height: 0;
+  padding: 1rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+.modal-member-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.modal-dialog-fixed .modal-content,
+.modal-dialog-fixed .modal-body {
+  overflow: hidden;
+}
+
+.modal-dialog-fixed .modal-body p {
+  overflow: hidden;
+  text-align: justify;
+  margin: 2rem;
+}
+
+#linkedin {
+    width: 4rem;
+}
+
+#github {
+    width: 4rem;
+}
+
+#linkedin:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 12px #0378ff);
+    outline: none;
+}
+
+#github:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 12px #ff00ff);
+    outline: none;
+}
+
+.links {
+    display: flex;             
+    justify-content: center;   
+    align-items: center;       
+    gap: 2rem;                       
+    width: 100%;      
+    margin-bottom: 2.5rem;         
+}
+
+/*Tablet*/
+
+@media (max-width: 991px) {
+  .team-section {
+    min-height: auto;
+    padding: 3rem 2rem;
+  }
+
+  .team-title {
+    margin-bottom: 2.5rem;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .team-description-column {
+    min-height: auto;
+    padding: 1rem 2rem;
+  }
+
+  .team-description-column p {
+    max-width: 700px;
+    text-align: center;
+  }
+
+  #cardRosa {
+    min-height: 300px;
+  }
+}
+
+/*Celular*/
+
+@media (max-width: 575px) {
+  .team-section {
+    width: calc(100% - 1rem);
+
+    margin: 3rem auto;
+    padding: 3rem 1rem;
+  }
+
+  .team-title {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  .team-description-column {
+    padding: 0.5rem;
+  }
+
+  .team-description-column p {
+    font-size: 1rem !important;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  #cardRosa {
+    min-height: 300px;
+    padding: 2rem 1rem;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .team-member {
+    max-width: 120px;
+  }
+
+  /* Modal en celular */
+  .modal-dialog-fixed {
+    width: 95%;
+    max-width: none;
+    min-height: calc(100% - 2rem);
+
+    margin: 1rem auto;
+  }
+
+  .modal-dialog-fixed .modal-content {
+    height: 85vh;
+    max-height: 85vh;
+  }
+
+  .modal-dialog-fixed .modal-header {
+    min-height: 4rem;
+    padding-right: 3.5rem;
+  }
+
+  .modal-dialog-fixed .modal-title {
+    font-size: 1.15rem;
+  }
+
+  .modal-dialog-fixed .modal-body {
+    height: calc(85vh - 4rem);
+    padding: 0.75rem;
+  }
+}
+/*Accesibilidad*/
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .team-member {
+    transition: none;
+  }
+}
+/*
+*Footer css
+*/
+/* Footer Container */
+.footer-container {
+  background-color: var(--bg-color);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+  font-family: var(--font-pixel-body);
+}
+
+/* Grilla del Footer */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* Marca */
+.brand-title {
+  color: var(--yellow-accent);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin: 0 0 8px 0;
+  font-family: var(--font-pixel-header);
+}
+
+.brand-subtitle {
+  color: var(--cyan-accent);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  margin: 0 0 15px 0;
+  font-family: var(--font-pixel-sub);
+}
+
+.brand-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #a0a6cc;
+  margin: 0;
+}
+
+/* Columnas y Enlaces */
+.column-title {
+  color: var(--yellow-accent);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  margin: 0 0 12px 0;
+  border-bottom: 1px solid var(--cyan-accent);
+  padding-bottom: 6px;
+  text-transform: uppercase;
+  font-family: var(--font-pixel-header);
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: var(--text-bright);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--cyan-accent);
+}
+
+.play-icon {
+  color: var(--cyan-accent);
+  font-size: 0.7rem;
+  margin-right: 6px;
+}
+
+/* Barra Inferior */
+.footer-bottom {
+  margin-top: 40px;
+  border-top: 1px solid #1a1a40;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.white-text {
+  color: #ffffff;
+  font-family: var(--font-pixel-sub);
+}
+
+.credits {
+  color: var(--yellow-accent);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-family: var(--font-pixel-sub);
+}
+
+/* Adaptación a dispositivos móviles */
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 550px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
+
+/** ============ SECCIÓN DE ESTILOS PARA LA DESCRIPCIÓN DEL PROYECTO Y LOS MISSION LOGS ======================
+/* ==========================================================================
+   MARCO NEÓN
+   ========================================================================== */
+.frame-demo{
+    position:relative;
+    width:520px; max-width:100%;
+    aspect-ratio: 2 / 1;
+    margin:0 auto;
+
+    /* NUEVO: convierte a .frame-demo en un "contenedor de consulta".
+       Esto habilita las unidades "cqi" que se usan más abajo en
+       ".content p", para que el tamaño de letra responda al ancho
+       REAL de cada marco (no al ancho de toda la pantalla). Es
+       necesario porque el marco grande de la introducción y los
+       marcos chicos de Misión/Visión/Valores miden distinto entre sí,
+       y cada uno necesita ajustarse a su propio tamaño. */
+    container-type: inline-size;
+}
+
+.frame-demo svg{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    display:block; overflow:visible;
+    pointer-events:none; /* el marco es decorativo, no debe bloquear clics sobre el texto */
+}
+
+.frame-path{
+    fill:none;
+    stroke: var(--cyan-accent);
+    stroke-linejoin: miter;
+    filter: url(#neon-glow);
+    animation: pulse 3.2s ease-in-out infinite;
+}
+@keyframes pulse{ 0%,100%{ opacity:1; } 50%{ opacity:.82; } }
+@media (prefers-reduced-motion: reduce){ .frame-path{ animation:none; } }
+
+/* CAMBIO IMPORTANTE: .content ya NO es position:absolute.
+   Antes "flotaba" encima del marco sin influir en su altura, así que
+   si el texto no cabía en el alto que daba aspect-ratio:2/1, sólo
+   quedaba recortado o aparecía una barra de scroll. Ahora es un
+   bloque normal dentro de .frame-demo: su propio tamaño (texto +
+   padding) es lo que determina cuánto debe medir .frame-demo. El SVG
+   sigue siendo absolute, así que no le afecta este cambio y sigue
+   cubriendo todo el marco. */
+.content{
+    position:relative;
+    z-index:1;
+    height:100%;
+    padding:15% 9%;
+    display:flex; align-items:center; justify-content:center;
+    overflow:visible; /* ya no hace falta recortar ni hacer scroll */
+}
+
+.content p{
+    margin:0;
+    font-family:'Quantico', monospace;
+
+    /* NUEVO: "cqi" = 1% del ancho del contenedor de consulta más
+       cercano (o sea, de .frame-demo). Antes se usaba "vw" (ancho de
+       la ventana), que no distingue entre el marco grande de la
+       introducción y los marcos chicos de las 3 columnas. Con "cqi",
+       cada marco ajusta su propio texto según su propio ancho,
+       automáticamente, sin necesitar un breakpoint distinto para
+       cada caso. */
+    font-size: clamp(0.72rem, 3.4cqi + 0.2rem, 1.1rem);
+    line-height:1.5; letter-spacing:.02em;
+    color: var(--yellow-accent); text-align:justify;
+}
+
+/* NOTA: antes existía aquí una regla aparte "#projectDesc { font-size:.9rem; ... }".
+   Se eliminó por dos motivos:
+   1) Un selector de ID (#projectDesc) tiene más especificidad que uno
+      de clase (.content p), así que SIEMPRE ganaba e ignoraba el
+      clamp() de arriba — esa era la causa real de que el texto de
+      Misión/Visión/Valores no se achicara y terminara cortado.
+   2) #projectDesc es también un <p> dentro de .content, así que la
+      regla ".content p" de arriba ya lo cubre; no hace falta
+      duplicar los estilos. */
+
+/* ==========================================================================
+   ADAPTACIÓN EN PANTALLAS PEQUEÑAS
+   ========================================================================== */
+@media (max-width: 767.98px){
+    .frame-demo{
+        /* Se quita la proporción fija 2:1: en vez de recortar contenido
+           que no cabe, el marco crece en altura lo que haga falta. */
+        aspect-ratio: unset;
+        height:auto;
+        width:100%;
+    }
+    .content{
+        height:auto;       /* ahora el propio texto define el alto */
+        padding:24px 20px; /* en móvil, un padding en px es más predecible que uno en % */
+    }
+}
+
+/* ==========================================================================
+   ÍCONOS (coin, misión, visión, valor, propósito)
+   ========================================================================== */
+/* NUEVO: agrupa los íconos de cada fila y evita que superen el alto
+   del marco vecino. Sustituye el escalonado anterior (align-self-start/
+   center/end + fila interna con columnas vacías), que ya no se usa. */
+.icon-pair{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:16px;
+
+    /* Las columnas de un .row de Bootstrap ya se estiran a la misma
+       altura por defecto (align-items:stretch es el valor inicial de
+       un contenedor flex). Al quitar los "align-self-*" que había
+       antes, esta columna vuelve a igualar su alto con el del marco
+       vecino, y height:100% aquí hace que ese alto se herede hacia
+       adentro para que "max-height:100%" en .badge-icon tenga de qué
+       porcentaje partir. */
+    height:100%;
+}
+.badge-icon{
+    max-height:100%;
+    max-width:45%;
+    object-fit:contain; /* conserva la proporción del ícono: nunca lo deforma ni lo recorta */
+    border-radius:.5rem;
+}
+
+#missionLogs{
+    font-family: 'Pixelify Sans';
+    color: var(--yellow-accent);
+    filter: url(#neon-glow2);
+}
+
+/**=============================FIN DE ESTILOS PARA DESCRIPCIÓN Y MISSION LOGS =================================
