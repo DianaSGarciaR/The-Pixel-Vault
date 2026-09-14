@@ -86,6 +86,145 @@ body {
 
 /*! --------- FIN: navbar --------- */
 
+/*! --------- INICIO : Banner  --------- */
+
+/*Contenedor Principal */
+.banner-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(45, 226, 230, 0.15);
+}
+
+/*Imagen del Marco Metálico */
+.banner-frame {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/*Logo centrado en el panel superior */
+.banner-logo-container {
+  position: absolute;
+  top: 4.5%;  /* Ajuste vertical según la ranura superior de la imagen */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32%;  /* Ancho limitado para encajar en el recuadro metálico superior */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.banner-logo {
+  max-width: 200%;
+  max-height: 90px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px var(--cyan-accent));
+  transition: transform 0.3s ease;
+}
+
+.banner-logo-container:hover .banner-logo {
+  transform: scale(1.05);
+}
+
+/*Área de Pantalla Central */
+.banner-screen {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 46%;
+  height: 52%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 11, 30, 0.4); /* Leve oscuridad tipo cristal/pantalla */
+  border-radius: 8px;
+}
+
+/*Contenedor Flex de los Botones */
+.banner-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 90%;
+  max-width: 280px;
+}
+
+/* 6. Estilo Base para Enlaces */
+.banner-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 16px;
+  font-family: var(--font-pixel-body);
+  
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+  
+  background: var(--panel-color);
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  
+  transition: all 0.25s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-cyan {
+  color: var(--cyan-accent);
+  border: 1px solid var(--cyan-accent);
+  box-shadow: inset 0 0 8px rgba(45, 226, 230, 0.2);
+}
+
+.btn-cyan:hover {
+  background: var(--cyan-accent);
+  color: var(--bg-color);
+  box-shadow: 0 0 16px var(--cyan-accent);
+}
+
+.btn-yellow {
+  color: var(--yellow-accent);
+  /* border: 1px solid var(--yellow-accent); */
+  box-shadow: inset 0 0 8px rgba(255, 210, 63, 0.2);
+}
+
+.btn-yellow:hover {
+  background: var(--yellow-accent);
+  color: var(--bg-color);
+  box-shadow: 0 0 16px var(--yellow-accent);
+}
+
+
+.btn-pink {
+  color: var(--border-color);
+  border: 1px solid var(--border-color);
+  box-shadow: inset 0 0 8px rgba(255, 62, 165, 0.2);
+}
+
+.btn-pink:hover {
+  background: var(--border-color);
+  color: var(--text-bright);
+  box-shadow: 0 0 16px var(--border-color);
+}
+
+/*Interacción de hover y active */
+.banner-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.banner-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/*! --------- FIN : Banner --------- */
+
 .magicalGlowLogo {
   /*
   filter: drop-shadow(0 0 12px var(--yellow-accent));*/
