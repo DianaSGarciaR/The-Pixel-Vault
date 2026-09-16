@@ -327,3 +327,156 @@ body {
 }
 
 /*! --------- FIN: Consultas de medios CSS --------- */
+
+ /* ! ############ MENÚ RADIAL ESTILOS CSS DANIEL ############  */
+ .radial-overlay{
+  position: fixed; /* Cambiar por si se quiero  que se quede fijo en la pantalla  o en el centro de la pagina con "fixed"*/
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex; 
+  justify-content:center ;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+ }
+
+ /* Círculo principal */
+.radial-menu {
+  position: absolute;
+  width: 33rem;
+  height: 33rem;
+  border-radius: 50%;
+  background: #050510;
+  border: 4px solid #00f0ff; /*color de borde del rcirculo principal*/
+  box-shadow: 
+    0 0 25px #00f0ff,
+    0 0 60px #00f0ff55,
+    inset 0 0 40px #00f0ff15;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-logo {
+  width: 85px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #ff00ff);
+}
+
+.center-letter {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ff00ff;
+  text-shadow: 0 0 18px #ff00ff;
+  text-align: center;
+
+}
+
+.radial-item { /*Aqui se dibuja el circulo*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 130px;
+  height: 130px;
+  margin: -65px 0 0 -65px;          /* centra el item */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.15;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  z-index: 10; 
+  background-color: rgb(128, 128, 128); /*color de fondo de los los rectangulos de los iconos*/
+  border-style: solid;  /*Estilo de el radio*/
+  border-color: #00f0ff;
+  box-shadow: 
+    0 0 25px #00f0ff,
+    0 0 60px #00f0ff55,
+    inset 0 0 40px #00f0ff15;
+    /* clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); */
+  /* border-radius: 10px 90px 90px 10px; izquierda, arriba, derecha, abajo jejejej */
+  border-radius: 50%;
+}
+
+.radial-item .icon {
+  font-size: 1.9rem;
+  margin-bottom: 6px;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.rectangulo{
+  background-color: #2DE2E6;
+}
+
+.item-1 { /* INICIO - arriba */
+  transform: rotate(0deg) translateY(-195px) rotate(0deg);
+  color: #ffaa00;
+}
+
+.item-2 { /* TIENDA - arriba derecha */
+  transform: rotate(60deg) translateY(-195px) rotate(-60deg);
+  color: #ffaa00;
+}
+.item-3 { /* SOPORTE - abajo derecha */
+  transform: rotate(120deg) translateY(-195px) rotate(-120deg);
+  color: #ffaa00;
+}
+.item-4 { /* MI CUENTA - abajo */
+  transform: rotate(180deg) translateY(-195px) rotate(-180deg);
+  color: #ffaa00;
+}
+
+.item-5 { /* CONTÁCTENOS - abajo izquierda */
+  transform: rotate(240deg) translateY(-195px) rotate(-240deg);
+  color: #ffaa00;
+}
+
+.item-6 { /* ACERCA DE NOSOTROS - arriba izquierda */
+  transform: rotate(300deg) translateY(-195px) rotate(-300deg);
+  color: #ffaa00;
+}
+/* Hover */
+.radial-item:hover {
+  filter: brightness(1.4);
+  
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .radial-menu {
+    width: 360px;
+    height: 360px;
+  }
+
+  .radial-center {
+    background-color: red;
+  }
+
+  .center-logo { /* Ajusta el tamaño del logo central */
+    width: 60px;
+  }
+
+  .radial-item {
+    width: 100px;
+    height: 100px;
+    margin: -50px 0 0 -50px;
+    font-size: 0.62rem;
+  }
+
+  .radial-item .icon {
+    font-size: 1.5rem;
+  }
+
+  .item-1 { transform: rotate(0deg) translateY(-135px) rotate(0deg); }
+  .item-2 { transform: rotate(60deg) translateY(-135px) rotate(-60deg); }
+  .item-3 { transform: rotate(120deg) translateY(-135px) rotate(-120deg); }
+  .item-4 { transform: rotate(180deg) translateY(-135px) rotate(-180deg); }
+  .item-5 { transform: rotate(240deg) translateY(-135px) rotate(-240deg); }
+  .item-6 { transform: rotate(300deg) translateY(-135px) rotate(-300deg); }
+}
+ /* ! ############ MENÚ RADIAL ESTILOS CSS DANIEL ############  */
