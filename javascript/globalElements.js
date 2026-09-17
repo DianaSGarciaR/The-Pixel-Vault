@@ -58,7 +58,7 @@ const renderNavbar = () => {
                           <span>MI CUENTA</span>
                         </a>
 
-                        <a href="contacto.html" class="radial-item item-5">
+                        <a href="contactanos.html" class="radial-item item-5">
                           <div class="icon">📞</div>
                           <span>CONTÁCTENOS</span>
                         </a>
