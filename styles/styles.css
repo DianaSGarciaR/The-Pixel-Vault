@@ -33,19 +33,24 @@
 }
 
 body {
-  /* Hace que la página tenga como mínimo el alto de la pantalla */
   min-height: 100vh;
   padding: 0px;
   margin: 0;
-  /* Evita que aparezca scroll horizontal */
   overflow-x: hidden;
   color: var(--text-main);
-  /* Agrega un degradado oscuro sobre la imagen de fondo */
-  /* url() Agrega la imagen de fondo */
-  background:
-    linear-gradient(rgba(5, 10, 20, 0.45),
-      rgba(5, 10, 20, 0.75)),
-    url("../assets/fondo.jpg") center / cover fixed no-repeat;
+
+  /* El color del body pintará la zona del navbar y del footer */
+  background-color: var(--bg-color); 
+
+  /* Tu imagen y el degradado */
+  background-image: 
+    linear-gradient(rgba(5, 10, 20, 0.45), rgba(5, 10, 20, 0.75)),
+    url("../assets/fondo.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center top 8rem; /* Inicia debajo del navbar que mide 8rem*/
+   /*Ajustar el '30rem' según la altura total que sumen el footer + navbar ambos. */
+  background-size: 100% calc(100% - 30rem); 
 }
 
 .pressStart {
@@ -62,30 +67,137 @@ body {
 
 
 /*! --------- INICIO: navbar --------- */
-#navbar {
-  /*background-image: url("assets/navbarFondo.jpg") !important; */
-  background-image: url("../assets/navbarFondo.jpg") !important;
-  padding: 0px;
-  margin: 0px;
-  color: var(--border-color);
-  /* Sombra del navbar */
-  box-shadow: 0 5px 5px rgb(0, 0, 0, 1.1);
-  grid-template-columns: auto auto auto;
+
+/** PRUEBA MENU (Reemplazar cuando esté el menú final) */
+.menu {
+    opacity: 0; /* Que no se vea */
+    pointer-events: none; /* Que no interactúe*/
 }
 
-/*? Elementos del navbar: lado Izquierdo */
-#divNavLeft {
-  padding: 15px;
+.menu.active {
+    opacity: 1;
+    pointer-events: auto;
+    background-color: #ece51a;
+    color: #000000;
+}
+/** FIN PRUEBA MENU */
+
+.contenedorBarras {
+    display: grid;
+    align-items: center;
+    margin: 1rem; 
 }
 
-/*? Elementos del navbar: centrados  */
-#divNavCenter {
-  justify-content: center;
+.barraRosa, .barraAzul{
+    height: 2rem;
 }
 
-/*? Elementos del navbar: Derecho  */
-#divNavRight {
-  padding: 15px;
+.navThePixelVault {
+    background-image: url(/assets/navbarFondo.jpg) !important;
+    background-repeat: no-repeat;   
+    background-size: cover;
+    display: flex;
+    flex-direction: row-reverse; /** IMPORTANTE para que al hacer zoom se vaya hacia el menú*/
+    height: 8rem;
+    justify-content:space-between;
+    box-shadow: 0 5px 5px rgb(0, 0, 0, 1.1);
+}
+
+.menuinteractivo {
+    position: relative; /* Les dice a los elementos hijos que se posicionen en referencia a él*/
+    width: 10rem;
+    height: 10rem;
+    background-image: url(/assets/botonmenu.png);
+    background-size:contain;
+    background-position:top;
+    background-repeat: no-repeat;
+    margin-top: 0.6rem;
+    margin-right: 0.6rem;
+}
+
+.ranura {
+    position: absolute; /*Se posiciona respecto al elemento padre*/
+    bottom: 3.8rem;
+    left: 2rem;
+    width: 6rem;
+    height: 2rem;
+    z-index: 5; /*Capas, lo trae al frente pero atrás del z-indexz: 10 (moneda)*/
+}
+
+.moneda {
+    position: absolute; /*Se posiciona respecto al elemento padre*/
+    top: 9rem;
+    left: 2.5rem;
+    width: 5rem;
+    height: 5rem;
+    background-image: url(/assets/monedapeso.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: grab; /* Que aparezca la manito en el cursor */
+    z-index: 10; /* Capa que lleva al frente de todo la moneda */
+    touch-action: none; /** Para que el navegador no interfiera con el arrastre */
+}
+
+.moneda:active {
+    cursor: grabbing; /* Que aparezca la manito cerrada en el cursor */
+    filter: drop-shadow(0 0 20px #ece51a);
+}
+
+@keyframes blinker {
+  from { opacity: 1.1; }
+  to { opacity: 0.0; }
+}
+
+.flecha {
+    position: absolute;
+    top: 7rem;
+    right: 8rem;
+    height: 8rem;
+    z-index: 10;
+    transform: rotate(45deg);
+    filter: drop-shadow(0 0 5px #cc02ff)
+    drop-shadow(0 0 2px #e375ff);
+    animation-name: blinker;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(1, 0, 0, 1);
+    animation-duration: 1.5s;
+}
+
+.menuinteractivo p {
+    font-family: var(--font-pixel-body);
+    position: absolute;
+    color: var(--yellow-accent);
+    justify-self: center;
+    top: 15.5rem;
+    z-index: 10;
+    font-size: 1rem;
+    filter: drop-shadow(0px 0px 10px #f5e721)
+    drop-shadow(0px 0px 1px #000000);
+    backdrop-filter: blur(3px);
+    padding: 0.5rem;
+    border-radius: 5rem;
+    border: 1px solid #ece51a;
+}
+
+.magicalGlowLogo {
+  /*
+  filter: drop-shadow(0 0 12px var(--yellow-accent));*/
+  animation: magicalGlowTextYellow 2s ease-in-out infinite alternate;
+
+}
+
+@keyframes magicalGlowTextYellow {
+  from {
+    /* from: indica como empieza la animación */
+    /*? text-shadow: crea sombras alrededor*/
+    filter: drop-shadow(0 0 1px var(--yellow-accent)) drop-shadow(0 0 15px var(--yellow-accent)) drop-shadow(0 0 20px var(--yellow-accent));
+  }
+
+  to {
+    /* to: indica como termina la animación */
+    filter: drop-shadow(0 0 10px var(--yellow-accent)) drop-shadow(0 0 15px var(--yellow-accent)) drop-shadow(0 0 20px var(--yellow-accent));
+  }
 }
 
 /*! --------- FIN: navbar --------- */
