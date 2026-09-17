@@ -365,9 +365,9 @@ body {
 }
 
 .center-letter {
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   font-weight: 800;
-  color: #ff00ff;
+  color: #FFD23F;
   text-shadow: 0 0 18px #ff00ff;
   text-align: center;
 
@@ -391,7 +391,7 @@ body {
   line-height: 1.15;
   transition: transform 0.25s ease, filter 0.25s ease;
   z-index: 10; 
-  background-color: rgb(128, 128, 128); /*color de fondo de los los rectangulos de los iconos*/
+  background-color: whitesmoke; /*color de fondo de los los rectangulos de los iconos*/
   border-style: solid;  /*Estilo de el radio*/
   border-color: #00f0ff;
   box-shadow: 
@@ -400,7 +400,7 @@ body {
     inset 0 0 40px #00f0ff15;
     /* clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); */
   /* border-radius: 10px 90px 90px 10px; izquierda, arriba, derecha, abajo jejejej */
-  border-radius: 50%;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 
 .radial-item .icon {
@@ -416,6 +416,7 @@ body {
 .item-1 { /* INICIO - arriba */
   transform: rotate(0deg) translateY(-195px) rotate(0deg);
   color: #ffaa00;
+  text-shadow: 0 0 18px #ff00ff;
 }
 
 .item-2 { /* TIENDA - arriba derecha */
