@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contáctanos</title>
+
+  <!-- !LINK BOOSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous">
+  <!-- !FIN LINK BOOSTRAP-->
+
+    <link rel="stylesheet" href="styles/contactanos.css">
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!--Link de fuente-->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar-->
+    <main class="navThePixelVault"></main>
+
+    <!-- Banner principal de la página. -->
+    <section class="banner-container">
+        <!-- Imagen de fondo -->
+        <img class="banner-frame" src="assets/banner-img.png" alt="Marco del banner">
+
+        <!-- Título  -->
+        <div class="banner-screen">
+            <h1 class="yellow-accent btn-yellow quantico">CONTÁCTANOS</h1>
+        </div>
+    </section>
+
+    <!-- Formulario dentro de un marco con efecto neón. -->
+    <div class="frame-demo" id="frameDemo">
+
+        <!-- SVG utilizado por JavaScript para dibujar el marco exterior. -->
+        <svg id="frameSvg" aria-hidden="true">
+            <defs>
+                <!-- Filtro para el brillo neón. -->
+                <filter id="neon-glow" x="-60%" y="-60%" width="220%" height="220%">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="blur1" />
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur2" />
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur3" />
+                    <feMerge>
+                        <feMergeNode in="blur3" />
+                        <feMergeNode in="blur2" />
+                        <feMergeNode in="blur1" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+            </defs>
+
+            <path id="framePath" class="frame-path"></path>
+        </svg>
+
+        <div class="content">
+            <form class="contact-form">
+
+                
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre completo: *</label>
+
+                    <div class="input-svg-wrapper">
+                        <!-- Marco neón para el recuadro donde el usuario escribe. -->
+                        <svg viewBox="0 0 500 48" preserveAspectRatio="none" aria-hidden="true">
+                            <path class="input-frame-path"
+                                d="M 10,2 L 490,2 L 498,10 L 498,38 L 490,46 L 10,46 L 2,38 L 2,10 Z" />
+                        </svg>
+
+                        <input type="text" class="form-control" id="nombre"
+                            placeholder="Escribe tu nombre completo 👤">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="correo" class="form-label">Correo electrónico: *</label>
+
+                    <div class="input-svg-wrapper">
+                        <svg viewBox="0 0 500 48" preserveAspectRatio="none" aria-hidden="true">
+                            <path class="input-frame-path"
+                                d="M 10,2 L 490,2 L 498,10 L 498,38 L 490,46 L 10,46 L 2,38 L 2,10 Z" />
+                        </svg>
+
+                        <input type="text" class="form-control" id="correo"
+                            placeholder="Escribe tu correo electrónico 📧">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono</label>
+
+                    <div class="input-svg-wrapper">
+                        <svg viewBox="0 0 500 48" preserveAspectRatio="none" aria-hidden="true">
+                            <path class="input-frame-path"
+                                d="M 10,2 L 490,2 L 498,10 L 498,38 L 490,46 L 10,46 L 2,38 L 2,10 Z" />
+                        </svg>
+
+                        <input type="text" class="form-control" id="telefono"
+                            placeholder="Escribe tu número de teléfono 📞">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="mensaje" class="form-label">Mensaje: *</label>
+
+                    <div class="input-svg-wrapper">
+                        <svg viewBox="0 0 500 120" preserveAspectRatio="none" aria-hidden="true">
+                            <path class="input-frame-path"
+                                d="M 10,2 L 490,2 L 498,10 L 498,110 L 490,118 L 10,118 L 2,110 L 2,10 Z" />
+                        </svg>
+
+                        <textarea class="form-control" id="mensaje" rows="3"
+                            placeholder="Escribe aquí lo que tengas que decirnos 🗣️"></textarea>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-fucsia">Enviar</button>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer: su contenido se inserta desde globalElements.js. -->
+    <footer class="footer-container"></footer>
+
+  <!-- ! ENLACES DE ARCHIVOS JAVASCRIP-->
+    <script src="./javascript/globalElements.js"></script>
+    <script src="./javascript/contactanos.js"></script>
+  <!-- ! FIN DE ENLACES DE ARCHIVOS JAVASCRIP-->
+  <!-- !LINK BOOSTRAP-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <!-- !FIN LINK BOOSTRAP-->
+
+
+</body>
+
+</html>
