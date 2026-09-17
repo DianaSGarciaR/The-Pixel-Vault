@@ -50,7 +50,7 @@ body {
   background-attachment: scroll;
   background-position: center top 8rem; /* Inicia debajo del navbar que mide 8rem*/
    /*Ajustar el '30rem' según la altura total que sumen el footer + navbar ambos. */
-  background-size: 100% calc(100% - 30rem); 
+  background-size: 100% calc(100% - 28rem); 
 }
 
 .pressStart {
@@ -208,8 +208,8 @@ body {
 .banner-container {
   position: relative;
   width: 100%;
-  max-width: 600px;
-  margin: 20px auto;
+  max-width: 600px;  
+  margin: 4rem auto;
   overflow: hidden;
   border-radius: 16px;
 }

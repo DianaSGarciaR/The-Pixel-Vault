@@ -80,7 +80,6 @@ const renderNavbar = () => {
             <img class="flecha" src="assets/flecha.png" rel="flecha">
             <p>Ver MENÚ: $1</p>
             <div class="menu" id="menudesplegable">
-            Menú abierto 🎉
             <ul>
             ${botonMenu}
             </ul>
