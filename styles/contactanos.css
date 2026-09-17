@@ -1,0 +1,315 @@
+/*
+ * ESTILOS DEL FOOTER
+ *
+ * El contenido del footer se inserta desde globalElements.js.
+ */
+
+/* Contenedor principal del footer. */
+.footer-container {
+  background-color: var(--bg-color);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+  font-family: var(--font-pixel-body);
+}
+
+/* Organiza las columnas del footer en una cuadrícula. */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* Nombre o marca del proyecto. */
+.brand-title {
+  color: var(--yellow-accent);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin: 0 0 8px 0;
+  font-family: var(--font-pixel-header);
+}
+
+/* Subtítulo de la marca. */
+.brand-subtitle {
+  color: var(--cyan-accent);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  margin: 0 0 15px 0;
+  font-family: var(--font-pixel-sub);
+}
+
+/* Descripción de la marca. */
+.brand-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #a0a6cc;
+  margin: 0;
+}
+
+/* Títulos de las columnas de enlaces. */
+.column-title {
+  color: var(--yellow-accent);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  margin: 0 0 12px 0;
+  border-bottom: 1px solid var(--cyan-accent);
+  padding-bottom: 6px;
+  text-transform: uppercase;
+  font-family: var(--font-pixel-header);
+}
+
+/* Elimina los estilos predeterminados de las listas del footer. */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Separa verticalmente los enlaces. */
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+/* Estilo de los enlaces del footer. */
+.footer-links a {
+  color: var(--text-bright);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+/* Cambia el color del enlace al pasar el cursor. */
+.footer-links a:hover {
+  color: var(--cyan-accent);
+}
+
+/* Icono que aparece junto a los enlaces. */
+.play-icon {
+  color: var(--cyan-accent);
+  font-size: 0.7rem;
+  margin-right: 6px;
+}
+
+/* Barra inferior del footer. */
+.footer-bottom {
+  margin-top: 40px;
+  border-top: 1px solid #1a1a40;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+/* Elimina el margen predeterminado de los párrafos de la barra inferior. */
+.footer-bottom p {
+  margin: 0;
+}
+
+/* Texto blanco utilizado en el footer. */
+.white-text {
+  color: #ffffff;
+  font-family: var(--font-pixel-sub);
+}
+
+/* Créditos del proyecto. */
+.credits {
+  color: var(--yellow-accent);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-family: var(--font-pixel-sub);
+}
+
+/* En pantallas medianas, el footer utiliza dos columnas. */
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+  }
+}
+
+/* En pantallas pequeñas, el footer se muestra en una sola columna. */
+@media (max-width: 550px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
+
+
+/*
+ * MARCO NEÓN DEL FORMULARIO
+ */
+
+/* Contenedor que determina el tamaño real del marco. */
+.frame-demo {
+  position: relative;
+  width: 520px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 4rem;
+}
+
+/* SVG que ocupa todo el contenedor y sirve como capa visual del marco. */
+.frame-demo svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* Apariencia del marco exterior */
+.frame-path {
+  fill: none;
+  stroke: var(--yellow-accent);
+  stroke-linejoin: miter;
+  filter: url(#neon-glow) drop-shadow(0 0 12px rgba(255, 62, 165, 0.8));
+  animation: pulse 3.2s ease-in-out infinite;
+}
+
+/* Hace que el brillo del marco varíe un. */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.82;
+  }
+}
+
+
+
+.content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 14% 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+
+/*
+ * FORMULARIO
+ */
+
+/* Organiza verticalmente los campos del formulario. */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  font-family: var(--font-pixel-body);
+}
+
+/* Etiquetas de los campos. */
+.contact-form .form-label {
+  color: var(--yellow-accent);
+  font-family: var(--font-pixel-body);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+  display: block;
+  text-align: left;
+}
+
+/* Contenedor que permite colocar el SVG detrás del campo. */
+.input-svg-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* El SVG se coloca como una capa detrás del input o textarea. */
+.input-svg-wrapper svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: visible;
+}
+
+/* Borde neón de cada campo. */
+.input-frame-path {
+  fill: transparent;
+  stroke: var(--cyan-accent, #2DE2E6);
+  stroke-width: 2px;
+  stroke-linejoin: miter;
+  filter: url(#neon-glow);
+}
+
+
+.contact-form .form-control {
+  position: relative;
+  z-index: 1;
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  color: var(--yellow-accent);
+  font-family: var(--font-pixel-body);
+  padding: 10px 16px;
+}
+
+/* Texto de ejemplo que aparece dentro de los campos vacíos. */
+.contact-form .form-control::placeholder {
+  color: rgba(255, 230, 0, 0.5);
+}
+
+/*
+ * Botón de envío con apariencia de interfaz de videojuego.
+ */
+.btn-fucsia {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  margin: 1.5rem auto 0;
+  padding: 10px 20px;
+  background-color: var(--border-color) !important;
+  color: #ffffff;
+  font-family: var(--font-pixel-body);
+  font-weight: bold;
+  border: none !important;
+  border-radius: 0 !important;
+
+  /* Recorta las esquinas para crear el estilo Sci-Fi. */
+  clip-path: polygon(
+    10px 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    10px 100%,
+    0 calc(100% - 10px),
+    0 10px
+  );
+
+  /* Brillo neón y transición para el efecto hover. */
+  filter: drop-shadow(0 0 8px rgba(255, 0, 127, 0.8));
+  transition: transform 0.2s ease, filter 0.2s ease;
+  cursor: pointer;
+}
+
+/* Aumenta ligeramente el botón y su brillo al pasar el cursor. */
+.btn-fucsia:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 14px rgba(255, 0, 127, 1));
+}
