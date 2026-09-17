@@ -27,6 +27,51 @@ const mainNavbar = document.querySelector(".navThePixelVault");
 const renderNavbar = () => {
     // Solo metemos los tres bloques hijos directamente. 
     // Así, el flex-direction: row-reverse de tu CSS actúa sobre ellos de inmediato.
+    let botonMenu =`<!-- ========== MENÚ RADIAL DANIEL ========== -->
+                    <div id="radialMenuOverlay" class="radial-overlay hidden">
+                      <div class="radial-menu">
+                        
+                        <!-- Centro -->
+                        <div class="radial-center">
+                          <!-- <img src="./assets/ThePixelVaultLogo.png" alt="Logo P" class="center-logo"> --!>
+                          <p class="center-letter head yellow-accent">THE PIXEL <br>VAULT</p> 
+                        </div>
+
+                        <!-- Los 6 items -->
+                        <a href="index.html" class="radial-item item-1 head yellow-accent">
+                          <div class="icon">💻</div>
+                          <span>INICIO</span>
+                        </a>
+
+                        <a href="tienda.html" class="radial-item item-2">
+                          <div class="icon">🛍️</div>
+                          <span>TIENDA / CATÁLOGO</span>
+                        </a>
+
+                        <a href="soporte.html" class="radial-item item-3">
+                          <div class="icon">🎧</div>
+                          <span>SOPORTE Y<br>ATENCIÓN AL CLIENTE</span>
+                        </a>
+
+                        <a href="mi-cuenta.html" class="radial-item item-4">
+                          <div class="icon">🧑‍🦱</div>
+                          <span>MI CUENTA</span>
+                        </a>
+
+                        <a href="contacto.html" class="radial-item item-5">
+                          <div class="icon">📞</div>
+                          <span>CONTÁCTENOS</span>
+                        </a>
+
+                        <a href="acercaNosotros.html" class="radial-item item-6">
+                          <div class="icon">🏫</div>
+                          <span>ACERCA DE<br>NOSOTROS</span>
+                        </a>
+
+                      </div>
+                    </div>
+                    <!-- ========== FINAL MENÚ RADIAL DANIEL ========== -->`
+
     const contenidoInterno = `
     <div class="contenedormenu">
         <div class="menuinteractivo" id="menuinteractivo">
@@ -37,8 +82,7 @@ const renderNavbar = () => {
             <div class="menu" id="menudesplegable">
             Menú abierto 🎉
             <ul>
-            <li><a href="index.html">INICIO</a></li>
-            <li><a href="acercaNosotros.html">Acerca Nosotros</a></li>
+            ${botonMenu}
             </ul>
             </div>
         </div>
