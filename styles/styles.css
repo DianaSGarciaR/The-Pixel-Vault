@@ -12,8 +12,12 @@
   --font-pixel-body: 'Quantico', sans-serif;
 }
 
-
-
+.head {
+  font-family: var(--font-pixel-header);
+}
+.fuente {
+  font-family: var(--font-pixel-body);
+}
 :root {
   --bg-color: #000B1E;
   /*background color */
@@ -29,19 +33,24 @@
 }
 
 body {
-  /* Hace que la página tenga como mínimo el alto de la pantalla */
   min-height: 100vh;
   padding: 0px;
   margin: 0;
-  /* Evita que aparezca scroll horizontal */
   overflow-x: hidden;
   color: var(--text-main);
-  /* Agrega un degradado oscuro sobre la imagen de fondo */
-  /* url() Agrega la imagen de fondo */
-  background:
-    linear-gradient(rgba(5, 10, 20, 0.45),
-      rgba(5, 10, 20, 0.75)),
-    url("../assets/fondo.jpg") center / cover fixed no-repeat;
+
+  /* El color del body pintará la zona del navbar y del footer */
+  background-color: var(--bg-color); 
+
+  /* Tu imagen y el degradado */
+  background-image: 
+    linear-gradient(rgba(5, 10, 20, 0.45), rgba(5, 10, 20, 0.75)),
+    url("../assets/fondo.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center top 8rem; /* Inicia debajo del navbar que mide 8rem*/
+   /*Ajustar el '30rem' según la altura total que sumen el footer + navbar ambos. */
+  background-size: 100% calc(100% - 30rem); 
 }
 
 .pressStart {
@@ -58,30 +67,137 @@ body {
 
 
 /*! --------- INICIO: navbar --------- */
-#navbar {
-  /*background-image: url("assets/navbarFondo.jpg") !important; */
-  background-image: url("../assets/navbarFondo.jpg") !important;
-  padding: 0px;
-  margin: 0px;
-  color: var(--border-color);
-  /* Sombra del navbar */
-  box-shadow: 0 5px 5px rgb(0, 0, 0, 1.1);
-  grid-template-columns: auto auto auto;
+
+/** PRUEBA MENU (Reemplazar cuando esté el menú final) */
+.menu {
+    opacity: 0; /* Que no se vea */
+    pointer-events: none; /* Que no interactúe*/
 }
 
-/*? Elementos del navbar: lado Izquierdo */
-#divNavLeft {
-  padding: 15px;
+.menu.active {
+    opacity: 1;
+    pointer-events: auto;
+    background-color: #ece51a;
+    color: #000000;
+}
+/** FIN PRUEBA MENU */
+
+.contenedorBarras {
+    display: grid;
+    align-items: center;
+    margin: 1rem; 
 }
 
-/*? Elementos del navbar: centrados  */
-#divNavCenter {
-  justify-content: center;
+.barraRosa, .barraAzul{
+    height: 2rem;
 }
 
-/*? Elementos del navbar: Derecho  */
-#divNavRight {
-  padding: 15px;
+.navThePixelVault {
+    background-image: url(/assets/navbarFondo.jpg) !important;
+    background-repeat: no-repeat;   
+    background-size: cover;
+    display: flex;
+    flex-direction: row-reverse; /** IMPORTANTE para que al hacer zoom se vaya hacia el menú*/
+    height: 8rem;
+    justify-content:space-between;
+    box-shadow: 0 5px 5px rgb(0, 0, 0, 1.1);
+}
+
+.menuinteractivo {
+    position: relative; /* Les dice a los elementos hijos que se posicionen en referencia a él*/
+    width: 10rem;
+    height: 10rem;
+    background-image: url(/assets/botonmenu.png);
+    background-size:contain;
+    background-position:top;
+    background-repeat: no-repeat;
+    margin-top: 0.6rem;
+    margin-right: 0.6rem;
+}
+
+.ranura {
+    position: absolute; /*Se posiciona respecto al elemento padre*/
+    bottom: 3.8rem;
+    left: 2rem;
+    width: 6rem;
+    height: 2rem;
+    z-index: 5; /*Capas, lo trae al frente pero atrás del z-indexz: 10 (moneda)*/
+}
+
+.moneda {
+    position: absolute; /*Se posiciona respecto al elemento padre*/
+    top: 9rem;
+    left: 2.5rem;
+    width: 5rem;
+    height: 5rem;
+    background-image: url(/assets/monedapeso.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: grab; /* Que aparezca la manito en el cursor */
+    z-index: 10; /* Capa que lleva al frente de todo la moneda */
+    touch-action: none; /** Para que el navegador no interfiera con el arrastre */
+}
+
+.moneda:active {
+    cursor: grabbing; /* Que aparezca la manito cerrada en el cursor */
+    filter: drop-shadow(0 0 20px #ece51a);
+}
+
+@keyframes blinker {
+  from { opacity: 1.1; }
+  to { opacity: 0.0; }
+}
+
+.flecha {
+    position: absolute;
+    top: 7rem;
+    right: 8rem;
+    height: 8rem;
+    z-index: 10;
+    transform: rotate(45deg);
+    filter: drop-shadow(0 0 5px #cc02ff)
+    drop-shadow(0 0 2px #e375ff);
+    animation-name: blinker;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(1, 0, 0, 1);
+    animation-duration: 1.5s;
+}
+
+.menuinteractivo p {
+    font-family: var(--font-pixel-body);
+    position: absolute;
+    color: var(--yellow-accent);
+    justify-self: center;
+    top: 15.5rem;
+    z-index: 10;
+    font-size: 1rem;
+    filter: drop-shadow(0px 0px 10px #f5e721)
+    drop-shadow(0px 0px 1px #000000);
+    backdrop-filter: blur(3px);
+    padding: 0.5rem;
+    border-radius: 5rem;
+    border: 1px solid #ece51a;
+}
+
+.magicalGlowLogo {
+  /*
+  filter: drop-shadow(0 0 12px var(--yellow-accent));*/
+  animation: magicalGlowTextYellow 2s ease-in-out infinite alternate;
+
+}
+
+@keyframes magicalGlowTextYellow {
+  from {
+    /* from: indica como empieza la animación */
+    /*? text-shadow: crea sombras alrededor*/
+    filter: drop-shadow(0 0 1px var(--yellow-accent)) drop-shadow(0 0 15px var(--yellow-accent)) drop-shadow(0 0 20px var(--yellow-accent));
+  }
+
+  to {
+    /* to: indica como termina la animación */
+    filter: drop-shadow(0 0 10px var(--yellow-accent)) drop-shadow(0 0 15px var(--yellow-accent)) drop-shadow(0 0 20px var(--yellow-accent));
+  }
 }
 
 /*! --------- FIN: navbar --------- */
@@ -96,7 +212,6 @@ body {
   margin: 20px auto;
   overflow: hidden;
   border-radius: 16px;
-  box-shadow: 0 0 25px rgba(45, 226, 230, 0.15);
 }
 
 /*Imagen del Marco Metálico */
@@ -324,3 +439,157 @@ body {
 }
 
 /*! --------- FIN: Consultas de medios CSS --------- */
+
+ /* ! ############ MENÚ RADIAL ESTILOS CSS DANIEL ############  */
+ .radial-overlay{
+  position: fixed; /* Cambiar por si se quiero  que se quede fijo en la pantalla  o en el centro de la pagina con "fixed"*/
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex; 
+  justify-content:center ;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+ }
+
+ /* Círculo principal */
+.radial-menu {
+  position: absolute;
+  width: 33rem;
+  height: 33rem;
+  border-radius: 50%;
+  background: #050510;
+  border: 4px solid #00f0ff; /*color de borde del rcirculo principal*/
+  box-shadow: 
+    0 0 25px #00f0ff,
+    0 0 60px #00f0ff55,
+    inset 0 0 40px #00f0ff15;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-logo {
+  width: 85px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #ff00ff);
+}
+
+.center-letter {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #FFD23F;
+  text-shadow: 0 0 18px #ff00ff;
+  text-align: center;
+
+}
+
+.radial-item { /*Aqui se dibuja el circulo*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 130px;
+  height: 130px;
+  margin: -65px 0 0 -65px;          /* centra el item */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.15;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  z-index: 10; 
+  background-color: whitesmoke; /*color de fondo de los los rectangulos de los iconos*/
+  border-style: solid;  /*Estilo de el radio*/
+  border-color: #00f0ff;
+  box-shadow: 
+    0 0 25px #00f0ff,
+    0 0 60px #00f0ff55,
+    inset 0 0 40px #00f0ff15;
+    /* clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); */
+  /* border-radius: 10px 90px 90px 10px; izquierda, arriba, derecha, abajo jejejej */
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.radial-item .icon {
+  font-size: 1.9rem;
+  margin-bottom: 6px;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.rectangulo{
+  background-color: #2DE2E6;
+}
+
+.item-1 { /* INICIO - arriba */
+  transform: rotate(0deg) translateY(-195px) rotate(0deg);
+  color: #ffaa00;
+  text-shadow: 0 0 18px #ff00ff;
+}
+
+.item-2 { /* TIENDA - arriba derecha */
+  transform: rotate(60deg) translateY(-195px) rotate(-60deg);
+  color: #ffaa00;
+}
+.item-3 { /* SOPORTE - abajo derecha */
+  transform: rotate(120deg) translateY(-195px) rotate(-120deg);
+  color: #ffaa00;
+}
+.item-4 { /* MI CUENTA - abajo */
+  transform: rotate(180deg) translateY(-195px) rotate(-180deg);
+  color: #ffaa00;
+}
+
+.item-5 { /* CONTÁCTENOS - abajo izquierda */
+  transform: rotate(240deg) translateY(-195px) rotate(-240deg);
+  color: #ffaa00;
+}
+
+.item-6 { /* ACERCA DE NOSOTROS - arriba izquierda */
+  transform: rotate(300deg) translateY(-195px) rotate(-300deg);
+  color: #ffaa00;
+}
+/* Hover */
+.radial-item:hover {
+  filter: brightness(1.4);
+  
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .radial-menu {
+    width: 360px;
+    height: 360px;
+  }
+
+  .radial-center {
+    background-color: red;
+  }
+
+  .center-logo { /* Ajusta el tamaño del logo central */
+    width: 60px;
+  }
+
+  .radial-item {
+    width: 100px;
+    height: 100px;
+    margin: -50px 0 0 -50px;
+    font-size: 0.62rem;
+  }
+
+  .radial-item .icon {
+    font-size: 1.5rem;
+  }
+
+  .item-1 { transform: rotate(0deg) translateY(-135px) rotate(0deg); }
+  .item-2 { transform: rotate(60deg) translateY(-135px) rotate(-60deg); }
+  .item-3 { transform: rotate(120deg) translateY(-135px) rotate(-120deg); }
+  .item-4 { transform: rotate(180deg) translateY(-135px) rotate(-180deg); }
+  .item-5 { transform: rotate(240deg) translateY(-135px) rotate(-240deg); }
+  .item-6 { transform: rotate(300deg) translateY(-135px) rotate(-300deg); }
+}
+ /* ! ############ MENÚ RADIAL ESTILOS CSS DANIEL ############  */

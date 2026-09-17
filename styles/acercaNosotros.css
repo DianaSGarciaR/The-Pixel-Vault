@@ -262,6 +262,8 @@
   .team-description-column {
     min-height: auto;
     padding: 1rem 2rem;
+    font-family: --font-pixel-body !important;
+
   }
 
   .team-description-column p {
@@ -614,7 +616,7 @@
 }
 
 #missionLogs{
-    font-family: 'Pixelify Sans';
+    
     color: var(--yellow-accent);
     filter: url(#neon-glow2);
 }
