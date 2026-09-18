@@ -24,8 +24,8 @@
 */
 const mainNavbar = document.querySelector(".navThePixelVault");
 const renderNavbar = () => {
-    const navThePixelVault = `    <nav class="navbar bg-body-tertiary" id="navbar">
-
+  const navThePixelVault = `    
+    <nav class="navbar bg-body-tertiary" id="navbar">
         <div id="divNavLeft">
             <img src="./assets/navBarraRosa.png" alt="navBarraRosa" width="150px" height="auto">
             <br>
@@ -33,7 +33,7 @@ const renderNavbar = () => {
         </div>
 
         <div id="divNavCenter" class="magicalGlow">
-            <img class="magicalGlowLogo" src="./assets/ThePixelVaultLogo.png" alt="ThePixelVaultLogo" width="300px" height="auto">
+            <img src="./assets/ThePixelVaultLogo.png" alt="ThePixelVaultLogo" width="300px" height="auto">
         </div>
 
         <div id="divNavRight">
@@ -48,7 +48,7 @@ const renderNavbar = () => {
             </li>
         </div>
     </nav>`
-    mainNavbar.insertAdjacentHTML("beforeend", navThePixelVault);
+  mainNavbar.insertAdjacentHTML("beforeend", navThePixelVault);
 };
 renderNavbar();
 /* --------- FIN: navbar --------- */
@@ -56,7 +56,7 @@ renderNavbar();
 /* --------- INICIO: footer --------- */
 const mainfooter = document.querySelector(".footer-container");
 const renderfooter = () => {
-    const renderfooter = `
+  const renderfooter = `
     <!-- Grilla principal de 4 columnas -->
     <div class="footer-grid">
 
@@ -110,7 +110,7 @@ const renderfooter = () => {
       <p>&copy; 2026 <strong class="white-text">THE PIXEL VAULT</strong>. Todos los derechos reservados.</p>
       <p class="credits">BY DEV CORE SOLUTIONS</p>
     </div>`
-    mainfooter.insertAdjacentHTML("beforeend", renderfooter);
+  mainfooter.insertAdjacentHTML("beforeend", renderfooter);
 };
 renderfooter();
 /* --------- FIN:: footer --------- */

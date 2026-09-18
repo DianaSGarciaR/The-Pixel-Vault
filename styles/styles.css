@@ -15,9 +15,11 @@
 .head {
   font-family: var(--font-pixel-header);
 }
+
 .fuente {
   font-family: var(--font-pixel-body);
 }
+
 :root {
   --bg-color: #000B1E;
   /*background color */
@@ -112,10 +114,12 @@ body {
 /*Logo centrado en el panel superior */
 .banner-logo-container {
   position: absolute;
-  top: 4.5%;  /* Ajuste vertical según la ranura superior de la imagen */
+  top: 4.5%;
+  /* Ajuste vertical según la ranura superior de la imagen */
   left: 50%;
   transform: translateX(-50%);
-  width: 32%;  /* Ancho limitado para encajar en el recuadro metálico superior */
+  width: 32%;
+  /* Ancho limitado para encajar en el recuadro metálico superior */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -145,7 +149,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 11, 30, 0.4); /* Leve oscuridad tipo cristal/pantalla */
+  background-color: rgba(0, 11, 30, 0.4);
+  /* Leve oscuridad tipo cristal/pantalla */
   border-radius: 8px;
 }
 
@@ -165,16 +170,16 @@ body {
   align-items: center;
   padding: 10px 16px;
   font-family: var(--font-pixel-body);
-  
+
   text-decoration: none;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 1.5px;
   font-size: clamp(0.75rem, 1.8vw, 0.95rem);
-  
+
   background: var(--panel-color);
   clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-  
+
   transition: all 0.25s ease-in-out;
   position: relative;
   overflow: hidden;
@@ -227,66 +232,6 @@ body {
 }
 
 /*! --------- FIN : Banner --------- */
-
-.magicalGlowLogo {
-  /*
-  filter: drop-shadow(0 0 12px var(--yellow-accent));*/
-  animation: magicalGlowTextYellow 2s ease-in-out infinite alternate;
-
-}
-
-@keyframes magicalGlowTextYellow {
-  from {
-    /* from: indica como empieza la animación */
-    /*? text-shadow: crea sombras alrededor*/
-    filter: drop-shadow(0 0 1px var(--yellow-accent)) drop-shadow(0 0 15px var(--yellow-accent)) drop-shadow(0 0 20px var(--yellow-accent));
-  }
-
-  to {
-    /* to: indica como termina la animación */
-    filter: drop-shadow(0 0 10px var(--yellow-accent)) drop-shadow(0 0 15px var(--yellow-accent)) drop-shadow(0 0 20px var(--yellow-accent));
-  }
-}
-
-/*! --------- INICIO: Animacion para brillo de letras --------- */
-/*? Animacion de titulo Navbar
-? animation y keyframespara: agregar el efecto de brillo 
-*/
-.magicalGlowTextPink {
-  /** animation
-    ? magicalGlow: Nombre de la animación
-    ? 1s: Tiempo
-    ? ease-in-out: Controla cómo cambia la velocidad
-    ? infinite: Se repite infinitamente
-    */
-  -webkit-animation: magicalGlowTextPink 1s ease-in-out infinite alternate;
-  -moz-animation: magicalGlowTextPink 1s ease-in-out infinite alternate;
-  animation: magicalGlowTextPink 1s ease-in-out infinite alternate;
-}
-
-/*
-? @keyframes [nameAnimacion]: Hace que una propiedad cambie desde un estado inicial hasta otro estado.
-? text-shadow : Propiedad para crear el efecto de luz de neón 
-*/
-@keyframes magicalGlowTextPink {
-  from {
-    /* from: indica como empieza la animación */
-    /*? text-shadow: crea sombras alrededor*/
-    text-shadow: 0 0 10px var(--border-color),
-      0 0 20px #f143c6,
-      0 0 30px #e60073;
-  }
-
-  to {
-    /* to: indica como termina la animación */
-    text-shadow: 0 0 20px #e91aa1,
-      0 0 30px #ff4da6,
-      0 0 40px #ff4da6,
-      0 0 50px #ff4da6;
-  }
-}
-
-/*! --------- FIN :Animacion para brillo de letras --------- */
 
 /*! --------- INICIO: Boton Menu --------- */
 #btnMenu {
