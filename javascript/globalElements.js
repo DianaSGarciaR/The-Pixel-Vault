@@ -58,7 +58,7 @@ const renderNavbar = () => {
                           <span>MI CUENTA</span>
                         </a>
 
-                        <a href="contacto.html" class="radial-item item-5">
+                        <a href="contactanos.html" class="radial-item item-5">
                           <div class="icon">📞</div>
                           <span>CONTÁCTENOS</span>
                         </a>
@@ -80,7 +80,6 @@ const renderNavbar = () => {
             <img class="flecha" src="assets/flecha.png" rel="flecha">
             <p>Ver MENÚ: $1</p>
             <div class="menu" id="menudesplegable">
-            Menú abierto 🎉
             <ul>
             ${botonMenu}
             </ul>
