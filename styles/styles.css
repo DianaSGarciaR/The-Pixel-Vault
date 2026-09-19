@@ -468,9 +468,10 @@ body {
 }
 
 .center-logo {
-  width: 85px;
+  width: 200px;
   height: auto;
   filter: drop-shadow(0 0 10px #ff00ff);
+  
 }
 
 .center-letter {
