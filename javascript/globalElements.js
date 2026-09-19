@@ -41,8 +41,8 @@ const renderNavbar = () => {
                         
                         <!-- Centro -->
                         <div class="radial-center">
-                          <!-- <img src="./assets/ThePixelVaultLogo.png" alt="Logo P" class="center-logo"> --!>
-                          <p class="center-letter head yellow-accent">THE PIXEL <br>VAULT</p> 
+                          <img src="./assets/logo_vertical.png" alt="Logo P" class="center-logo"> 
+                          <!--<h3 class="center-letter head yellow-accent">THE PIXEL <br>VAULT </h3>--!>
                         </div>
 
                         <!-- Los 6 items -->
@@ -51,27 +51,27 @@ const renderNavbar = () => {
                           <span>INICIO</span>
                         </a>
 
-                        <a href="tienda.html" class="radial-item item-2">
+                        <a href="tienda.html" class="radial-item item-2 head yellow-accent">
                           <div class="icon">🛍️</div>
                           <span>TIENDA / CATÁLOGO</span>
                         </a>
 
-                        <a href="soporte.html" class="radial-item item-3">
+                        <a href="soporte.html" class="radial-item item-3 head yellow-accent">
                           <div class="icon">🎧</div>
-                          <span>SOPORTE Y<br>ATENCIÓN AL CLIENTE</span>
+                          <span>ATENCIÓN AL CLIENTE</span>
                         </a>
 
-                        <a href="mi-cuenta.html" class="radial-item item-4">
-                          <div class="icon">🧑‍🦱</div>
+                        <a href="mi-cuenta.html" class="radial-item item-4 head yellow-accent">
+                          <div class="icon">👤</div>
                           <span>MI CUENTA</span>
                         </a>
 
-                        <a href="contactanos.html" class="radial-item item-5">
+                        <a href="contactanos.html" class="radial-item item-5 head yellow-accent">
                           <div class="icon">📞</div>
                           <span>CONTÁCTENOS</span>
                         </a>
 
-                        <a href="acercaNosotros.html" class="radial-item item-6">
+                        <a href="acercaNosotros.html" class="radial-item item-6 head yellow-accent">
                           <div class="icon">🏫</div>
                           <span>ACERCA DE<br>NOSOTROS</span>
                         </a>

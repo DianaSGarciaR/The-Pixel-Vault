@@ -400,7 +400,7 @@ body {
   width: 33rem;
   height: 33rem;
   border-radius: 50%;
-  background: #050510;
+  background: rgba(0, 0, 0, 0.700);
   border: 4px solid #00f0ff;
   /*color de borde del rcirculo principal*/
   box-shadow:
@@ -412,20 +412,74 @@ body {
   align-items: center;
 }
 
+/*########################################################*/
+/* Círculo principal con rebanadas */
+.radial-menu {
+  position: relative;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: conic-gradient(from -30deg,
+      #0a1628 0deg 60deg,
+      #0d1c30 60deg 120deg,
+      #0a1628 120deg 180deg,
+      #0d1c30 180deg 240deg,
+      #0a1628 240deg 300deg,
+      #0d1c30 300deg 360deg);
+  border: 5px solid #00e5ff;
+  box-shadow:
+    0 0 30px #00e5ff,
+    0 0 60px #00e5ff66,
+    inset 0 0 40px rgba(0, 229, 255, 0.1);
+}
+
+/* Líneas divisorias de las rebanadas */
+.radial-menu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-conic-gradient(from -30.5deg,
+      #00e5ff 0deg 1deg,
+      transparent 1deg 60deg);
+}
+
+/* ############################## */
+
 .center-logo {
   width: 200px;
+  /* 200px */
   height: auto;
   filter: drop-shadow(0 0 10px #ff00ff);
 
 }
 
 .center-letter {
-  font-size: 1.6rem;
-  font-weight: 800;
+  font-size: 1.5rem;
   color: #FFD23F;
   text-shadow: 0 0 18px #ff00ff;
   text-align: center;
 
+}
+
+.radial-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #0a1628 40%, #0a1628 100%);
+  border: 4px solid #ff2bd6;
+  box-shadow:
+    0 0 25px #ff2bd6,
+    0 0 50px #ff2bd666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  text-align: center;
 }
 
 .radial-item {
@@ -448,18 +502,14 @@ body {
   line-height: 1.15;
   transition: transform 0.25s ease, filter 0.25s ease;
   z-index: 10;
-  background-color: whitesmoke;
-  /*color de fondo de los los rectangulos de los iconos*/
-  border-style: solid;
-  /*Estilo de el radio*/
-  border-color: #00f0ff;
-  box-shadow:
+  /* background-color: whitesmoke; color de fondo de los los rectangulos de los iconos */
+  /* border-style: solid;  Estilo de el radio */
+  /* box-shadow: 
     0 0 25px #00f0ff,
     0 0 60px #00f0ff55,
-    inset 0 0 40px #00f0ff15;
+    inset 0 0 40px #00f0ff15; */
   /* clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); */
   /* border-radius: 10px 90px 90px 10px; izquierda, arriba, derecha, abajo jejejej */
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 
 .radial-item .icon {
@@ -472,40 +522,40 @@ body {
   background-color: #2DE2E6;
 }
 
+/* Posiciones de los 6 items (cada 60 grados) */
 .item-1 {
-  /* INICIO - arriba */
-  transform: rotate(0deg) translateY(-195px) rotate(0deg);
+  /* Inicio - arriba */
+  transform: rotate(0deg) translateY(-175px) rotate(0deg);
   color: #ffaa00;
-  text-shadow: 0 0 18px #ff00ff;
 }
 
 .item-2 {
-  /* TIENDA - arriba derecha */
-  transform: rotate(60deg) translateY(-195px) rotate(-60deg);
+  /* Tienda - arriba derecha */
+  transform: rotate(60deg) translateY(-175px) rotate(-60deg);
   color: #ffaa00;
 }
 
 .item-3 {
-  /* SOPORTE - abajo derecha */
-  transform: rotate(120deg) translateY(-195px) rotate(-120deg);
+  /* Atención al cliente - abajo derecha */
+  transform: rotate(120deg) translateY(-175px) rotate(-120deg);
   color: #ffaa00;
 }
 
 .item-4 {
-  /* MI CUENTA - abajo */
-  transform: rotate(180deg) translateY(-195px) rotate(-180deg);
+  /* Mi cuenta - abajo */
+  transform: rotate(180deg) translateY(-175px) rotate(-180deg);
   color: #ffaa00;
 }
 
 .item-5 {
-  /* CONTÁCTENOS - abajo izquierda */
-  transform: rotate(240deg) translateY(-195px) rotate(-240deg);
+  /* Contáctenos - abajo izquierda */
+  transform: rotate(240deg) translateY(-175px) rotate(-240deg);
   color: #ffaa00;
 }
 
 .item-6 {
-  /* ACERCA DE NOSOTROS - arriba izquierda */
-  transform: rotate(300deg) translateY(-195px) rotate(-300deg);
+  /* Acerca de nosotros - arriba izquierda */
+  transform: rotate(300deg) translateY(-175px) rotate(-300deg);
   color: #ffaa00;
 }
 
