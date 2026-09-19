@@ -93,7 +93,7 @@ body {
 }
 
 .navThePixelVault {
-    background-image: url(../assets/navbarFondo.jpg) !important; /*Le puse el ./ antes de la dirección por si se quiere abrir desde el home o un directorio previo al de The Pixel Vault (Beto) */
+    background-image: url(../assets/navbarFondo.jpg) !important;
     background-repeat: no-repeat;   
     background-size: cover;
     display: flex;
@@ -107,7 +107,7 @@ body {
     position: relative; /* Les dice a los elementos hijos que se posicionen en referencia a él*/
     width: 10rem;
     height: 10rem;
-    background-image: url(../assets/botonmenu.png); /*Le puse el ./ antes de la dirección por si se quiere abrir desde el home o un directorio previo al de The Pixel Vault (Beto) */
+    background-image: url(../assets/botonmenu.png);
     background-size:contain;
     background-position:top;
     background-repeat: no-repeat;
@@ -137,7 +137,7 @@ body {
     left: 2.5rem;
     width: 5rem;
     height: 5rem;
-    background-image: url(../assets/monedapeso.png); /*Le puse el ./ antes de la dirección por si se quiere abrir desde el home o un directorio previo al de The Pixel Vault (Beto) */
+    background-image: url(../assets/monedapeso.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -210,6 +210,42 @@ body {
   overflow: hidden;
   border-radius: 16px;
 }
+
+/* * =====================================================================================
+* CAMBIOS PARA RESPONSIVIDAD DEL BANNER Y QUE NO CHOQUE CON LA ANIMACIÓN DE LA MONEDA
+* ======================================================================================== */
+@media (max-width: 900px){
+  .banner-container{
+    padding-top: 7rem;
+    position: relative;
+    width: 100%;
+    max-width: 600px;  
+    margin: 4rem auto;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+  .banner-frame{
+    position:relative;
+    width: 90%;
+  }
+
+  .banner-screen {
+  padding-top: 7rem; /*Mismo padding que el banner-container para que siga centrado*/
+  }
+}
+
+
+/*Responsividad del  tamaño del texto dentro del banner*/
+@media (max-width: 600px){
+  .yellow-accent.btn-yellow.head{
+    font-size: clamp(1rem, 3.4cqi + 0.2rem, 1.1rem);
+  }
+}
+/* * =====================================================================================
+* CAMBIOS PARA RESPONSIVIDAD DEL BANNER Y QUE NO CHOQUE CON LA ANIMACIÓN DE LA MONEDA
+* ======================================================================================== */
+
 
 /*Imagen del Marco Metálico */
 .banner-frame {

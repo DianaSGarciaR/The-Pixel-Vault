@@ -78,7 +78,6 @@ const renderNavbar = () => {
         <div class="menuinteractivo" id="menuinteractivo">
             <div class="ranura" id="ranura"></div>
             <div class="moneda" id="moneda"></div>
-            <p>Ver MENÚ: $1</p>
             <div class="menu" id="menudesplegable">
             <ulclass="sectores">
             ${botonMenu}
