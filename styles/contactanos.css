@@ -55,6 +55,23 @@
   overflow: visible;
 }
 
+/*
+* SECCIÓN PARA RESPONSIVIDAD EN DISPOSITIVOS PEQUEÑOS
+*/
+@media (max-width: 767.98px){
+    .frame-demo{
+        /* Se quita la proporción fija 2:1: en vez de recortar contenido
+           que no cabe, el marco crece en altura lo que haga falta. */
+        aspect-ratio: unset;
+        height:auto;
+        width:90%;
+        position:relative;
+    }
+    .content{
+        height:auto;       /* ahora el propio texto define el alto */
+        padding:24px 20px; /* en móvil, un padding en px es más predecible que uno en % */
+    }
+}
 
 /*
  * FORMULARIO

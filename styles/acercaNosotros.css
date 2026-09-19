@@ -118,7 +118,7 @@
   box-shadow: 0px 0px 30px rgba(204, 0, 255, 0.3),
               0px 0px 60px rgba(68, 0, 255, 0.2);
   overflow: hidden;
-  background-image: url(/assets/fondoModal.jpg);
+  background-image: url(../assets/fondoModal.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
