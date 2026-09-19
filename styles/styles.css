@@ -53,7 +53,7 @@ body {
   background-position: center top 8rem;
   /* Inicia debajo del navbar que mide 8rem*/
   /*Ajustar el '30rem' según la altura total que sumen el footer + navbar ambos. */
-  background-size: 100% calc(100% - 28rem);
+  background-size: 100% calc(100% - 8rem);
 }
 
 .pressStart {
@@ -124,6 +124,13 @@ body {
   margin-right: 0.6rem;
 }
 
+.insertcoin {
+  position: absolute;
+  width: 9rem;
+  margin-top: 7.8rem;
+  margin-left: 0.5rem;
+}
+
 .ranura {
   position: absolute;
   /*Se posiciona respecto al elemento padre*/
@@ -137,8 +144,7 @@ body {
 
 .moneda {
   position: absolute;
-  /*Se posiciona respecto al elemento padre*/
-  top: 9rem;
+  top: 13.1rem;
   left: 2.5rem;
   width: 5rem;
   height: 5rem;
@@ -147,11 +153,26 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   cursor: grab;
-  /* Que aparezca la manito en el cursor */
   z-index: 10;
-  /* Capa que lleva al frente de todo la moneda */
   touch-action: none;
-  /** Para que el navegador no interfiera con el arrastre */
+}
+
+.moneda.flotando {
+  animation: flotar 3s ease-in-out infinite;
+}
+
+@keyframes flotar {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-35px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .moneda:active {
@@ -160,36 +181,12 @@ body {
   filter: drop-shadow(0 0 20px #ece51a);
 }
 
-@keyframes blinker {
-  from {
-    opacity: 1.1;
-  }
-
-  to {
-    opacity: 0.0;
-  }
-}
-
-.flecha {
-  position: absolute;
-  top: 7rem;
-  right: 8rem;
-  height: 8rem;
-  z-index: 10;
-  transform: rotate(45deg);
-  filter: drop-shadow(0 0 5px #cc02ff) drop-shadow(0 0 2px #e375ff);
-  animation-name: blinker;
-  animation-iteration-count: infinite;
-  animation-timing-function: cubic-bezier(1, 0, 0, 1);
-  animation-duration: 1.5s;
-}
-
 .menuinteractivo p {
   font-family: var(--font-pixel-body);
   position: absolute;
   color: var(--yellow-accent);
   justify-self: center;
-  top: 15.5rem;
+  top: 18.5rem;
   z-index: 10;
   font-size: 1rem;
   filter: drop-shadow(0px 0px 10px #f5e721) drop-shadow(0px 0px 1px #000000);
@@ -198,7 +195,6 @@ body {
   border-radius: 5rem;
   border: 1px solid #ece51a;
 }
-
 
 /*! --------- FIN: navbar --------- */
 
@@ -416,9 +412,10 @@ body {
 }
 
 .center-logo {
-  width: 85px;
+  width: 200px;
   height: auto;
   filter: drop-shadow(0 0 10px #ff00ff);
+
 }
 
 .center-letter {

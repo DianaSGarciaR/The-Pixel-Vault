@@ -74,10 +74,10 @@ const renderNavbar = () => {
 
   const contenidoInterno = `
     <div class="contenedormenu">
+        <img class="insertcoin" src="assets/insertcoin.png" rel="insertcoin">
         <div class="menuinteractivo" id="menuinteractivo">
             <div class="ranura" id="ranura"></div>
             <div class="moneda" id="moneda"></div>
-            <img class="flecha" src="assets/flecha.png" rel="flecha">
             <p>Ver MENÚ: $1</p>
             <div class="menu" id="menudesplegable">
             <ul>
@@ -99,29 +99,40 @@ renderNavbar();
 /* --------- FIN: navbar --------- */
 
 /* --------- INICIO: MENU INTERACTIVO --------- */
-// Enlazar elementos que necesitamos en la animación
 const moneda = document.querySelector('#moneda');
 const ranura = document.querySelector('#ranura');
 const menudesplegable = document.querySelector('#menudesplegable');
 const dropSound = new Audio(`assets/sonidomoneda.mp3`);
 
 let interactuando = false;
-let agarreX, agarreY; // Coordenadas del desfase del cursor al hacer clic
+let agarreX, agarreY;
 
-// Coordenadas iniciales fijas de la moneda
+// Iniciamos la animación flotante por CSS
+moneda.classList.add('flotando');
+
+// Guardamos las coordenadas iniciales fijas
 const inicioX = moneda.offsetLeft;
 const inicioY = moneda.offsetTop;
 
-// Posición actual de la moneda
 let posicionactualX = inicioX;
 let posicionactualY = inicioY;
 
 //* Evento POINTERDOWN
 moneda.addEventListener("pointerdown", (e) => {
-  interactuando = true; // (Sin 'let' para modificar la variable global)
+  interactuando = true;
   moneda.setPointerCapture(e.pointerId);
 
-  // Calculamos el desfase exacto donde hizo clic el usuario dentro de la moneda
+  // Leemos dónde está la moneda exactamente antes de quitar la animación
+  posicionactualX = moneda.offsetLeft;
+  posicionactualY = moneda.offsetTop;
+
+  // Quitamos la clase para que el arrastre sea fluido y preciso
+  moneda.classList.remove('flotando');
+
+  // Fijamos la posición en línea temporalmente para que no salte al quitar la clase
+  moneda.style.left = `${posicionactualX}px`;
+  moneda.style.top = `${posicionactualY}px`;
+
   agarreX = e.clientX - posicionactualX;
   agarreY = e.clientY - posicionactualY;
 });
@@ -130,11 +141,9 @@ moneda.addEventListener("pointerdown", (e) => {
 moneda.addEventListener("pointermove", (e) => {
   if (!interactuando) return;
 
-  // Calcula las nuevas coordenadas restando la posición actual del cursor menos el desfase
   posicionactualX = e.clientX - agarreX;
   posicionactualY = e.clientY - agarreY;
 
-  // Se actualiza la posición en tiempo real
   moneda.style.left = `${posicionactualX}px`;
   moneda.style.top = `${posicionactualY}px`;
 });
@@ -148,16 +157,14 @@ moneda.addEventListener("pointerup", (e) => {
     moneda.releasePointerCapture(e.pointerId);
   } catch (error) { }
 
-  checkDropZone(); // Llama a la función que verifica si cayó dentro de la zona de ranura
+  checkDropZone();
 });
 
 //* CheckDropZone
 function checkDropZone() {
-  // Obtiene las coordenadas exactas de los elementos
   const monedaRect = moneda.getBoundingClientRect();
   const ranuraRect = ranura.getBoundingClientRect();
 
-  // Calcula si hay colisión entre las coordenadas de la moneda y la ranura
   const overlap = !(
     monedaRect.right < ranuraRect.left ||
     monedaRect.left > ranuraRect.right ||
@@ -165,41 +172,19 @@ function checkDropZone() {
     monedaRect.top > ranuraRect.bottom
   );
 
-  //* IF ELSE para los eventos si cayó o no dentro de la ranura
   if (overlap) {
     moneda.style.pointerEvents = 'none';
 
-    // Activa sonido
     dropSound.currentTime = 0;
     dropSound.play().catch(e => console.log("Audio bloqueado:", e));
 
-    // Estas dos líneas de código sirven para calcular el punto exacto al centro de la ranura donde debe terminar la moneda al ser soltada, asegurando que quede perfectamente alineada (tanto horizontal como verticalmente) sin importar en qué parte exacta de la ranura la haya soltado el usuario.
     const targetX = ranuraRect.left - moneda.offsetParent.getBoundingClientRect().left + (ranuraRect.width / 2) - (monedaRect.width / 2);
     const targetY = ranuraRect.top - moneda.offsetParent.getBoundingClientRect().top + (ranuraRect.height / 2) - (monedaRect.height / 2) + 15;
 
-    // Animación de entrada a la ranura
     const animacion = moneda.animate([
-      {
-        left: `${posicionactualX}px`,
-        top: `${posicionactualY}px`,
-        transform: 'scale(1) rotate(0deg)',
-        opacity: 1,
-        zIndex: 10
-      },
-      {
-        left: `${posicionactualX}px`,
-        top: `${posicionactualY}px`,
-        transform: 'scale(0.5) rotate(25deg)',
-        opacity: 1,
-        zIndex: 10
-      },
-      {
-        left: `${targetX}px`,
-        top: `${targetY}px`,
-        transform: 'scaleX(0.2) scaleY(0.1) rotate(45deg)',
-        opacity: 0,
-        zIndex: 1
-      }
+      { left: `${posicionactualX}px`, top: `${posicionactualY}px`, transform: 'scale(1) rotate(0deg)', opacity: 1, zIndex: 10 },
+      { left: `${posicionactualX}px`, top: `${posicionactualY}px`, transform: 'scale(0.5) rotate(25deg)', opacity: 1, zIndex: 10 },
+      { left: `${targetX}px`, top: `${targetY}px`, transform: 'scaleX(0.2) scaleY(0.1) rotate(45deg)', opacity: 0, zIndex: 1 }
     ], {
       duration: 600,
       easing: 'cubic-bezier(0.5, 0, 1, 1)',
@@ -211,8 +196,8 @@ function checkDropZone() {
     };
 
   } else {
-    // Animación de regreso si cae fuera
-    moneda.animate([
+    // Animación de regreso a la posición
+    const regreso = moneda.animate([
       { left: `${posicionactualX}px`, top: `${posicionactualY}px` },
       { left: `${inicioX}px`, top: `${inicioY}px` }
     ], {
@@ -220,17 +205,28 @@ function checkDropZone() {
       easing: 'ease-out'
     });
 
-    moneda.style.left = `${inicioX}px`;
-    moneda.style.top = `${inicioY}px`;
-    posicionactualX = inicioX;
-    posicionactualY = inicioY;
+    // Cuando termine la animación de regreso
+    regreso.onfinish = () => {
+      // 1. Borramos las coordenadas en línea para que vuelva a mandar el CSS (9rem y 2.5rem)
+      moneda.style.removeProperty('left');
+      moneda.style.removeProperty('top');
+
+      // 2. Reiniciamos variables para el próximo arrastre
+      posicionactualX = inicioX;
+      posicionactualY = inicioY;
+
+      // 3. Esperamos un frame del navegador y reactivamos la flotación limpia
+      requestAnimationFrame(() => {
+        moneda.classList.add('flotando');
+      });
+    };
   }
 }
 
-//* Abrir menú
 function openMenu() {
   menudesplegable.classList.add('active');
 }
+
 /* --------- FIN: MENU INTERACTIVO --------- */
 
 /* --------- INICIO: footer --------- */

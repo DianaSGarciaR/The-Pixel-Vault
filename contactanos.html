@@ -32,7 +32,7 @@
 
         <!-- Título  -->
         <div class="banner-screen">
-            <h1 class="yellow-accent btn-yellow quantico">CONTÁCTANOS</h1>
+            <h5 class="yellow-accent btn-yellow quantico, head">CONTACTANOS</h5>
         </div>
     </section>
 
@@ -60,7 +60,8 @@
         </svg>
 
         <div class="content">
-            <form class="contact-form">
+            <form  class="contact-form" id = "contactUs" action="https://formspree.io/f/mjykbyja" method="POST">
+                
 
                 
                 <div class="mb-3">
@@ -73,7 +74,7 @@
                                 d="M 10,2 L 490,2 L 498,10 L 498,38 L 490,46 L 10,46 L 2,38 L 2,10 Z" />
                         </svg>
 
-                        <input type="text" class="form-control" id="nombre"
+                        <input type="text" class="form-control" id="nombre" name="name"
                             placeholder="Escribe tu nombre completo 👤">
                     </div>
                 </div>
@@ -87,7 +88,7 @@
                                 d="M 10,2 L 490,2 L 498,10 L 498,38 L 490,46 L 10,46 L 2,38 L 2,10 Z" />
                         </svg>
 
-                        <input type="text" class="form-control" id="correo"
+                        <input type="email" class="form-control" id="correo" name="email"
                             placeholder="Escribe tu correo electrónico 📧">
                     </div>
                 </div>
@@ -101,7 +102,7 @@
                                 d="M 10,2 L 490,2 L 498,10 L 498,38 L 490,46 L 10,46 L 2,38 L 2,10 Z" />
                         </svg>
 
-                        <input type="text" class="form-control" id="telefono"
+                        <input type="text" class="form-control" id="telefono" name="phone"
                             placeholder="Escribe tu número de teléfono 📞">
                     </div>
                 </div>
@@ -115,12 +116,13 @@
                                 d="M 10,2 L 490,2 L 498,10 L 498,110 L 490,118 L 10,118 L 2,110 L 2,10 Z" />
                         </svg>
 
-                        <textarea class="form-control" id="mensaje" rows="3"
+                        <textarea class="form-control" id="mensaje"  name="message" rows="3"
                             placeholder="Escribe aquí lo que tengas que decirnos 🗣️"></textarea>
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-fucsia">Enviar</button>
+                <button type="submit" class="btn btn-fucsia">Enviar</button>
+                <div id="resultadoRegistro"></div>
 
             </form>
         </div>
