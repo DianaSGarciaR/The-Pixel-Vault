@@ -11,7 +11,7 @@
   margin: 0 auto 4rem;
 }
 
-/* SVG que ocupa todo el contenedor y sirve como capa visual del marco. */
+/* SVG que ocupa todo el contenedor y sirve como capa visual del marco. para que el formulario se vea dentro del margen */
 .frame-demo svg {
   position: absolute;
   inset: 0;
@@ -26,21 +26,13 @@
 .frame-path {
   fill: none;
   stroke: var(--yellow-accent);
+  stroke-width: 4px; /*grosor del marco*/
+  shape-rendering: crispEdges; /*para que los bordes no se vean borrosos*/
   stroke-linejoin: miter;
   filter: url(#neon-glow) drop-shadow(0 0 12px rgba(255, 62, 165, 0.8));
   animation: pulse 3.2s ease-in-out infinite;
 }
 
-/* Hace que el brillo del marco varíe un. */
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.82;
-  }
-}
 
 
 
