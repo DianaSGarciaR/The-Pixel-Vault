@@ -23,6 +23,14 @@
  *      <script src="/javascript/globalElements.js"></script>
 */
 const mainNavbar = document.querySelector(".navThePixelVault");
+const menuBtn = [
+  { id: "inicio", icon: "💻", name: "INICIO", pathHtml: "index.html" },
+  { id: "tienda", icon: "🛍️", name: "TIENDA / CATÁLOGO", pathHtml: "tienda.html" },
+  { id: "catalogo", icon: "🎧", name: "CATÁLOGO", pathHtml: "tienda.html" },
+  { id: "miCuenta", icon: "🧑‍🦱", name: "MI CUENTA", pathHtml: "mi-cuenta.html" },
+  { id: "contactanos", icon: "📞", name: "CONTÁCTENOS", pathHtml: "contactanos.html" },
+  { id: "nosotros", icon: "🏫", name: "NOSOTROS", pathHtml: "acercaNosotros.html" }
+];
 
 const renderNavbar = () => {
   // Solo metemos los tres bloques hijos directamente. 
@@ -72,30 +80,46 @@ const renderNavbar = () => {
                     </div>
                     <!-- ========== FINAL MENÚ RADIAL DANIEL ========== -->`
 
+  let mobileBurgerMenu = `
+
+`;
+
   const contenidoInterno = `
     <div class="contenedormenu">
+      <!-- Imagen - Se anida dentro de este div para evitar que un fragmento del elemento quede visible en pantallas móviles. -->
+      <div class="menuinteractivo divNavRight" id="menuinteractivo">
+        <!-- Imagen - Se anida dentro de este div para evitar que un fragmento del elemento quede visible en pantallas móviles. -->
         <img class="insertcoin" src="assets/insertcoin.png" rel="insertcoin">
-        <div class="menuinteractivo" id="menuinteractivo">
-            <div class="ranura" id="ranura"></div>
-            <div class="moneda" id="moneda"></div>
-            <p>Ver MENÚ: $1</p>
-            <div class="menu" id="menudesplegable">
-            <ul>
-            ${botonMenu}
-            </ul>
-            </div>
+        <div class="ranura" id="ranura"></div>
+        <div class="moneda" id="moneda"></div>
+        <p>Ver MENÚ: $1</p>
+        <div class="menu" id="menudesplegable">
+          ${botonMenu}
         </div>
+      </div>
     </div>
     <img class="logo" src="assets/ThePixelVaultLogo.png">
-    <div class="contenedorBarras">
+    ${mobileBurgerMenu}
+    <div class="contenedorBarras divNavLeft">
         <img class="barraRosa" src="assets/navBarraRosa.png">
         <img class="barraAzul" src="assets/navBarraAzul.png">
-    </div>`;
+    </div>
+    `;
 
   mainNavbar.insertAdjacentHTML("beforeend", contenidoInterno);
 };
 renderNavbar();
 
+
+function myFunction() {
+  var x = document.getElementById("responsBurgerMenu");
+  console.log(x.className)
+  if (x.className === "burgerMenu") {
+    x.className += " responsive";
+  } else {
+    x.className = "burgerMenu";
+  }
+}
 /* --------- FIN: navbar --------- */
 
 /* --------- INICIO: MENU INTERACTIVO --------- */

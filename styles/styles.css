@@ -364,15 +364,16 @@ body {
 
 /*! --------- INICIO: Consultas de medios CSS --------- */
 /* Ocultar elementos despues del tamaño de un celular  */
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 680px) {
 
   /* Se ocultan elentos del Navbar para copoplarlos en vistas de celular */
-  #divNavLeft,
-  #divNavRight {
+  .divNavLeft,
+  .divNavRight {
     display: none;
   }
 
-  #navbar {
+  #navbar,
+  .logo {
     justify-content: center;
   }
 }
@@ -514,7 +515,7 @@ body {
 
 }
 
-/* ===== RESPONSIVE ===== */
+/* ========== INICIO : RESPONSIVE MENU ========== */
 @media (max-width: 600px) {
   .radial-menu {
     width: 360px;
@@ -565,6 +566,81 @@ body {
     transform: rotate(300deg) translateY(-135px) rotate(-300deg);
   }
 }
+
+/* ========== FIN : RESPONSIVE MENU ========== */
+
+/* ========== INICIO : RESPONSIVE BURGER MENU ========== */
+
+.burgerMenu,
+.optionBurgerMenu {
+  /*oculta el contenido que se desborda.*/
+  overflow: hidden;
+  background-color: #333;
+}
+
+/*Selecciona los enlaces <a> que están dentro de un elemento*/
+.burgerMenu a {
+  /*  float: left: coloca los enlaces hacia la izquierda, permitiendo que se distribuyan horizontalmente.*/
+  float: left;
+  /*display: block: hace que el enlace se comporte como un elemento de bloque.*/
+  display: block;
+  /*color: #f2f2f2: establece un color de texto gris muy claro.*/
+  color: #f2f2f2;
+  /*text-align: center: centra el texto dentro del espacio del enlace.*/
+  text-align: center;
+  /*padding: 14px 16px: añade espacio interior; 14 píxeles arriba y abajo, y 16 píxeles a los lados.*/
+  padding: 14px 16px;
+  /*text-decoration: none: elimina la decoración predeterminada del enlace, como el subrayado.*/
+  text-decoration: none;
+  /*font-size: 17px: establece el tamaño del texto.*/
+  font-size: 17px;
+}
+
+/* por dafault no debe aparecer */
+.burgerMenu .iconMoneda {
+  display: none;
+}
+
+@media screen and (min-width: 680px) {
+  .burgerMenu {
+    display: none;
+  }
+
+}
+
+/* Oculta los enlaces que no son .iconMoneda */
+@media screen and (max-width: 680px) {
+  .burgerMenu a:not(.iconMoneda) {
+    display: none;
+  }
+
+  .burgerMenu a.iconMoneda {
+    float: left;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .burgerMenu.responsive {
+    position: relative;
+  }
+
+  .burgerMenu.responsive .iconMoneda {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1rem;
+  }
+
+  .burgerMenu.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+/* =========== FIN : RESPONSIVE BURGER MENU ============ */
+
 
 /* ! ############ MENÚ RADIAL ESTILOS CSS DANIEL ############  */
 
