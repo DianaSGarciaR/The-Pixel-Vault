@@ -15,9 +15,11 @@
 .head {
   font-family: var(--font-pixel-header);
 }
+
 .fuente {
   font-family: var(--font-pixel-body);
 }
+
 :root {
   --bg-color: #000B1E;
   /*background color */
@@ -40,17 +42,18 @@ body {
   color: var(--text-main);
 
   /* El color del body pintará la zona del navbar y del footer */
-  background-color: var(--bg-color); 
+  background-color: var(--bg-color);
 
   /* Tu imagen y el degradado */
-  background-image: 
+  background-image:
     linear-gradient(rgba(5, 10, 20, 0.45), rgba(5, 10, 20, 0.75)),
     url("../assets/fondo.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-position: center top 8rem; /* Inicia debajo del navbar que mide 8rem*/
-   /*Ajustar el '30rem' según la altura total que sumen el footer + navbar ambos. */
-  background-size: 100% calc(100% - 8rem); 
+  background-position: center top 8rem;
+  /* Inicia debajo del navbar que mide 8rem*/
+  /*Ajustar el '30rem' según la altura total que sumen el footer + navbar ambos. */
+  background-size: 100% calc(100% - 8rem);
 }
 
 .pressStart {
@@ -70,52 +73,58 @@ body {
 
 /** PRUEBA MENU (Reemplazar cuando esté el menú final) */
 .menu {
-    opacity: 0; /* Que no se vea */
-    pointer-events: none; /* Que no interactúe*/
+  opacity: 0;
+  /* Que no se vea */
+  pointer-events: none;
+  /* Que no interactúe*/
 }
 
 .menu.active {
-    opacity: 1;
-    pointer-events: auto;
-    background-color: #ece51a;
-    color: #000000;
+  opacity: 1;
+  pointer-events: auto;
+  background-color: #ece51a;
+  color: #000000;
 }
+
 /** FIN PRUEBA MENU */
 
 .contenedorBarras {
-    display: grid;
-    align-items: center;
-    margin: 1rem; 
+  display: grid;
+  align-items: center;
+  margin: 1rem;
 }
 
-.barraRosa, .barraAzul{
-    height: 2rem;
+.barraRosa,
+.barraAzul {
+  height: 2rem;
 }
 
 .navThePixelVault {
-    background-image: url(/assets/navbarFondo.jpg) !important;
-    background-repeat: no-repeat;   
-    background-size: cover;
-    display: flex;
-    flex-direction: row-reverse; /** IMPORTANTE para que al hacer zoom se vaya hacia el menú*/
-    height: 8rem;
-    justify-content:space-between;
-    box-shadow: 0 5px 5px rgb(0, 0, 0, 1.1);
+  background-image: url(/assets/navbarFondo.jpg) !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: row-reverse;
+  /** IMPORTANTE para que al hacer zoom se vaya hacia el menú*/
+  height: 8rem;
+  justify-content: space-between;
+  box-shadow: 0 5px 5px rgb(0, 0, 0, 1.1);
 }
 
 .menuinteractivo {
-    position: relative; /* Les dice a los elementos hijos que se posicionen en referencia a él*/
-    width: 10rem;
-    height: 10rem;
-    background-image: url(/assets/botonmenu.png);
-    background-size:contain;
-    background-position:top;
-    background-repeat: no-repeat;
-    margin-top: 0.6rem;
-    margin-right: 0.6rem;
+  position: relative;
+  /* Les dice a los elementos hijos que se posicionen en referencia a él*/
+  width: 10rem;
+  height: 10rem;
+  background-image: url(/assets/botonmenu.png);
+  background-size: contain;
+  background-position: top;
+  background-repeat: no-repeat;
+  margin-top: 0.6rem;
+  margin-right: 0.6rem;
 }
 
-.insertcoin{
+.insertcoin {
   position: absolute;
   width: 9rem;
   margin-top: 7.8rem;
@@ -123,78 +132,68 @@ body {
 }
 
 .ranura {
-    position: absolute; /*Se posiciona respecto al elemento padre*/
-    bottom: 3.8rem;
-    left: 2rem;
-    width: 6rem;
-    height: 2rem;
-    z-index: 5; /*Capas, lo trae al frente pero atrás del z-indexz: 10 (moneda)*/
+  position: absolute;
+  /*Se posiciona respecto al elemento padre*/
+  bottom: 3.8rem;
+  left: 2rem;
+  width: 6rem;
+  height: 2rem;
+  z-index: 5;
+  /*Capas, lo trae al frente pero atrás del z-indexz: 10 (moneda)*/
 }
 
 .moneda {
-    position: absolute;
-    top: 13.1rem;
-    left: 2.5rem;
-    width: 5rem;
-    height: 5rem;
-    background-image: url(/assets/monedapeso.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: grab;
-    z-index: 10;
-    touch-action: none;
+  position: absolute;
+  top: 13.1rem;
+  left: 2.5rem;
+  width: 5rem;
+  height: 5rem;
+  background-image: url(/assets/monedapeso.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: grab;
+  z-index: 10;
+  touch-action: none;
 }
 
 .moneda.flotando {
-    animation: flotar 3s ease-in-out infinite;
+  animation: flotar 3s ease-in-out infinite;
 }
 
 @keyframes flotar {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-35px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-35px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .moneda:active {
-    cursor: grabbing; /* Que aparezca la manito cerrada en el cursor */
-    filter: drop-shadow(0 0 20px #ece51a);
+  cursor: grabbing;
+  /* Que aparezca la manito cerrada en el cursor */
+  filter: drop-shadow(0 0 20px #ece51a);
 }
 
 .menuinteractivo p {
-    font-family: var(--font-pixel-body);
-    position: absolute;
-    color: var(--yellow-accent);
-    justify-self: center;
-    top: 18.5rem;
-    z-index: 10;
-    font-size: 1rem;
-    filter: drop-shadow(0px 0px 10px #f5e721)
-    drop-shadow(0px 0px 1px #000000);
-    backdrop-filter: blur(3px);
-    padding: 0.5rem;
-    border-radius: 5rem;
-    border: 1px solid #ece51a;
-}
-
-.magicalGlowLogo {
-  /*
-  filter: drop-shadow(0 0 12px var(--yellow-accent));*/
-  animation: magicalGlowTextYellow 2s ease-in-out infinite alternate;
-
-}
-
-@keyframes magicalGlowTextYellow {
-  from {
-    /* from: indica como empieza la animación */
-    /*? text-shadow: crea sombras alrededor*/
-    filter: drop-shadow(0 0 1px var(--yellow-accent)) drop-shadow(0 0 15px var(--yellow-accent)) drop-shadow(0 0 20px var(--yellow-accent));
-  }
-
-  to {
-    /* to: indica como termina la animación */
-    filter: drop-shadow(0 0 10px var(--yellow-accent)) drop-shadow(0 0 15px var(--yellow-accent)) drop-shadow(0 0 20px var(--yellow-accent));
-  }
+  font-family: var(--font-pixel-body);
+  position: absolute;
+  color: var(--yellow-accent);
+  justify-self: center;
+  top: 18.5rem;
+  z-index: 10;
+  font-size: 1rem;
+  filter: drop-shadow(0px 0px 10px #f5e721) drop-shadow(0px 0px 1px #000000);
+  backdrop-filter: blur(3px);
+  padding: 0.5rem;
+  border-radius: 5rem;
+  border: 1px solid #ece51a;
 }
 
 /*! --------- FIN: navbar --------- */
@@ -205,7 +204,7 @@ body {
 .banner-container {
   position: relative;
   width: 100%;
-  max-width: 600px;  
+  max-width: 600px;
   margin: 4rem auto;
   overflow: hidden;
   border-radius: 16px;
@@ -221,10 +220,12 @@ body {
 /*Logo centrado en el panel superior */
 .banner-logo-container {
   position: absolute;
-  top: 4.5%;  /* Ajuste vertical según la ranura superior de la imagen */
+  top: 4.5%;
+  /* Ajuste vertical según la ranura superior de la imagen */
   left: 50%;
   transform: translateX(-50%);
-  width: 32%;  /* Ancho limitado para encajar en el recuadro metálico superior */
+  width: 32%;
+  /* Ancho limitado para encajar en el recuadro metálico superior */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -254,7 +255,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 11, 30, 0.4); /* Leve oscuridad tipo cristal/pantalla */
+  background-color: rgba(0, 11, 30, 0.4);
+  /* Leve oscuridad tipo cristal/pantalla */
   border-radius: 8px;
 }
 
@@ -274,16 +276,16 @@ body {
   align-items: center;
   padding: 10px 16px;
   font-family: var(--font-pixel-body);
-  
+
   text-decoration: none;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 1.5px;
   font-size: clamp(0.75rem, 1.8vw, 0.95rem);
-  
+
   background: var(--panel-color);
   clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-  
+
   transition: all 0.25s ease-in-out;
   position: relative;
   overflow: hidden;
@@ -337,66 +339,6 @@ body {
 
 /*! --------- FIN : Banner --------- */
 
-.magicalGlowLogo {
-  /*
-  filter: drop-shadow(0 0 12px var(--yellow-accent));*/
-  animation: magicalGlowTextYellow 2s ease-in-out infinite alternate;
-
-}
-
-@keyframes magicalGlowTextYellow {
-  from {
-    /* from: indica como empieza la animación */
-    /*? text-shadow: crea sombras alrededor*/
-    filter: drop-shadow(0 0 1px var(--yellow-accent)) drop-shadow(0 0 15px var(--yellow-accent)) drop-shadow(0 0 20px var(--yellow-accent));
-  }
-
-  to {
-    /* to: indica como termina la animación */
-    filter: drop-shadow(0 0 10px var(--yellow-accent)) drop-shadow(0 0 15px var(--yellow-accent)) drop-shadow(0 0 20px var(--yellow-accent));
-  }
-}
-
-/*! --------- INICIO: Animacion para brillo de letras --------- */
-/*? Animacion de titulo Navbar
-? animation y keyframespara: agregar el efecto de brillo 
-*/
-.magicalGlowTextPink {
-  /** animation
-    ? magicalGlow: Nombre de la animación
-    ? 1s: Tiempo
-    ? ease-in-out: Controla cómo cambia la velocidad
-    ? infinite: Se repite infinitamente
-    */
-  -webkit-animation: magicalGlowTextPink 1s ease-in-out infinite alternate;
-  -moz-animation: magicalGlowTextPink 1s ease-in-out infinite alternate;
-  animation: magicalGlowTextPink 1s ease-in-out infinite alternate;
-}
-
-/*
-? @keyframes [nameAnimacion]: Hace que una propiedad cambie desde un estado inicial hasta otro estado.
-? text-shadow : Propiedad para crear el efecto de luz de neón 
-*/
-@keyframes magicalGlowTextPink {
-  from {
-    /* from: indica como empieza la animación */
-    /*? text-shadow: crea sombras alrededor*/
-    text-shadow: 0 0 10px var(--border-color),
-      0 0 20px #f143c6,
-      0 0 30px #e60073;
-  }
-
-  to {
-    /* to: indica como termina la animación */
-    text-shadow: 0 0 20px #e91aa1,
-      0 0 30px #ff4da6,
-      0 0 40px #ff4da6,
-      0 0 50px #ff4da6;
-  }
-}
-
-/*! --------- FIN :Animacion para brillo de letras --------- */
-
 /*! --------- INICIO: Boton Menu --------- */
 #btnMenu {
   background-color: var(--panel-color);
@@ -422,50 +364,54 @@ body {
 
 /*! --------- INICIO: Consultas de medios CSS --------- */
 /* Ocultar elementos despues del tamaño de un celular  */
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 680px) {
 
   /* Se ocultan elentos del Navbar para copoplarlos en vistas de celular */
-  #divNavLeft,
-  #divNavRight {
+  .divNavLeft,
+  .divNavRight {
     display: none;
   }
 
-  #navbar {
+  #navbar,
+  .logo {
     justify-content: center;
   }
 }
 
 /*! --------- FIN: Consultas de medios CSS --------- */
 
- /* ! ############ MENÚ RADIAL ESTILOS CSS DANIEL ############  */
- .radial-overlay{
-  position: fixed; /* Cambiar por si se quiero  que se quede fijo en la pantalla  o en el centro de la pagina con "fixed"*/
+/* ! ############ MENÚ RADIAL ESTILOS CSS DANIEL ############  */
+.radial-overlay {
+  position: fixed;
+  /* Cambiar por si se quiero  que se quede fijo en la pantalla  o en el centro de la pagina con "fixed"*/
   inset: 0;
   background: rgba(0, 0, 0, 0.88);
-  display: flex; 
-  justify-content:center ;
+  display: flex;
+  justify-content: center;
   align-items: center;
   z-index: 9999;
   opacity: 1;
   transition: opacity 0.3s ease;
- }
+}
 
- /* Círculo principal */
+/* Círculo principal */
 .radial-menu {
   position: absolute;
   width: 33rem;
   height: 33rem;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.700); 
-  border: 4px solid #00f0ff; /*color de borde del rcirculo principal*/
-  box-shadow: 
+  background: rgba(0, 0, 0, 0.700);
+  border: 4px solid #00f0ff;
+  /*color de borde del rcirculo principal*/
+  box-shadow:
     0 0 25px #00f0ff,
     0 0 60px #00f0ff55,
     inset 0 0 40px #00f0ff15;
-    display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
+
 /*########################################################*/
 /* Círculo principal con rebanadas */
 .radial-menu {
@@ -473,42 +419,39 @@ body {
   width: 520px;
   height: 520px;
   border-radius: 50%;
-  background: conic-gradient(
-    from -30deg,
-    #0a1628 0deg 60deg,
-    #0d1c30 60deg 120deg,
-    #0a1628 120deg 180deg,
-    #0d1c30 180deg 240deg,
-    #0a1628 240deg 300deg,
-    #0d1c30 300deg 360deg
-    
-  );
+  background: conic-gradient(from -30deg,
+      #0a1628 0deg 60deg,
+      #0d1c30 60deg 120deg,
+      #0a1628 120deg 180deg,
+      #0d1c30 180deg 240deg,
+      #0a1628 240deg 300deg,
+      #0d1c30 300deg 360deg);
   border: 5px solid #00e5ff;
-  box-shadow: 
+  box-shadow:
     0 0 30px #00e5ff,
     0 0 60px #00e5ff66,
     inset 0 0 40px rgba(0, 229, 255, 0.1);
 }
+
 /* Líneas divisorias de las rebanadas */
 .radial-menu::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: repeating-conic-gradient(
-    from -30.5deg,
-    #00e5ff 0deg 1deg,
-    transparent 1deg 60deg
-  );
+  background: repeating-conic-gradient(from -30.5deg,
+      #00e5ff 0deg 1deg,
+      transparent 1deg 60deg);
 }
 
 /* ############################## */
 
 .center-logo {
-  width: 200px;/* 200px */
+  width: 200px;
+  /* 200px */
   height: auto;
   filter: drop-shadow(0 0 10px #ff00ff);
-  
+
 }
 
 .center-letter {
@@ -518,6 +461,7 @@ body {
   text-align: center;
 
 }
+
 .radial-center {
   position: absolute;
   top: 50%;
@@ -528,7 +472,7 @@ body {
   border-radius: 50%;
   background: radial-gradient(circle, #0a1628 40%, #0a1628 100%);
   border: 4px solid #ff2bd6;
-  box-shadow: 
+  box-shadow:
     0 0 25px #ff2bd6,
     0 0 50px #ff2bd666;
   display: flex;
@@ -538,13 +482,15 @@ body {
   text-align: center;
 }
 
-.radial-item { /*Aqui se dibuja el circulo*/
+.radial-item {
+  /*Aqui se dibuja el circulo*/
   position: absolute;
   top: 50%;
   left: 50%;
   width: 130px;
   height: 130px;
-  margin: -65px 0 0 -65px;          /* centra el item */
+  margin: -65px 0 0 -65px;
+  /* centra el item */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -555,14 +501,14 @@ body {
   font-weight: 600;
   line-height: 1.15;
   transition: transform 0.25s ease, filter 0.25s ease;
-  z-index: 10; 
+  z-index: 10;
   /* background-color: whitesmoke; color de fondo de los los rectangulos de los iconos */
   /* border-style: solid;  Estilo de el radio */
   /* box-shadow: 
     0 0 25px #00f0ff,
     0 0 60px #00f0ff55,
     inset 0 0 40px #00f0ff15; */
-    /* clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); */
+  /* clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); */
   /* border-radius: 10px 90px 90px 10px; izquierda, arriba, derecha, abajo jejejej */
 }
 
@@ -572,46 +518,54 @@ body {
   filter: drop-shadow(0 0 6px currentColor);
 }
 
-.rectangulo{
+.rectangulo {
   background-color: #2DE2E6;
 }
+
 /* Posiciones de los 6 items (cada 60 grados) */
-.item-1 { /* Inicio - arriba */
+.item-1 {
+  /* Inicio - arriba */
   transform: rotate(0deg) translateY(-175px) rotate(0deg);
   color: #ffaa00;
 }
 
-.item-2 { /* Tienda - arriba derecha */
+.item-2 {
+  /* Tienda - arriba derecha */
   transform: rotate(60deg) translateY(-175px) rotate(-60deg);
   color: #ffaa00;
 }
 
-.item-3 { /* Atención al cliente - abajo derecha */
+.item-3 {
+  /* Atención al cliente - abajo derecha */
   transform: rotate(120deg) translateY(-175px) rotate(-120deg);
   color: #ffaa00;
 }
 
-.item-4 { /* Mi cuenta - abajo */
+.item-4 {
+  /* Mi cuenta - abajo */
   transform: rotate(180deg) translateY(-175px) rotate(-180deg);
   color: #ffaa00;
 }
 
-.item-5 { /* Contáctenos - abajo izquierda */
+.item-5 {
+  /* Contáctenos - abajo izquierda */
   transform: rotate(240deg) translateY(-175px) rotate(-240deg);
   color: #ffaa00;
 }
 
-.item-6 { /* Acerca de nosotros - arriba izquierda */
+.item-6 {
+  /* Acerca de nosotros - arriba izquierda */
   transform: rotate(300deg) translateY(-175px) rotate(-300deg);
   color: #ffaa00;
 }
+
 /* Hover */
 .radial-item:hover {
   filter: brightness(1.4);
-  
+
 }
 
-/* ===== RESPONSIVE ===== */
+/* ========== INICIO : RESPONSIVE MENU ========== */
 @media (max-width: 600px) {
   .radial-menu {
     width: 360px;
@@ -622,7 +576,8 @@ body {
     background-color: red;
   }
 
-  .center-logo { /* Ajusta el tamaño del logo central */
+  .center-logo {
+    /* Ajusta el tamaño del logo central */
     width: 60px;
   }
 
@@ -637,16 +592,112 @@ body {
     font-size: 1.5rem;
   }
 
-  .item-1 { transform: rotate(0deg) translateY(-135px) rotate(0deg); }
-  .item-2 { transform: rotate(60deg) translateY(-135px) rotate(-60deg); }
-  .item-3 { transform: rotate(120deg) translateY(-135px) rotate(-120deg); }
-  .item-4 { transform: rotate(180deg) translateY(-135px) rotate(-180deg); }
-  .item-5 { transform: rotate(240deg) translateY(-135px) rotate(-240deg); }
-  .item-6 { transform: rotate(300deg) translateY(-135px) rotate(-300deg); }
-}
- /* ! ############ MENÚ RADIAL ESTILOS CSS DANIEL ############  */
+  .item-1 {
+    transform: rotate(0deg) translateY(-135px) rotate(0deg);
+  }
 
- 
+  .item-2 {
+    transform: rotate(60deg) translateY(-135px) rotate(-60deg);
+  }
+
+  .item-3 {
+    transform: rotate(120deg) translateY(-135px) rotate(-120deg);
+  }
+
+  .item-4 {
+    transform: rotate(180deg) translateY(-135px) rotate(-180deg);
+  }
+
+  .item-5 {
+    transform: rotate(240deg) translateY(-135px) rotate(-240deg);
+  }
+
+  .item-6 {
+    transform: rotate(300deg) translateY(-135px) rotate(-300deg);
+  }
+}
+
+/* ========== FIN : RESPONSIVE MENU ========== */
+
+/* ========== INICIO : RESPONSIVE BURGER MENU ========== */
+.opBurgerMenu {
+  /*oculta el contenido que se desborda.*/
+  overflow: hidden;
+  background-color: #333;
+}
+
+.burgerMenu {
+  align-content: center;
+  padding: 1rem;
+}
+
+#btnJuego {
+  max-width: 5rem;
+}
+
+.iconMoneda {
+  filter: drop-shadow(0px 0px 5px var(--yellow-accent));
+}
+
+/*Selecciona los enlaces <a> que están dentro de un elemento*/
+.opBurgerMenu a {
+  font-family: var(--font-pixel-sub);
+  /*  float: left: coloca los enlaces hacia la izquierda, permitiendo que se distribuyan horizontalmente.*/
+  float: left;
+  /*display: block: hace que el enlace se comporte como un elemento de bloque.*/
+  display: block;
+  color: var(--yellow-accent);
+  border-bottom: 1px solid var(--cyan-accent);
+  background-color: var(--bg-color);
+  text-align: center;
+  /*padding: 14px 16px: añade espacio interior; 14 píxeles arriba y abajo, y 16 píxeles a los lados.*/
+  padding: 14px 16px;
+  /*text-decoration: none: elimina la decoración predeterminada del enlace, como el subrayado.*/
+  text-decoration: none;
+  /*font-size: 17px: establece el tamaño del texto.*/
+  font-size: 17px;
+}
+
+@media screen and (min-width: 680px) {
+
+  .burgerMenu,
+  .opBurgerMenu {
+    display: none;
+  }
+}
+
+/* Oculta los enlaces que no son .iconMoneda */
+@media screen and (max-width: 680px) {
+  .opBurgerMenu a:not(.iconMoneda) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .opBurgerMenu.responsive {
+    position: relative;
+  }
+
+  .opBurgerMenu.responsive .iconMoneda {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1rem;
+  }
+
+  .opBurgerMenu.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+/* =========== FIN : RESPONSIVE BURGER MENU ============ */
+
+
+/* ! ############ MENÚ RADIAL ESTILOS CSS DANIEL ############  */
+
+
 /* Footer Container */
 .footer-container {
   background-color: var(--bg-color);
@@ -771,11 +822,12 @@ body {
   .footer-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .footer-bottom {
     flex-direction: column;
     gap: 12px;
     text-align: center;
   }
 }
+
 /* Footer Container */
