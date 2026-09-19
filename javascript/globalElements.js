@@ -23,7 +23,7 @@
  *      <script src="/javascript/globalElements.js"></script>
 */
 const mainNavbar = document.querySelector(".navThePixelVault");
-const menuBtn = [
+const listMenuBtn = [
   { id: "inicio", icon: "💻", name: "INICIO", pathHtml: "index.html" },
   { id: "tienda", icon: "🛍️", name: "TIENDA / CATÁLOGO", pathHtml: "tienda.html" },
   { id: "catalogo", icon: "🎧", name: "CATÁLOGO", pathHtml: "tienda.html" },
@@ -81,8 +81,14 @@ const renderNavbar = () => {
                     <!-- ========== FINAL MENÚ RADIAL DANIEL ========== -->`
 
   let mobileBurgerMenu = `
+    <div class="burgerMenu" id="responsBurgerMenu">
+      <a class="iconMoneda" onclick="viewOptionBurgerMenu()">
+        <img src="assets/btnJuego.png" id="btnJuego">
+      </a>
+    </div>
+    `;
 
-`;
+  let optionBurger = creatreBtnOpcionBuergerMenu();
 
   const contenidoInterno = `
     <div class="contenedormenu">
@@ -107,19 +113,36 @@ const renderNavbar = () => {
     `;
 
   mainNavbar.insertAdjacentHTML("beforeend", contenidoInterno);
+  mainNavbar.insertAdjacentHTML("afterend", optionBurger);
 };
-renderNavbar();
 
 
-function myFunction() {
-  var x = document.getElementById("responsBurgerMenu");
-  console.log(x.className)
-  if (x.className === "burgerMenu") {
-    x.className += " responsive";
+
+/* Funcion para mostrar/ocultar las opciones del Menu Hamburgesa */
+const viewOptionBurgerMenu = () => {
+  var optionMenu = document.getElementById("optionBurgerMenu");
+  if (optionMenu.className === "opBurgerMenu") {
+    optionMenu.className += " responsive";
   } else {
-    x.className = "burgerMenu";
+    optionMenu.className = "opBurgerMenu";
   }
 }
+
+/* Creamos los botnes del menu hamburgesa */
+const creatreBtnOpcionBuergerMenu = () => {
+  let option = `<div>
+    <!-- onclick="viewOptionBurgerMenu()" : indica que se debe ejecutar la función JavaScript llamada viewOptionBurgerMenu cuando se hace clic en ese enlace. -->
+    <div class="opBurgerMenu" id="optionBurgerMenu">`;
+
+  for (let i = 0; i < listMenuBtn.length; i++) {
+    option += `<a href="${listMenuBtn[i].pathHtml}"> ${listMenuBtn[i].icon} ${listMenuBtn[i].name}</a>`;
+  }
+
+  option += `</div></div>`;
+  return option;
+};
+
+renderNavbar();
 /* --------- FIN: navbar --------- */
 
 /* --------- INICIO: MENU INTERACTIVO --------- */

@@ -570,23 +570,35 @@ body {
 /* ========== FIN : RESPONSIVE MENU ========== */
 
 /* ========== INICIO : RESPONSIVE BURGER MENU ========== */
-
-.burgerMenu,
-.optionBurgerMenu {
+.opBurgerMenu {
   /*oculta el contenido que se desborda.*/
   overflow: hidden;
   background-color: #333;
 }
 
+.burgerMenu {
+  align-content: center;
+  padding: 1rem;
+}
+
+#btnJuego {
+  max-width: 5rem;
+}
+
+.iconMoneda {
+  filter: drop-shadow(0px 0px 5px var(--yellow-accent));
+}
+
 /*Selecciona los enlaces <a> que están dentro de un elemento*/
-.burgerMenu a {
+.opBurgerMenu a {
+  font-family: var(--font-pixel-sub);
   /*  float: left: coloca los enlaces hacia la izquierda, permitiendo que se distribuyan horizontalmente.*/
   float: left;
   /*display: block: hace que el enlace se comporte como un elemento de bloque.*/
   display: block;
-  /*color: #f2f2f2: establece un color de texto gris muy claro.*/
-  color: #f2f2f2;
-  /*text-align: center: centra el texto dentro del espacio del enlace.*/
+  color: var(--yellow-accent);
+  border-bottom: 1px solid var(--cyan-accent);
+  background-color: var(--bg-color);
   text-align: center;
   /*padding: 14px 16px: añade espacio interior; 14 píxeles arriba y abajo, y 16 píxeles a los lados.*/
   padding: 14px 16px;
@@ -596,43 +608,34 @@ body {
   font-size: 17px;
 }
 
-/* por dafault no debe aparecer */
-.burgerMenu .iconMoneda {
-  display: none;
-}
-
 @media screen and (min-width: 680px) {
-  .burgerMenu {
+
+  .burgerMenu,
+  .opBurgerMenu {
     display: none;
   }
-
 }
 
 /* Oculta los enlaces que no son .iconMoneda */
 @media screen and (max-width: 680px) {
-  .burgerMenu a:not(.iconMoneda) {
+  .opBurgerMenu a:not(.iconMoneda) {
     display: none;
-  }
-
-  .burgerMenu a.iconMoneda {
-    float: left;
-    display: block;
   }
 }
 
 @media screen and (max-width: 680px) {
-  .burgerMenu.responsive {
+  .opBurgerMenu.responsive {
     position: relative;
   }
 
-  .burgerMenu.responsive .iconMoneda {
+  .opBurgerMenu.responsive .iconMoneda {
     position: absolute;
     right: 0;
     top: 0;
     width: 1rem;
   }
 
-  .burgerMenu.responsive a {
+  .opBurgerMenu.responsive a {
     float: none;
     display: block;
     text-align: left;
