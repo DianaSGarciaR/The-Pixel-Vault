@@ -47,6 +47,17 @@
   overflow: visible;
 }
 
+/* Responsividad a pantallas pequeñas, a partir de los 600px*/
+@media (max-width: 600px){
+    .frame-demo{
+        /* Se quita la proporción fija 2:1: en vez de recortar contenido
+           que no cabe, el marco crece en altura lo que haga falta. */
+        aspect-ratio: unset;
+        height:auto;
+        width:90%;
+    }
+    
+}
 
 /*
  * FORMULARIO

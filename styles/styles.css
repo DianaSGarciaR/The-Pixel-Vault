@@ -100,7 +100,7 @@ body {
 }
 
 .navThePixelVault {
-  background-image: url(/assets/navbarFondo.jpg) !important;
+  background-image: url(../assets/navbarFondo.jpg) !important; /*Se agregó el ../ a la ruta del archivo (Beto)*/
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -116,7 +116,7 @@ body {
   /* Les dice a los elementos hijos que se posicionen en referencia a él*/
   width: 10rem;
   height: 10rem;
-  background-image: url(/assets/botonmenu.png);
+  background-image: url(../assets/botonmenu.png);/*Se agregó el ../ a la ruta del archivo (Beto)*/
   background-size: contain;
   background-position: top;
   background-repeat: no-repeat;
@@ -148,7 +148,7 @@ body {
   left: 2.5rem;
   width: 5rem;
   height: 5rem;
-  background-image: url(/assets/monedapeso.png);
+  background-image: url(../assets/monedapeso.png);/*Se agregó el ./ a la ruta del archivo (Beto)*/
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -363,8 +363,8 @@ body {
 /*! --------- FIN: Boton Menu --------- */
 
 /*! --------- INICIO: Consultas de medios CSS --------- */
-/* Ocultar elementos despues del tamaño de un celular  */
-@media screen and (max-width: 680px) {
+/* Ocultar elementos despues del tamaño de un celular (Lo cambié a 880px en lugar de 680 porque en 880 es más o menos donde la moneda se encima con el banner, Beto) */
+@media screen and (max-width: 880px) {
 
   /* Se ocultan elentos del Navbar para copoplarlos en vistas de celular */
   .divNavLeft,
@@ -374,6 +374,22 @@ body {
 
   #navbar,
   .logo {
+    justify-content: center;
+  }
+}
+
+/*Ajuste del tamaño del logo principal para que no empuje al botón del menú hamburguesa fuera de la pantalla después de los 430px*/
+@media screen and (max-width: 430px) {
+
+  /* Se ocultan elentos del Navbar para copoplarlos en vistas de celular */
+  .divNavLeft,
+  .divNavRight {
+    display: none;
+  }
+
+  #navbar,
+  .logo {
+    max-width: 70% ;
     justify-content: center;
   }
 }
@@ -658,7 +674,7 @@ body {
   font-size: 17px;
 }
 
-@media screen and (min-width: 680px) {
+@media screen and (min-width: 880px) {
 
   .burgerMenu,
   .opBurgerMenu {
@@ -667,13 +683,13 @@ body {
 }
 
 /* Oculta los enlaces que no son .iconMoneda */
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 880px) {
   .opBurgerMenu a:not(.iconMoneda) {
     display: none;
   }
 }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 880px) {
   .opBurgerMenu.responsive {
     position: relative;
   }
