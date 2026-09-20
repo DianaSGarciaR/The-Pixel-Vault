@@ -296,10 +296,10 @@ const renderfooter = () => {
       <div class="footer-column">
         <h3 class="column-title">NAVEGACIÓN</h3>
         <ul class="footer-links">
-          <li><a href="#"><span class="play-icon">▶</span> Inicio</a></li>
-          <li><a href="#"><span class="play-icon">▶</span> Catálogo</a></li>
-          <li><a href="#"><span class="play-icon">▶</span> Novedades</a></li>
-          <li><a href="#"><span class="play-icon">▶</span> Ofertas</a></li>
+          <li><a href="index.html"><span class="play-icon">▶</span> Inicio</a></li>
+          <li><a href="contactanos.html"><span class="play-icon">▶</span> Contáctanos</a></li>
+          <li><a href="acercaNosotros.html"><span class="play-icon">▶</span> Acerca de nosotros</a></li>
+          <li><a href="soporte.html"><span class="play-icon">▶</span> Soporte y atención al cliente</a></li>
         </ul>
       </div>
 
@@ -307,10 +307,10 @@ const renderfooter = () => {
       <div class="footer-column">
         <h3 class="column-title">COLECCIÓN</h3>
         <ul class="footer-links">
-          <li><a href="#"><span class="play-icon">▶</span> Consolas Retro</a></li>
-          <li><a href="#"><span class="play-icon">▶</span> Videojuegos</a></li>
-          <li><a href="#"><span class="play-icon">▶</span> Coleccionables</a></li>
-          <li><a href="#"><span class="play-icon">▶</span> Merchandising</a></li>
+          <li><a href="#"><span class="play-icon">▶</span>Login</a></li>
+          <li><a href="#"><span class="play-icon">▶</span>Registro de usuario</a></li>
+          <li><a href="mi-cuenta.html"><span class="play-icon">▶</span>Mi cuenta</a></li>
+          <li><a href="#"><span class="play-icon">▶</span>Mi carrito</a></li>
         </ul>
       </div>
 
@@ -318,10 +318,8 @@ const renderfooter = () => {
       <div class="footer-column">
         <h3 class="column-title">SOPORTE</h3>
         <ul class="footer-links">
-          <li><a href="#"><span class="play-icon">▶</span> Envíos y Entregas</a></li>
-          <li><a href="#"><span class="play-icon">▶</span> Términos y Condiciones</a></li>
-          <li><a href="#"><span class="play-icon">▶</span> Política de Privacidad</a></li>
-          <li><a href="#"><span class="play-icon">▶</span> Contacto</a></li>
+          <li><a href="tienda.html"><span class="play-icon">▶</span>Tienda de videojuegos</a></li>
+          <li><a href="tienda.html"><span class="play-icon">▶</span>Tienda de mercancía</a></li>
         </ul>
       </div>
 

@@ -720,8 +720,7 @@ body {
   border: 2px solid var(--border-color);
   border-radius: 8px;
   padding: 40px;
-  max-width: 1400px;
-  margin: 0 auto;
+  margin: 2rem;
   box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
   font-family: var(--font-pixel-body);
 }
