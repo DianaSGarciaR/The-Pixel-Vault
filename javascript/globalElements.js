@@ -83,7 +83,7 @@ const renderNavbar = () => {
   let mobileBurgerMenu = `
     <div class="burgerMenu" id="responsBurgerMenu">
       <a class="iconMoneda" onclick="viewOptionBurgerMenu()">
-        <img src="assets/btnJuego.png" id="btnJuego">
+        <img src="./assets/btnJuego.png" id="btnJuego">
       </a>
     </div>
     `;
@@ -95,20 +95,19 @@ const renderNavbar = () => {
       <!-- Imagen - Se anida dentro de este div para evitar que un fragmento del elemento quede visible en pantallas móviles. -->
       <div class="menuinteractivo divNavRight" id="menuinteractivo">
         <!-- Imagen - Se anida dentro de este div para evitar que un fragmento del elemento quede visible en pantallas móviles. -->
-        <img class="insertcoin" src="assets/insertcoin.png" rel="insertcoin">
+        <img class="insertcoin" src="./assets/insertcoin.png" rel="insertcoin">
         <div class="ranura" id="ranura"></div>
         <div class="moneda" id="moneda"></div>
-        <p>Ver MENÚ: $1</p>
         <div class="menu" id="menudesplegable">
           ${botonMenu}
         </div>
       </div>
     </div>
-    <img class="logo" src="assets/ThePixelVaultLogo.png">
+    <img class="logo" src="./assets/ThePixelVaultLogo.png">
     ${mobileBurgerMenu}
     <div class="contenedorBarras divNavLeft">
-        <img class="barraRosa" src="assets/navBarraRosa.png">
-        <img class="barraAzul" src="assets/navBarraAzul.png">
+        <img class="barraRosa" src="./assets/navBarraRosa.png">
+        <img class="barraAzul" src="./assets/navBarraAzul.png">
     </div>
     `;
 
@@ -149,7 +148,7 @@ renderNavbar();
 const moneda = document.querySelector('#moneda');
 const ranura = document.querySelector('#ranura');
 const menudesplegable = document.querySelector('#menudesplegable');
-const dropSound = new Audio(`assets/sonidomoneda.mp3`);
+const dropSound = new Audio(`./assets/sonidomoneda.mp3`);
 
 let interactuando = false;
 let agarreX, agarreY;
