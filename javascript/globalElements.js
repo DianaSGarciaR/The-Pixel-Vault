@@ -29,7 +29,8 @@ const listMenuBtn = [
   { id: "catalogo", icon: "🎧", name: "CATÁLOGO", pathHtml: "tienda.html" },
   { id: "miCuenta", icon: "🧑‍🦱", name: "MI CUENTA", pathHtml: "mi-cuenta.html" },
   { id: "contactanos", icon: "📞", name: "CONTÁCTENOS", pathHtml: "contactanos.html" },
-  { id: "nosotros", icon: "🏫", name: "NOSOTROS", pathHtml: "acercaNosotros.html" }
+  { id: "nosotros", icon: "🏫", name: "NOSOTROS", pathHtml: "acercaNosotros.html" },
+  { id: "carrito", icon: "🛒", name: "CARRITO", pathHtml: "miCarrito.html" }
 ];
 
 const renderNavbar = () => {
@@ -108,6 +109,9 @@ const renderNavbar = () => {
     <div class="contenedorBarras divNavLeft">
         <img class="barraRosa" src="./assets/navBarraRosa.png">
         <img class="barraAzul" src="./assets/navBarraAzul.png">
+        <a href="./miCarrito.html">
+        <img class="barraAzul" src="./assets/carrito.png">
+        </a>
     </div>
     `;
 
@@ -310,7 +314,7 @@ const renderfooter = () => {
           <li><a href="#"><span class="play-icon">▶</span>Login</a></li>
           <li><a href="#"><span class="play-icon">▶</span>Registro de usuario</a></li>
           <li><a href="mi-cuenta.html"><span class="play-icon">▶</span>Mi cuenta</a></li>
-          <li><a href="#"><span class="play-icon">▶</span>Mi carrito</a></li>
+          <li><a href="miCarrito.html"><span class="play-icon">▶</span>Mi carrito</a></li>
         </ul>
       </div>
 
