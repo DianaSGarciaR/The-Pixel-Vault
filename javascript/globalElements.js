@@ -108,6 +108,9 @@ const renderNavbar = () => {
     <div class="contenedorBarras divNavLeft">
         <img class="barraRosa" src="./assets/navBarraRosa.png">
         <img class="barraAzul" src="./assets/navBarraAzul.png">
+        <a href="./miCarrito.html">
+        <img class="barraAzul" src="./assets/carrito.png">
+        </a>
     </div>
     `;
 
@@ -310,7 +313,7 @@ const renderfooter = () => {
           <li><a href="#"><span class="play-icon">▶</span>Login</a></li>
           <li><a href="#"><span class="play-icon">▶</span>Registro de usuario</a></li>
           <li><a href="mi-cuenta.html"><span class="play-icon">▶</span>Mi cuenta</a></li>
-          <li><a href="#"><span class="play-icon">▶</span>Mi carrito</a></li>
+          <li><a href="miCarrito.html"><span class="play-icon">▶</span>Mi carrito</a></li>
         </ul>
       </div>
 
