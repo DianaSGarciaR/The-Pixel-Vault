@@ -29,7 +29,8 @@ const listMenuBtn = [
   { id: "catalogo", icon: "🎧", name: "CATÁLOGO", pathHtml: "tienda.html" },
   { id: "miCuenta", icon: "🧑‍🦱", name: "MI CUENTA", pathHtml: "mi-cuenta.html" },
   { id: "contactanos", icon: "📞", name: "CONTÁCTENOS", pathHtml: "contactanos.html" },
-  { id: "nosotros", icon: "🏫", name: "NOSOTROS", pathHtml: "acercaNosotros.html" }
+  { id: "nosotros", icon: "🏫", name: "NOSOTROS", pathHtml: "acercaNosotros.html" },
+  { id: "carrito", icon: "🛒", name: "CARRITO", pathHtml: "miCarrito.html" }
 ];
 
 const renderNavbar = () => {
