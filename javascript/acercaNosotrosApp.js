@@ -101,7 +101,7 @@ setupNeonFrame('frameDemo6', 'frameSvg6', 'framePath6');
 
 //* ===================================== FIN DEL CÓDIGO PARA LOS MARCOS NEON =======================================
 
-//* ==================== Inicio: DOM - Menu equipo ====================
+//* ==================== Inicio: DOM - Menu equipo y modales ====================
 
 const teamGridMenu = document.querySelector(".team-grid");
 const teamModals = document.querySelector(".modals-team");
@@ -160,4 +160,4 @@ const renderModalsTeam = (listInfoModal) => {
 }
 renderMenuTeam(LIST_TRIPULANTES);
 renderModalsTeam(LIST_TRIPULANTES);
-//* ===================== Fin: DOM - Menu equipo ======================
+//* ===================== Fin: DOM - Menu equipo y modales ======================
