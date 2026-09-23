@@ -104,25 +104,60 @@ setupNeonFrame('frameDemo6', 'frameSvg6', 'framePath6');
 //* ==================== Inicio: DOM - Menu equipo ====================
 
 const teamGridMenu = document.querySelector(".team-grid");
-const renderMenuTeam = (LIST_TRIPULANTES) => {
+const teamModals = document.querySelector(".modals-team");
+
+const renderMenuTeam = (listInfoBtn) => {
   let renderHtml = "";
-  let filas = 1;
-  if (LIST_TRIPULANTES != null) {
-    for (let f = 0; f < filas; f++) {
+  let filas = 2;
+  if (listInfoBtn != null) {
+    for (let f = 1; f < filas; f++) {
       renderHtml += `<div class="team-row">`;
-      for (let i = 0; i < LIST_TRIPULANTES.length; i++) {
+      for (let i = 0; i < listInfoBtn.length; i++) {
         renderHtml += `
-          <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal${LIST_TRIPULANTES[i].id}">
-            <img src="${LIST_TRIPULANTES[i].infoBtn.btnImgUrl}" class="img-fluid" alt="Abrir información de ${LIST_TRIPULANTES[i].name}" />
-          </button>
-        `;
+          <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal${listInfoBtn[i].id}">
+            <img src="${listInfoBtn[i].infoBtn.btnImgUrl}" class="img-fluid" alt="Abrir información de ${listInfoBtn[i].name}" />
+          </button>`;
       }
       renderHtml += `</div>`;
     }
-
-    teamGridMenu.insertAdjacentHTML("beforeend", renderHtml)
+    teamGridMenu.insertAdjacentHTML("beforeend", renderHtml);
   }
 }
 
-//renderMenuTeam(LIST_TRIPULANTES);
+const renderModalsTeam = (listInfoModal) => {
+  let renderHtml = "";
+  if (listInfoModal != null) {
+
+    for (let i = 0; i < listInfoModal.length; i++) {
+      renderHtml += `<!-- Modal ${listInfoModal[i].name} -->
+        <div class="modal fade" id="modal${listInfoModal[i].id}" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Detalles del Tripulante</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img src="${listInfoModal[i].infoModal.cardImgUrl}" class="modal-member-image" alt="card${listInfoModal[i].name}">
+                <div class="d-grid">
+                  <p class="fuente">${listInfoModal[i].descripcion}</p>
+                  <div class="links">
+                    <a href="${listInfoModal[i].infoModal.linkedindUrl}" class="linkedin">
+                      <img src="assets/linkedin.png" id="linkedin" alt="logo Linkedin">
+                    </a>
+                    <a href="${listInfoModal[i].infoModal.gitHubUrl}" class="github">
+                      <img src="assets/github.png" id="github" alt="logo Github">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }
+    teamModals.insertAdjacentHTML("beforeend", renderHtml);
+  }
+}
+renderMenuTeam(LIST_TRIPULANTES);
+renderModalsTeam(LIST_TRIPULANTES);
 //* ===================== Fin: DOM - Menu equipo ======================
