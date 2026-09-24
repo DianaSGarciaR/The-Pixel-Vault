@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contáctanos</title>
+    <title>Catálogo</title>
 
     <!-- !LINK BOOSTRAP-->
     <link
@@ -13,8 +13,8 @@
       crossorigin="anonymous"
     />
     <!-- !FIN LINK BOOSTRAP-->
-    <link rel="stylesheet" href="styles/contactanos.css" />
-    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="./styles/tienda.css" /> <!--Estilos específicos del catálogo-->
+    <link rel="stylesheet" href="./styles/styles.css" /> <!-- Estilos generales de todo el ecommerce-->
 
     <!--Link de fuente-->
     <style>
@@ -28,8 +28,107 @@
 
     <!--↓↓↓↓↓↓↓↓↓↓↓Agrega aquí tu código↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
     
-    <section class="banner-container">
-        <img class="banner-frame" src="./assets/En construccion.jpeg" alt="Imagen temporal, pagina web en construcción">
+    <!--* INICIO : Banner Principal ---->
+      <section class="banner-container">
+        <!-- Imagen de fondo-->
+        <img class="banner-frame" src="./assets/banner-img.png" alt="Marco del Banner">
+        <!-- Contenedor de la pantalla central con los botones -->
+        <div class="banner-screen">
+          <h3 class="yellow-accent btn-yellow head" class="head" >Catálogo</h3>
+        </div>
+      </section>
+    <!--* FIN : Banner Principal Sci-Fi ---->
+
+
+    <!--* ============================== Prueba card ========================-->
+    
+    <section>
+      <div class="row">
+        <div class="col-2">
+          <!--? AQUÍ PENSARÍA PONER LA COLUMNA DE LOS FILTROS Y DEMÁS -->
+        </div>
+        
+        <div class="col-10">
+          <div class="row">
+            
+            <div class="col-4">
+              <div class="components">
+                <div class="card notch">
+                  <div class="art">
+                    <span class="badge">Edición limitada</span>
+                    <small>render de producto</small>
+                  </div>
+                  <div class="body">
+                    <h3>Figura — Guardián Neón</h3>
+                    <p>Resina pintada a mano, 18 cm, base con luz LED.</p>
+                    <div class="row">
+                      <div class="col-8">
+                        <span class="price">$899 MXN</span>
+                      </div>
+                      
+                      <div class="col-4">  
+                        <button class="cta notch-sm">Añadir</button>
+                      </div>  
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="components">
+                <div class="card notch">
+                  <div class="art">
+                    <span class="badge">Edición limitada</span>
+                    <small>render de producto</small>
+                  </div>
+                  <div class="body">
+                    <h3>Figura — Guardián Neón</h3>
+                    <p>Resina pintada a mano, 18 cm, base con luz LED.</p>
+                    <div class="row">
+                      <div class="col-8">
+                        <span class="price">$899 MXN</span>
+                      </div>
+                      
+                      <div class="col-4">  
+                        <button class="cta notch-sm">Añadir</button>
+                      </div>  
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="components">
+                <div class="card notch">
+                  <div class="art">
+                    <span class="badge">Edición limitada</span>
+                    <small>render de producto</small>
+                  </div>
+                  <div class="body">
+                    <h3>Figura — Guardián Neón</h3>
+                    <p>Resina pintada a mano, 18 cm, base con luz LED.</p>
+                    <div class="row">
+                      <div class="col-8">
+                        <span class="price">$899 MXN</span>
+                      </div>
+                      
+                      <div class="col-4">  
+                        <button class="cta notch-sm">Añadir</button>
+                      </div>  
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>  
+
+          
+        </div>
+      </div>
     </section>
 
 
@@ -42,7 +141,7 @@
 
     <!-- ! ENLACES DE ARCHIVOS JAVASCRIP-->
     <script src="./javascript/globalElements.js"></script>
-    <script src="./javascript/contactanos.js"></script>
+    <script src="./javascript/tienda.js"></script> <!-- script para la generación de los productos del catálogo-->
     <!-- ! FIN DE ENLACES DE ARCHIVOS JAVASCRIP-->
     <!-- !LINK BOOSTRAP-->
     <script

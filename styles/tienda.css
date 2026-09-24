@@ -1,0 +1,88 @@
+/*---------------------- variables generales ------------------------*/
+
+:root{
+    --void:#0D0B1E;
+    --panel:#171233;
+    --panel-alt:#1F1840;
+    --magenta:#FF3EA5;
+    --cyan:#2DE2E6;
+    --amber:#FFD23F;
+    --ink:#E7E3F5;
+    --ink-dim:#9C8FBE;
+  }
+
+
+/* ---------- pixel-notch shape, reused on cards/badges/buttons ---------- */
+  .notch{
+    clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+  }
+  .notch-sm{
+    clip-path: polygon(5px 0, calc(100% - 5px) 0, 100% 5px, 100% calc(100% - 5px), calc(100% - 5px) 100%, 5px 100%, 0 calc(100% - 5px), 0 5px)
+    ;
+  }
+
+/* ---------- component row ---------- */
+  .components{
+    display:grid;
+    margin:0 1rem;
+    align-items:start;
+  }
+  @media (max-width:640px){ .components{grid-template-columns:1fr;} }
+ 
+  .card{
+    background:var(--panel);
+    padding:0;
+    overflow:hidden;
+  }
+  .card .art{
+    height:150px;
+    background:
+      linear-gradient(135deg, rgba(255,62,165,0.35), rgba(45,226,230,0.25)),
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 8px, transparent 8px 16px);
+    position:relative;
+  }
+  .card .art small{
+    position:absolute;bottom:8px;right:10px;
+    font-size:10px;color:rgba(255,255,255,0.55);
+    font-family:'Inter',sans-serif;font-style:italic;
+  }
+  .card .badge{
+    position:absolute;top:10px;left:10px;
+    background:var(--void);
+    color:var(--amber);
+    font-family:'Pixelify Sans',monospace;
+    font-size:11px;
+    padding:5px 9px;
+    border:1px solid rgba(255,210,63,0.4);
+  }
+  .card .body{padding:18px 18px 20px;}
+  .card h3{
+    font-family:'Quantico',sans-serif;
+    font-size:17px;
+    margin:0 0 6px;
+    color:var(--ink);
+  }
+  .card p{
+    font-size:13px;
+    color:var(--ink-dim);
+    line-height:1.5;
+    margin:0 0 16px;
+  }
+  .card .row{display:flex;align-items:center; justify-content:space-between;}
+  .price{font-family:'Quantico',sans-serif;color:var(--amber);font-size:1rem;}
+  .cta{
+    background:var(--magenta);
+    color:var(--void);
+    font-family:'Quantico',sans-serif;
+    font-weight:700;
+    font-size:1rem;
+    border:none;
+    padding: 0.5rem 1.4rem;
+    cursor:pointer;
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{box-shadow:0 0 6px var(--magenta), 0 0 14px rgba(255,62,165,0.35);}
+    50%{box-shadow:0 0 12px var(--magenta), 0 0 24px rgba(255,62,165,0.55);}
+  }
+  @media (prefers-reduced-motion: reduce){ .cta{animation:none;} }
