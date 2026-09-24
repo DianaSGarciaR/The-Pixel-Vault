@@ -38,11 +38,12 @@
 .banner-sidebar {
   width: 100%;                       /* Ancho dinámico */
   min-height: 100vh;
-  background-color: var(--bg-color);
+  background: linear-gradient(180deg, rgba(23, 18, 51, 0.95) 0%, rgba(13, 11, 30, 0.98) 100%);
   backdrop-filter: blur(8px);         /* Efecto de desenfoque de fondo */
-  padding: 24px 18px;
+  padding: 30px 20px;
   box-sizing: border-box;
   border-right: 2px solid var(--border-color);
+  box-shadow: 5px 0 15px rgba(45, 226, 230, 0.15);
   font-family: 'Rajdhani', sans-serif;
   color: #fff;
 }
@@ -60,8 +61,11 @@
   color: var(--border-color);
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
   text-shadow: 0 0 8px rgba(255, 0, 122, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* Lista de opciones */
@@ -73,24 +77,87 @@
 }
 
 .menu-list li {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 /* Enlaces estilo neón */
 .menu-list a {
   color: var(--link-color);
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 1px;
   transition: all 0.2s ease-in-out;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.25s ease;
 }
-
+/* Ícono de flecha neón */
+.menu-list a .arrow {
+  color: var(--cyan);
+  font-size: 0.75rem;
+  margin-right: 8px;
+  opacity: 0.5;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+/* Efectos al pasar el cursor (Hover) */
 .menu-list a:hover {
-  color: var(--link-hover);
-  text-shadow: 0 0 6px var(--link-color);
-  transform: translateX(5px);
+  color: #fff;
+  background: rgba(45, 226, 230, 0.08);
+  border-color: rgba(45, 226, 230, 0.4);
+  box-shadow: 0 0 10px rgba(45, 226, 230, 0.2);
+  transform: translateX(4px);
+}
+.menu-list a:hover .arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+.menu-list a.active {
+  color: var(--amber);
+  background: rgba(255, 210, 63, 0.1);
+  border-color: var(--amber);
+  box-shadow: inset 3px 0 0 var(--amber);
+}
+.menu-divider {
+  height: 1px;
+  background: linear-gradient(90deg, var(--magenta), var(--cyan), transparent);
+  margin: 24px 0;
+  opacity: 0.4;
+}
+.filter-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.filter-label {
+  font-size: 0.85rem;
+  color: var(--ink-dim);
+  font-weight: 600;
+}
+.price-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.filter-tag {
+  background: var(--panel-alt);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--ink);
+  padding: 6px 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.filter-tag:hover {
+  border-color: var(--amber);
+  color: var(--amber);
 }
 
   /* ---------- Termina banner  ---------- */
