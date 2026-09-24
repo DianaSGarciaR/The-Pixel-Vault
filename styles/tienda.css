@@ -12,6 +12,83 @@
   }
 
 
+
+  /* ---------- Inicia banner ---------- */
+/* Configuración de fuente y variables de estilo */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@600;700&display=swap');
+
+:root {
+  --bg-color: rgba(23, 18, 51, 0.80); /* #171233 con 80% de opacidad según Figma */
+  --title-color: #ff007a;             /* Color neón de los títulos */
+  --link-color: #f7d070;              /* Color dorado/amarillo de los enlaces */
+  --link-hover: #ffffff;
+  --border-color: #00f0ff;            /* Borde azul neón estilo cyberpunk */
+}
+
+/* Contenedor Principal (Banner Lateral) */
+.banner-sidebar {
+  width: 100%;                       /* Ancho exacto según la propiedad W: 500 en Figma */
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  backdrop-filter: blur(8px);         /* Efecto de desenfoque de fondo */
+  padding: 24px 18px;
+  box-sizing: border-box;
+  border-right: 2px solid var(--border-color);
+  font-family: 'Rajdhani', sans-serif;
+  color: #fff;
+}
+
+/* Secciones dentro del banner */
+.section {
+  margin-bottom: 40px;
+}
+
+/* Títulos con estética Cyberpunk/Gamer */
+.section-title {
+  font-family: 'Press Start 2P', monospace, sans-serif; /* Estilo retro/pixel */
+  font-size: 1.2rem;
+  color: var(--title-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  text-shadow: 0 0 8px rgba(255, 0, 122, 0.6);
+}
+
+/* Lista de opciones */
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-list li {
+  margin-bottom: 10px;
+}
+
+/* Enlaces estilo neón */
+.menu-list a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: all 0.2s ease-in-out;
+  display: inline-block;
+}
+
+.menu-list a:hover {
+  color: var(--link-hover);
+  text-shadow: 0 0 6px var(--link-color);
+  transform: translateX(5px);
+}
+
+  /* ---------- Termina banner  ---------- */
+
+
+
+/* ---------- Inicia cards ---------- */
+
+
 /* ---------- pixel-notch shape, reused on cards/badges/buttons ---------- */
   .notch{
     clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
@@ -86,3 +163,4 @@
     50%{box-shadow:0 0 12px var(--magenta), 0 0 24px rgba(255,62,165,0.55);}
   }
   @media (prefers-reduced-motion: reduce){ .cta{animation:none;} }
+  /* ---------- Termina cards ---------- */
