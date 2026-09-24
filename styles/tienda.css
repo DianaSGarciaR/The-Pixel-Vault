@@ -1,5 +1,27 @@
 /*---------------------- variables generales ------------------------*/
+:root {
+  /* Para títulos principales*/
+  --font-pixel-header: 'Press Start 2P', monospace;
 
+  /* Para subtítulos y encabezados de columna */
+  --font-pixel-sub: 'Pixelify Sans', monospace;
+
+  /* Para párrafos largos y enlaces */
+  --font-pixel-body: 'Quantico', sans-serif;
+}
+:root {
+  --bg-color: #000B1E;
+  /*background color */
+  --text-main: #E7E3F5;
+  /*color del texto */
+  --text-bright: #ffffff;
+  /*coor e texto más brillante*/
+  --cyan-accent: #2DE2E6;
+  --yellow-accent: #FFD23F;
+  --border-color: #FF3EA5;
+  --panel-color: #171233;
+  /*background más claro*/
+}
 :root{
     --void:#0D0B1E;
     --panel:#171233;
@@ -12,22 +34,9 @@
   }
 
 
-
-  /* ---------- Inicia banner ---------- */
-/* Configuración de fuente y variables de estilo */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@600;700&display=swap');
-
-:root {
-  --bg-color: rgba(23, 18, 51, 0.80); /* #171233 con 80% de opacidad según Figma */
-  --title-color: #ff007a;             /* Color neón de los títulos */
-  --link-color: #f7d070;              /* Color dorado/amarillo de los enlaces */
-  --link-hover: #ffffff;
-  --border-color: #00f0ff;            /* Borde azul neón estilo cyberpunk */
-}
-
 /* Contenedor Principal (Banner Lateral) */
 .banner-sidebar {
-  width: 100%;                       /* Ancho exacto según la propiedad W: 500 en Figma */
+  width: 100%;                       /* Ancho dinámico */
   min-height: 100vh;
   background-color: var(--bg-color);
   backdrop-filter: blur(8px);         /* Efecto de desenfoque de fondo */
@@ -45,17 +54,19 @@
 
 /* Títulos con estética Cyberpunk/Gamer */
 .section-title {
-  font-family: 'Press Start 2P', monospace, sans-serif; /* Estilo retro/pixel */
   font-size: 1.2rem;
-  color: var(--title-color);
+  font-family:var(--font-pixel-header); /* Estilo retro/pixel */
+ word-break: break-word;
+  color: var(--border-color);
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   margin-bottom: 15px;
   text-shadow: 0 0 8px rgba(255, 0, 122, 0.6);
 }
 
 /* Lista de opciones */
 .menu-list {
+  font-family: var(--font-pixel-body) ;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -145,7 +156,11 @@
     line-height:1.5;
     margin:0 0 16px;
   }
-  .card .row{display:flex;align-items:center; justify-content:space-between;}
+  .card-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
   .price{font-family:'Quantico',sans-serif;color:var(--amber);font-size:1rem;}
   .cta{
     background:var(--magenta);
