@@ -50,19 +50,42 @@
         <div class="col-12 col-md-3">
           <aside class="banner-sidebar">
   <!-- Sección Videojuegos -->
-  <div class="section">
-    <h3 class="section-title">JUEGOS</h3>
+  <div class="section menu-group">
+    <button 
+      class="section-title menu-toggle d-md-none" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#menuVideojuegos" 
+      aria-expanded="false"
+    >
+    <span>VIDEOJUEGOS</span>
+      <span class="chevron">▼</span>
+    </button>
+    <h3 class="section-title d-none d-md-block">JUEGOS</h3>
+    <div class="collapse d-md-block" id="menuVideojuegos">
     <ul class="menu-list">
       <li><a href="#"><span class="arrow">▶</span>FÍSICOS</a></li>
       <li><a href="#"><span class="arrow">▶</span>DIGITALES</a></li>
       <li><a href="#"><span class="arrow">▶</span>EDICIÓN ESPECIAL</a></li>
     </ul>
   </div>
+  </div>
   <div class="menu-divider"></div>
 
   <!-- Sección Merch -->
-  <div class="section">
-    <h3 class="section-title">MERCH</h3>
+   <div class="section menu-group">
+    <button 
+      class="section-title menu-toggle d-md-none" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#menuMerch" 
+      aria-expanded="false"
+    >
+   <span>MERCH</span>
+      <span class="chevron">▼</span>
+    </button>
+    <h3 class="section-title d-none d-md-block">MERCH</h3>
+    <div class="collapse d-md-block" id="menuMerch">
     <ul class="menu-list">
       <li><a href="#"><span class="arrow">▶</span>CDs Y VINILES</a></li>
       <li><a href="#"><span class="arrow">▶</span>PELUCHES</a></li>
@@ -70,13 +93,25 @@
       <li><a href="#"><span class="arrow">▶</span>ACCESORIOS</a></li>
       <li><a href="#"><span class="arrow">▶</span>ROPA Y CALZADO</a></li>
     </ul>
+    </div>
   </div>
 
  <div class="menu-divider"></div>
 
   <!-- Sección Filtros -->
-  <div class="section">
-    <h3 class="section-title">FILTROS</h3>
+  <div class="section menu-group">
+    <button 
+      class="section-title menu-toggle d-md-none" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#menuFiltros" 
+      aria-expanded="false"
+    >
+      <span>FILTROS</span>
+      <span class="chevron">▼</span>
+    </button>
+    <h3 class="section-title d-none d-md-block">FILTROS</h3>
+    <div class="collapse d-md-block" id="menuFiltros">
     <div class="filter-box">
       <span class="filter-label">RANGO DE PRECIO</span>
       <div class="price-tags">
@@ -84,6 +119,7 @@
         <button class="filter-tag">$500 - $1500</button>
       </div>
     </div>
+  </div>
   </div>
 </aside>
         </div>

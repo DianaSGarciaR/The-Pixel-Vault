@@ -58,11 +58,11 @@
   font-size: 1.2rem;
   font-family:var(--font-pixel-header); /* Estilo retro/pixel */
  word-break: break-word;
-  color: var(--border-color);
+  color: var(--yellow-accent);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 18px;
-  text-shadow: 0 0 8px rgba(255, 0, 122, 0.6);
+  text-shadow: 0 0 8px rgba(255, 225, 0, 0.6);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -90,7 +90,8 @@
   transition: all 0.2s ease-in-out;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content:flex-start;
+  gap: 10px;
   padding: 8px 12px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid transparent;
@@ -99,7 +100,7 @@
 }
 /* Ícono de flecha neón */
 .menu-list a .arrow {
-  color: var(--cyan);
+  color: var(--cyan-accent);
   font-size: 0.75rem;
   margin-right: 8px;
   opacity: 0.5;
@@ -158,6 +159,41 @@
 .filter-tag:hover {
   border-color: var(--amber);
   color: var(--amber);
+}
+/* Botón desplegable para móviles */
+.menu-toggle {
+  width: 100%;
+  background: rgba(255, 62, 165, 0.08);
+  border: 1px solid var(--magenta);
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+.menu-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 10px var(--magenta);
+}
+.menu-toggle .chevron {
+  font-size: 0.75rem;
+  color: var(--cyan);
+  transition: transform 0.3s ease;
+}
+/* Rotación del ícono de flecha al abrir */
+.menu-toggle[aria-expanded="true"] .chevron {
+  transform: rotate(180deg);
+}
+/* Ajuste de min-height en móviles para evitar espacios vacíos gigantes */
+@media (max-width: 767.98px) {
+  .banner-sidebar {
+    min-height: auto;
+    margin-bottom: 2rem;
+    border-right: none;
+    border-bottom: 2px solid var(--cyan);
+  }
 }
 
   /* ---------- Termina banner  ---------- */
