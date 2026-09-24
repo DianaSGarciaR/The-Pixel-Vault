@@ -1,3 +1,8 @@
+/** ================== Inicio: import ================== */
+import { LIST_TRIPULANTES } from './dataBase.js';
+/** ================== Fin: import ===================== */
+
+
 //*==========FUNCIONES PARA GENERAR LOS MARCOS NEON DE LA SECCION DESCRIPCIÓN DEL PROYECTO Y MISSION LOGS==========
 
 /* ==========================================================================
@@ -7,27 +12,27 @@
    ========================================================================== */
 
 // Genera el "zig-zag" canónico de una esquina superior-izquierda: de (cs,0) a (0,cs)
-function stairPoints(steps, cs){
+function stairPoints(steps, cs) {
   const s = cs / steps;
   const pts = [];
-  for (let i = 0; i < steps; i++){
-    pts.push([cs - i*s, i*s]);
-    pts.push([cs - i*s, (i+1)*s]);
-    pts.push([cs - (i+1)*s, (i+1)*s]);
+  for (let i = 0; i < steps; i++) {
+    pts.push([cs - i * s, i * s]);
+    pts.push([cs - i * s, (i + 1) * s]);
+    pts.push([cs - (i + 1) * s, (i + 1) * s]);
   }
   return pts;
 }
 
 // Reutiliza ese mismo zig-zag, reflejado para cada una de las 4 esquinas,
 // y lo conecta con los bordes rectos del rectángulo W x H.
-function buildFramePath(W, H, cs, steps){
+function buildFramePath(W, H, cs, steps) {
   const pts = stairPoints(steps, cs);
   const tl = pts.slice().reverse();                        // (0,cs)   -> (cs,0)
-  const tr = pts.map(([x,y]) => [W - x, y]);                // (W-cs,0) -> (W,cs)
-  const br = pts.map(([x,y]) => [W - x, H - y]).reverse();  // (W,H-cs) -> (W-cs,H)
-  const bl = pts.map(([x,y]) => [x, H - y]);                // (cs,H)   -> (0,H-cs)
+  const tr = pts.map(([x, y]) => [W - x, y]);                // (W-cs,0) -> (W,cs)
+  const br = pts.map(([x, y]) => [W - x, H - y]).reverse();  // (W,H-cs) -> (W-cs,H)
+  const bl = pts.map(([x, y]) => [x, H - y]);                // (cs,H)   -> (0,H-cs)
   const all = tl.concat(tr, br, bl);
-  return 'M ' + all.map(([x,y]) => x.toFixed(1) + ',' + y.toFixed(1)).join(' L ') + ' Z';
+  return 'M ' + all.map(([x, y]) => x.toFixed(1) + ',' + y.toFixed(1)).join(' L ') + ' Z';
 }
 
 /* ==========================================================================
@@ -54,15 +59,15 @@ const STEPS = 5; // esquina con 5 escalones
 // de 28px y un grosor de trazo de 5px. Marcos más angostos o más anchos
 // escalan estos valores en la misma proporción.
 const CORNER_RATIO = 28 / 520;
-const BORDER_RATIO = 5  / 520;
+const BORDER_RATIO = 5 / 520;
 
-function setupNeonFrame(frameId, svgId, pathId){
+function setupNeonFrame(frameId, svgId, pathId) {
   const frameDemo = document.getElementById(frameId);
-  const svg  = document.getElementById(svgId);
+  const svg = document.getElementById(svgId);
   const path = document.getElementById(pathId);
   if (!frameDemo || !svg || !path) return; // por si algún id no existe en esta página
 
-  function render(){
+  function render() {
     // clientWidth/clientHeight = tamaño real en píxeles ya calculado por
     // el navegador, después de aplicar CSS, container queries, etc.
     const W = frameDemo.clientWidth;
@@ -70,7 +75,7 @@ function setupNeonFrame(frameId, svgId, pathId){
     if (W === 0 || H === 0) return; // el elemento aún no tiene tamaño (p. ej. display:none)
 
     const cs = Math.max(10, W * CORNER_RATIO);
-    const sw = Math.max(2,  W * BORDER_RATIO);
+    const sw = Math.max(2, W * BORDER_RATIO);
 
     // El viewBox se redefine igual a W y H reales: 1 unidad del path
     // equivale a 1 píxel en pantalla, así el trazo nunca se distorsiona
@@ -87,7 +92,7 @@ function setupNeonFrame(frameId, svgId, pathId){
 }
 
 // Se registra un marco por cada instancia presente en la página.
-setupNeonFrame('frameDemo',  'frameSvg',  'framePath');
+setupNeonFrame('frameDemo', 'frameSvg', 'framePath');
 setupNeonFrame('frameDemo2', 'frameSvg2', 'framePath2');
 setupNeonFrame('frameDemo3', 'frameSvg3', 'framePath3');
 setupNeonFrame('frameDemo4', 'frameSvg4', 'framePath4');
@@ -95,3 +100,64 @@ setupNeonFrame('frameDemo5', 'frameSvg5', 'framePath5');
 setupNeonFrame('frameDemo6', 'frameSvg6', 'framePath6');
 
 //* ===================================== FIN DEL CÓDIGO PARA LOS MARCOS NEON =======================================
+
+//* ==================== Inicio: DOM - Menu equipo y modales ====================
+
+const teamGridMenu = document.querySelector(".team-grid");
+const teamModals = document.querySelector(".modals-team");
+
+const renderMenuTeam = (listInfoBtn) => {
+  let renderHtml = "";
+  let filas = 2;
+  if (listInfoBtn != null) {
+    for (let f = 1; f < filas; f++) {
+      renderHtml += `<div class="team-row">`;
+      for (let i = 0; i < listInfoBtn.length; i++) {
+        renderHtml += `
+          <button type="button" class="team-member" data-bs-toggle="modal" data-bs-target="#modal${listInfoBtn[i].id}">
+            <img src="${listInfoBtn[i].infoBtn.btnImgUrl}" class="img-fluid" alt="Abrir información de ${listInfoBtn[i].name}" />
+          </button>`;
+      }
+      renderHtml += `</div>`;
+    }
+    teamGridMenu.insertAdjacentHTML("beforeend", renderHtml);
+  }
+}
+
+const renderModalsTeam = (listInfoModal) => {
+  let renderHtml = "";
+  if (listInfoModal != null) {
+
+    for (let i = 0; i < listInfoModal.length; i++) {
+      renderHtml += `<!-- Modal ${listInfoModal[i].name} -->
+        <div class="modal fade" id="modal${listInfoModal[i].id}" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-fixed">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Detalles del Tripulante</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img src="${listInfoModal[i].infoModal.cardImgUrl}" class="modal-member-image" alt="card${listInfoModal[i].name}">
+                <div class="d-grid">
+                  <p class="fuente">${listInfoModal[i].descripcion}</p>
+                  <div class="links">
+                    <a href="${listInfoModal[i].infoModal.linkedindUrl}" class="linkedin">
+                      <img src="assets/linkedin.png" id="linkedin" alt="logo Linkedin">
+                    </a>
+                    <a href="${listInfoModal[i].infoModal.gitHubUrl}" class="github">
+                      <img src="assets/github.png" id="github" alt="logo Github">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }
+    teamModals.insertAdjacentHTML("beforeend", renderHtml);
+  }
+}
+renderMenuTeam(LIST_TRIPULANTES);
+renderModalsTeam(LIST_TRIPULANTES);
+//* ===================== Fin: DOM - Menu equipo y modales ======================
