@@ -130,3 +130,41 @@ const productos = [
         status: "Disponible"
     }
 ];
+
+
+/**
+ * ===================== Generación de productos a partir del json usando el DOM ===============================
+ */
+
+//Seleccionamos el elemento del DOM donde se van a renderizar las cards de los productos
+let productsElement = document.querySelector("#produtos");
+
+//Definimos la función para renderizar el producto
+let renderProduct = (product) => {
+    //El html de cada card utilizando los elementos de cada producto
+    const productCard = `
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card notch">
+                  <div class="art">
+                    <img src=${product.imagen} class="card-img-top" alt=${product.imagen}>
+                    <span class="badge">${product.genero}</span>
+                    <small>${product.plataforma}</small>
+                  </div>
+                  <div class="body">
+                    <h3>${product.nombre}</h3>
+                    <p>${product.descripcion}</p>
+                    <div class="card-action-row">
+                        <span class="price">$${product.precio} MXN</span>
+                        <button class="cta notch-sm">Añadir</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+    `;
+    //Se inserta el html en el elemento del DOM en una posición beforeend (antes de que termine), por lo que lo que haya antes en el elemento va a aparecer al principio y las cards se generarán al final.
+    productsElement.insertAdjacentHTML("beforeend",productCard);
+}
+
+//Ahora sí mandamos a llamar a la función render product sobre cada uno de los productos del json
+productos.map((product) => renderProduct(product));
+//Recordar que map va a recibir como argumento un callback, en este caso, la función a aplicar sobre cada uno de sus productos.
