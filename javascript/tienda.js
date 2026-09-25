@@ -138,31 +138,56 @@ const productos = [
 
 //Seleccionamos el elemento del DOM donde se van a renderizar las cards de los productos
 let productsElement = document.querySelector("#produtos");
+let modalsContainer = document.body; // En donde se renderiza el modal
 
 //Definimos la función para renderizar el producto
 let renderProduct = (product) => {
-    //El html de cada card utilizando los elementos de cada producto
+    // CARDS
     const productCard = `
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="card notch">
-                  <div class="art">
-                    <img src=${product.imagen} class="card-img-top" alt=${product.imagen}>
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="notch">
+            <div class="card">
+                <div class="art">
+                    <img src="${product.imagen}" class="card-img-top" alt="${product.nombre}">
                     <span class="badge">${product.genero}</span>
                     <small>${product.plataforma}</small>
-                  </div>
-                  <div class="body">
+                </div>
+                <div class="body">
                     <h3>${product.nombre}</h3>
-                    <p>${product.descripcion}</p>
                     <div class="card-action-row">
                         <span class="price">$${product.precio} MXN</span>
-                        <button class="cta notch-sm">Añadir</button>
+                        <button type="button" class="cta notch-sm" data-bs-toggle="modal" data-bs-target="#modal-${product.id}">INSPECCIONAR</button>
                     </div>
-                  </div>
                 </div>
             </div>
-    `;
-    //Se inserta el html en el elemento del DOM en una posición beforeend (antes de que termine), por lo que lo que haya antes en el elemento va a aparecer al principio y las cards se generarán al final.
-    productsElement.insertAdjacentHTML("beforeend",productCard);
+        </div>
+    </div>`;
+
+    // MODAL
+    const productModal = `
+    <div class="modal fade" id="modal-${product.id}" tabindex="-1" aria-labelledby="modalLabel-${product.id}" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <button type="button" class="btn-cerrar-cyber" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+                <div class="container-back"></div>
+                <img class="imagen-modal" src="${product.imagen}" alt="${product.nombre}">
+                <div class="container-descripcion">
+                    <h1>${product.nombre}</h1>
+                    <h3>${product.plataforma}</h3>
+                    <p class="precio">$${product.precio} MXN</p>
+                    <p>${product.descripcion}</p>
+                    <div class="carrito-container">
+                        <button class="carrito">
+                            Añadir al Carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`;
+
+    productsElement.insertAdjacentHTML('beforeend', productCard);
+    modalsContainer.insertAdjacentHTML('beforeend', productModal);
 }
 
 //Ahora sí mandamos a llamar a la función render product sobre cada uno de los productos del json

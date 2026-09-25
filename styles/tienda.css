@@ -198,87 +198,420 @@
 
   /* ---------- Termina banner  ---------- */
 
+.modal {
+    backdrop-filter: blur(8px);
+}
+.modal-content {
+    position: relative;
+    background: radial-gradient(circle, #50027e, #06000a);
+    filter: drop-shadow(0 0 10px #b700ff);
+    min-height: 85dvh;
+    height: auto;
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 2.5rem;
+    box-sizing: border-box;
+}
+.container-back {
+    position: absolute;
+    background: #6f42c1;
+    border-radius: 20px;
+    height: 80%; 
+    top: 10%;
+    left: 3rem;
+    width: 45%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.container-back::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 800' preserveAspectRatio='none'%3E%3Ctext x='50%25' y='50%25' fill='rgba(255,255,255,0.18)' font-size='80' font-weight='900' font-family='%22Pixelify Sans%22,sans-serif' text-anchor='middle' dominant-baseline='middle' transform='rotate(-90, 50, 400)'%3ETHE PIXEL VAULT%3C/text%3E%3C/svg%3E");
+    background-repeat: repeat-x; 
+    background-position: top left;
+    background-size: 70px 100%;
+    pointer-events: none; 
+}
+.container-descripcion {
+    position: absolute; 
+    z-index: 2;
+    right: 2.5rem;
+    width: 55%;
+    top: 2.5rem;     
+    height: calc(100% - 5rem); 
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    padding-left: 6rem;
+    color: #ffffff;
+    box-shadow: 0 0 30px #030303;
+    box-sizing: border-box;
+}
+.imagen-modal {
+    position: absolute;
+    z-index: 4; 
+    width: 35%; 
+    max-width: 320px;
+    object-fit: contain;
+    top: 50%;
+    left: 30%; 
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(10px 25px 30px rgba(0, 0, 0, 0.8));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.imagen-modal:hover {
+    transform: translate(-50%, calc(-50% - 10px)) scale(1.05);
+    filter: drop-shadow(0px 35px 35px rgba(0, 0, 0, 0.9))
+            drop-shadow(0px 0px 20px rgba(255, 62, 165, 0.6));
+}
+.container-descripcion h1 {
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    text-align: right;
+}
+.container-descripcion h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #3bd8ff;
+    margin-bottom: 0.8rem;
+    text-align: right;
+}
+.container-descripcion .precio {
+    font-family: 'Quantico', sans-serif;
+    color: var(--amber);
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: right;
+    text-shadow: 0 0 6px rgba(255, 210, 63, 0.3);
+    padding-bottom: 1rem;
+}
+.container-descripcion p {
+    font-size: 1.1rem;
+    color: #c2b6b6;
+    line-height: 1.4;
+    text-align: justify;
+    padding-left: 2rem;
+}
+.carrito-container {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  margin: 2rem auto 0;
+  filter: drop-shadow(0 0 8px rgba(255, 62, 165, 0.8));
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.carrito {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: var(--magenta) !important; 
+  color: #560f5e;
+  font-family: 'Pixelify Sans', sans-serif; 
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none !important;
+  border-radius: 0 !important;
+  cursor: pointer;
+  clip-path: polygon(
+    10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px),
+    calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+}
+.carrito:hover {
+    color: var(--ink);
+}
+.carrito-container:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 16px rgba(255, 62, 165, 1));
+}
+.btn-cerrar-cyber {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 10;
+  border: transparent;
+  background: transparent;
+  color: var(--magenta);
+  font-family: 'Quantico', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.btn-cerrar-cyber:hover {
+  color: #2de2e6;
+  transform: rotate(90deg) scale(1.05);
+}
+@media (max-width: 768px) {
+    .modal-content {
+        position: relative;
+        height: auto;
+        min-height: 80dvh;
+        padding: 1.2rem;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .container-back {
+        position: absolute;
+        width: 88%;
+        height: 55%;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 15px;
+        z-index: 1;
+    }
+    .container-back::before {
+        background-size: 55px 100%;
+    }
+    .container-descripcion {
+        position: relative;
+        z-index: 2;
+        width: 88%;
+        margin: 4.5rem auto 1rem auto;
+        left: 0;
+        right: 0;
+        transform: none;
+        height: auto;
+        min-height: auto;
+        padding: 2.2rem 1.2rem 1.2rem 1.2rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        box-sizing: border-box;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow: 0 0 25px #030303;
+        border-radius: 20px;
+    }
+    .imagen-modal {
+        position: absolute;
+        z-index: 4;
+        width: 50%;
+        max-width: 200px;
+        object-fit: contain;
+        top: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+        filter: drop-shadow(5px 15px 20px rgba(0, 0, 0, 0.8));
+    }
+    .imagen-modal:hover {
+        transform: translateX(-50%) translateY(-5px) scale(1.05);
+    }
+    .container-descripcion h1 {
+        font-size: 1.4rem;
+        word-break: break-word;
+        width: 100%;
+        text-align: center;
+    }
+    .container-descripcion h3 {
+        font-size: 0.85rem;
+        margin-bottom: 0.3rem;
+        width: 100%;
+        text-align: center;
+    }
+    .container-descripcion .precio {
+        text-align: center;
+        font-size: 0.95rem;
+        margin-bottom: 0.4rem;
+        width: 100%;
+    }
+    .container-descripcion p {
+        font-size: 0.8rem;
+        text-align: center;
+        line-height: 1.35;
+        margin-bottom: 0.8rem;
+        width: 100%;
+    }
+    .carrito-container {
+        margin: 0.2rem auto 0;
+        max-width: 150px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .carrito {
+        padding: 8px;
+        font-size: 0.85rem;
+        width: 100%;
+    }
+}
+@keyframes floatMobile {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
 
-
-/* ---------- Inicia cards ---------- */
-
-
-/* ---------- pixel-notch shape, reused on cards/badges/buttons ---------- */
-  .notch{
-    clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
-  }
-  .notch-sm{
-    clip-path: polygon(5px 0, calc(100% - 5px) 0, 100% 5px, 100% calc(100% - 5px), calc(100% - 5px) 100%, 5px 100%, 0 calc(100% - 5px), 0 5px)
-    ;
-  }
-
-/* ---------- component row ---------- */
-  .components{
-    display:grid;
-    margin:0 1rem;
-    align-items:start;
-  }
-  @media (max-width:640px){ .components{grid-template-columns:1fr;} }
- 
-  .card{
-    background:var(--panel);
-    padding:0;
-    overflow:hidden;
-  }
-  .card .art{
-    height:150px;
-    background:
-      linear-gradient(135deg, rgba(255,62,165,0.35), rgba(45,226,230,0.25)),
-      repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 8px, transparent 8px 16px);
-    position:relative;
-  }
-  .card .art small{
-    position:absolute;bottom:8px;right:10px;
-    font-size:10px;color:rgba(255,255,255,0.55);
-    font-family:'Inter',sans-serif;font-style:italic;
-  }
-  .card .badge{
-    position:absolute;top:10px;left:10px;
-    background:var(--void);
-    color:var(--amber);
-    font-family:'Pixelify Sans',monospace;
-    font-size:11px;
-    padding:5px 9px;
-    border:1px solid rgba(255,210,63,0.4);
-  }
-  .card .body{padding:18px 18px 20px;}
-  .card h3{
-    font-family:'Quantico',sans-serif;
-    font-size:17px;
-    margin:0 0 6px;
-    color:var(--ink);
-  }
-  .card p{
-    font-size:13px;
-    color:var(--ink-dim);
-    line-height:1.5;
-    margin:0 0 16px;
-  }
-  .card-action-row {
+/** CARD */
+.notch {
+  filter: drop-shadow(0 0 4px var(--magenta));
+  transition: filter 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow: visible;
+}
+.notch:hover {
+  transform: translateY(-6px);
+  filter: drop-shadow(0 0 16px rgba(45, 226, 230, 0.45));
+}
+.notch-sm {
+  clip-path: polygon(6px 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 0 calc(100% - 6px), 0 6px);
+  transition: all 0.3s ease;
+}
+.card {
+  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
+  background: linear-gradient(135deg, rgba(26, 21, 40, 0.1) 0%, rgba(11, 8, 19, 0.95) 100%);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 62, 165, 0.25); 
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.4s ease;
+}
+.notch:hover .card {
+  border-color: rgba(45, 226, 230, 0.65); 
+}
+.card .art {
+  height: 200px;
+  background-color: #0b0813;
+  background-image:
+    linear-gradient(135deg, rgba(255, 62, 165, 0.1) 0%, transparent 100%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 12px 12px, 12px 12px;
+  position: relative;
+  overflow: hidden;
+}
+.card .art::before {
+  content: '';
+  position: absolute;
+  top: -25px; left: -25px;
+  width: 90px; height: 90px;
+  background: var(--magenta);
+  filter: blur(35px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 1;
+}
+.card .art::after {
+  content: '';
+  position: absolute;
+  bottom: -30px; right: -30px;
+  width: 90px; height: 90px;
+  background: #2de2e6;
+  filter: blur(35px);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 1;
+}
+.card .art img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.5rem;
+  filter: brightness(0.95);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease;
+}
+.notch:hover .art img {
+  transform: scale(1.05) rotate(0.5deg);
+  filter: brightness(1.15);
+}
+.card .art small {
+  position: absolute; bottom: 8px; right: 12px;
+  font-size: 10px; color: rgba(45, 226, 230, 0.85); 
+  font-family: 'Inter', sans-serif; font-style: italic;
+  text-transform: uppercase; letter-spacing: 1px;
+  z-index: 3;
+}
+.card .badge {
+  position: absolute; top: 12px; left: 12px;
+  background: rgba(11, 8, 19, 0.5);
+  color: var(--amber);
+  font-family: 'Pixelify Sans', monospace;
+  font-size: 10px;
+  padding: 5px 10px;
+  border: 1px solid var(--amber);
+  letter-spacing: 1px;
+  backdrop-filter: blur(4px);
+  z-index: 3;
+}
+.card .body { padding: 18px 20px 20px; }
+.card h3 {
+  font-family: 'Quantico', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  margin: 0 0 14px;
+  color: var(--ink);
+  letter-spacing: 0.5px;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+.notch:hover h3 {
+  color: #2de2e6;
+  text-shadow: 0 0 8px rgba(45, 226, 230, 0.5);
+}
+.card-action-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-top: 1px solid var(--ink-dim); 
+  padding-top: 14px;
 }
-  .price{font-family:'Quantico',sans-serif;color:var(--amber);font-size:1rem;}
-  .cta{
-    background:var(--magenta);
-    color:var(--void);
-    font-family:'Quantico',sans-serif;
-    font-weight:700;
-    font-size:1rem;
-    border:none;
-    padding: 0.5rem 1.4rem;
-    cursor:pointer;
-    animation:pulse 2.4s ease-in-out infinite;
-  }
-  @keyframes pulse{
-    0%,100%{box-shadow:0 0 6px var(--magenta), 0 0 14px rgba(255,62,165,0.35);}
-    50%{box-shadow:0 0 12px var(--magenta), 0 0 24px rgba(255,62,165,0.55);}
-  }
-  @media (prefers-reduced-motion: reduce){ .cta{animation:none;} }
-  /* ---------- Termina cards ---------- */
+.price {
+  font-family: 'Quantico', sans-serif;
+  color: var(--amber);
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: left;
+  text-shadow: 0 0 6px rgba(255, 210, 63, 0.3);
+}
+.cta {
+  background: transparent;
+  color: var(--magenta);
+  font-family: 'Quantico', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid var(--magenta);
+  padding: 0.55rem 1.2rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.cta:hover {
+  background: var(--magenta);
+  color: var(--ink);
+  box-shadow: 0 0 15px var(--magenta), inset 0 0 8px rgba(255, 255, 255, 0.5);
+  transform: scale(1.03);
+}
+@media (prefers-reduced-motion: reduce) { 
+  .notch, .card, .card .art img, .cta { transition: none; }
+}
