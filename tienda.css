@@ -1,0 +1,93 @@
+.modal {
+    backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    position: relative;
+    background: radial-gradient( #50027e, #06000a);
+    filter: drop-shadow(0 0 10px #b700ff);
+    height: 85dvh;
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 3rem;
+    box-sizing: border-box;
+}
+
+.container-back {
+    position: relative;
+    background: #6f42c1;
+    border-radius: 20px;
+    height: 85%; 
+    top: 7.5%;
+    width: 45%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.container-back h1 {
+    position: absolute;
+    font-size: 4rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.18);
+    text-transform: uppercase;
+    transform: rotate(-90deg);
+}
+
+.container-descripcion {
+    position: absolute; 
+    z-index: 2;
+    right: 3rem;
+    width: 58%;
+    top: 3rem;     
+    height: calc(100% - 6rem); 
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border:none;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem;
+    padding-left:10rem;
+    color: #ffffff;
+    box-shadow: 0 0 30px #030303;
+    box-sizing: border-box;
+}
+
+.imagen-modal {
+    position: absolute;
+    z-index: 4; 
+    width: 38%; 
+    max-width: 360px;
+    object-fit: contain;
+    top: 50%;
+    left: 35%; 
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(10px 25px 30px rgba(0, 0, 0, 0.8));
+    pointer-events: none;
+}
+
+.container-descripcion h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.container-descripcion h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.container-descripcion p {
+    font-size: 0.85rem;
+    color: #c2b6b6;
+    line-height: 1.5;
+    text-align: justify;
+}

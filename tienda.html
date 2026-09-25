@@ -20,6 +20,7 @@
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap");
     </style>
+    <link rel="stylesheet" href="tienda.css"> <!--PROVISIONAL PARA PRUEBA MODAL-->
   </head>
 
   <body>
@@ -32,10 +33,33 @@
         <img class="banner-frame" src="./assets/En construccion.jpeg" alt="Imagen temporal, pagina web en construcción">
     </section>
 
+<!--* ---------------------------------------MODAL ----------------------------------->
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">MODAL</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="container-back">
+        <h1>PRODUCTO</h1>
+      </div>
+      <img class="imagen-modal" src="assets/imagenprueba.png">
+      <div class="container-descripcion">
+        <h1>PRODUCTO</h1>
+        <h3>Subtítulo</h3>
+        <p>$00.00</p>
+        <p>Descripción del producto: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur massa justo, ultrices et orci vel, mattis pellentesque tortor.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--* --------------------------------TERMINA MODAL ----------------------------------->
+
 
     <!--↑↑↑↑↑↑↑↑↑↑↑Agrega aquí tu código↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
 
-  
 
     <!-- Footer: su contenido se inserta desde globalElements.js. -->
     <footer class="footer-container"></footer>
