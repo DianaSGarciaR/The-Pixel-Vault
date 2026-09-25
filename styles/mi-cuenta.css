@@ -1,0 +1,80 @@
+  .contenedor-pixel {
+      margin: 10% 5%;
+  }
+
+  .contenedor-pixel {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      max-width: 100%;
+      margin: 10%;
+      position: relative;
+  }
+
+  /* ------- INICIO : Marco neon ------- */
+  .marcoAzul {
+      grid-area: 1 / 1 / 2 / 2;
+      width: 100%;
+      height: 100%;
+      fill: #00E5FF;
+      filter: drop-shadow(0px 0px 10px #00E5FF) drop-shadow(0px 0px 3px #a0ebf3);
+  }
+
+  .contenido {
+      grid-area: 1 / 1 / 2 / 2;
+      /*z-index: -1;*/
+      padding: 0rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: justify;
+      color: var(--yellow-accent);
+  }
+
+
+  /* Fondo
+  .capa-blur {
+      grid-area: 1 / 1 / 2 / 2;
+      background-image: linear-gradient(to bottom right,
+              var(--panel-color),
+              var(--panel-color), var(--border-color), var(--border-color));
+      border-radius: 17rem;
+  } */
+
+  /* Seccion Registro usario */
+  #seccionInfo {
+      font-family: var(--font-pixel-sub);
+      justify-content: center;
+      padding: 5rem;
+      background-image: url("../assets/miCuentaFondo.png");
+      height: stretch;
+      border-radius: 12rem 0rem 0rem 12rem;
+  }
+
+  #seccionInfo h3 {
+      color: var(--border-color);
+  }
+
+  /* Seccion Registro usario */
+  #sectionCreateUser {
+      padding: 5rem;
+      height: stretch;
+      background-color: var(--bg-color);
+      border-radius: 0rem 17rem 17rem 0rem;
+  }
+
+  #sectionLogin {
+      display: none;
+  }
+
+  /* Seccion Login */
+  #sectionLogin h4,
+  #sectionCreateUser h4 {
+      font-family: var(--font-pixel-header);
+  }
+
+  /* Formulario */
+  #registreLoginForm {
+      z-index: 1;
+      position: relative;
+  }

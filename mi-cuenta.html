@@ -1,55 +1,201 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contáctanos</title>
 
-    <!-- !LINK BOOSTRAP-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-    <!-- !FIN LINK BOOSTRAP-->
-    <link rel="stylesheet" href="styles/contactanos.css" />
-    <link rel="stylesheet" href="styles/styles.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contáctanos</title>
 
-    <!--Link de fuente-->
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-    </style>
-  </head>
+  <!-- !LINK BOOSTRAP-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <!-- !FIN LINK BOOSTRAP-->
 
-  <body>
-    <!-- Navbar-->
-    <main class="navThePixelVault"></main>
+  <link rel="stylesheet" href="styles/mi-cuenta.css" />
+  <link rel="stylesheet" href="styles/styles.css" />
 
-    <!--↓↓↓↓↓↓↓↓↓↓↓Agrega aquí tu código↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
-    
-    <section class="banner-container">
-        <img class="banner-frame" src="./assets/En construccion.jpeg" alt="Imagen temporal, pagina web en construcción">
-    </section>
+  <!--Link de fuente-->
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+  </style>
+</head>
+
+<body>
+  <!--* --------- INICIO: navbar --------- -->
+  <main class="navThePixelVault"></main>
+  <!--* ---------- FIN: navbar ----------- -->
+
+  <!--* -------- INICIO : Banner Principal -------- -->
+  <section class="banner-container">
+    <!-- Imagen de fondo-->
+    <img class="banner-frame" src="./assets/banner-img.png"
+      alt="Marco del Banner"><!--Se agregó el ./ a la ruta del archivo (Beto)-->
+    <!-- Contenedor de la pantalla central con los botones -->
+    <div class="banner-screen">
+      <h3 href="acercaNosotros.html" class="yellow-accent btn-yellow head" class="head">LOGIN</h3>
+      </nav>
+    </div>
+  </section>
+  <!--* --------- FIN : Banner Principal ---------- -->
+
+  <!--* --------- INICIO : Iniciar sesion ---------- -->
+  <section>
+    <div class="contenedor-pixel">
+      <div class="capa-blur"></div>
+      <svg class="marcoAzul" viewBox="0 0 64 33" preserveAspectRatio="none">
+        <use href="#plantillaSVG"></use>
+      </svg>
+      <div class="contenido row" id="groupItems">
+        <div id="seccionInfo" class="col-12 col-lg-4">
+          <h3>The Pixel Vault</h3>
+          <p text-center>
+            Tu aventura comienza aquí.
+            Explora los lanzamientos más recientes,
+            consigue productos únicos y conecta
+            con otros apasionados del gaming.
+          </p>
+        </div>
+        <div id="sectionLogin" class="col-12 col-lg-8">
+          <h4>Bienvenido de nuevo</h4>
+          <p>
+
+          </p>
+        </div>
+
+        <div id="sectionCreateUser" class="col-12 col-lg-8">
+          <div id="registreLoginForm">
+            <h4>REGISTRATE</h4>
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Usuario</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  placeholder="ejemplo@gmail.com">
+              </div>
+              <div class="mb-3">
+                <label for="forInputPassword" class="form-label">Password</label>
+                <input type="password" id="inputPassword" name="password" class="form-control">
+              </div>
+
+              <div class="mb-3">
+                <label for="forInputPasswordConfirm" class="form-label">Confirmacion de contraseña</label>
+                <input type="passwordConfirm" id="inputPassword" name="passwordConfirm" class="form-control">
+              </div>
+
+              <button type="submit" class="btn btn-Light">Submit</button>
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--* Figura SVG de los marcos pixelados para contenido -->
+  <svg style="display: none;">
+    <defs>
+      <g id="plantillaSVG" shape-rendering="crispEdges">
+        <!-- Parte superior -->
+        <rect x="6" y="0" width="52" height="1" />
+        <!-- Parte superior izquerda -->
+        <rect x="5" y="1" width="1" height="1" />
+        <rect x="4" y="2" width="1" height="1" />
+        <rect x="3" y="3" width="1" height="1" />
+        <rect x="2" y="4" width="1" height="1" />
+        <rect x="1" y="5" width="1" height="1" />
+        <rect x="0" y="6" width="1" height="1" />
+
+        <!-- Parte superior derecha -->
+        <rect x="58" y="1" width="1" height="1" />
+        <rect x="59" y="2" width="1" height="1" />
+        <rect x="60" y="3" width="1" height="1" />
+        <rect x="61" y="4" width="1" height="1" />
+        <rect x="62" y="5" width="1" height="1" />
+
+        <!-- Parte izquierda <rect x="0" y="7" width="1" height="20" />-->
+        <rect x="0" y="7" width="1" height="1" />
+        <rect x="0" y="8" width="1" height="1" />
+        <rect x="0" y="9" width="1" height="1" />
+        <rect x="0" y="10" width="1" height="1" />
+        <rect x="0" y="11" width="1" height="1" />
+        <rect x="0" y="12" width="1" height="1" />
+        <rect x="0" y="13" width="1" height="1" />
+        <rect x="0" y="14" width="1" height="1" />
+        <rect x="0" y="15" width="1" height="1" />
+        <rect x="0" y="16" width="1" height="1" />
+        <rect x="0" y="17" width="1" height="1" />
+        <rect x="0" y="18" width="1" height="1" />
+        <rect x="0" y="19" width="1" height="1" />
+        <rect x="0" y="20" width="1" height="1" />
+        <rect x="0" y="21" width="1" height="1" />
+        <rect x="0" y="22" width="1" height="1" />
+        <rect x="0" y="23" width="1" height="1" />
+        <rect x="0" y="24" width="1" height="1" />
+        <rect x="0" y="25" width="1" height="1" />
+        <rect x="0" y="26" width="1" height="1" />
 
 
-    <!--↑↑↑↑↑↑↑↑↑↑↑Agrega aquí tu código↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+        <!-- Parte derecha <rect x="63" y="6" width="1" height="21" />-->
+        <rect x="63" y="6" width="1" height="1" />
+        <rect x="63" y="7" width="1" height="1" />
+        <rect x="63" y="8" width="1" height="1" />
+        <rect x="63" y="9" width="1" height="1" />
+        <rect x="63" y="10" width="1" height="1" />
+        <rect x="63" y="11" width="1" height="1" />
+        <rect x="63" y="12" width="1" height="1" />
+        <rect x="63" y="13" width="1" height="1" />
+        <rect x="63" y="14" width="1" height="1" />
+        <rect x="63" y="15" width="1" height="1" />
+        <rect x="63" y="16" width="1" height="1" />
+        <rect x="63" y="17" width="1" height="1" />
+        <rect x="63" y="18" width="1" height="1" />
+        <rect x="63" y="19" width="1" height="1" />
+        <rect x="63" y="20" width="1" height="1" />
+        <rect x="63" y="22" width="1" height="1" />
+        <rect x="63" y="23" width="1" height="1" />
+        <rect x="63" y="24" width="1" height="1" />
+        <rect x="63" y="25" width="1" height="1" />
+        <rect x="63" y="26" width="1" height="1" />
+        <rect x="63" y="21" width="1" height="1" />
 
-  
 
-    <!-- Footer: su contenido se inserta desde globalElements.js. -->
-    <footer class="footer-container"></footer>
+        <!-- Parte inferior izquierda -->
+        <rect x="1" y="27" width="1" height="1" />
+        <rect x="2" y="28" width="1" height="1" />
+        <rect x="3" y="29" width="1" height="1" />
+        <rect x="4" y="30" width="1" height="1" />
+        <rect x="5" y="31" width="1" height="1" />
 
-    <!-- ! ENLACES DE ARCHIVOS JAVASCRIP-->
-    <script src="./javascript/globalElements.js"></script>
-    <script src="./javascript/contactanos.js"></script>
-    <!-- ! FIN DE ENLACES DE ARCHIVOS JAVASCRIP-->
-    <!-- !LINK BOOSTRAP-->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
-    <!-- !FIN LINK BOOSTRAP-->
-  </body>
+        <!-- Parte inferior derecha -->
+        <rect x="62" y="27" width="1" height="1" />
+        <rect x="61" y="28" width="1" height="1" />
+        <rect x="60" y="29" width="1" height="1" />
+        <rect x="59" y="30" width="1" height="1" />
+        <rect x="58" y="31" width="1" height="1" />
+
+        <!-- Parte inferiro -->
+        <rect x="6" y="32" width="52" height="1" />
+      </g>
+    </defs>
+  </svg>
+
+  <!--* ---------- FIN : Iniciar sesion ------------ -->
+
+
+
+
+  <!-- Footer: su contenido se inserta desde globalElements.js. -->
+  <footer class="footer-container"></footer>
+
+  <!-- ! ENLACES DE ARCHIVOS JAVASCRIP-->
+  <script src="./javascript/globalElements.js"></script>
+  <script src="./javascript/contactanos.js"></script>
+  <!-- ! FIN DE ENLACES DE ARCHIVOS JAVASCRIP-->
+  <!-- !LINK BOOSTRAP-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <!-- !FIN LINK BOOSTRAP-->
+</body>
+
 </html>
