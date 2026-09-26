@@ -3,6 +3,7 @@ const productos = [
         id: 1,
         nombre: "Cyber Warriors",
         tipo: "Videojuego",
+        categoria: "Físico",
         imagen: "./assets/img/cyber-warriors.jpg",
         descripcion: "Combate futurista en una ciudad dominada por la tecnología.",
         precio: 899,
@@ -16,6 +17,7 @@ const productos = [
         id: 2,
         nombre: "Kingdom of Legends",
         tipo: "Videojuego",
+        categoria: "Digital",
         imagen: "./assets/img/kingdom-legends.jpg",
         descripcion: "Explora un mundo fantástico lleno de aventuras y misterios.",
         precio: 1199,
@@ -29,6 +31,7 @@ const productos = [
         id: 3,
         nombre: "Speed Horizon",
         tipo: "Videojuego",
+        categoria: "Fisico",
         imagen: "./assets/img/speed-horizon.jpg",
         descripcion: "Compite a toda velocidad en diferentes pistas y ciudades.",
         precio: 799,
@@ -42,6 +45,7 @@ const productos = [
         id: 4,
         nombre: "Shadow Ninja",
         tipo: "Videojuego",
+        categoria: "Edición especial",
         imagen: "./assets/img/shadow-ninja.jpg",
         descripcion: "Conviértete en un ninja y domina diferentes técnicas de combate.",
         precio: 699,
@@ -55,6 +59,7 @@ const productos = [
         id: 5,
         nombre: "Galaxy Explorer",
         tipo: "Videojuego",
+        categoria: "Digital",
         imagen: "./assets/img/galaxy-explorer.jpg",
         descripcion: "Viaja por el espacio y descubre nuevos planetas.",
         precio: 999,
@@ -68,6 +73,7 @@ const productos = [
         id: 6,
         nombre: "Battle Arena X",
         tipo: "Videojuego",
+        categoria: "Edición especial",
         imagen: "./assets/img/battle-arena-x.jpg",
         descripcion: "Enfréntate a otros jugadores en intensas batallas.",
         precio: 749,
@@ -81,6 +87,7 @@ const productos = [
         id: 7,
         nombre: "Mystic Forest",
         tipo: "Videojuego",
+        categoria: "Físico",
         imagen: "./assets/img/mystic-forest.jpg",
         descripcion: "Aventúrate en un bosque mágico lleno de criaturas.",
         precio: 599,
@@ -94,6 +101,7 @@ const productos = [
         id: 8,
         nombre: "Football Stars 2026",
         tipo: "Videojuego",
+        categoria: "Digital",
         imagen: "./assets/img/football-stars.jpg",
         descripcion: "Forma tu equipo y compite en emocionantes partidos.",
         precio: 899,
@@ -107,6 +115,7 @@ const productos = [
         id: 9,
         nombre: "Zombie Survival",
         tipo: "Videojuego",
+        categoria: "Edición especial",
         imagen: "./assets/img/zombie-survival.jpg",
         descripcion: "Sobrevive a un mundo invadido por criaturas peligrosas.",
         precio: 849,
@@ -120,6 +129,7 @@ const productos = [
         id: 10,
         nombre: "Dragon Quest",
         tipo: "Videojuego",
+        categoria: "Físico",
         imagen: "./assets/img/dragon-quest.jpg",
         descripcion: "Embárcate en una aventura para derrotar al poderoso dragón.",
         precio: 1099,
@@ -191,5 +201,48 @@ let renderProduct = (product) => {
 }
 
 //Ahora sí mandamos a llamar a la función render product sobre cada uno de los productos del json
+
 productos.map((product) => renderProduct(product));
 //Recordar que map va a recibir como argumento un callback, en este caso, la función a aplicar sobre cada uno de sus productos.
+const juegosElement = document.querySelector("#menuVideojuegos");
+
+juegosElement.addEventListener("click",(e) => {
+    e.preventDefault();
+    if(e.target.id == "Videojuegos"){
+        productsElement.innerHTML= "";
+        const pr = "Videojuego";
+        console.log("Ya dió click");
+        productos.map((product) =>{
+            if(product.tipo == pr){
+                renderProduct(product);
+            }
+        })
+    }else if(e.target.id == "Fisicos"){
+        productsElement.innerHTML= "";
+        const pr = "Físico";
+        console.log("Ya dió click");
+        productos.map((product) =>{
+            if(product.categoria == pr){
+                renderProduct(product);
+            }
+        })
+    }else if(e.target.id == "Digitales"){
+        productsElement.innerHTML= "";
+        const pr = "Digital";
+        console.log("Ya dió click");
+        productos.map((product) =>{
+            if(product.categoria == pr){
+                renderProduct(product);
+            }
+        })
+    }else if(e.target.id == "EdicionEspecial"){
+        productsElement.innerHTML= "";
+        const pr = "Edición especial";
+        console.log("Ya dió click");
+        productos.map((product) =>{
+            if(product.categoria == pr){
+                renderProduct(product);
+            }
+        })
+    }
+});
