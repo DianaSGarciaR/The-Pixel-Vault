@@ -22,7 +22,6 @@
 
   .contenido {
       grid-area: 1 / 1 / 2 / 2;
-      /*z-index: -1;*/
       padding: 0rem;
       display: flex;
       justify-content: center;
@@ -30,16 +29,6 @@
       text-align: justify;
       color: var(--yellow-accent);
   }
-
-
-  /* Fondo
-  .capa-blur {
-      grid-area: 1 / 1 / 2 / 2;
-      background-image: linear-gradient(to bottom right,
-              var(--panel-color),
-              var(--panel-color), var(--border-color), var(--border-color));
-      border-radius: 17rem;
-  } */
 
   /* Seccion Registro usario */
   #seccionInfo {
@@ -56,7 +45,8 @@
   }
 
   /* Seccion Registro usario */
-  #sectionCreateUser {
+  #sectionCreateUser,
+  #sectionLogin {
       padding: 5rem;
       height: stretch;
       background-color: var(--bg-color);

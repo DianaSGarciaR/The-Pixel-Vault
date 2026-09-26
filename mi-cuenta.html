@@ -55,14 +55,24 @@
             con otros apasionados del gaming.
           </p>
         </div>
-        <div id="sectionLogin" class="col-12 col-lg-8">
+        <div id="sectionLogin" class="col-12 col-lg-8 view-element">
           <h4>Bienvenido de nuevo</h4>
-          <p>
-
-          </p>
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Usuario</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="ejemplo@gmail.com">
+            </div>
+            <div class="mb-3">
+              <label for="forInputPassword" class="form-label">Password</label>
+              <input type="password" id="inputPassword" name="password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-Light">Inisiar sesion</button>
+            <div id="emailHelp" class="form-text">Crear cuenta</div>
+          </form>
         </div>
 
-        <div id="sectionCreateUser" class="col-12 col-lg-8">
+        <div id="sectionCreateUser" class="col-12 col-lg-8 view-element">
           <div id="registreLoginForm">
             <h4>REGISTRATE</h4>
             <form>
@@ -81,10 +91,11 @@
                 <input type="passwordConfirm" id="inputPassword" name="passwordConfirm" class="form-control">
               </div>
 
-              <button type="submit" class="btn btn-Light">Submit</button>
-              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              <div class="mb-3">
+                <button type="submit" class="btn btn-Light">Crear</button>
+                <div id="emailHelp" class="form-text">Inicia sesion</div>
+              </div>
             </form>
-
           </div>
         </div>
       </div>
@@ -133,7 +144,6 @@
         <rect x="0" y="24" width="1" height="1" />
         <rect x="0" y="25" width="1" height="1" />
         <rect x="0" y="26" width="1" height="1" />
-
 
         <!-- Parte derecha <rect x="63" y="6" width="1" height="21" />-->
         <rect x="63" y="6" width="1" height="1" />
