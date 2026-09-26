@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regitro de productos</title>
+    <!-- !LINK BOOSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- !FIN LINK BOOSTRAP-->
+    <link rel="stylesheet" href="./styles/registroProducts.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <!--Link de fuente-->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    </style>
+</head>
+
+<body>
+    <!--* --------- INICIO: navbar --------- -->
+    <main class="navThePixelVault"></main>
+    <!--* --------- FIN: navbar --------- -->
+<br>
+<br>
+    <h1>REGISTRAR PRODUCTOS</h1>
+    <br>
+    <br>
+    <div class="frame-demo" id="frameDemo">
+        <!-- El marco amarillo ya no vive aquí: lo dibuja el CSS (.frame-demo::before) con un SVG -->
+
+        <!-- Todos los campos van dentro de .frame-content: es lo que los separa del marco -->
+        <div class="frame-content">
+
+            <!--* Inicio de formulario -->
+            <form id="registro-products-form">
+            <div class="mb-3 row">
+                <label for="nameProduct" class="col-sm-2 col-form-label titulo-campo">Nombre:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nameProduct" name="nameProduct"
+                        placeholder="Escribe el nombre del producto" required><!--required para que sean obligatorios los campos-->
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="tipo" class="col-sm-2 col-form-label titulo-campo">Tipo:</label>
+                <div class="col-sm-10">
+                    <select class="form-select" aria-label="Default select example" id="tipo" name="tipo" required>
+                        <option selected value="" disabled>Selecciona el tipo de producto</option>
+                        <option value="1">VideoJuegos</option>
+                        <option value="2">Merch</option>
+                    </select>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="mb-3 row">
+                <label for="imagen" class="form-label col-sm-2 titulo-campo">Imagen:</label>
+                <div class="col-sm-10">
+                    <!--
+          El <input type="file"> real queda oculto (clase file-field__input);
+          esta <label> es el botón que en verdad se ve. Como la label tiene
+          for="imagen", al hacer clic en ella se abre el mismo diálogo de
+          "elegir archivo" que abriría el input, sin usar nada de JavaScript.
+        -->
+                    <label class="form-control file-field" for="imagen">
+                        <span class="file-field__button">Seleccionar archivo</span>
+                        <span class="file-field__name">Ningún archivo seleccionado</span>
+                    </label>
+                    <input class="file-field__input" id="imagen" type="file" name="imagen" > 
+                </div>
+            </div>
+
+
+            <div class="mb-3 row">
+                <label for="Descripcion" class="col-sm-2 col-form-label titulo-campo">Descripción:</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="Descripcion" rows="3" name="descripcion"
+                        placeholder="Escribe una breve descripción del producto" required></textarea>
+                </div>
+            </div>
+
+
+            <div class="mb-3 row">
+                <label for="precio" class="col-sm-2 col-form-label titulo-campo">Precio:</label>
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input type="number" class="form-control" id="precio" name="precio"
+                            aria-label="Amount (to the nearest dollar)" required>
+                        <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="genero" class="col-sm-2 col-form-label titulo-campo">Genero:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="genero" name="genero"
+                        placeholder="Escribe el genero del producto" required>
+                </div>
+            </div>
+
+
+
+            <div class="mb-3 row">
+                <label for="stock" class="form-label col-sm-2 titulo-campo">Stock:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" id="stock" name="stock" list="opcionesNumero" min="1"
+                        max="20" placeholder="Escribe o selecciona el numero de piezas existentes" required>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="cal" class="col-sm-2 col-form-label titulo-campo">Calificación:</label>
+                <div class="col-sm-10">
+                    <select class="form-select" aria-label="Default select example" id="cal" name="cal" required>
+                        <option selected value=""  disabled>Selecciona la calificación del producto</option>
+                        <option value="1">⭐</option>
+                        <option value="2">⭐⭐</option>
+                        <option value="3">⭐⭐⭐</option>
+                        <option value="4">⭐⭐⭐⭐</option>
+                        <option value="5">⭐⭐⭐⭐⭐</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-fucsia">Guardar</button>
+            <div id="resultadoRegistro"></div>
+            </form>
+
+        </div>
+        <!-- FIN de .frame-content -->
+
+    </div>
+
+    <!--* --------- INICIO: navbar --------- -->
+    <footer class="footer-container"></footer>
+    <!--* --------- FIN: navbar --------- -->
+
+    <!-- ! ENLACES DE ARCHIVOS JAVASCRIP-->
+    <script src="./javascript/globalElements.js"></script>
+    <script src="./javascript/registroProducts.js"></script>
+    <!-- ! FIN DE ENLACES DE ARCHIVOS JAVASCRIP-->
+    <!-- !LINK BOOSTRAP-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <!-- !FIN LINK BOOSTRAP-->
+</body>
+
+</html>
