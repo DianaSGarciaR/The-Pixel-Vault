@@ -220,3 +220,10 @@ h1 {
   transform: scale(1.05);
   filter: drop-shadow(0 0 14px rgba(255, 0, 127, 1));
 }
+
+.titulo-campo
+{
+  font-family: var(--font-pixel-body);
+  color: white;
+  font-size: 1rem;
+}
