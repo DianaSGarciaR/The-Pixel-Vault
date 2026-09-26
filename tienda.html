@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contáctanos</title>
+    <title>Catálogo</title>
 
     <!-- !LINK BOOSTRAP-->
     <link
@@ -13,8 +13,8 @@
       crossorigin="anonymous"
     />
     <!-- !FIN LINK BOOSTRAP-->
-    <link rel="stylesheet" href="styles/contactanos.css" />
-    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="./styles/tienda.css" /> <!--Estilos específicos del catálogo-->
+    <link rel="stylesheet" href="./styles/styles.css" /> <!-- Estilos generales de todo el ecommerce-->
 
     <!--Link de fuente-->
     <style>
@@ -28,8 +28,108 @@
 
     <!--↓↓↓↓↓↓↓↓↓↓↓Agrega aquí tu código↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
     
-    <section class="banner-container">
-        <img class="banner-frame" src="./assets/En construccion.jpeg" alt="Imagen temporal, pagina web en construcción">
+    <!--* INICIO : Banner Principal ---->
+      <section class="banner-container">
+        <!-- Imagen de fondo-->
+        <img class="banner-frame" src="./assets/banner-img.png" alt="Marco del Banner">
+        <!-- Contenedor de la pantalla central con los botones -->
+        <div class="banner-screen">
+          <h3 class="yellow-accent btn-yellow head" class="head" >Catálogo</h3>
+        </div>
+      </section>
+    <!--* FIN : Banner Principal Sci-Fi ---->
+
+    
+
+
+    <!--* ============================== Prueba card ========================-->
+    
+    <section class="container-fluid my">
+      <div class="row g-4">
+        <!-- Menú Lateral -->
+        <div class="col-12 col-md-3">
+          <aside class="banner-sidebar">
+  <!-- Sección Videojuegos -->
+  <div class="section menu-group">
+    <button 
+      class="section-title menu-toggle d-md-none" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#menuVideojuegos" 
+      aria-expanded="false"
+    >
+    <span>VIDEOJUEGOS</span>
+      <span class="chevron">▼</span>
+    </button>
+    <h3 class="section-title d-none d-md-block">JUEGOS</h3>
+    <div class="collapse d-md-block" id="menuVideojuegos">
+    <ul class="menu-list">
+      <li><a href="#"><span class="arrow">▶</span>FÍSICOS</a></li>
+      <li><a href="#"><span class="arrow">▶</span>DIGITALES</a></li>
+      <li><a href="#"><span class="arrow">▶</span>EDICIÓN ESPECIAL</a></li>
+    </ul>
+  </div>
+  </div>
+  <div class="menu-divider"></div>
+
+  <!-- Sección Merch -->
+   <div class="section menu-group">
+    <button 
+      class="section-title menu-toggle d-md-none" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#menuMerch" 
+      aria-expanded="false"
+    >
+   <span>MERCH</span>
+      <span class="chevron">▼</span>
+    </button>
+    <h3 class="section-title d-none d-md-block">MERCH</h3>
+    <div class="collapse d-md-block" id="menuMerch">
+    <ul class="menu-list">
+      <li><a href="#"><span class="arrow">▶</span>CDs Y VINILES</a></li>
+      <li><a href="#"><span class="arrow">▶</span>PELUCHES</a></li>
+      <li><a href="#"><span class="arrow">▶</span>ARTE Y POSTERS</a></li>
+      <li><a href="#"><span class="arrow">▶</span>ACCESORIOS</a></li>
+      <li><a href="#"><span class="arrow">▶</span>ROPA Y CALZADO</a></li>
+    </ul>
+    </div>
+  </div>
+
+ <div class="menu-divider"></div>
+
+  <!-- Sección Filtros -->
+  <div class="section menu-group">
+    <button 
+      class="section-title menu-toggle d-md-none" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#menuFiltros" 
+      aria-expanded="false"
+    >
+      <span>FILTROS</span>
+      <span class="chevron">▼</span>
+    </button>
+    <h3 class="section-title d-none d-md-block">FILTROS</h3>
+    <div class="collapse d-md-block" id="menuFiltros">
+    <div class="filter-box">
+      <span class="filter-label">RANGO DE PRECIO</span>
+      <div class="price-tags">
+        <button class="filter-tag">$0 - $500</button>
+        <button class="filter-tag">$500 - $1500</button>
+      </div>
+    </div>
+  </div>
+  </div>
+</aside>
+        </div>
+         <!-- Grid de Productos -->
+        <div class="col-12 col-md-9">
+          <div id="productos" class="row g-4">
+            
+          </div>  
+        </div>
+      </div>
     </section>
 
 
@@ -42,7 +142,8 @@
 
     <!-- ! ENLACES DE ARCHIVOS JAVASCRIP-->
     <script src="./javascript/globalElements.js"></script>
-    <script src="./javascript/contactanos.js"></script>
+    <script src="./javascript/productosJSON.js"></script> <!--JSON con los productos del catlogo-->
+    <script src="./javascript/tienda.js"></script><!-- Logica que maneja el DOM--> 
     <!-- ! FIN DE ENLACES DE ARCHIVOS JAVASCRIP-->
     <!-- !LINK BOOSTRAP-->
     <script
