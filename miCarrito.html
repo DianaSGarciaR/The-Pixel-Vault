@@ -32,7 +32,22 @@
         <img class="banner-frame" src="./assets/En construccion.jpeg" alt="Imagen temporal, pagina web en construcción">
     </section>
 
+    <section class="container my-4">
+  <h2 class="section-title mb-4">CARRITO DE COMPRAS</h2>
+  
+  <!-- Contenedor donde JavaScript insertará las tarjetas de los productos -->
+  <div id="contenedor-carrito" class="row g-4">
+    <!-- Aquí se dibujarán dinámicamente los productos guardados -->
+  </div>
 
+  <!-- Resumen del Total -->
+  <div class="row mt-4">
+    <div class="col-12 d-flex justify-content-between align-items-center p-3 notch border-accent">
+      <h4>TOTAL:</h4>
+      <h3 id="total-carrito" class="text-cyan">$0 MXN</h3>
+    </div>
+  </div>
+</section>
     <!--↑↑↑↑↑↑↑↑↑↑↑Agrega aquí tu código↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
 
   
@@ -43,6 +58,8 @@
     <!-- ! ENLACES DE ARCHIVOS JAVASCRIP-->
     <script src="./javascript/globalElements.js"></script>
     <script src="./javascript/contactanos.js"></script>
+    <script src="./javascript/productosJSON.js"></script>
+    <script src="./javascript/tienda.js"></script>
     <!-- ! FIN DE ENLACES DE ARCHIVOS JAVASCRIP-->
     <!-- !LINK BOOSTRAP-->
     <script
