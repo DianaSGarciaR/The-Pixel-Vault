@@ -13,24 +13,28 @@ window.addEventListener("load", () => {
     // Si existen, los cargamos en el arreglo para mostrarlos o trabajarlos luego.
     productos = [...getItemLocalStorage("productos")];
 
-    console.log(productos);
+    //console.log(productos);
 });
 
 
 formEl.addEventListener("submit", (event) => {
     // Se ejecuta cuando el usuario envía el formulario.
     event.preventDefault();
+
+    if (!formEl.checkValidity()) {
+        return;
+    }
     // Evita que la página recargue por defecto al enviar el formulario.
 
     // Recolecta todos los campos del formulario en un objeto iterable.
     const formData = new FormData(formEl);
     //console.log(formData);
     const dataArray = [...formData];
-    //console.log(dataArray);
+    
 
     // Convierte el arreglo de pares clave-valor en un objeto JavaScript.
     const producto = Object.fromEntries(dataArray);
-    //console.log(producto);
+    
 
     // Agrega el nuevo producto al arreglo general.
     productos.push(producto);
@@ -38,7 +42,7 @@ formEl.addEventListener("submit", (event) => {
     // Guarda la lista actualizada en localStorage.
     setLocalStorage("productos", productos);
 
-    //console.log("array" + productos);
+   
 
     // Limpia los campos del formulario para dejarlo listo para otro registro.
     formEl.reset();

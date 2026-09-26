@@ -38,15 +38,15 @@
                 <label for="nameProduct" class="col-sm-2 col-form-label titulo-campo">Nombre:</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="nameProduct" name="nameProduct"
-                        placeholder="Escribe el nombre del producto">
+                        placeholder="Escribe el nombre del producto" required><!--required para que sean obligatorios los campos-->
                 </div>
             </div>
 
             <div class="mb-3 row">
                 <label for="tipo" class="col-sm-2 col-form-label titulo-campo">Tipo:</label>
                 <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example" id="tipo" name="tipo">
-                        <option selected>Selecciona el tipo de producto</option>
+                    <select class="form-select" aria-label="Default select example" id="tipo" name="tipo" required>
+                        <option selected value="" disabled>Selecciona el tipo de producto</option>
                         <option value="1">VideoJuegos</option>
                         <option value="2">Merch</option>
                     </select>
@@ -70,7 +70,7 @@
                         <span class="file-field__button">Seleccionar archivo</span>
                         <span class="file-field__name">Ningún archivo seleccionado</span>
                     </label>
-                    <input class="file-field__input" id="imagen" type="file" name="imagen">
+                    <input class="file-field__input" id="imagen" type="file" name="imagen" > 
                 </div>
             </div>
 
@@ -79,7 +79,7 @@
                 <label for="Descripcion" class="col-sm-2 col-form-label titulo-campo">Descripción:</label>
                 <div class="col-sm-10">
                     <textarea class="form-control" id="Descripcion" rows="3" name="descripcion"
-                        placeholder="Escribe una breve descripción del producto"></textarea>
+                        placeholder="Escribe una breve descripción del producto" required></textarea>
                 </div>
             </div>
 
@@ -89,8 +89,8 @@
                 <div class="col-sm-10">
                     <div class="input-group">
                         <span class="input-group-text">$</span>
-                        <input type="text" class="form-control" id="precio" name="precio"
-                            aria-label="Amount (to the nearest dollar)">
+                        <input type="number" class="form-control" id="precio" name="precio"
+                            aria-label="Amount (to the nearest dollar)" required>
                         <span class="input-group-text">.00</span>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                 <label for="genero" class="col-sm-2 col-form-label titulo-campo">Genero:</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="genero" name="genero"
-                        placeholder="Escribe el genero del producto">
+                        placeholder="Escribe el genero del producto" required>
                 </div>
             </div>
 
@@ -117,8 +117,8 @@
             <div class="mb-3 row">
                 <label for="cal" class="col-sm-2 col-form-label titulo-campo">Calificación:</label>
                 <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example" id="cal" name="cal">
-                        <option selected>Selecciona la calificación del producto</option>
+                    <select class="form-select" aria-label="Default select example" id="cal" name="cal" required>
+                        <option selected value=""  disabled>Selecciona la calificación del producto</option>
                         <option value="1">⭐</option>
                         <option value="2">⭐⭐</option>
                         <option value="3">⭐⭐⭐</option>

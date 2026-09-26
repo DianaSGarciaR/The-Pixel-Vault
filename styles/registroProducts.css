@@ -7,9 +7,7 @@ h1 {
 }
 
 
-/*
- * MARCO NEÓN DEL FORMULARIO
- *
+/** MARCO NEÓN DEL FORMULARIO */
 /* Contenedor del formulario. */
 .frame-demo {
   position: relative;
