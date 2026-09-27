@@ -1,0 +1,227 @@
+h1 {
+  color: var(--yellow-accent);
+  text-align: center;
+  font-size: 2.5rem;
+  font-family: var(--font-pixel-body);
+
+}
+
+
+/** MARCO NEÓN DEL FORMULARIO */
+/* Contenedor del formulario. */
+.frame-demo {
+  position: relative;
+  width: 640px;
+  max-width: 100%;
+  height: auto; /* crece según lo que mida el formulario */
+  margin: 0 auto 4rem;
+}
+
+/*
+ * MARCO: un SVG usado como borde (técnica "9 cortes").
+ * El SVG mide 60x60 y se corta en 9 partes con border-image-slice (26):
+ *   - las 4 ESQUINAS (las escaleras) nunca se estiran
+ *   - los 4 LADOS se estiran solo a lo largo, así el grosor no cambia
+ * Por eso el marco se adapta a cualquier alto/ancho sin deformarse, sin JS.
+ * El color del marco (#ffc933, escrito como %23ffc933) está dentro del SVG.
+ */
+.frame-demo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  border: 26px solid transparent;
+  border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M 2,26 L 2,22 L 6,22 L 6,18 L 10,18 L 10,14 L 14,14 L 14,10 L 18,10 L 18,6 L 22,6 L 22,2 L 26,2 L 34,2 L 38,2 L 38,6 L 42,6 L 42,10 L 46,10 L 46,14 L 50,14 L 50,18 L 54,18 L 54,22 L 58,22 L 58,26 L 58,34 L 58,38 L 54,38 L 54,42 L 50,42 L 50,46 L 46,46 L 46,50 L 42,50 L 42,54 L 38,54 L 38,58 L 34,58 L 26,58 L 22,58 L 22,54 L 18,54 L 18,50 L 14,50 L 14,46 L 10,46 L 10,42 L 6,42 L 6,38 L 2,38 L 2,34 Z' fill='none' stroke='%23ffc933' stroke-width='4' stroke-linejoin='miter' shape-rendering='crispEdges'/%3E%3C/svg%3E") 26 / 26px stretch;
+  pointer-events: none; /* que no bloquee los clics del formulario */
+
+  /* Brillo neón amarillo: varias sombras de distinto tamaño. */
+  filter: drop-shadow(0 0 2px rgba(255, 201, 51, 0.9))
+          drop-shadow(0 0 6px rgba(255, 190, 40, 0.8))
+          drop-shadow(0 0 14px rgba(255, 190, 40, 0.6));
+  animation: pulse 3.2s ease-in-out infinite;
+}
+
+/* Contenedor de los campos: el padding los separa del marco para que
+   el formulario quede DENTRO del borde. */
+.frame-content {
+  position: relative;
+  z-index: 1;
+  padding: 2.75rem 2.25rem;
+}
+
+/*
+ * CAMPOS DEL FORMULARIO (borde cian redondeado)
+ * Misma técnica que el marco amarillo: un SVG de 60x60 con una esquina
+ * redondeada, cortado en 9 partes con border-image. Las esquinas
+ * redondeadas nunca se deforman; los lados solo se alargan.
+ */
+.frame-content .form-control,
+.frame-content .form-select,
+.frame-content .input-group {
+  background-color: transparent;
+  color: #ffe27a; /* texto que el usuario escribe */
+  border: 14px solid transparent;
+  border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Crect x='2' y='2' width='56' height='56' rx='20' fill='none' stroke='%2366f5ec' stroke-width='4'/%3E%3C/svg%3E")
+    24 / 14px stretch;
+  border-radius: 0; /* el redondeado ya lo trae el SVG */
+  padding: 0.5rem 1rem;
+  box-shadow: none;
+  font-family: var(--font-pixel-body);
+
+
+  /* Brillo neón cian, igual de técnica que el marco amarillo. */
+  filter: drop-shadow(0 0 2px rgba(102, 245, 236, 0.85))
+          drop-shadow(0 0 6px rgba(102, 245, 236, 0.55));
+}
+
+/* Que el foco se note, pero sin el azul feo de Bootstrap. */
+.frame-content .form-control:focus,
+.frame-content .form-select:focus {
+  background-color: transparent;
+  color: #ffe27a;
+  box-shadow: none;
+  
+  filter: drop-shadow(0 0 3px rgba(102, 245, 236, 1))
+          drop-shadow(0 0 9px rgba(102, 245, 236, 0.75));
+}
+
+.frame-content .form-control::placeholder {
+  color: rgba(255, 226, 122, 0.6);
+}
+
+/* El grupo de Precio ($ ... .00): el borde va en el grupo completo,
+   y los pedazos de adentro quedan transparentes y sin su propio borde. */
+.frame-content .input-group .form-control,
+.frame-content .input-group .input-group-text {
+  border: none;
+  background-color: transparent;
+  color: #ffe27a;
+  filter: none;
+}
+
+/* Bootstrap le pone fondo blanco al select y a "Selecciona un archivo";
+   con esto igualamos el look de las otras cajas de texto. */
+.frame-content .form-select {
+  background-image: none; /* quita la flechita blanca por defecto */
+  color-scheme: dark; /* para que el menú desplegable no se vea blanco brillante */
+}
+
+/* Las opciones de la lista desplegable (cuando ya está abierta) las pinta
+   el sistema operativo, no el navegador; por eso necesitan su propia regla
+   con "option" para llevarlas a azul marino en vez del blanco de Windows. */
+.frame-content .form-select option {
+  background-color: #0b1130; /* azul marino */
+  color: #ffe27a;
+}
+
+/*
+ * CAMPO DE IMAGEN (botón falso encima del input real)
+ * El input[type="file"] de verdad se oculta por completo: en Windows,
+ * su botón nativo ("Seleccionar archivo") ignora appearance:none y
+ * siempre se ve blanco, sin importar el CSS que le pongamos. Por eso
+ * en vez de pelear con el botón nativo, lo escondemos y ponemos una
+ * <label> encima que se ve y se comporta como el resto del formulario;
+ * al darle clic, abre el mismo diálogo de elegir archivo.
+ */
+.frame-content .file-field__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.frame-content .file-field {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  cursor: pointer;
+}
+
+.frame-content .file-field__button {
+  border: 2px solid #66f5ec;
+  border-radius: 6px;
+  padding: 0.35rem 0.9rem;
+  color: #ffe27a;
+  transition: background-color 0.2s ease;
+}
+
+.frame-content .file-field__name {
+  color: rgba(255, 226, 122, 0.6);
+}
+
+.frame-content .file-field:hover .file-field__button {
+  background-color: rgba(102, 245, 236, 0.15);
+}
+
+/* El aro que aparece al llegar con la tecla Tab (en vez del mouse).
+   El input está oculto FUERA de la <label> (como hermano suyo), por eso
+   el selector primero busca ese hermano y luego entra al botón de adentro. */
+.frame-content .file-field__input:focus ~ .file-field .file-field__button {
+  box-shadow: 0 0 0 2px rgba(102, 245, 236, 0.5);
+}
+
+
+
+
+
+/* Responsividad a pantallas pequeñas, a partir de los 600px*/
+@media (max-width: 600px) {
+  .frame-demo {
+    width: 90%;
+  }
+
+  .frame-content {
+    padding: 2.5rem 1.75rem;
+  }
+}
+
+
+/** boton guardar*/
+.btn-fucsia {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  margin: 1.5rem auto 0;
+  padding: 10px 20px;
+  background-color: var(--border-color) !important;
+  color: #ffffff;
+  font-family: var(--font-pixel-body);
+  font-weight: bold;
+  border: none !important;
+  border-radius: 0 !important;
+
+  /* Recorta las esquinas para crear el estilo Sci-Fi. */
+  clip-path: polygon(
+    10px 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    10px 100%,
+    0 calc(100% - 10px),
+    0 10px
+  );
+
+  /* Brillo neón y transición para el efecto hover. */
+  filter: drop-shadow(0 0 8px rgba(255, 0, 127, 0.8));
+  transition: transform 0.2s ease, filter 0.2s ease;
+  cursor: pointer;
+}
+
+/* Aumenta ligeramente el botón y su brillo al pasar el cursor. */
+.btn-fucsia:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 14px rgba(255, 0, 127, 1));
+}
+
+.titulo-campo
+{
+  font-family: var(--font-pixel-body);
+  color: white;
+  font-size: 1rem;
+}
