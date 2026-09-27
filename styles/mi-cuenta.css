@@ -33,11 +33,12 @@
   /* Seccion Registro usario */
   #seccionInfo {
       font-family: var(--font-pixel-sub);
-      justify-content: center;
-      padding: 5rem;
-      background-image: url("../assets/miCuentaFondo.png");
+      padding: 6rem;
+      background-image: url(../assets/miCuentaFondo.png);
+      background-size: cover;
       height: stretch;
-      border-radius: 12rem 0rem 0rem 12rem;
+      border-radius: 2rem 0rem 0rem 2rem;
+      text-align: center;
   }
 
   #seccionInfo h3 {
@@ -67,4 +68,21 @@
   #registreLoginForm {
       z-index: 1;
       position: relative;
+  }
+
+  #registreLoginForm label {
+      font-family: var(--font-pixel-header);
+  }
+
+  #registreLoginForm input,
+  #registreLoginForm button {
+      font-family: var(--font-pixel-body);
+  }
+
+  #registreLoginForm input:focus,
+  #registreLoginForm button:hover {
+      filter: drop-shadow(0rem 0rem 1rem var(--border-color));
+
+      /*background-color: var(--border-color);*/
+      font-size: 17px;
   }

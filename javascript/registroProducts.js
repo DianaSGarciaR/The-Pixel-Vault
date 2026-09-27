@@ -30,11 +30,11 @@ formEl.addEventListener("submit", (event) => {
     const formData = new FormData(formEl);
     //console.log(formData);
     const dataArray = [...formData];
-    
+
 
     // Convierte el arreglo de pares clave-valor en un objeto JavaScript.
     const producto = Object.fromEntries(dataArray);
-    
+
 
     // Agrega el nuevo producto al arreglo general.
     productos.push(producto);
@@ -42,7 +42,7 @@ formEl.addEventListener("submit", (event) => {
     // Guarda la lista actualizada en localStorage.
     setLocalStorage("productos", productos);
 
-   
+
 
     // Limpia los campos del formulario para dejarlo listo para otro registro.
     formEl.reset();
@@ -68,3 +68,17 @@ const getItemLocalStorage = (key) => {
     const data = JSON.parse(localStorage.getItem(key));
     return data;
 };
+
+
+
+/**
+ *? Se almacenan los datos en LocalStorage
+ * @param {*} key Identificador que guarda el valor
+ * @param {*} value El valor
+ */
+const setLocalStorage = (key, value) => {
+    //? paso 1 convertir el valor a texto
+    const textValue = JSON.stringify(value);
+    //? paso 2 almacenar
+    localStorage.setItem(key, textValue);
+}
