@@ -263,9 +263,10 @@
 .imagen-modal {
     position: absolute;
     z-index: 4; 
-    width: 35%; 
+    width: 50%; 
     max-width: 320px;
     object-fit: contain;
+    border-radius: 12.5%;
     top: 50%;
     left: 30%; 
     transform: translate(-50%, -50%);
@@ -497,7 +498,7 @@
   border-color: rgba(45, 226, 230, 0.65); 
 }
 .card .art {
-  height: 200px;
+  height: calc(200px + 30px);
   background-color: #0b0813;
   background-image:
     linear-gradient(135deg, rgba(255, 62, 165, 0.1) 0%, transparent 100%),
@@ -506,6 +507,9 @@
   background-size: 100% 100%, 12px 12px, 12px 12px;
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .card .art::before {
   content: '';
@@ -532,15 +536,14 @@
 .card .art img {
   position: relative;
   z-index: 2;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 0.5rem;
-  filter: brightness(0.95);
+  width: auto;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12.5%;
   transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease;
 }
 .notch:hover .art img {
-  transform: scale(1.05) rotate(0.5deg);
+  transform: scale(1.05);
   filter: brightness(1.15);
 }
 .card .art small {
