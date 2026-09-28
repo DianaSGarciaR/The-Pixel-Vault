@@ -1,153 +1,13 @@
-const productos = [
-    {
-        id: 1,
-        nombre: "Cyber Warriors",
-        tipo: "Videojuego",
-        categoria: "Físico",
-        imagen: "./assets/cyber_warrior.png",
-        descripcion: "Combate futurista en una ciudad dominada por la tecnología.",
-        precio: 899,
-        genero: "Acción",
-        plataforma: "PC",
-        stock: 15,
-        calificacion: 4.8,
-        status: "Disponible"
-    },
-    {
-        id: 2,
-        nombre: "Kingdom of Legends",
-        tipo: "Videojuego",
-        categoria: "Digital",
-        imagen: "./assets/kingdom_of_leyends.png",
-        descripcion: "Explora un mundo fantástico lleno de aventuras y misterios.",
-        precio: 1199,
-        genero: "RPG",
-        plataforma: "PS5",
-        stock: 8,
-        calificacion: 4.7,
-        status: "Disponible"
-    },
-    {
-        id: 3,
-        nombre: "Speed Horizon",
-        tipo: "Videojuego",
-        categoria: "Fisico",
-        imagen: "./assets/speed_horizon.png",
-        descripcion: "Compite a toda velocidad en diferentes pistas y ciudades.",
-        precio: 799,
-        genero: "Carreras",
-        plataforma: "Xbox",
-        stock: 12,
-        calificacion: 4.5,
-        status: "Disponible"
-    },
-    {
-        id: 4,
-        nombre: "Shadow Ninja",
-        tipo: "Videojuego",
-        categoria: "Edición especial",
-        imagen: "./assets/shadow_ninja.png",
-        descripcion: "Conviértete en un ninja y domina diferentes técnicas de combate.",
-        precio: 699,
-        genero: "Acción",
-        plataforma: "Nintendo Switch",
-        stock: 0,
-        calificacion: 4.6,
-        status: "Agotado"
-    },
-    {
-        id: 5,
-        nombre: "Galaxy Explorer",
-        tipo: "Videojuego",
-        categoria: "Fisico",
-        imagen: "./assets/galaxy_explorer.png",
-        descripcion: "Viaja por el espacio y descubre nuevos planetas.",
-        precio: 999,
-        genero: "Aventura",
-        plataforma: "PC",
-        stock: 20,
-        calificacion: 4.9,
-        status: "Disponible"
-    },
-    {
-        id: 6,
-        nombre: "Battle Arena X",
-        tipo: "Videojuego",
-        categoria: "Edición especial",
-        imagen: "./assets/battle_arena.png",
-        descripcion: "Enfréntate a otros jugadores en intensas batallas.",
-        precio: 749,
-        genero: "Peleas",
-        plataforma: "PS5",
-        stock: 6,
-        calificacion: 4.4,
-        status: "Disponible"
-    },
-    {
-        id: 7,
-        nombre: "Mystic Forest",
-        tipo: "Videojuego",
-        categoria: "Físico",
-        imagen: "./assets/mystic_forest.png",
-        descripcion: "Aventúrate en un bosque mágico lleno de criaturas.",
-        precio: 599,
-        genero: "Aventura",
-        plataforma: "Nintendo Switch",
-        stock: 10,
-        calificacion: 4.3,
-        status: "Disponible"
-    },
-    {
-        id: 8,
-        nombre: "Football Stars 2026",
-        tipo: "Videojuego",
-        categoria: "Digital",
-        imagen: "./assets/football_stars.png",
-        descripcion: "Forma tu equipo y compite en emocionantes partidos.",
-        precio: 899,
-        genero: "Deportes",
-        plataforma: "Xbox",
-        stock: 4,
-        calificacion: 4.2,
-        status: "Disponible"
-    },
-    {
-        id: 9,
-        nombre: "Zombie Survival",
-        tipo: "Videojuego",
-        categoria: "Edición especial",
-        imagen: "./assets/zombie_survival.png",
-        descripcion: "Sobrevive a un mundo invadido por criaturas peligrosas.",
-        precio: 849,
-        genero: "Terror",
-        plataforma: "PC",
-        stock: 0,
-        calificacion: 4.7,
-        status: "Agotado"
-    },
-    {
-        id: 10,
-        nombre: "Dragon Quest",
-        tipo: "Videojuego",
-        categoria: "Físico",
-        imagen: "./assets/dragon_quest.png",
-        descripcion: "Embárcate en una aventura para derrotar al poderoso dragón.",
-        precio: 1099,
-        genero: "RPG",
-        plataforma: "PS5",
-        stock: 9,
-        calificacion: 4.8,
-        status: "Disponible"
-    }
-];
+
+import { productosp } from "../services/dataCatalogo.js";
+const carrito = [];
 
 
-/**
- * ===================== Generación de productos a partir del json usando el DOM ===============================
- */
+const productsElement = document.querySelector("#productos");
+const contenedorCarrito = document.querySelector('#contenedor-carrito');
+const totalCarrito = document.querySelector('#total-carrito');
 
 //Seleccionamos el elemento del DOM donde se van a renderizar las cards de los productos
-let productsElement = document.querySelector("#produtos");
 let modalsContainer = document.body; // En donde se renderiza el modal
 
 //Definimos la función para renderizar el producto
@@ -202,7 +62,7 @@ let renderProduct = (product) => {
 
 //Ahora sí mandamos a llamar a la función render product sobre cada uno de los productos del json
 
-productos.map((product) => renderProduct(product));
+productosp.map((product) => renderProduct(product));
 //Recordar que map va a recibir como argumento un callback, en este caso, la función a aplicar sobre cada uno de sus productos.
 const juegosElement = document.querySelector("#menuVideojuegos");
 
@@ -212,7 +72,7 @@ juegosElement.addEventListener("click",(e) => {
         productsElement.innerHTML= "";
         const pr = "Videojuego";
         console.log("Ya dió click");
-        productos.map((product) =>{
+        productosp.map((product) =>{
             if(product.tipo == pr){
                 renderProduct(product);
             }
@@ -221,7 +81,7 @@ juegosElement.addEventListener("click",(e) => {
         productsElement.innerHTML= "";
         const pr = "Físico";
         console.log("Ya dió click");
-        productos.map((product) =>{
+        productosp.map((product) =>{
             if(product.categoria == pr){
                 renderProduct(product);
             }
@@ -230,7 +90,7 @@ juegosElement.addEventListener("click",(e) => {
         productsElement.innerHTML= "";
         const pr = "Digital";
         console.log("Ya dió click");
-        productos.map((product) =>{
+        productosp.map((product) =>{
             if(product.categoria == pr){
                 renderProduct(product);
             }
@@ -239,10 +99,11 @@ juegosElement.addEventListener("click",(e) => {
         productsElement.innerHTML= "";
         const pr = "Edición especial";
         console.log("Ya dió click");
-        productos.map((product) =>{
+        productosp.map((product) =>{
             if(product.categoria == pr){
                 renderProduct(product);
             }
         })
     }
 });
+//#########################################################
