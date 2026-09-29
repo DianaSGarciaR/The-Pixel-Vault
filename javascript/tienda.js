@@ -1,11 +1,10 @@
 
 import { productosp } from "../services/dataCatalogo.js";
-const carrito = [];
+
 
 
 const productsElement = document.querySelector("#productos");
-const contenedorCarrito = document.querySelector('#contenedor-carrito');
-const totalCarrito = document.querySelector('#total-carrito');
+
 
 //Seleccionamos el elemento del DOM donde se van a renderizar las cards de los productos
 let modalsContainer = document.body; // En donde se renderiza el modal
