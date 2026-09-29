@@ -1,148 +1,109 @@
 
+import { productosp } from "../services/dataCatalogo.js";
 const carrito = [];
+
 
 const productsElement = document.querySelector("#productos");
 const contenedorCarrito = document.querySelector('#contenedor-carrito');
 const totalCarrito = document.querySelector('#total-carrito');
 
-const carritoStorage = JSON.parse(localStorage.getItem('carrito_compras')) || [];
+//Seleccionamos el elemento del DOM donde se van a renderizar las cards de los productos
+let modalsContainer = document.body; // En donde se renderiza el modal
 
-//Guardar en localStorage
-function guardarCarritoEnStorage() {
-    localStorage.setItem('carrito_compras', JSON.stringify(carrito));
-}
-
-function cargarCarritoDesdeStorage() {
-    const carritoGuardado = localStorage.getItem('carrito_compras');
-    if (carritoGuardado) {
-        const datos = JSON.parse(carritoGuardado);
-        carrito.length = 0;
-        carrito.push(...datos);
-    }
-}
-
-function renderProducts() {
-
-    if (typeof productos === 'undefined' || !productsElement) return;
-
-    productsElement.innerHTML = '';
-    
-    productos.forEach(product => {
-        const productCol = document.createElement('div');
-        productCol.className = 'col-12 col-sm-6 col-lg-4';
-        
-        productCol.innerHTML = `
-            <div class="card notch">
-              <div class="art">
-                <img src="${product.imagen}" class="card-img-top" alt="${product.nombre}">
-                <span class="badge">${product.genero}</span>
-                <small>${product.plataforma}</small>
-              </div>
-              <div class="body">
-                <h3>${product.nombre}</h3>
-                <p>${product.descripcion}</p>
-                <div class="card-action-row">
-                    <span class="price">$${product.precio} MXN</span>
-                    <button class="cta notch-sm btn-agregar">Añadir</button>
+//Definimos la función para renderizar el producto
+let renderProduct = (product) => {
+    // CARDS
+    const productCard = `
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="notch">
+            <div class="card">
+                <div class="art">
+                    <img src="${product.imagen}" class="card-img-top" alt="${product.nombre}">
+                    <span class="badge">${product.genero}</span>
+                    <small>${product.plataforma}</small>
                 </div>
-              </div>
-            </div>
-        `;
-
-        
-        //Se maneja el boton agregar
-        const btnAgregar = productCol.querySelector('.btn-agregar');
-        btnAgregar.addEventListener('click', (event) => {
-            agregarAlCarrito(product.id);
-        });
-        
-
-        productsElement.appendChild(productCol);
-    });
-}
-
-//Operaciones del carrito
-function agregarAlCarrito(id_producto) {
-    const productoEncontrado = productos.find(p => p.id === id_producto);
-    
-    if (productoEncontrado) {
-        const productoEnCarrito = carrito.find(p => p.id === id_producto);
-        
-        if (productoEnCarrito) {
-            productoEnCarrito.cantidad += 1;
-        } else {
-            carrito.push({
-                ...productoEncontrado,
-                cantidad: 1
-            });
-        }
-        
-        // Guardamos en LocalStorage
-        guardarCarritoEnStorage();
-        if (contenedorCarrito) actualizaDOMCarrito();
-    }
-}
-
-function eliminarDelCarrito(id_producto) {
-    const indice = carrito.findIndex(p => p.id === id_producto);
-    
-    if (indice !== -1) {
-        if (carrito[indice].cantidad > 1) {
-            carrito[indice].cantidad -= 1;
-        } else {
-            carrito.splice(indice, 1);
-        }
-        guardarCarritoEnStorage();
-        actualizaDOMCarrito();
-    }
-}
-
-function actualizaDOMCarrito() {
-    contenedorCarrito.innerHTML = '';
-    
-    if (carrito.length === 0) {
-        contenedorCarrito.innerHTML = '<p>El carrito está vacío.</p>';
-        totalCarrito.textContent = '$0 MXN';
-        return;
-    }
-
-    let sumaTotal = 0;
-
-    carrito.forEach(item => {
-        const subtotal = item.precio * item.cantidad;
-        sumaTotal += subtotal;
-
-        const itemCard = document.createElement('div');
-        itemCard.className = 'col-12 col-sm-6 col-lg-4';
-        
-        itemCard.innerHTML = `
-            <div class="card notch">
-              <div class="art">
-                <img src="${item.imagen}" class="card-img-top" alt="${item.nombre}">
-                <span class="badge">${item.genero}</span>
-                <small>${item.plataforma}</small>
-              </div>
-              <div class="body">
-                <h3>${item.nombre} (x${item.cantidad})</h3>
-                <p>Subtotal: $${subtotal} MXN</p>
-                <div class="card-action-row">
-                    <button type="button" class="cta notch-sm btn-eliminar">Eliminar</button>
+                <div class="body">
+                    <h3>${product.nombre}</h3>
+                    <div class="card-action-row">
+                        <span class="price">$${product.precio} MXN</span>
+                        <button type="button" class="cta notch-sm" data-bs-toggle="modal" data-bs-target="#modal-${product.id}">INSPECCIONAR</button>
+                    </div>
                 </div>
-              </div>
             </div>
-        `;
+        </div>
+    </div>`;
 
-        const botonEliminar = itemCard.querySelector('.btn-eliminar');
-        botonEliminar.addEventListener('click', () => {
-            eliminarDelCarrito(item.id);
-        });
+    // MODAL
+    const productModal = `
+    <div class="modal fade" id="modal-${product.id}" tabindex="-1" aria-labelledby="modalLabel-${product.id}" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <button type="button" class="btn-cerrar-cyber" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+                <div class="container-back"></div>
+                <img class="imagen-modal" src="${product.imagen}" alt="${product.nombre}">
+                <div class="container-descripcion">
+                    <h1>${product.nombre}</h1>
+                    <h3>${product.plataforma}</h3>
+                    <p class="precio">$${product.precio} MXN</p>
+                    <p>${product.descripcion}</p>
+                    <div class="carrito-container">
+                        <button class="carrito">
+                            Añadir al Carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`;
 
-        contenedorCarrito.appendChild(itemCard);
-    });
-
-    totalCarrito.textContent = `$${sumaTotal} MXN`;
+    productsElement.insertAdjacentHTML('beforeend', productCard);
+    modalsContainer.insertAdjacentHTML('beforeend', productModal);
 }
 
-cargarCarritoDesdeStorage();
-renderProducts();
-actualizaDOMCarrito();
+//Ahora sí mandamos a llamar a la función render product sobre cada uno de los productos del json
+
+productosp.map((product) => renderProduct(product));
+//Recordar que map va a recibir como argumento un callback, en este caso, la función a aplicar sobre cada uno de sus productos.
+const juegosElement = document.querySelector("#menuVideojuegos");
+
+juegosElement.addEventListener("click",(e) => {
+    e.preventDefault();
+    if(e.target.id == "Videojuegos"){
+        productsElement.innerHTML= "";
+        const pr = "Videojuego";
+        console.log("Ya dió click");
+        productosp.map((product) =>{
+            if(product.tipo == pr){
+                renderProduct(product);
+            }
+        })
+    }else if(e.target.id == "Fisicos"){
+        productsElement.innerHTML= "";
+        const pr = "Físico";
+        console.log("Ya dió click");
+        productosp.map((product) =>{
+            if(product.categoria == pr){
+                renderProduct(product);
+            }
+        })
+    }else if(e.target.id == "Digitales"){
+        productsElement.innerHTML= "";
+        const pr = "Digital";
+        console.log("Ya dió click");
+        productosp.map((product) =>{
+            if(product.categoria == pr){
+                renderProduct(product);
+            }
+        })
+    }else if(e.target.id == "EdicionEspecial"){
+        productsElement.innerHTML= "";
+        const pr = "Edición especial";
+        console.log("Ya dió click");
+        productosp.map((product) =>{
+            if(product.categoria == pr){
+                renderProduct(product);
+            }
+        })
+    }
+});
+//#########################################################
