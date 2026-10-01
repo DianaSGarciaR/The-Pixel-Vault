@@ -1,0 +1,48 @@
+h1 {
+    color: var(--yellow-accent);
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: var(--font-pixel-body);
+
+    margin: 2rem;
+}
+
+.contenedor-principal{
+    text-align: center;
+}
+
+.boton-pixel-cyberpunk {
+  background: transparent; /* Sin fondo */
+  color: #fbd34d; /* Texto amarillo */
+  font-family: 'Courier New', Courier, monospace; /* Fuente estilo pixel/terminal */
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 14px 32px;
+  cursor: pointer;
+  border: 16px solid transparent; /* Grosor necesario para contener el patrón de píxeles */
+  
+  /* Renderiza los bordes en bloques sólidos sin difuminar */
+  image-rendering: pixelated; 
+  
+  /* Crea el patrón de escalones cian usando un gradiente repetitivo */
+  border-image: repeating-linear-gradient(
+    45deg,
+    #00f0ff,
+    #00f0ff 4px,
+    transparent 4px,
+    transparent 8px
+  ) 16;
+}
+
+/* Efecto opcional al pasar el cursor */
+.boton-pixel-cyberpunk:hover {
+  filter: drop-shadow(0 0 8px #00f0ff); /* Resplandor de neón */
+}
+
+
+.primer-boton{
+    width: fit-content;
+}
+
+
