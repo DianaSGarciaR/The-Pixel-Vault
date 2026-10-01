@@ -53,6 +53,51 @@
                 </div>
             </div>
 
+            <!--Botón de categoría-->
+            <div class="mb-3 row">
+                <label for="categoria" class="col-sm-2 col-form-label titulo-campo">Categoría</label>
+                <div class="col-sm-10">
+                    <select class="form-select" aria-label="Default select example" id="categoria" name="categoria" required>
+                        
+                    </select>
+                </div>
+            </div>
+
+            <!-- Función para cambiar dinámicamente las opciones de las categorías dependiendo de si son Videojuegos o Merch -->
+            <script>
+                //Se eligen los elementos del DOM que vamos a ocupar: el seleccionador del tipo para saber cuál se escogió y el de categoría para renderizar ahí la lista adecuada
+                const tipoElement = document.querySelector("#tipo");
+                const categoriaElement = document.querySelector("#categoria")
+                
+                //Se hacen las dos listas de opciones, dependiendo del tipo de producto
+                const opcionesCategoriasVideojuegos = `
+                    <option selected value="" disabled>Selecciona la categoría del producto</option>
+                    <option value="A">Físico</option>
+                    <option value="B">Digital</option>
+                    <option value="C">Edición especial</option>
+                    `;
+                const opcionesCategoriasMerch = `
+                    <option selected value="" disabled>Selecciona la categoría del producto</option>
+                    <option value="D">CDs y Viniles</option>
+                    <option value="E">Peluches</option>
+                    <option value="F">Arte y Posters</option>
+                    <option value="G">Accesorios</option>
+                    <option value="H">Ropa y Calzado</option>
+                `;
+
+                //Se escucha qué opción se eligió en el seleccionador de tipo y dependiendo de la que escogieron se renderiza la lista pertinente
+                tipoElement.addEventListener("change",(e)=>{
+                    const valorSeleccionado = e.target.value;
+                    if(valorSeleccionado==2){
+                        categoriaElement.innerHTML = "";
+                        categoriaElement.insertAdjacentHTML("beforeend",opcionesCategoriasMerch);
+                    }else{
+                        categoriaElement.innerHTML = "";
+                        categoriaElement.insertAdjacentHTML("beforeend",opcionesCategoriasVideojuegos);
+                    }
+                });
+            </script>
+
 
 
 
@@ -119,11 +164,11 @@
                 <div class="col-sm-10">
                     <select class="form-select" aria-label="Default select example" id="cal" name="cal" required>
                         <option selected value=""  disabled>Selecciona la calificación del producto</option>
-                        <option value="1">⭐</option>
-                        <option value="2">⭐⭐</option>
-                        <option value="3">⭐⭐⭐</option>
-                        <option value="4">⭐⭐⭐⭐</option>
-                        <option value="5">⭐⭐⭐⭐⭐</option>
+                        <option value="1s">⭐</option>
+                        <option value="2s">⭐⭐</option>
+                        <option value="3s">⭐⭐⭐</option>
+                        <option value="4s">⭐⭐⭐⭐</option>
+                        <option value="5s">⭐⭐⭐⭐⭐</option>
 
                     </select>
                 </div>
