@@ -46,21 +46,27 @@
   }
 
   /* Seccion Registro usario */
-  #sectionCreateUser,
-  #sectionLogin {
+  #sectionForm {
       padding: 5rem;
       height: stretch;
       background-color: var(--bg-color);
       border-radius: 0rem 17rem 17rem 0rem;
   }
 
+  .format-input {
+      width: 100%;
+      max-width: 500px;
+      margin: 2rem auto 0;
+      clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px),
+              calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+  }
+
   #sectionLogin {
-      display: none;
+      /*display: none;*/
   }
 
   /* Seccion Login */
-  #sectionLogin h4,
-  #sectionCreateUser h4 {
+  #sectionForm h4 {
       font-family: var(--font-pixel-header);
   }
 
@@ -74,15 +80,67 @@
       font-family: var(--font-pixel-header);
   }
 
-  #registreLoginForm input,
-  #registreLoginForm button {
+  #registreLoginForm input {
       font-family: var(--font-pixel-body);
   }
 
-  #registreLoginForm input:focus,
-  #registreLoginForm button:hover {
+  #registreLoginForm input:focus {
       filter: drop-shadow(0rem 0rem 1rem var(--border-color));
-
       /*background-color: var(--border-color);*/
       font-size: 17px;
+  }
+
+
+  /* ============= STAR: Botones ============= */
+  .btn-magenta-container {
+      display: block;
+      width: 100%;
+      max-width: 500px;
+      margin: 2rem auto 0;
+      filter: drop-shadow(0 0 8px rgba(255, 62, 165, 0.8));
+      transition: transform 0.2s ease, filter 0.2s ease;
+  }
+
+  .btn-magenta {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: var(--border-color) !important;
+      color: white;
+      font-family: 'Pixelify Sans', sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      border: none !important;
+      border-radius: 0 !important;
+      cursor: pointer;
+      clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px),
+              calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+  }
+
+  .btn-magenta:hover {
+      color: white;
+  }
+
+  .btn-magenta-container:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 16px rgba(255, 62, 165, 1));
+  }
+
+  /* ============= STAR: Botones ============= */
+
+  /* =============== Responsabilidad ============== */
+  @media (max-width: 768px) {
+      .btn-magenta-container {
+          margin: 0.2rem auto 0;
+          max-width: 150px;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+      }
+
+      .btn-magenta {
+          padding: 8px;
+          font-size: 0.85rem;
+          width: 100%;
+      }
   }

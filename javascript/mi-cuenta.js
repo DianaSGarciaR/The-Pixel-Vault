@@ -1,76 +1,65 @@
 
 /**
- * @deprecated LIST_USER
+ * @deprecated LIST_USERS
  * Este list se borrara cuando se implente la Base de datos
  */
-let LIST_USER = [
-    {
-        email: "diana@hotmail.com",
-        user: "_diana_",
-        password: "A2021bcgEN."
-    }
+let LIST_USERS = [
+    { email: "admin@hotmail.com", password: "A2021bcgEN.", tipo_user: "ADMIN", status: 1 },
+    { email: "dana.sofi@hotmail.com", password: "1234.", tipo_user: "COSTOMER", status: 0 }
 ];
 
-
-let userLoging = {};
-let newUser = {};
-
-const formNewUser = document.querySelector("#formNewUser")
-const inputEmail = document.querySelector("#inputEmail");
-const inputPasswordConfirm = document.querySelector("#inputPasswordConfirm");
-const inputPassword = document.querySelector("#inputPassword");
-
-// Elemento donde se renderizan los mensajes de éxito o error
+const keyEncryption = 22;
+const NEW_USER = { tipo_user: "COSTOMER", status: 0 }; // Valores que no vienen en el formuario
+const formNewUser = document.querySelector("#formNewUser");
 const resultadoRegistro = document.querySelector("#resultadoRegistro");
 
-/* =============================== Create user ===============================*/
+/* =============================== Star: Create user ===============================*/
 formNewUser.addEventListener("submit", (event => {
-    console.log("1 ", inputPassword)
-    console.log("2 ", inputPasswordConfirm)
-    console.log(getItemLocalStorage("LIST_USER"));
-    console.log("Create user")
-    event.preventDefault();
-    /* 1 Validar datos ingresados */
-
+    const newUser = Object.fromEntries([...new FormData(formNewUser)]);
     let LIST_ERRORES = [];
     let formularioValido = true;
+    event.preventDefault();
 
-    /** Validar si los campos existen, se elimana espacios */
-    let email = ((inputEmail) ? inputEmail.value.trim() : "");
-    let password = ((inputPassword) ? inputPassword.value.trim() : "");
-    let passwordConfirm = ((inputPasswordConfirm) ? inputPasswordConfirm.value.trim() : "");
-    /* email */
-    if (!validarCorreo(email, LIST_ERRORES)) {
+    /** 1. Validar y se elimana espacios */
+    newUser.email = ((newUser.email) ? (newUser.email).trim() : "");
+    newUser.password = ((newUser.password) ? (newUser.password).trim() : "");
+    newUser.passwordConfirm = ((newUser.passwordConfirm) ? (newUser.passwordConfirm).trim() : "");
+
+    if (!validarCorreo(newUser.email, LIST_ERRORES)) {
         formularioValido = false;
     }
 
     /* validar password y si el pasword1 == pasword2 */
-    if (!validarPasword(password, passwordConfirm, LIST_ERRORES)) {
+    if (!validarPasword(newUser.password, newUser.passwordConfirm, LIST_ERRORES)) {
         formularioValido = false;
     }
 
-    /* Validar si exite el registro en la base de datos */
-    if (!validExistUser(email, LIST_ERRORES)) {
+    //! Validar si exite el registro en la base de datos */
+    if (!validExistUser(newUser.email, LIST_ERRORES)) {
         formularioValido = false;
     }
-
 
     /* 2 Validamos si no exiten errores */
     if (formularioValido) {
-        const newUser = Object.fromEntries([...new FormData(formNewUser)]);
         delete newUser.passwordConfirm;
-        createUser(newUser);
+        let user = { ...newUser, ...NEW_USER }
+        createUser(user);
     } else {
         renderizar(false, LIST_ERRORES, resultadoRegistro);
     }
 }));
 
 const createUser = (dataUser) => {
-    LIST_USER.push(dataUser);
-    setLocalStorage("LIST_USERS", LIST_USER);
+    // !=== STAR: Esta pArte se sustituye cuando Se implemente BackEnd === 
+    // Se deja solo para simular el guardado de datos en la base de datos, cuando se implemente el BackEnd esta parte se eliminara
+    LIST_USERS.push(dataUser);
+    setLocalStorage("LIST_USERS", LIST_USERS);
+    //! === END: Esta pArte se sustituye cuando Se implemente BackEnd === */
 };
 
+/* =============================== End: Create user ===============================*/
 
+/** ================= STAR: Funciones de validacion de campos para formulario ================= */
 function validarCorreo(correoValor, LIST_ERRORES) {
     // Expresión para que el texto ingresaro cumpla con la estructura de la email
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -91,41 +80,35 @@ function validarPasword(paswordValor, passwordConfirmValor, LIST_ERRORES) {
     // Expresión para que el texto ingresaro cumpla con la estructura de la contraseña
     const regexEmail = /^.{8,20}$/;
     let esValido = true;
-    console.log("1 ", paswordValor)
-    console.log("2 ", passwordConfirmValor)
     if (paswordValor === "" || passwordConfirmValor === "") {
         esValido = false;
         LIST_ERRORES.push("La contraseña es obligatoria.");
     } else if (!regexEmail.test(paswordValor)) {
         esValido = false;
-        LIST_ERRORES.push("La contraseña no es válida.");
+        LIST_ERRORES.push("La contraseña debe tener min 8 caracteres.");
     } else if (paswordValor !== passwordConfirmValor) {
-
-
         esValido = false;
-        LIST_ERRORES.push("La contraseña de coincidir.");
+        LIST_ERRORES.push("La contraseñas deben coincidir.");
     }
     return esValido;
 }
 
-
 /** 
  * @deprecated
- * Evaluar esta funcion si se borrara cuando se implemente el BackEnd
- */
-
+ * !Evaluar esta funcion si se borrara cuando se implemente el BackEnd Y Base de datos */
 function validExistUser(email, LIST_ERRORES) {
     let esValido = true;
-    let existUser = LIST_USER.filter(user => user.email === email);
+    let existUser = LIST_USERS.filter(user => user.email === email);
     if (existUser && existUser.length > 0) {
         esValido = false;
         LIST_ERRORES.push("El email ingresado ya exite en el sistema");
     }
     return esValido;
 }
+/** ================= END: Funciones de validacion de campos para formulario ================= */
 
-
-/**  Mensajes de error */
+/** ================= STAR: Mensajes ================= */
+// Mensajes de error 
 function renderizar(statusForm, mensajes, contenedor) {
     if (!contenedor) return;
 
@@ -141,7 +124,9 @@ function renderizar(statusForm, mensajes, contenedor) {
         contenedor.innerHTML = htmlContent;
     }
 }
+/** ================= END: Mensajes ================= */
 
+/** ================= STAR: Funcines LocalStorage ================= */
 /**
  *? Se almacenan los datos en LocalStorage
  * @param {*} key Identificador que guarda el valor
@@ -166,3 +151,22 @@ const getItemLocalStorage = (key) => {
     const data = JSON.parse(localStorage.getItem(key));
     return data;
 }
+/** ================= END: Funcines LocalStorage ================= */
+
+/** ================= STAR: Logica css ================ */
+/**
+ * Funcion para mostrar/ocultar elementos HTML
+ * @param {*} type ¿Que desar hacer? SHOW (mostrar) | HIDEN (ocultar)
+ * @param {*} elementId Id del elemento HTML que se desea mostrar/ocultar
+ */
+const showOrHideElements = (type, elementId) => {
+    let element = document.getElementById(elementId);
+    if (type === "SHOW") {
+        element.removeAttribute("hidden");
+    } else if (type === "HIDEN") {
+        element.setAttribute("hidden");
+    }
+}
+/** ================= END: Logica css ================= */
+
+
