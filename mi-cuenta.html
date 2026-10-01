@@ -1,254 +1,217 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contáctanos</title>
-    <!--Hoja de estilos-->
-    <link rel="stylesheet" href="mi-cuenta.css">
-    <!-- !LINK BOOSTRAP-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-    <!-- !FIN LINK BOOSTRAP-->
-    <link rel="stylesheet" href="styles/contactanos.css" />
-    <link rel="stylesheet" href="styles/styles.css" />
 
-    <!--Link de fuente-->
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-    </style>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contáctanos</title>
+  <!--Hoja de estilos-->
+  <link rel="stylesheet" href="styles/mi-cuenta.css">
+  <!-- !LINK BOOSTRAP-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+  <!-- !FIN LINK BOOSTRAP-->
+  <link rel="stylesheet" href="styles/contactanos.css" />
+  <link rel="stylesheet" href="styles/styles.css" />
 
-  <body>
-    <!-- Navbar-->
-    <main class="navThePixelVault"></main>
+  <!--Link de fuente-->
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+  </style>
+</head>
 
-    <!--↓↓↓↓↓↓↓↓↓↓↓Agrega aquí tu código↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+<body>
+  <!-- Navbar-->
+  <main class="navThePixelVault"></main>
 
-    <!-- Banner -->
-    <container class="banner"><img src="assets/bannerPerfil.svg" alt="banner.svg"><h1>Mi cuenta</h1></container>
-    <!-- Termina Banner-->
+  <!--↓↓↓↓↓↓↓↓↓↓↓Agrega aquí tu código↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
 
-    <!--Contenedor para información de contacto-->
-    <div class="container text-center">
-      <div class="row">
-        <div class="col-4">
-          <div class="row">
-            <svg class="marcoAzul" viewBox="0 0 64 33" preserveAspectRatio="none">
-              <use href="#plantillaSVG"></use>
-            </svg>
-            <div class="contenidomarco">
-              <div class="imagenperfil"></div>
-              <button type="button" class="btn">Base class</button>
-            </div>
-          </div>
-          <div class="row">
-            <svg class="marcoRosa" viewBox="0 0 64 33" preserveAspectRatio="none">
-              <use href="#plantillaSVG"></use>
-            </svg>
-            <div class="contenidomarco">
-              <h3>Métodos de pago</h3>
-              <form> 
-              <div class="form-check form-switch">
-                <label class="form-check-label" for="switchCheckDefault"><img src="..." alt="visaLogo">Visa</label>
-                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+  <!-- Banner -->
+  <container class="banner"><img src="assets/bannerPerfil.svg" alt="banner.svg">
+    <h1>Mi cuenta</h1>
+  </container>
+  <!-- Termina Banner-->
+
+  <!--Contenedor para información de contacto-->
+  <div class="container text-center">
+    <div class="row g-5">
+      <div class="col-3">
+        <div class="row mb-4">
+          <div class="contenedor-tarjeta-azul">
+              <div class="contenido-tarjeta">
+                <div class="imagenperfil"></div>
+                <button type="button" class="btn">Base class</button>
               </div>
-              <div class="form-check form-switch">
-                <label class="form-check-label" for="switchCheckDefault"><img src="..." alt="PayPalLogo">PayPal</label>
-                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
-              </div>
-              <div class="form-check form-switch">
-                <label class="form-check-label" for="switchCheckDefault"><img src="..." alt="OxxoLogo">Oxxo</label>
-                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
-              </div>
-              <button type="button" class="btn">Base class</button>
-              </form>
-            </div>
           </div>
         </div>
-        <div class="col-8">
-          <svg class="marcoRosa" viewBox="0 0 64 33" preserveAspectRatio="none">
-            <use href="#plantillaSVG"></use>
-          </svg>
-          <div class="contenidomarco">
-            <form>
-            <h3>Datos del usuario</h3>
-            <div class="row">
-              <div class="col-6">
-                <svg class="marcoAmarillo" viewBox="0 0 64 33" preserveAspectRatio="none">
-                  <use href="#plantillaSVG"></use>
-                </svg>
-                <!--form Nombre-->
-                <div class="mb-3">
-                  <label for="nombre" class="form-label">Nombre</label>
-                  <input name="nombre" type="text" class="form-control" id="nombre">
-                </div>
+        <div class="row">
+          <div class="contenedor-tarjeta-rosa">
+              <div class="contenido-tarjeta">
+                <h3>Métodos de pago</h3>
+                <form>
+                  <div class="form-check form-switch">
+                    <label class="form-check-label" for="switchCheckDefault"><img src="..." alt="visaLogo">Visa</label>
+                    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+                  </div>
+                  <div class="form-check form-switch">
+                    <label class="form-check-label" for="switchCheckDefault"><img src="..."
+                        alt="PayPalLogo">PayPal</label>
+                    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+                  </div>
+                  <div class="form-check form-switch">
+                    <label class="form-check-label" for="switchCheckDefault"><img src="..." alt="OxxoLogo">Oxxo</label>
+                    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+                  </div>
+                  <button type="button" class="btn">Base class</button>
+                </form>
               </div>
-              <div class="col-6">
-                <svg class="marcoAmarillo" viewBox="0 0 64 33" preserveAspectRatio="none">
-                  <use href="#plantillaSVG"></use>
-                </svg>
-                <!--form Apellidos-->  
-                <div class="mb-3">
-                  <label for="apellidos" class="form-label">Apellidos</label>
-                  <input name="apellidos" type="text" class="form-control" id="apellidos">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-8">
-                <svg class="marcoAmarillo" viewBox="0 0 64 33" preserveAspectRatio="none">
-                  <use href="#plantillaSVG"></use>
-                </svg>
-                <!--form e-mail-->
-                <div class="mb-3">
-                  <label for="email" class="form-label">E-mail</label>
-                  <input name="email" type="text" class="form-control" id="email">
-                </div>
-              </div>
-              <div class="col-4">
-                <svg class="marcoAmarillo" viewBox="0 0 64 33" preserveAspectRatio="none">
-                  <use href="#plantillaSVG"></use>
-                </svg>
-                <!--form Teléfono-->
-                <div class="mb-3">
-                  <label for="telefono" class="form-label">Teléfono</label>
-                  <input type="text" class="form-control" id="telefono">
-                </div>
-              </div>
-            </div>
-            <h4>Dirección</h4>
-            <div class="row">
-              <div class="col-8">
-                <svg class="marcoAmarillo" viewBox="0 0 64 33" preserveAspectRatio="none">
-                  <use href="#plantillaSVG"></use>
-                </svg>
-                <!--form Calle-->
-                <div class="mb-3">
-                  <label for="calle" class="form-label">Calle</label>
-                  <input name="calle" type="text" class="form-control" id="calle">
-                </div>
-              </div>
-              <div class="col-4">
-                <svg class="marcoAmarillo" viewBox="0 0 64 33" preserveAspectRatio="none">
-                  <use href="#plantillaSVG"></use>
-                </svg>
-                <!--form Número-->
-                <div class="mb-3">
-                  <label for="numero" class="form-label">Número</label>
-                  <input name="numero" type="text" class="form-control" id="numero">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-6">
-                <svg class="marcoAmarillo" viewBox="0 0 64 33" preserveAspectRatio="none">
-                  <use href="#plantillaSVG"></use>
-                </svg>
-                <!--form Colonia-->
-                <div class="mb-3">
-                  <label for="colonia" class="form-label">Colonia/Alcaldía</label>
-                  <input name="colonia" type="text" class="form-control" id="colonia">
-                </div>
-              </div>
-              <div class="col-6">
-                <svg class="marcoAmarillo" viewBox="0 0 64 33" preserveAspectRatio="none">
-                  <use href="#plantillaSVG"></use>
-                </svg>
-                <!--form Municipio-->
-                <div class="mb-3">
-                  <label for="municipio" class="form-label">Municipio</label>
-                  <input name="municipio" type="text" class="form-control" id="municipio">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-9">
-                <svg class="marcoAmarillo" viewBox="0 0 64 33" preserveAspectRatio="none">
-                  <use href="#plantillaSVG"></use>
-                </svg>
-                <!--form Estado-->
-                <div class="mb-3">
-                  <label for="estado" class="form-label">Estado/Ciudad</label>
-                  <input name="estado" type="text" class="form-control" id="estado">
-                </div>
-              </div>
-              <div class="col-3">
-                <svg class="marcoAmarillo" viewBox="0 0 64 33" preserveAspectRatio="none">
-                  <use href="#plantillaSVG"></use>
-                </svg>
-                <!--form código postal-->
-                <div class="mb-3">
-                  <label for="postal" class="form-label">Código Postal</label>
-                  <input name="postal" type="text" class="form-control" id="postal">
-                </div>
-              </div>
-            </div>
-            </form>
           </div>
         </div>
       </div>
-      <div class="row">
-        <svg class="marcoAmarillo" viewBox="0 0 64 33" preserveAspectRatio="none">
-          <use href="#plantillaSVG"></use>
-        </svg>
-        <div class="contenidomarco">
-          <h3>Historial de pedidos</h3>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">ID DEL PEDIDO</th>
-                <th scope="col">FECHA</th>
-                <th scope="col">TOTAL</th>
-                <th scope="col">ESTADO</th>
-              </tr>
-            </thead>
-            <tbody class="table-group-divider">
-              <tr>
-                <th scope="row">PED-318859</th>
-                <td>27/04/2026</td>
-                <td>$1,200.00</td>
-                <td>Entregado</td>
-              </tr>
-              <tr>
-                <th scope="row">PED-423688</th>
-                <td>15/06/2026</td>
-                <td>$885.00</td>
-                <td>Entregado</td>
-              </tr>
-              <tr>
-                <th scope="row">PED-134975</th>
-                <td>01/09/2026</td>
-                <td>$2,510.00</td>
-                <td>Entregado</td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="col-9">
+        <div class="contenedor-tarjeta-rosa h-100">
+            <div class="contenido-tarjeta">
+              <form>
+                <h3>Datos del usuario</h3>
+                <div class="row">
+                  <div class="col-6">
+                    <!--form Nombre-->
+                    <div class="mb-1">
+                      <label for="nombre" class="form-label">Nombre</label><br>
+                      <input class="contenedor-chico-amarillo" name="nombre" type="text" class="form-control" id="nombre">
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <!--form Apellidos-->
+                    <div class="mb-1">
+                      <label for="apellidos" class="form-label">Apellidos</label><br>
+                      <input class="contenedor-chico-amarillo" name="apellidos" type="text" class="form-control" id="apellidos">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <!--form e-mail-->
+                    <div class="mb-1">
+                      <label for="email" class="form-label">E-mail</label><br>
+                      <input class="contenedor-chico-amarillo" name="email" type="text" class="form-control" id="email">
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <!--form Teléfono-->
+                    <div class="mb-1">
+                      <label for="telefono" class="form-label">Teléfono</label><br>
+                      <input class="contenedor-chico-amarillo" type="text" class="form-control" id="telefono">
+                    </div>
+                  </div>
+                </div>
+                <h4>Dirección</h4>
+                <div class="row">
+                  <div class="col-8">
+                    <!--form Calle-->
+                    <div class="mb-1">
+                      <label for="calle" class="form-label">Calle</label><br>
+                      <input class="contenedor-chico-amarillo" name="calle" type="text" class="form-control" id="calle">
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <!--form Número-->
+                    <div class="mb-1">
+                      <label for="numero" class="form-label">Número</label><br>
+                      <input class="contenedor-chico-amarillo" name="numero" type="text" class="form-control" id="numero">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <!--form Colonia-->
+                    <div class="mb-1">
+                      <label for="colonia" class="form-label">Colonia/Alcaldía</label><br>
+                      <input class="contenedor-chico-amarillo" name="colonia" type="text" class="form-control" id="colonia">
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <!--form Municipio-->
+                    <div class="mb-1">
+                      <label for="municipio" class="form-label">Municipio</label><br>
+                      <input class="contenedor-chico-amarillo" name="municipio" type="text" class="form-control" id="municipio">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-9">
+                    <!--form Estado-->
+                    <div class="mb-1">
+                      <label for="estado" class="form-label">Estado/Ciudad</label><br>
+                      <input class="contenedor-chico-amarillo" name="estado" type="text" class="form-control" id="estado">
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <!--form código postal-->
+                    <div class="mb-1">
+                      <label for="postal" class="form-label">Código Postal</label><br>
+                      <input class="contenedor-chico-amarillo" name="postal" type="text" class="form-control" id="postal">
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
         </div>
       </div>
     </div>
-    <!--Termina contenedor para información de contacto-->
+    <div class="row mt-5">
+      <div class="contenedor-tarjeta-amarillo">
+          <div class="contenido-tarjeta">
+            <h3>Historial de pedidos</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">ID DEL PEDIDO</th>
+                  <th scope="col">FECHA</th>
+                  <th scope="col">TOTAL</th>
+                  <th scope="col">ESTADO</th>
+                </tr>
+              </thead>
+              <tbody class="table-group-divider">
+                <tr>
+                  <th scope="row">PED-318859</th>
+                  <td>27/04/2026</td>
+                  <td>$1,200.00</td>
+                  <td>Entregado</td>
+                </tr>
+                <tr>
+                  <th scope="row">PED-423688</th>
+                  <td>15/06/2026</td>
+                  <td>$885.00</td>
+                  <td>Entregado</td>
+                </tr>
+                <tr>
+                  <th scope="row">PED-134975</th>
+                  <td>01/09/2026</td>
+                  <td>$2,510.00</td>
+                  <td>Entregado</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+  </div>
+  <!--Termina contenedor para información de contacto-->
 
-    <!--↑↑↑↑↑↑↑↑↑↑↑Agrega aquí tu código↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+  <!--↑↑↑↑↑↑↑↑↑↑↑Agrega aquí tu código↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
 
-    <!-- Footer: su contenido se inserta desde globalElements.js. -->
-    <footer class="footer-container"></footer>
-  <!--* Figura SVG de los marcos pixelados para contenido-->
-  <svg style="display: none;"><defs><g id="plantillaSVG" shape-rendering="crispEdges"><rect x="6" y="0" width="52" height="1" /><rect x="5" y="1" width="1" height="1" /><rect x="58" y="1" width="1" height="1" /><rect x="4" y="2" width="1" height="1" /><rect x="59" y="2" width="1" height="1" /><rect x="3" y="3" width="1" height="1" /><rect x="60" y="3" width="1" height="1" /><rect x="2" y="4" width="1" height="1" /><rect x="61" y="4" width="1" height="1" /><rect x="1" y="5" width="1" height="1" /><rect x="62" y="5" width="1" height="1" /><rect x="0" y="6" width="1" height="1" /><rect x="63" y="6" width="1" height="1" /><rect x="0" y="7" width="1" height="1" /><rect x="63" y="7" width="1" height="1" /><rect x="0" y="8" width="1" height="1" /><rect x="63" y="8" width="1" height="1" /><rect x="0" y="9" width="1" height="1" /><rect x="63" y="9" width="1" height="1" /><rect x="0" y="10" width="1" height="1" /><rect x="63" y="10" width="1" height="1" /><rect x="0" y="11" width="1" height="1" /><rect x="63" y="11" width="1" height="1" /><rect x="0" y="12" width="1" height="1" /><rect x="63" y="12" width="1" height="1" /><rect x="0" y="13" width="1" height="1" /><rect x="63" y="13" width="1" height="1" /><rect x="0" y="14" width="1" height="1" /><rect x="63" y="14" width="1" height="1" /><rect x="0" y="15" width="1" height="1" /><rect x="63" y="15" width="1" height="1" /><rect x="0" y="16" width="1" height="1" /><rect x="63" y="16" width="1" height="1" /><rect x="0" y="17" width="1" height="1" /><rect x="63" y="17" width="1" height="1" /><rect x="0" y="18" width="1" height="1" /><rect x="63" y="18" width="1" height="1" /><rect x="0" y="19" width="1" height="1" /><rect x="63" y="19" width="1" height="1" /><rect x="0" y="20" width="1" height="1" /><rect x="63" y="20" width="1" height="1" /><rect x="0" y="21" width="1" height="1" /><rect x="0" y="22" width="1" height="1" /><rect x="63" y="22" width="1" height="1" /><rect x="0" y="23" width="1" height="1" /><rect x="63" y="23" width="1" height="1" /><rect x="0" y="24" width="1" height="1" /><rect x="63" y="24" width="1" height="1" /><rect x="0" y="25" width="1" height="1" /><rect x="63" y="25" width="1" height="1" /><rect x="0" y="26" width="1" height="1" /><rect x="63" y="26" width="1" height="1" /><rect x="1" y="27" width="1" height="1" /><rect x="62" y="27" width="1" height="1" /><rect x="2" y="28" width="1" height="1" /><rect x="61" y="28" width="1" height="1" /><rect x="3" y="29" width="1" height="1" /><rect x="60" y="29" width="1" height="1" /><rect x="4" y="30" width="1" height="1" /><rect x="59" y="30" width="1" height="1" /><rect x="5" y="31" width="1" height="1" /><rect x="58" y="31" width="1" height="1" /><rect x="6" y="32" width="52" height="1" /><rect x="63" y="21" width="1" height="1" /></g></defs></svg>
-    <!-- ! ENLACES DE ARCHIVOS JAVASCRIP-->
-    <script src="./javascript/globalElements.js"></script>
-    <script src="./javascript/contactanos.js"></script>
-    <!-- ! FIN DE ENLACES DE ARCHIVOS JAVASCRIP-->
-    <!-- !LINK BOOSTRAP-->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
-    <!-- !FIN LINK BOOSTRAP-->
-  </body>
+  <!-- Footer: su contenido se inserta desde globalElements.js. -->
+  <footer class="footer-container"></footer>
+  <!-- ! ENLACES DE ARCHIVOS JAVASCRIP-->
+  <script src="./javascript/globalElements.js"></script>
+  <script src="./javascript/contactanos.js"></script>
+  <!-- ! FIN DE ENLACES DE ARCHIVOS JAVASCRIP-->
+  <!-- !LINK BOOSTRAP-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <!-- !FIN LINK BOOSTRAP-->
+</body>
+
 </html>

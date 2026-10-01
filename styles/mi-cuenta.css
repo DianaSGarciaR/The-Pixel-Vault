@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Silkscreen&display=swap');
+:root {
+    /* Para títulos principales*/
+    --font-pixel-header: 'Press Start 2P', monospace;
+
+    /* Para subtítulos y encabezados de columna */
+    --font-pixel-sub: 'Pixelify Sans', monospace;
+
+    /* Para párrafos largos y enlaces */
+    --font-pixel-body: 'Quantico', sans-serif;
+}
+:root {
+    --bg-color: #000B1E;
+    /*background color */
+    --text-main: #E7E3F5;
+    /*color del texto */
+    --text-bright: #ffffff;
+    /*coor e texto más brillante*/
+    --cyan-accent: #2DE2E6;
+    --yellow-accent: #FFD23F;
+    --border-color: #FF3EA5;
+    --panel-color: #171233;
+    /*background más claro*/
+}
+* {
+    box-sizing: border-box;
+}
+.banner {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+.banner img {
+    height: 40vw;
+}
+.banner h1 {
+    position: absolute;
+    font-family: var(--font-pixel-header);
+    font-size: 3vw;
+    color: var(--yellow-accent);
+    margin-top: 16vw;
+    filter:
+        drop-shadow(0 0 8px var(--yellow-accent)) drop-shadow(0 0 10px var(--text-bright));
+}
+.contenedor-tarjeta-rosa {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1vw;
+    border: 4vw solid transparent;
+    /*Importante para que conserve la figura*/
+}
+/**IMPORTANTE poner el svg con sus colores y resplandor aquí abajo porque si no, se pinta el drop shadow en todos los elementos hijos*/
+.contenedor-tarjeta-rosa::before {
+    content: "";
+    position: absolute;
+    top: -4vw;
+    /*Poner el mismo valor negativo que el border de arriba*/
+    left: -4vw;
+    right: -4vw;
+    bottom: -4vw;
+    z-index: -1;
+    border: 4vw solid transparent;
+    border-image-slice: 6;
+    border-image-repeat: repeat;
+    border-image-source: url('../assets/marco-pixel-rosa.svg');
+    filter: drop-shadow(0 0 10px #ff00ea) drop-shadow(0 0 5px #ffffff);
+}
+.contenedor-tarjeta-azul {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1vw;
+    font-family: sans-serif;
+    border: 4vw solid transparent;
+}
+.contenedor-tarjeta-azul::before {
+    content: "";
+    position: absolute;
+    top: -4vw;
+    left: -4vw;
+    right: -4vw;
+    bottom: -4vw;
+    z-index: -1;
+    border: 4vw solid transparent;
+    border-image-slice: 6;
+    border-image-repeat: repeat;
+    border-image-source: url('../assets/marco-pixel-azul.svg');
+    filter: drop-shadow(0 0 10px #03d9f5) drop-shadow(0 0 5px #ffffff);
+}
+.contenedor-tarjeta-amarillo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1vw;
+    font-family: sans-serif;
+    border: 4vw solid transparent;
+}
+.contenedor-tarjeta-amarillo::before {
+    content: "";
+    position: absolute;
+    top: -4vw;
+    left: -4vw;
+    right: -4vw;
+    bottom: -4vw;
+    z-index: -1;
+    border: 4vw solid transparent;
+    border-image-slice: 6;
+    border-image-repeat: repeat;
+    border-image-source: url('../assets/marco-pixel-amarillo.svg');
+    filter: drop-shadow(0 0 10px #ebfc02) drop-shadow(0 0 5px #ffffff);
+}
+.contenedor-chico-amarillo {
+    width: 100%;
+    height: 4vw;
+    display: inline-block;
+    background: none;
+    font-family: sans-serif;
+    border: 1.5vw solid transparent;
+    border-image-slice: 6;
+    border-image-repeat: repeat;
+    border-image-source: url('../assets/marco-pixel-amarillo.svg');
+    size-adjust: unset;
+}
+/* Quita el fondo de la tabla, las filas y todas las celdas individuales */
+.table, 
+.table th, 
+.table td {
+  background-color: transparent !important;
+}
