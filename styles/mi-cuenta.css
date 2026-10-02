@@ -11,6 +11,17 @@
       position: relative;
   }
 
+  a {
+      color: var(--cyan-accent);
+      position: relative;
+      z-index: 1;
+  }
+
+  a :hover {
+      color: var(--panel-color);
+
+  }
+
   /* ------- INICIO : Marco neon ------- */
   .marcoAzul {
       grid-area: 1 / 1 / 2 / 2;
@@ -53,62 +64,50 @@
       border-radius: 0rem 17rem 17rem 0rem;
   }
 
-  .format-input {
-      width: 100%;
-      max-width: 500px;
-      margin: 2rem auto 0;
-      clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px),
-              calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
-  }
-
-  #sectionLogin {
-      /*display: none;*/
-  }
-
   /* Seccion Login */
   #sectionForm h4 {
       font-family: var(--font-pixel-header);
   }
 
-  /* Formulario */
-  #registreLoginForm {
-      z-index: 1;
-      position: relative;
+  .format-input {
+      width: 100%;
+      max-width: 500px;
+      margin: 2rem auto 0;
   }
 
-  #registreLoginForm label {
+  .format-input label {
       font-family: var(--font-pixel-header);
   }
 
-  #registreLoginForm input {
-      font-family: var(--font-pixel-body);
+  .format-input input {
+      clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px),
+              calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
   }
 
-  #registreLoginForm input:focus {
+  .format-input input :focus {
+      transform: scale(1.05);
       filter: drop-shadow(0rem 0rem 1rem var(--border-color));
-      /*background-color: var(--border-color);*/
-      font-size: 17px;
   }
-
 
   /* ============= STAR: Botones ============= */
-  .btn-magenta-container {
+  .btn-magenta-container,
+  .btn-red-container {
       display: block;
       width: 100%;
       max-width: 500px;
       margin: 2rem auto 0;
-      filter: drop-shadow(0 0 8px rgba(255, 62, 165, 0.8));
+      filter: drop-shadow(0 0 8px var(--border-color));
       transition: transform 0.2s ease, filter 0.2s ease;
   }
 
-  .btn-magenta {
+  .btn-magenta,
+  .btn-red {
       display: block;
       width: 100%;
       padding: 12px;
-      background-color: var(--border-color) !important;
-      color: white;
-      font-family: 'Pixelify Sans', sans-serif;
+      font-family: var(--font-pixel-sub);
       font-weight: bold;
+      font-size: 1rem;
       text-transform: uppercase;
       border: none !important;
       border-radius: 0 !important;
@@ -117,16 +116,31 @@
               calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
   }
 
-  .btn-magenta:hover {
+  .btn-magenta {
+      background-color: var(--border-color) !important;
       color: white;
+  }
+
+  .btn-red {
+      background-color: red !important;
+      color: white;
+  }
+
+  .btn-magenta:hover {
+      color: var(--panel-color);
   }
 
   .btn-magenta-container:hover {
       transform: scale(1.05);
-      filter: drop-shadow(0 0 16px rgba(255, 62, 165, 1));
+      filter: drop-shadow(0 0 16px var(--border-color));
   }
 
-  /* ============= STAR: Botones ============= */
+  .btn-red-container:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 16px white);
+  }
+
+  /* ============= END: Botones ============= */
 
   /* =============== Responsabilidad ============== */
   @media (max-width: 768px) {

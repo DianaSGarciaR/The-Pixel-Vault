@@ -4,16 +4,18 @@
  * Este list se borrara cuando se implente la Base de datos
  */
 let LIST_USERS = [
-    { email: "admin@hotmail.com", password: "A2021bcgEN.", tipo_user: "ADMIN", status: 1 },
+    { email: "admin@hotmail.com", password: "adminadmin", tipo_user: "ADMIN", status: 1 },
     { email: "dana.sofi@hotmail.com", password: "1234.", tipo_user: "COSTOMER", status: 0 }
 ];
 
 const keyEncryption = 22;
 const NEW_USER = { tipo_user: "COSTOMER", status: 0 }; // Valores que no vienen en el formuario
 const formNewUser = document.querySelector("#formNewUser");
+const formLogin = document.querySelector("#formLogin");
+
 const resultadoRegistro = document.querySelector("#resultadoRegistro");
 
-/* =============================== Star: Create user ===============================*/
+/* =============================== START: Create user ===============================*/
 formNewUser.addEventListener("submit", (event => {
     const newUser = Object.fromEntries([...new FormData(formNewUser)]);
     let LIST_ERRORES = [];
@@ -30,7 +32,7 @@ formNewUser.addEventListener("submit", (event => {
     }
 
     /* validar password y si el pasword1 == pasword2 */
-    if (!validarPasword(newUser.password, newUser.passwordConfirm, LIST_ERRORES)) {
+    if (!validarPasword(newUser.password, newUser.passwordConfirm, "CREATE", LIST_ERRORES)) {
         formularioValido = false;
     }
 
@@ -57,7 +59,55 @@ const createUser = (dataUser) => {
     //! === END: Esta pArte se sustituye cuando Se implemente BackEnd === */
 };
 
-/* =============================== End: Create user ===============================*/
+/* =============================== END: Create user ===============================*/
+
+/* =============================== START: Login =============================*/
+formLogin.addEventListener("submit", (event => {
+    const starLoginF = Object.fromEntries([...new FormData(formLogin)]);
+    let LIST_ERRORES = [];
+    let formularioValido = true;
+    event.preventDefault();
+
+    /** 1. Validar y se elimana espacios */
+    starLoginF.email = ((starLoginF.email) ? (starLoginF.email).trim() : "");
+    starLoginF.password = ((starLoginF.password) ? (starLoginF.password).trim() : "");
+
+    if (!validarCorreo(starLoginF.email, LIST_ERRORES)) {
+        formularioValido = false;
+        console.log("1", formularioValido);
+    }
+
+    /* validar password y si el pasword1 == pasword2 */
+    if (!validarPasword(starLoginF.password, null, "LOGIN", LIST_ERRORES)) {
+        formularioValido = false;
+        console.log("2", formularioValido);
+    }
+
+    //! Validar ya que esto se realiza en Back End
+    if (!existUserByEmailAndPassword(starLoginF.email, starLoginF.password, LIST_ERRORES)) {
+        formularioValido = false;
+        console.log("3", formularioValido);
+    }
+    console.log("4", formularioValido);
+
+    /* 2 Validamos si no exiten errores */
+    if (formularioValido) {
+        starLogin(starLoginF);
+    } else {
+        renderizar(false, LIST_ERRORES, resultadoRegistro);
+    }
+}));
+
+/**
+ * Funcion para obtener info del ususario
+ * @param {} dataLoginUser  es el objeto Usuario
+ */
+const starLogin = (dataLoginUser) => {
+    // !=== STAR: Esta parte se complementa cuando implemente BackEnd === 
+    setLocalStorage("DATA_USER_LOGIN", dataLoginUser);
+    //! === END: Esta parte se complementa cuando implemente BackEnd === */
+};
+/* =============================== END: Login ===============================*/
 
 /** ================= STAR: Funciones de validacion de campos para formulario ================= */
 function validarCorreo(correoValor, LIST_ERRORES) {
@@ -72,21 +122,22 @@ function validarCorreo(correoValor, LIST_ERRORES) {
         esValido = false;
         LIST_ERRORES.push("El formato del correo electrónico no es válido.");
     }
-
     return esValido;
 }
 
-function validarPasword(paswordValor, passwordConfirmValor, LIST_ERRORES) {
+function validarPasword(paswordValor, passwordConfirmValor, type, LIST_ERRORES) {
     // Expresión para que el texto ingresaro cumpla con la estructura de la contraseña
     const regexEmail = /^.{8,20}$/;
     let esValido = true;
-    if (paswordValor === "" || passwordConfirmValor === "") {
+
+    if ((type === "CREATE" && (paswordValor === "" || passwordConfirmValor === ""))
+        || (type === "LOGIN" && paswordValor === "")) {
         esValido = false;
         LIST_ERRORES.push("La contraseña es obligatoria.");
     } else if (!regexEmail.test(paswordValor)) {
         esValido = false;
         LIST_ERRORES.push("La contraseña debe tener min 8 caracteres.");
-    } else if (paswordValor !== passwordConfirmValor) {
+    } else if (paswordValor !== passwordConfirmValor && type === "CREATE") {
         esValido = false;
         LIST_ERRORES.push("La contraseñas deben coincidir.");
     }
@@ -105,7 +156,35 @@ function validExistUser(email, LIST_ERRORES) {
     }
     return esValido;
 }
+
+/** 
+ * @deprecated
+ * !Evaluar esta funcion si se borrara cuando se implemente el BackEnd Y Base de datos */
+function existUserByEmailAndPassword(email, password, LIST_ERRORES) {
+    let esValido = false;
+    let existUser = LIST_USERS.filter(user => user.email === email && user.password === password);
+    if (existUser && existUser.length > 0) {
+        esValido = true;
+    } else {
+        LIST_ERRORES.push("Ususario no encontrado, verifique el correo y la contraseña.");
+    }
+    return esValido;
+}
 /** ================= END: Funciones de validacion de campos para formulario ================= */
+
+/** ======== STAR: Mostrar/Ocultar formulario ================= */
+function showFormulario(event, elementId) {
+    event.preventDefault();
+    console.log("showFormulario", event);
+    if (elementId === "sectionCreateUser") {
+        showOrHideElements("SHOW", "sectionCreateUser");
+        showOrHideElements("HIDEN", "sectionLogin");
+    } else if (elementId === "sectionLogin") {
+        showOrHideElements("SHOW", "sectionLogin");
+        showOrHideElements("HIDEN", "sectionCreateUser");
+    }
+}
+/** ================= END: Mostrar/Ocultar elementos ================= */
 
 /** ================= STAR: Mensajes ================= */
 // Mensajes de error 
@@ -164,7 +243,7 @@ const showOrHideElements = (type, elementId) => {
     if (type === "SHOW") {
         element.removeAttribute("hidden");
     } else if (type === "HIDEN") {
-        element.setAttribute("hidden");
+        element.setAttribute("hidden", "");
     }
 }
 /** ================= END: Logica css ================= */

@@ -58,69 +58,78 @@
 
         <div id="sectionForm" class="col-12 col-lg-8 view-element">
           <div id="sectionLogin" class="col-12 col-lg-8 view-element">
-            <h4>Bienvenido de nuevo</h4>
-            <form>
-              <div class="mb-3 format-input">
+            <h4 class="text-center">Bienvenido de nuevo</h4>
+            <form id="formLogin">
+
+              <div class="format-input">
                 <label for="exampleInputEmail1" class="form-label">Usuario</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                  placeholder="ejemplo@gmail.com">
+                <input type="email" class="form-control" name="email" id="exampleInputEmail1"
+                  aria-describedby="emailHelp" placeholder="ejemplo@gmail.com">
               </div>
-              <div class="mb-3 format-input">
+
+              <div class="format-input">
                 <label for="forInputPassword" class="form-label">Password</label>
                 <input type="password" id="inputPassword" name="password" class="form-control">
               </div>
+
               <div class="btn-magenta-container">
+
                 <button type="submit" class="btn-magenta">Iniciar sesión</button>
               </div>
-              <div id="emailHelp" class="form-text">Crear cuenta</div>
+              <div class="text-center prueba">
+                <br>
+                ¿No tienes cuenta? <a href="showFormulario('sectionCreateUser')"
+                  onclick="showFormulario(event, 'sectionCreateUser')">Registrate</a>
+              </div>
             </form>
           </div>
 
-          <div id="sectionCreateUser" class="col-12 col-lg-8 view-element">
-            <div id="registreLoginForm">
-              <h4 class="text-center">REGISTRATE</h4>
+          <div id="sectionCreateUser" class="col-12 col-lg-8 view-element" hidden>
+            <h4 class="text-center">REGISTRATE</h4>
+            <br>
 
+            <div class="text-center">
               <div class="">Continuar con Google o ingresa tus datos</div>
-              <br>
-              <div class="mb-3">
-                <button type="button" class="btn btn-light">Continuar con Google</button>
+              <div class="btn-red-container">
+                <button type="button" class="btn-red">
+                  Continuar con Google
+                </button>
+              </div>
+            </div>
+
+            <form id="formNewUser">
+              <div class="format-input">
+                <label class="form-label">Usuario (email)</label>
+                <input type="email" class="form-control" id="inputEmail" name="email" placeholder="ejemplo@gmail.com">
+              </div>
+              <div class="format-input">
+                <label class="form-label">Password</label>
+                <input type="password" id="inputPassword" name="password" class="form-control"
+                  placeholder="min 8 caracteres">
               </div>
 
-              <form id="formNewUser">
-                <div class="mb-3">
-                  <label class="form-label">Usuario (email)</label>
-                  <input type="email" class="form-control" id="inputEmail" name="email" placeholder="ejemplo@gmail.com">
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Password</label>
-                  <input type="password" id="inputPassword" name="password" class="form-control">
-                </div>
+              <div class="format-input">
+                <label class="form-label">Confirmacion</label>
+                <input type="password" id="inputPasswordConfirm" name="passwordConfirm" class="form-control"
+                  placeholder="min 8 caracteres">
+              </div>
 
-                <div class="mb-3">
-                  <label class="form-label">Confirmacion</label>
-                  <input type="password" id="inputPasswordConfirm" name="passwordConfirm" class="form-control">
-                </div>
+              <div class="btn-magenta-container">
+                <button type="submit" class="btn-magenta">Crear</button>
+              </div>
 
-                <div class="btn-magenta-container">
-                  <button type="submit" name="btn-magenta" class="btn btn-light">Crear</button>
-                </div>
+              <div class="text-center">
                 <br>
-                ¿Ya tiene cuenta? <a href="">Inicia sesion</a>
-
-              </form>
-            </div>
+                ¿Ya tiene cuenta? <a href="" onclick="showFormulario(event,'sectionLogin')">Inicia
+                  sesion</a>
+              </div>
           </div>
+          </form>
+          <div id="resultadoRegistro"></div>
         </div>
-
-        <div id="resultadoRegistro"></div>
-
       </div>
-
     </div>
-
-
-
-
+    </div>
   </section>
 
   <!--* Figura SVG de los marcos pixelados para contenido -->
