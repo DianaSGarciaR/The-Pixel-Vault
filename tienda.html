@@ -99,29 +99,58 @@
 
  <div class="menu-divider"></div>
 
-  <!-- Sección Filtros -->
   <div class="section menu-group">
-    <button 
-      class="section-title menu-toggle d-md-none" 
-      type="button" 
-      data-bs-toggle="collapse" 
-      data-bs-target="#menuFiltros" 
-      aria-expanded="false"
-    >
-      <span>FILTROS</span>
-      <span class="chevron">▼</span>
-    </button>
-    <h3 class="section-title d-none d-md-block">FILTROS</h3>
-    <div class="collapse d-md-block" id="menuFiltros">
+  <button 
+    class="section-title menu-toggle d-md-none" 
+    type="button" 
+    data-bs-toggle="collapse" 
+    data-bs-target="#menuFiltros" 
+    aria-expanded="false"
+  >
+    <span>FILTROS</span>
+    <span class="chevron">▼</span>
+  </button>
+  <h3 class="section-title d-none d-md-block">FILTROS</h3>
+
+  <div class="collapse d-md-block" id="menuFiltros">
+    
+    <!-- Filtro: Rango de Precio -->
     <div class="filter-box">
       <span class="filter-label">RANGO DE PRECIO</span>
-      <div class="price-tags">
-        <button class="filter-tag">$0 - $500</button>
-        <button class="filter-tag">$500 - $1500</button>
+      <div class="filter-options">
+        <button class="filter-tag" data-filter-type="price" data-filter-value="0-1000">$0 - $1000</button>
+        <button class="filter-tag" data-filter-type="price" data-filter-value="1000-2000">$1000 - $2000</button>
       </div>
     </div>
+
+    <!-- Filtro: Plataforma -->
+    <div class="filter-box">
+      <span class="filter-label">PLATAFORMA</span>
+      <div class="filter-options">
+        <button class="filter-tag" data-filter-type="platform" data-filter-value="pc">PC</button>
+        <button class="filter-tag" data-filter-type="platform" data-filter-value="ps5">PS5</button>
+        <button class="filter-tag" data-filter-type="platform" data-filter-value="xbox">XBOX</button>
+        <button class="filter-tag" data-filter-type="platform" data-filter-value="switch">SWITCH</button>
+      </div>
+    </div>
+
+    <!-- Filtro: Género -->
+    <div class="filter-box">
+      <span class="filter-label">GÉNERO</span>
+      <div class="filter-options">
+        <button class="filter-tag" data-filter-type="genre" data-filter-value="acción">Acción</button>
+        <button class="filter-tag" data-filter-type="genre" data-filter-value="rpg">RPG</button>
+        <button class="filter-tag" data-filter-type="genre" data-filter-value="carreras">Carreras</button>
+        <button class="filter-tag" data-filter-type="genre" data-filter-value="aventura">Aventura</button>
+        <button class="filter-tag" data-filter-type="genre" data-filter-value="terror">Terror</button>
+        <button class="filter-tag" data-filter-type="genre" data-filter-value="peleas">Peleas</button>
+        <button class="filter-tag" data-filter-type="genre" data-filter-value="deportes">Deportes</button>
+
+      </div>
+    </div>
+
   </div>
-  </div>
+</div>
 </aside>
         </div>
          <!-- Grid de Productos -->
