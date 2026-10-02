@@ -43,6 +43,11 @@
     filter:
         drop-shadow(0 0 8px var(--yellow-accent)) drop-shadow(0 0 10px var(--text-bright));
 }
+.container{
+    display: block;
+    max-width: 90vw;
+    margin-bottom: 5rem;
+}
 .contenedor-tarjeta-rosa {
     position: relative;
     z-index: 1;
@@ -50,16 +55,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1vw;
     border: 4vw solid transparent;
-    /*Importante para que conserve la figura*/
+    backdrop-filter: blur(5px);
+    padding-bottom: 3vw;
 }
-/**IMPORTANTE poner el svg con sus colores y resplandor aquí abajo porque si no, se pinta el drop shadow en todos los elementos hijos*/
 .contenedor-tarjeta-rosa::before {
     content: "";
     position: absolute;
     top: -4vw;
-    /*Poner el mismo valor negativo que el border de arriba*/
     left: -4vw;
     right: -4vw;
     bottom: -4vw;
@@ -81,6 +84,7 @@
     padding: 1vw;
     font-family: sans-serif;
     border: 4vw solid transparent;
+    backdrop-filter: blur(5px);
 }
 .contenedor-tarjeta-azul::before {
     content: "";
@@ -106,6 +110,7 @@
     padding: 1vw;
     font-family: sans-serif;
     border: 4vw solid transparent;
+    backdrop-filter: blur(5px);
 }
 .contenedor-tarjeta-amarillo::before {
     content: "";
@@ -123,7 +128,7 @@
 }
 .contenedor-chico-amarillo {
     width: 100%;
-    height: 4vw;
+    height: 4.7vw;
     display: inline-block;
     background: none;
     font-family: sans-serif;
@@ -132,10 +137,210 @@
     border-image-repeat: repeat;
     border-image-source: url('../assets/marco-pixel-amarillo.svg');
     size-adjust: unset;
+    color:var(--yellow-accent);
+    text-align: center;
+    letter-spacing: 0.2vw;
 }
-/* Quita el fondo de la tabla, las filas y todas las celdas individuales */
 .table, 
 .table th, 
 .table td {
   background-color: transparent !important;
+  padding-left: 4vw !important;
+  padding-right: 4vw !important;
+}
+.container h3{
+    font-family: var(--font-pixel-sub);
+    color: var(--yellow-accent)!important;
+    margin-bottom: 2vw;
+    margin-inline:3px;
+    font-size: 3vw;
+    filter:
+        drop-shadow(0 0 8px var(--yellow-accent)) drop-shadow(0 0 10px var(--text-bright));
+}
+.contenido-tarjeta {
+    font-family: var(--font-pixel-body);
+    color: var(--text-main);
+    font-size: 1.8vw;
+    height: 100%;
+}
+.contenedor-chico-amarillo:focus {
+    outline: none;
+    border: 1.5vw solid transparent;
+    border-image-slice: 6;
+    border-image-repeat: repeat;
+    border-image-source: url('../assets/marco-pixel-amarillo.svg');
+    size-adjust: unset;
+    filter: drop-shadow(0 0 2px #ebfc02) drop-shadow(0 0 2px #f1e08f);
+    color:#ffffff;
+}
+#direccion {
+    margin-top: 3vw;
+}
+.btn img {
+    height: 100%;
+}
+.btn{
+    position: absolute;
+    overflow: hidden;
+    height: 5vw;
+    bottom: -5vw;
+    right: -7vw;
+    border:none!important;
+    z-index: 3;
+}
+.btn:hover {
+    filter: drop-shadow(0 0 10px #ebfc02) drop-shadow(0 0 5px #ffffff);
+    transform: scale(1.15);
+}
+.table th{
+    color: var(--yellow-accent)!important;
+}
+.table th[scope="col"] {
+    border-bottom: 3px solid var(--yellow-accent)!important;
+}
+.table td{
+    color: var(--text-main)!important;
+}
+.metodos-pago{
+    margin-top:2vw;
+}
+#metodos-pago{
+    margin:3vw;
+}
+.form-check-input{
+    background-color: transparent !important;
+    border-color: var(--yellow-accent)!important;
+    filter: drop-shadow(0 0 2px #ebfc02) drop-shadow(0 0 2px #f1e08f);
+}
+.form-check-input:focus {
+    outline: none;
+    border-color: var(--yellow-accent)!important;
+    filter: drop-shadow(0 0 5px #ebfc02) drop-shadow(0 0 2px #f1e08f);
+}
+.form-check-input:checked {
+    background-color: var(--yellow-accent)!important;
+    border-color: var(--yellow-accent)!important;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.modal img{
+    cursor: pointer;
+}
+.contenido-tarjeta.perfil {
+    position: absolute;
+    top: -2.2vw;
+    left: -3vw;
+    width: calc(100% + 6vw);
+    height: calc(100% + 6vw);
+    z-index: -2;
+}
+.avatar-renderizado {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    overflow: hidden;
+}
+#imagenperfil {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    overflow: hidden;
+    border-radius: 60px;
+}
+#lapizperfil {
+    position: absolute;
+    bottom: -1.5vw;
+    right: -3.5vw;
+    z-index: 3;
+}
+#datos-usuario {
+    margin-bottom: 3vw;
+}
+.guardar {
+    left: -7vw;
+    margin: 4vw;
+    font-family: var(--font-pixel-header)!important;
+    font-size: 1.3vw!important;
+    color: var(--yellow-accent)!important;
+    border: none!important;
+}
+.modal-dialog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background: none !important;
+    backdrop-filter: blur(15px);
+    box-shadow: 0px 0px 30px #bd34fd;
+    font-family: var(--font-pixel-header);
+    border: none;
+}
+.modal-header {
+    color: var(--text-bright);
+    border-bottom: none;
+}
+.modal-body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+    padding: 25px;
+}
+.avatar-radio {
+    display: none;
+}
+.modal-body label {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.modal-body img {
+    height: 15vw;
+    max-height: 120px;
+    width: auto;
+    object-fit: contain;
+    padding: 8px;
+    border-radius: 12px;
+    transition: all 0.25s ease;
+}
+.modal-body label:hover img {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 8px rgba(189, 52, 253, 0.5));
+}
+.avatar-radio:checked + label img {
+    outline: 3px solid #bd34fd;
+    box-shadow: 0 0 20px #bd34fd, inset 0 0 10px #bd34fd;
+    filter: drop-shadow(0 0 10px #bd34fd);
+    transform: scale(1.1);
+    background-color: rgba(189, 52, 253, 0.1);
+}
+#guardar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: static;
+    margin: 0 auto;
+    background-color: #ff00ea;
+    border: none;
+    padding: 12px 24px;
+    font-size: 2vw !important;
+    color: #ffffff;
+    border-radius: 6px;
+    transition: background-color 0.2s, filter 0.2s;
+}
+#guardar:hover {
+    filter: drop-shadow(0 0 12px #f067e4);
+    background-color: #ff26ee;
+}
+.modal-footer {
+    display: flex;
+    justify-content: center;
 }
