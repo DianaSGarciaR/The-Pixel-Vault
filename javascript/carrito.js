@@ -1,41 +1,69 @@
-import { productosp } from "../services/dataCatalogo.js";
-console.log(productosp);
-
-
-//#########################################################
-//#########################################################
-const carrito = [];
+// 1. Referencias al DOM
 const contenedorCarrito = document.querySelector('#contenedor-carrito');
 const totalCarrito = document.querySelector('#total-carrito');
+const contadorCarritoBadge = document.querySelector('#contador-carrito');
 
-const carritoStorage = JSON.parse(localStorage.getItem('carrito_compras')) || [];
+// Variable global en memoria para manipular los productos en esta vista
+let carrito = [];
 
-//Guardar en localStorage
+// 2. Funciones de sincronización con localStorage
+function cargarCarritoDesdeStorage() {
+    carrito = JSON.parse(localStorage.getItem('carrito_compras')) || [];
+}
+
 function guardarCarritoEnStorage() {
     localStorage.setItem('carrito_compras', JSON.stringify(carrito));
 }
 
-function cargarCarritoDesdeStorage() {
-    const carritoGuardado = localStorage.getItem('carrito_compras');
-    if (carritoGuardado) {
-        const datos = JSON.parse(carritoGuardado);
-        carrito.length = 0;
-        carrito.push(...datos);
+// 3. Operaciones del Carrito (Modificar cantidad y eliminar)
+function cambiarCantidad(idProducto, cambio) {
+    const producto = carrito.find(item => item.id === idProducto);
+    if (!producto) return;
+
+    producto.cantidad += cambio;
+
+    if (producto.cantidad <= 0) {
+        eliminarDelCarrito(idProducto);
+        return;
     }
+
+    actualizarEstadoCarrito();
 }
 
-function renderProducts() {
+function eliminarDelCarrito(idProducto) {
+    carrito = carrito.filter(item => item.id !== idProducto);
+    actualizarEstadoCarrito();
+}
 
-    if (typeof productosp === 'undefined' || !productsElement) return;
+function actualizarEstadoCarrito() {
+    guardarCarritoEnStorage();
+    renderizarCarrito();
+    actualizarContadorUI();
+}
 
-    productsElement.innerHTML = '';
-    
-    productosp.forEach(product => {
+// 4. Renderizado en el DOM
+function renderizarCarrito() {
+    if (!contenedorCarrito) return;
+
+    contenedorCarrito.innerHTML = '';
+
+    if (carrito.length === 0) {
+        contenedorCarrito.innerHTML = '<p class="empty-cart-msg">El carrito está vacío.</p>';
+        if (totalCarrito) totalCarrito.textContent = '$0 MXN';
+        return;
+    }
+
+    let sumaTotal = 0;
+
+    carrito.forEach(product => {
+        const subtotal = product.precio * product.cantidad;
+        sumaTotal += subtotal;
+
         const productCol = document.createElement('div');
         productCol.className = 'col-12 col-sm-6 col-lg-4';
         
         productCol.innerHTML = `
-            <div class="card notch">
+            <div class="card notch" data-id="${product.id}">
               <div class="art">
                 <img src="${product.imagen}" class="card-img-top" alt="${product.nombre}">
                 <span class="badge">${product.genero}</span>
@@ -43,109 +71,65 @@ function renderProducts() {
               </div>
               <div class="body">
                 <h3>${product.nombre}</h3>
-                <p>${product.descripcion}</p>
+                <p>${product.descripcion || ''}</p>
                 <div class="card-action-row">
-                    <span class="price">$${product.precio} MXN</span>
-                    <button class="cta notch-sm carrito">Añadir</button>
+                    <span class="price">$${subtotal} MXN</span>
+                </div>
+                <div class="cantidad">
+                  <span class="quantity-label">Cantidad</span>
+                  <div class="quantity-control">
+                    <button class="qty-btn js-qty-decrease" aria-label="Disminuir cantidad">—</button>
+                    <span class="qty-number">${product.cantidad}</span>
+                    <button class="qty-btn js-qty-increase" aria-label="Aumentar cantidad">+</button>
+                  </div>
+                </div>
+
+                <div class="item-actions">
+                  <button class="action-btn js-remove-product" aria-label="Eliminar producto">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none">
+                      <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
         `;
 
-        
-        //Se maneja el boton agregar
-        const btnAgregar = productCol.querySelector('.carrito');
-        btnAgregar.addEventListener('click', (event) => {
-            agregarAlCarrito(product.id);
-        });
-        
+        contenedorCarrito.appendChild(productCol);
+    });
 
-        productsElement.appendChild(productCol);
+    if (totalCarrito) {
+        totalCarrito.textContent = `$${sumaTotal} MXN`;
+    }
+}
+
+function actualizarContadorUI() {
+    if (!contadorCarritoBadge) return;
+    const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+    contadorCarritoBadge.textContent = totalItems;
+}
+
+// 5. Delegación de Eventos
+if (contenedorCarrito) {
+    contenedorCarrito.addEventListener('click', (e) => {
+        const card = e.target.closest('.card');
+        if (!card) return;
+
+        const idProducto = Number(card.dataset.id);
+
+        if (e.target.closest('.js-qty-increase')) {
+            cambiarCantidad(idProducto, 1);
+        } else if (e.target.closest('.js-qty-decrease')) {
+            cambiarCantidad(idProducto, -1);
+        } else if (e.target.closest('.js-remove-product')) {
+            eliminarDelCarrito(idProducto);
+        }
     });
 }
 
-//Operaciones del carrito
-function agregarAlCarrito(id_producto) {
-    const productoEncontrado = productosp.find(p => p.id === id_producto);
-    
-    if (productoEncontrado) {
-        const productoEnCarrito = carrito.find(p => p.id === id_producto);
-        
-        if (productoEnCarrito) {
-            productoEnCarrito.cantidad += 1;
-        } else {
-            carrito.push({
-                ...productoEncontrado,
-                cantidad: 1
-            });
-        }
-        
-        // Guardamos en LocalStorage
-        guardarCarritoEnStorage();
-        if (contenedorCarrito) actualizaDOMCarrito();
-    }
-}
-
-function eliminarDelCarrito(id_producto) {
-    const indice = carrito.findIndex(p => p.id === id_producto);
-    
-    if (indice !== -1) {
-        if (carrito[indice].cantidad > 1) {
-            carrito[indice].cantidad -= 1;
-        } else {
-            carrito.splice(indice, 1);
-        }
-        guardarCarritoEnStorage();
-        actualizaDOMCarrito();
-    }
-}
-
-function actualizaDOMCarrito() {
-    contenedorCarrito.innerHTML = '';
-    
-    if (carrito.length === 0) {
-        contenedorCarrito.innerHTML = '<p>El carrito está vacío.</p>';
-        totalCarrito.textContent = '$0 MXN';
-        return;
-    }
-
-    let sumaTotal = 0;
-
-    carrito.forEach(item => {
-        const subtotal = item.precio * item.cantidad;
-        sumaTotal += subtotal;
-
-        const itemCard = document.createElement('div');
-        itemCard.className = 'col-12 col-sm-6 col-lg-4';
-        
-        itemCard.innerHTML = `
-            <div class="card notch">
-              <div class="art">
-                <img src="${item.imagen}" class="card-img-top" alt="${item.nombre}">
-                <span class="badge">${item.genero}</span>
-                <small>${item.plataforma}</small>
-              </div>
-              <div class="body">
-                <h3>${item.nombre} (x${item.cantidad})</h3>
-                <p>Subtotal: $${subtotal} MXN</p>
-                <div class="card-action-row">
-                    <button type="button" class="cta notch-sm btn-eliminar">Eliminar</button>
-                </div>
-              </div>
-            </div>
-        `;
-
-        const botonEliminar = itemCard.querySelector('.btn-eliminar');
-        botonEliminar.addEventListener('click', () => {
-            eliminarDelCarrito(item.id);
-        });
-
-        contenedorCarrito.appendChild(itemCard);
-    });
-
-    totalCarrito.textContent = `$${sumaTotal} MXN`;
-}
-
-cargarCarritoDesdeStorage();
-renderProducts();
-actualizaDOMCarrito();
+// 6. Carga e Inicialización
+document.addEventListener('DOMContentLoaded', () => {
+    cargarCarritoDesdeStorage();
+    renderizarCarrito();
+    actualizarContadorUI();
+});
