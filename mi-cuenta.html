@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contáctanos</title>
+  <!--Hoja de estilos-->
+  <link rel="stylesheet" href="styles/mi-cuenta.css">
+  <!-- !LINK BOOSTRAP-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+  <!-- !FIN LINK BOOSTRAP-->
+  <link rel="stylesheet" href="styles/contactanos.css" />
+  <link rel="stylesheet" href="styles/styles.css" />
+
+  <!--Link de fuente-->
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+  </style>
+</head>
+
+<body>
+  <!-- Navbar-->
+  <main class="navThePixelVault"></main>
+
+  <!--↓↓↓↓↓↓↓↓↓↓↓Agrega aquí tu código↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+
+  <!-- Banner -->
+  <container class="banner"><img src="assets/bannerPerfil.svg" alt="banner.svg">
+    <h1>Mi cuenta</h1>
+  </container>
+  <!-- Termina Banner-->
+
+  <!-- Contenedor para información de contacto-->
+  <div class="container text-center">
+    <div class="row g-5">
+      <div class="col-3 d-flex flex-column justify-content-between">
+        <div class="contenedor-tarjeta-azul mb-5 d-flex align-items-center justify-content-center">
+          <div class="contenido-tarjeta perfil">
+            <div id="imagenperfil"></div>
+            <button id="lapizperfil" type="button" class="btn" data-bs-toggle="modal"
+              data-bs-target="#exampleModal"><img src="assets/lapiz.svg" alt="Editar"></button>
+          </div>
+        </div>
+        <div class="contenedor-tarjeta-rosa d-flex flex-column justify-content-center">
+          <div class="contenido-tarjeta metodos-pago">
+            <h3>Métodos de pago</h3>
+            <form id="metodos-pago">
+              <div class="form-check form-switch mb-4">
+                <label class="form-check-label" for="switchVisa"><img src="assets/visa.svg" alt="visaLogo"
+                    style="height: 2vw;"></label>
+                <input class="form-check-input" type="checkbox" role="switch" id="switchVisa" disabled>
+              </div>
+              <div class="form-check form-switch mb-4">
+                <label class="form-check-label" for="switchMastercard"><img src="assets/mastercard.svg"
+                    alt="MastercardLogo" style="height: 3.5vw;"></label>
+                <input class="form-check-input" type="checkbox" role="switch" id="switchMastercard" disabled>
+              </div>
+              <div class="form-check form-switch">
+                <label class="form-check-label" for="switchPaypal"><img src="assets/paypal.png" alt="PaypalLogo"
+                    style="height: 5vw;"></label>
+                <input class="form-check-input" type="checkbox" role="switch" id="switchPaypal" disabled>
+              </div>
+              <button id="editarpago" type="button" class="btn"><img src="assets/lapiz.svg" alt="Editar"></button>
+              <button id="guardarpago" type="button" class="btn guardar d-none">Guardar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-9">
+        <div class="contenedor-tarjeta-rosa h-100">
+          <div class="contenido-tarjeta">
+            <form id="datos-usuario">
+              <h3>Datos del usuario</h3>
+              <div class="row">
+                <div class="col-6">
+                  <div class="mb-1">
+                    <label for="nombre" class="form-label">Nombre</label><br>
+                    <input class="contenedor-chico-amarillo" name="nombre" type="text" class="form-control" id="nombre"
+                      placeholder="Nombre" disabled>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mb-1">
+                    <label for="apellidos" class="form-label">Apellidos</label><br>
+                    <input class="contenedor-chico-amarillo" name="apellidos" type="text" class="form-control"
+                      id="apellidos" placeholder="Apellidos" disabled>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8">
+                  <div class="mb-1">
+                    <label for="email" class="form-label">E-mail</label><br>
+                    <input class="contenedor-chico-amarillo" name="email" type="email" class="form-control" id="email"
+                      placeholder="example@example.com" disabled>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-1">
+                    <label for="telefono" class="form-label">Teléfono</label><br>
+                    <input class="contenedor-chico-amarillo" type="number" class="form-control" id="telefono"
+                      placeholder="1234567890" disabled>
+                  </div>
+                </div>
+              </div>
+              <h3 id="direccion">Dirección</h3>
+              <div class="row">
+                <div class="col-8">
+                  <div class="mb-1">
+                    <label for="calle" class="form-label">Calle</label><br>
+                    <input class="contenedor-chico-amarillo" name="calle" type="text" class="form-control" id="calle"
+                      placeholder="Calle" disabled>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-1">
+                    <label for="numero" class="form-label">Número</label><br>
+                    <input class="contenedor-chico-amarillo" name="numero" type="number" class="form-control"
+                      id="numero" placeholder="11" disabled>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="mb-1">
+                    <label for="colonia" class="form-label">Colonia/Alcaldía</label><br>
+                    <input class="contenedor-chico-amarillo" name="colonia" type="text" class="form-control"
+                      id="colonia" placeholder="Colonia" disabled>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mb-1">
+                    <label for="municipio" class="form-label">Municipio</label><br>
+                    <input class="contenedor-chico-amarillo" name="municipio" type="text" class="form-control"
+                      id="municipio" placeholder="Municipio" disabled>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-9">
+                  <div class="mb-1">
+                    <label for="estado" class="form-label">Estado/Ciudad</label><br>
+                    <input class="contenedor-chico-amarillo" name="estado" type="text" class="form-control" id="estado"
+                      placeholder="Estado/Ciudad" disabled>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="mb-1">
+                    <label for="postal" class="form-label">CP</label><br>
+                    <input class="contenedor-chico-amarillo" name="postal" type="number" class="form-control"
+                      id="postal" placeholder="12345" disabled>
+                  </div>
+                </div>
+              </div>
+              <button id="guardardatos" type="button" class="btn guardar d-none">Guardar</button>
+              <button id="editardatos" type="button" class="btn"><img src="assets/lapiz.svg" alt="Editar"></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="contenedor-tarjeta-amarillo">
+        <div class="contenido-tarjeta">
+          <h3>Historial de pedidos</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID DEL PEDIDO</th>
+                <th scope="col">FECHA</th>
+                <th scope="col">TOTAL</th>
+                <th scope="col">ESTADO</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              <tr>
+                <th scope="row">PED-318859</th>
+                <td>27/04/2026</td>
+                <td>$1,200.00</td>
+                <td>Entregado</td>
+              </tr>
+              <tr>
+                <th scope="row">PED-423688</th>
+                <td>15/06/2026</td>
+                <td>$885.00</td>
+                <td>Entregado</td>
+              </tr>
+              <tr>
+                <th scope="row">PED-134975</th>
+                <td>01/09/2026</td>
+                <td>$2,510.00</td>
+                <td>Entregado</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Termina contenedor para información de contacto-->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Elige tu avatar</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+  <!-- Avatar 1 -->
+  <input type="radio" name="avatar" id="av1" class="avatar-radio">
+  <label for="av1"><img src="assets/avatar1.svg" alt="avatar1.svg"></label>
+
+  <!-- Avatar 2 -->
+  <input type="radio" name="avatar" id="av2" class="avatar-radio">
+  <label for="av2"><img src="assets/avatar2.svg" alt="avatar2.svg"></label>
+
+  <!-- Avatar 3 -->
+  <input type="radio" name="avatar" id="av3" class="avatar-radio">
+  <label for="av3"><img src="assets/avatar3.svg" alt="avatar3.svg"></label>
+
+  <!-- Avatar 4 -->
+  <input type="radio" name="avatar" id="av4" class="avatar-radio">
+  <label for="av4"><img src="assets/avatar4.svg" alt="avatar4.svg"></label>
+
+  <!-- Avatar 5 -->
+  <input type="radio" name="avatar" id="av5" class="avatar-radio">
+  <label for="av5"><img src="assets/avatar5.svg" alt="avatar5.svg"></label>
+
+  <!-- Avatar 6 -->
+  <input type="radio" name="avatar" id="av6" class="avatar-radio">
+  <label for="av6"><img src="assets/avatar6.svg" alt="avatar6.svg"></label>
+</div>
+
+        <div class="modal-footer">
+          <button id="guardar" type="button" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--↑↑↑↑↑↑↑↑↑↑↑Agrega aquí tu código↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+
+  <!-- Footer: su contenido se inserta desde globalElements.js. -->
+  <footer class="footer-container"></footer>
+  <!-- ! ENLACES DE ARCHIVOS JAVASCRIP-->
+  <script src="javascript/mi-cuenta.js"></script>
+  <script src="./javascript/globalElements.js"></script>
+  <script src="./javascript/contactanos.js"></script>
+  <!-- ! FIN DE ENLACES DE ARCHIVOS JAVASCRIP-->
+  <!-- !LINK BOOSTRAP-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <!-- !FIN LINK BOOSTRAP-->
+</body>
+
+</html>

@@ -139,6 +139,7 @@
   font-size: 0.85rem;
   color: var(--ink-dim);
   font-weight: 600;
+  font-family:var(--font-pixel-body)
 }
 .price-tags {
   display: flex;
@@ -618,3 +619,78 @@
 @media (prefers-reduced-motion: reduce) { 
   .notch, .card, .card .art img, .cta { transition: none; }
 }
+
+ 
+ /* Inicio:  Estilos para el mensaje flotante (Toast) */
+.toast-cyber {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #111;
+    color: #00ffcc;
+    border: 2px solid #00ffcc;
+    padding: 12px 24px;
+    font-weight: bold;
+    font-family: inherit;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+/* Estado visible */
+.toast-cyber.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+ /* Fin:  Estilos para el mensaje flotante (Toast) */
+
+
+ /* Inicio: Estilo de botones del carrito */
+ /* Contenedor principal y texto general */
+.cantidad,
+.quantity-label,
+.qty-number {
+  color: #ffeb3b; /* Amarillo brillante */
+  font-size: 1.1rem; /* Tamaño de letra mediano */
+  font-weight: 500;
+}
+
+/* Botones de incremento/decremento (— y +) */
+.qty-btn {
+  color: #ffeb3b;
+  font-size: 1.2rem; /* Sutilmente más grande para destacar los símbolos */
+  background: transparent;
+  border: 1px solid #ffeb3b;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Botones de acción generales (como el bote de basura) */
+.action-btn {
+  color: #ffeb3b;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tamaño y color del ícono SVG */
+.action-btn svg {
+  width: 26px; /* Ícono más grande (originalmente 18px) */
+  height: 26px;
+  stroke: #ffeb3b; /* Asegura el color amarillo en el trazo */
+  stroke-width: 2px;
+}
+
+ /* Fin: Estilo de botones del carrito */
+
+
