@@ -106,6 +106,7 @@ juegosElement.addEventListener("click",(e) => {
     }
 });
 //#########################################################
+fix/carrito-carmen
 //----Inicio localStorage---------------------------------
 function agregarProductoAlCarrito(product_id) {
   const carritoActual = JSON.parse(localStorage.getItem('carrito_compras')) || [];
@@ -155,4 +156,46 @@ modalsContainer.addEventListener('click', (e) => {
         agregarProductoAlCarrito(idProducto);
         mostrarNotificacion('¡Agregaste al carrito!');
     }
+});
+=======
+
+// Seleccionamos el contenedor de la sección de filtros
+const filtrosElement = document.querySelector("#menuFiltros"); 
+
+filtrosElement.addEventListener("click", (e) => {
+    // Si el clic no fue en un botón de filtro (.filter-tag), no hacemos nada
+    if (!e.target.classList.contains("filter-tag")) return;
+
+    e.preventDefault();
+
+    // Obtenemos el tipo y el valor desde los atributos data-*
+    const filterType = e.target.dataset.filterType;
+    const filterValue = e.target.dataset.filterValue;
+
+    // Limpiamos los productos actuales antes de renderizar los filtrados
+    productsElement.innerHTML = "";
+
+    productosp.forEach((product) => {
+        // Filtro por Precio
+        if (filterType === "price") {
+            const [min, max] = filterValue.split("-").map(Number);
+            if (product.precio >= min && product.precio <= max) {
+                renderProduct(product);
+            }
+        }
+        
+        // Filtro por Plataforma (convertimos a minúsculas para comparar con precisión)
+        else if (filterType === "platform") {
+            if (product.plataforma.toLowerCase().includes(filterValue.toLowerCase())) {
+                renderProduct(product);
+            }
+        }
+        
+        // Filtro por Género
+        else if (filterType === "genre") {
+            if (product.genero.toLowerCase() === filterValue.toLowerCase()) {
+                renderProduct(product);
+            }
+        }
+    });
 });
