@@ -139,6 +139,7 @@
   font-size: 0.85rem;
   color: var(--ink-dim);
   font-weight: 600;
+  font-family:var(--font-pixel-body)
 }
 .price-tags {
   display: flex;
