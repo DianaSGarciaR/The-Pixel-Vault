@@ -2,7 +2,6 @@
 import { productosp } from "../services/dataCatalogo.js";
 
 
-
 const productsElement = document.querySelector("#productos");
 
 
@@ -46,6 +45,7 @@ let renderProduct = (product) => {
                     <p class="precio">$${product.precio} MXN</p>
                     <p>${product.descripcion}</p>
                     <div class="carrito-container">
+                        <button class="carrito">
                         <button class="carrito" data-id ="${product.id}">
                             Añadir al Carrito
                         </button>
@@ -106,7 +106,6 @@ juegosElement.addEventListener("click",(e) => {
     }
 });
 //#########################################################
-fix/carrito-carmen
 //----Inicio localStorage---------------------------------
 function agregarProductoAlCarrito(product_id) {
   const carritoActual = JSON.parse(localStorage.getItem('carrito_compras')) || [];
@@ -157,7 +156,6 @@ modalsContainer.addEventListener('click', (e) => {
         mostrarNotificacion('¡Agregaste al carrito!');
     }
 });
-=======
 
 // Seleccionamos el contenedor de la sección de filtros
 const filtrosElement = document.querySelector("#menuFiltros"); 
@@ -184,7 +182,7 @@ filtrosElement.addEventListener("click", (e) => {
             }
         }
         
-        // Filtro por Plataforma (convertimos a minúsculas para comparar con precisión)
+        // Filtro por Plataforma convertimos a minúsculas 
         else if (filterType === "platform") {
             if (product.plataforma.toLowerCase().includes(filterValue.toLowerCase())) {
                 renderProduct(product);
