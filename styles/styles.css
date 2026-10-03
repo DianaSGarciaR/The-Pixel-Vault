@@ -846,3 +846,36 @@ body {
 }
 
 /* Footer Container */
+
+/** ----------TUTORIAL MARCOS PIXELADOS-------------*/
+
+/* En tu html pones ésta estructura:
+Importante que sea div
+<div class="ejemplo">
+  aqui va tu contenido
+</div>
+
+Luego en tu css pones la siguiente estructura:
+
+.ejemplo{
+    position:relative;
+    z-index: 1;
+    border: 8vw solid transparent;  <------ aquí cambias el ancho del marco
+    height: 50vw; -----Cambia el alto que necesites, igual puedes ya darle las propiedades que necesites
+}
+
+.ejemplo::before{
+    position: absolute;
+    z-index: -1;
+    content:"";
+    top: -8vw;  <---- Poner el mismo valor del ancho en negativo 
+    left: -8vw;  <---- Poner el mismo valor del ancho en negativo 
+    right: -8vw;  <---- Poner el mismo valor del ancho en negativo
+    bottom: -8vw;  <---- Poner el mismo valor del ancho en negativo 
+    border: 8vw solid transparent; <------- aquí cambias el ancho del marco
+    border-image-slice: 6;  ------- No cambiar para no deformar el marco
+    border-image-repeat: repeat;
+    border-image-source: url('../assets/marco-pixel-rosa.svg');  <--- Aquí eliges el svg en assets
+    filter: drop-shadow(0 0 10px #ff00ea) drop-shadow(0 0 5px #ffffff);
+}
+*/
