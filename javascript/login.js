@@ -1,19 +1,17 @@
 
-/**
- * @deprecated LIST_USERS
- * Este list se borrara cuando se implente la Base de datos
- */
-let LIST_USERS = [
-    { email: "admin@hotmail.com", password: "adminadmin", tipo_user: "ADMIN", status: 1 },
-    { email: "dana.sofi@hotmail.com", password: "1234.", tipo_user: "COSTOMER", status: 0 }
-];
-
 const keyEncryption = 22;
 const NEW_USER = { tipo_user: "COSTOMER", status: 0 }; // Valores que no vienen en el formuario
 const formNewUser = document.querySelector("#formNewUser");
 const formLogin = document.querySelector("#formLogin");
 
 const resultadoRegistro = document.querySelector("#resultadoRegistro");
+
+/**
+ *  @deprecated
+ * ! LIST_USERS : Este list se borrara cuando se implente la Base de datos
+ */
+let LIST_USERS = [];
+
 
 /* =============================== START: Create user ===============================*/
 formNewUser.addEventListener("submit", (event => {
@@ -57,6 +55,7 @@ const createUser = (dataUser) => {
     LIST_USERS.push(dataUser);
     setLocalStorage("LIST_USERS", LIST_USERS);
     //! === END: Esta pArte se sustituye cuando Se implemente BackEnd === */
+    showFormulario(null, 'sectionLogin');
 };
 
 /* =============================== END: Create user ===============================*/
@@ -74,21 +73,18 @@ formLogin.addEventListener("submit", (event => {
 
     if (!validarCorreo(starLoginF.email, LIST_ERRORES)) {
         formularioValido = false;
-        console.log("1", formularioValido);
     }
 
     /* validar password y si el pasword1 == pasword2 */
     if (!validarPasword(starLoginF.password, null, "LOGIN", LIST_ERRORES)) {
         formularioValido = false;
-        console.log("2", formularioValido);
     }
+    console.log("starLoginF", starLoginF);
 
     //! Validar ya que esto se realiza en Back End
     if (!existUserByEmailAndPassword(starLoginF.email, starLoginF.password, LIST_ERRORES)) {
         formularioValido = false;
-        console.log("3", formularioValido);
     }
-    console.log("4", formularioValido);
 
     /* 2 Validamos si no exiten errores */
     if (formularioValido) {
@@ -104,8 +100,9 @@ formLogin.addEventListener("submit", (event => {
  */
 const starLogin = (dataLoginUser) => {
     // !=== STAR: Esta parte se complementa cuando implemente BackEnd === 
-    setLocalStorage("DATA_USER_LOGIN", dataLoginUser);
+    setLocalStorage("DATA_USER", dataLoginUser);
     //! === END: Esta parte se complementa cuando implemente BackEnd === */
+    window.location.href = "mi-cuenta.html";
 };
 /* =============================== END: Login ===============================*/
 
@@ -163,6 +160,7 @@ function validExistUser(email, LIST_ERRORES) {
 function existUserByEmailAndPassword(email, password, LIST_ERRORES) {
     let esValido = false;
     let existUser = LIST_USERS.filter(user => user.email === email && user.password === password);
+    console.log("existUser", existUser);
     if (existUser && existUser.length > 0) {
         esValido = true;
     } else {
@@ -174,7 +172,9 @@ function existUserByEmailAndPassword(email, password, LIST_ERRORES) {
 
 /** ======== STAR: Mostrar/Ocultar formulario ================= */
 function showFormulario(event, elementId) {
-    event.preventDefault();
+    if (event) {
+        event.preventDefault();
+    }
     console.log("showFormulario", event);
     if (elementId === "sectionCreateUser") {
         showOrHideElements("SHOW", "sectionCreateUser");
@@ -248,4 +248,5 @@ const showOrHideElements = (type, elementId) => {
 }
 /** ================= END: Logica css ================= */
 
-
+const getListUser = () => { LIST_USERS = getItemLocalStorage("LIST_USERS"); LIST_USERS = (LIST_USERS) ? LIST_USERS : []; };
+getListUser();

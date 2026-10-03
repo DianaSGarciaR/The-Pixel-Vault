@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Silkscreen&display=swap');
+
 :root {
     /* Para títulos principales*/
     --font-pixel-header: 'Press Start 2P', monospace;
@@ -9,6 +10,7 @@
     /* Para párrafos largos y enlaces */
     --font-pixel-body: 'Quantico', sans-serif;
 }
+
 :root {
     --bg-color: #000B1E;
     /*background color */
@@ -22,18 +24,22 @@
     --panel-color: #171233;
     /*background más claro*/
 }
+
 * {
     box-sizing: border-box;
 }
+
 .banner {
     display: flex;
     justify-content: center;
     margin-top: 3rem;
     margin-bottom: 3rem;
 }
+
 .banner img {
     height: 40vw;
 }
+
 .banner h1 {
     position: absolute;
     font-family: var(--font-pixel-header);
@@ -43,11 +49,13 @@
     filter:
         drop-shadow(0 0 8px var(--yellow-accent)) drop-shadow(0 0 10px var(--text-bright));
 }
-.container{
+
+.container {
     display: block;
     max-width: 90vw;
     margin-bottom: 5rem;
 }
+
 .contenedor-tarjeta-rosa {
     position: relative;
     z-index: 1;
@@ -56,9 +64,10 @@
     align-items: center;
     justify-content: center;
     border: 4vw solid transparent;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(50px);
     padding-bottom: 3vw;
 }
+
 .contenedor-tarjeta-rosa::before {
     content: "";
     position: absolute;
@@ -73,6 +82,7 @@
     border-image-source: url('../assets/marco-pixel-rosa.svg');
     filter: drop-shadow(0 0 10px #ff00ea) drop-shadow(0 0 5px #ffffff);
 }
+
 .contenedor-tarjeta-azul {
     position: relative;
     z-index: 1;
@@ -86,6 +96,7 @@
     border: 4vw solid transparent;
     backdrop-filter: blur(5px);
 }
+
 .contenedor-tarjeta-azul::before {
     content: "";
     position: absolute;
@@ -100,6 +111,7 @@
     border-image-source: url('../assets/marco-pixel-azul.svg');
     filter: drop-shadow(0 0 10px #03d9f5) drop-shadow(0 0 5px #ffffff);
 }
+
 .contenedor-tarjeta-amarillo {
     position: relative;
     z-index: 1;
@@ -112,6 +124,7 @@
     border: 4vw solid transparent;
     backdrop-filter: blur(5px);
 }
+
 .contenedor-tarjeta-amarillo::before {
     content: "";
     position: absolute;
@@ -126,6 +139,7 @@
     border-image-source: url('../assets/marco-pixel-amarillo.svg');
     filter: drop-shadow(0 0 10px #ebfc02) drop-shadow(0 0 5px #ffffff);
 }
+
 .contenedor-chico-amarillo {
     width: 100%;
     height: 4.7vw;
@@ -137,32 +151,36 @@
     border-image-repeat: repeat;
     border-image-source: url('../assets/marco-pixel-amarillo.svg');
     size-adjust: unset;
-    color:var(--yellow-accent);
+    color: var(--yellow-accent);
     text-align: center;
     letter-spacing: 0.2vw;
 }
-.table, 
-.table th, 
+
+.table,
+.table th,
 .table td {
-  background-color: transparent !important;
-  padding-left: 4vw !important;
-  padding-right: 4vw !important;
+    background-color: transparent !important;
+    padding-left: 4vw !important;
+    padding-right: 4vw !important;
 }
-.container h3{
+
+.container h3 {
     font-family: var(--font-pixel-sub);
-    color: var(--yellow-accent)!important;
+    color: var(--yellow-accent) !important;
     margin-bottom: 2vw;
-    margin-inline:3px;
+    margin-inline: 3px;
     font-size: 3vw;
     filter:
         drop-shadow(0 0 8px var(--yellow-accent)) drop-shadow(0 0 10px var(--text-bright));
 }
+
 .contenido-tarjeta {
     font-family: var(--font-pixel-body);
     color: var(--text-main);
     font-size: 1.8vw;
     height: 100%;
 }
+
 .contenedor-chico-amarillo:focus {
     outline: none;
     border: 1.5vw solid transparent;
@@ -171,64 +189,79 @@
     border-image-source: url('../assets/marco-pixel-amarillo.svg');
     size-adjust: unset;
     filter: drop-shadow(0 0 2px #ebfc02) drop-shadow(0 0 2px #f1e08f);
-    color:#ffffff;
+    color: #ffffff;
 }
+
 #direccion {
     margin-top: 3vw;
 }
+
 .btn img {
     height: 100%;
 }
-.btn{
+
+.btn {
     position: absolute;
     overflow: hidden;
     height: 5vw;
     bottom: -5vw;
     right: -7vw;
-    border:none!important;
+    border: none !important;
     z-index: 3;
 }
+
 .btn:hover {
     filter: drop-shadow(0 0 10px #ebfc02) drop-shadow(0 0 5px #ffffff);
     transform: scale(1.15);
 }
-.table th{
-    color: var(--yellow-accent)!important;
+
+.table th {
+    color: var(--yellow-accent) !important;
 }
+
 .table th[scope="col"] {
-    border-bottom: 3px solid var(--yellow-accent)!important;
+    border-bottom: 3px solid var(--yellow-accent) !important;
 }
-.table td{
-    color: var(--text-main)!important;
+
+.table td {
+    color: var(--text-main) !important;
 }
-.metodos-pago{
-    margin-top:2vw;
+
+.metodos-pago {
+    margin-top: 2vw;
 }
-#metodos-pago{
-    margin:3vw;
+
+#metodos-pago {
+    margin: 3vw;
 }
-.form-check-input{
+
+.form-check-input {
     background-color: transparent !important;
-    border-color: var(--yellow-accent)!important;
+    border-color: var(--yellow-accent) !important;
     filter: drop-shadow(0 0 2px #ebfc02) drop-shadow(0 0 2px #f1e08f);
 }
+
 .form-check-input:focus {
     outline: none;
-    border-color: var(--yellow-accent)!important;
+    border-color: var(--yellow-accent) !important;
     filter: drop-shadow(0 0 5px #ebfc02) drop-shadow(0 0 2px #f1e08f);
 }
+
 .form-check-input:checked {
-    background-color: var(--yellow-accent)!important;
-    border-color: var(--yellow-accent)!important;
+    background-color: var(--yellow-accent) !important;
+    border-color: var(--yellow-accent) !important;
 }
-input[type=number]::-webkit-inner-spin-button, 
+
+input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-.modal img{
+
+.modal img {
     cursor: pointer;
 }
+
 .contenido-tarjeta.perfil {
     position: absolute;
     top: -2.2vw;
@@ -237,12 +270,14 @@ input[type=number]::-webkit-outer-spin-button {
     height: calc(100% + 6vw);
     z-index: -2;
 }
+
 .avatar-renderizado {
     width: 100%;
     height: 100%;
     object-fit: contain;
     overflow: hidden;
 }
+
 #imagenperfil {
     width: 100%;
     height: 100%;
@@ -250,28 +285,33 @@ input[type=number]::-webkit-outer-spin-button {
     overflow: hidden;
     border-radius: 60px;
 }
+
 #lapizperfil {
     position: absolute;
     bottom: -1.5vw;
     right: -3.5vw;
     z-index: 3;
 }
+
 #datos-usuario {
     margin-bottom: 3vw;
 }
+
 .guardar {
     left: -7vw;
     margin: 4vw;
-    font-family: var(--font-pixel-header)!important;
-    font-size: 1.3vw!important;
-    color: var(--yellow-accent)!important;
-    border: none!important;
+    font-family: var(--font-pixel-header) !important;
+    font-size: 1.3vw !important;
+    color: var(--yellow-accent) !important;
+    border: none !important;
 }
+
 .modal-dialog {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .modal-content {
     background: none !important;
     backdrop-filter: blur(15px);
@@ -279,10 +319,12 @@ input[type=number]::-webkit-outer-spin-button {
     font-family: var(--font-pixel-header);
     border: none;
 }
+
 .modal-header {
     color: var(--text-bright);
     border-bottom: none;
 }
+
 .modal-body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -292,9 +334,11 @@ input[type=number]::-webkit-outer-spin-button {
     align-items: center;
     padding: 25px;
 }
+
 .avatar-radio {
     display: none;
 }
+
 .modal-body label {
     cursor: pointer;
     display: flex;
@@ -302,6 +346,7 @@ input[type=number]::-webkit-outer-spin-button {
     align-items: center;
     width: 100%;
 }
+
 .modal-body img {
     height: 15vw;
     max-height: 120px;
@@ -311,17 +356,20 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 12px;
     transition: all 0.25s ease;
 }
+
 .modal-body label:hover img {
     transform: scale(1.05);
     filter: drop-shadow(0 0 8px rgba(189, 52, 253, 0.5));
 }
-.avatar-radio:checked + label img {
+
+.avatar-radio:checked+label img {
     outline: 3px solid #bd34fd;
     box-shadow: 0 0 20px #bd34fd, inset 0 0 10px #bd34fd;
     filter: drop-shadow(0 0 10px #bd34fd);
     transform: scale(1.1);
     background-color: rgba(189, 52, 253, 0.1);
 }
+
 #guardar {
     display: inline-flex;
     align-items: center;
@@ -336,10 +384,12 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 6px;
     transition: background-color 0.2s, filter 0.2s;
 }
+
 #guardar:hover {
     filter: drop-shadow(0 0 12px #f067e4);
     background-color: #ff26ee;
 }
+
 .modal-footer {
     display: flex;
     justify-content: center;
