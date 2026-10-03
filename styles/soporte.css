@@ -1,0 +1,258 @@
+/* contenedor general*/
+.soporte {
+  display: flex;                 /* activa flexbox para acomodar los hijos */
+  flex-direction: column;        /* uno debajo del otro (en columna) */
+  align-items: center;           /* los centra horizontalmente */
+  gap: 2rem;                     /* espacio entre cada bloque (título, botón, panel, etc) */
+  padding: 3rem 1rem 5rem;       /* espacio interno: arriba | lados | abajo */
+  min-height: 70vh;              /* altura mínima: 70% de la pantalla */
+  font-family: var(--font-pixel-sub);  /* fuente por defecto de esta vista */
+}
+
+
+/* titulo principal */
+.soporte-titulo {
+  margin: 0 0 1.5rem;            /* sin margen arriba/lados, 1.5rem de margen abajo */
+  text-align: center;            /* texto centrado */
+  font-family: var(--font-pixel-header);  /* fuente pixelada de títulos */
+  font-weight: 700;              /* negrita */
+  font-size: clamp(1.4rem, 4vw, 2.2rem);  /* tamaño adaptable: mínimo | ideal | máximo */
+  letter-spacing: 1px;           /* separación entre letras */
+  color: var(--yellow-accent);   /* color amarillo */
+  text-shadow: 0 0 10px rgba(255, 210, 63, 0.6);  /* resplandor amarillo alrededor de las letras */
+}
+
+
+/* marco pixelado */
+.neon-btn,
+.neon-panel {
+  /* valores calculados a partir de --p, para no repetir cuentas:
+     --p2 = 2 escalones,  --p3 = 3 escalones */
+  --p2: calc(var(--p) * 2);
+  --p3: calc(var(--p) * 3);
+
+  /* --escalera-marco guarda la forma completa del recorte.
+     polygon() es una lista de puntos "x y" que se unen en orden.
+     "100%" significa el borde derecho/inferior del elemento */
+  --escalera-marco: polygon(
+
+    /* borde exterior, el cual se recorre en el sentido de las manecillas del reloj empezando por la esquina superior izquierda */
+
+    /* esquina superior izquierda: sube en 3 escalones */
+    0 var(--p3),
+    var(--p) var(--p3),
+    var(--p) var(--p2),
+    var(--p2) var(--p2),
+    var(--p2) var(--p),
+    var(--p3) var(--p),
+    var(--p3) 0,
+
+    /* esquina superior derecha: baja en 3 escalones */
+    calc(100% - var(--p3)) 0,
+    calc(100% - var(--p3)) var(--p),
+    calc(100% - var(--p2)) var(--p),
+    calc(100% - var(--p2)) var(--p2),
+    calc(100% - var(--p)) var(--p2),
+    calc(100% - var(--p)) var(--p3),
+    100% var(--p3),
+
+    /* esquina inferior derecha */
+    100% calc(100% - var(--p3)),
+    calc(100% - var(--p)) calc(100% - var(--p3)),
+    calc(100% - var(--p)) calc(100% - var(--p2)),
+    calc(100% - var(--p2)) calc(100% - var(--p2)),
+    calc(100% - var(--p2)) calc(100% - var(--p)),
+    calc(100% - var(--p3)) calc(100% - var(--p)),
+    calc(100% - var(--p3)) 100%,
+
+    /* esquina inferior izquierda */
+    var(--p3) 100%,
+    var(--p3) calc(100% - var(--p)),
+    var(--p2) calc(100% - var(--p)),
+    var(--p2) calc(100% - var(--p2)),
+    var(--p) calc(100% - var(--p2)),
+    var(--p) calc(100% - var(--p3)),
+    0 calc(100% - var(--p3)),
+
+    /* cierra el contorno exterior volviendo al punto de inicio */
+    0 var(--p3),
+
+    /* una línea muy corta que conecta el contorno exterior con el
+      interior. Sin este "puente" no se podría hacer el hueco en una
+      sola figura */
+    var(--g) calc(var(--g) + var(--p3)),
+
+    /* es la misma escalera, pero metida hacia adentro la distancia
+      --g (el grosor). Se recorre al revés (sentido contrario a las
+       manecillas) para que se reste y deje el centro vacío */
+
+    /* lado izquierdo y esquina inferior izquierda */
+    var(--g) calc(100% - var(--g) - var(--p3)),
+    calc(var(--g) + var(--p)) calc(100% - var(--g) - var(--p3)),
+    calc(var(--g) + var(--p)) calc(100% - var(--g) - var(--p2)),
+    calc(var(--g) + var(--p2)) calc(100% - var(--g) - var(--p2)),
+    calc(var(--g) + var(--p2)) calc(100% - var(--g) - var(--p)),
+    calc(var(--g) + var(--p3)) calc(100% - var(--g) - var(--p)),
+    calc(var(--g) + var(--p3)) calc(100% - var(--g)),
+
+    /* esquina inferior derecha */
+    calc(100% - var(--g) - var(--p3)) calc(100% - var(--g)),
+    calc(100% - var(--g) - var(--p3)) calc(100% - var(--g) - var(--p)),
+    calc(100% - var(--g) - var(--p2)) calc(100% - var(--g) - var(--p)),
+    calc(100% - var(--g) - var(--p2)) calc(100% - var(--g) - var(--p2)),
+    calc(100% - var(--g) - var(--p)) calc(100% - var(--g) - var(--p2)),
+    calc(100% - var(--g) - var(--p)) calc(100% - var(--g) - var(--p3)),
+    calc(100% - var(--g)) calc(100% - var(--g) - var(--p3)),
+
+    /* esquina superior derecha */
+    calc(100% - var(--g)) calc(var(--g) + var(--p3)),
+    calc(100% - var(--g) - var(--p)) calc(var(--g) + var(--p3)),
+    calc(100% - var(--g) - var(--p)) calc(var(--g) + var(--p2)),
+    calc(100% - var(--g) - var(--p2)) calc(var(--g) + var(--p2)),
+    calc(100% - var(--g) - var(--p2)) calc(var(--g) + var(--p)),
+    calc(100% - var(--g) - var(--p3)) calc(var(--g) + var(--p)),
+    calc(100% - var(--g) - var(--p3)) var(--g),
+
+    /* esquina superior izquierda */
+    calc(var(--g) + var(--p3)) var(--g),
+    calc(var(--g) + var(--p3)) calc(var(--g) + var(--p)),
+    calc(var(--g) + var(--p2)) calc(var(--g) + var(--p)),
+    calc(var(--g) + var(--p2)) calc(var(--g) + var(--p2)),
+    calc(var(--g) + var(--p)) calc(var(--g) + var(--p2)),
+    calc(var(--g) + var(--p)) calc(var(--g) + var(--p3)),
+
+    /* cierra el contorno interior volviendo al puente */
+    var(--g) calc(var(--g) + var(--p3))
+  );
+
+  position: relative;            /* permite colocar el marco (.neon-marco) encima de este elemento */
+  background: transparent;       /* sin color de relleno: se ve el fondo de la página */
+}
+
+
+/* marco de botones
+  es un <span> vacío que va dentro de cada botón y del panel
+  - el span lleva el BRILLO (filter: drop-shadow)
+  - eu ::before lleva la FORMA recortada (clip-path)
+
+  van separados porque clip-path también recortaría el brillo si
+  estuvieran en el mismo elemento. Así, además, el texto no recibe brillo */
+.neon-marco {
+  position: absolute;            /* se coloca encima del botón/panel sin ocupar espacio */
+  inset: 0;                      /* se estira para cubrir todo el elemento (0 en los 4 lados) */
+  z-index: 0;                    /* queda en la capa de abajo; el texto va encima */
+  pointer-events: none;          /* los clics lo atraviesan (el botón sigue siendo clicable) */
+
+  /* brillo de marco: 3 capas de resplandor, de cerca a lejos.
+     para un brillo más fuerte sube los números (por ejemplo 14px → 20px). */
+  filter: drop-shadow(0 0 2px var(--color-brillo))
+          drop-shadow(0 0 6px var(--color-brillo))
+          drop-shadow(0 0 14px var(--color-brillo));
+}
+
+/* la línea del marco: un rectángulo de color recortado con la forma de anillo */
+.neon-marco::before {
+  content: "";                   /* necesario para que el ::before exista */
+  position: absolute;
+  inset: 0;                      /* cubre todo el elemento */
+  background: var(--color-marco);        /* color de la línea (cian o rosa) */
+  clip-path: var(--escalera-marco);      /* recorta con la forma de anillo en escalera */
+}
+
+/* el texto y el contenido van por ENCIMA de la capa del marco */
+.neon-btn > span:not(.neon-marco),
+.neon-panel > :not(.neon-marco) {
+  position: relative;
+  z-index: 1;                    /* número mayor = queda más arriba */
+}
+
+
+/* botones */
+.neon-btn {
+  --p: 4px;                      /* tamaño de cada escalón de las esquinas */
+  --g: 4px;                      /* GROSOR del marco del botón (antes 2px). Sube o baja este número para cambiarlo */
+  --color-marco: var(--cyan-accent);            /* color de la línea: cian */
+  --color-brillo: rgba(45, 226, 230, 0.8);      /* color del brillo: cian (el último número es la transparencia) */
+
+  display: flex;                 /* para centrar el texto dentro del botón */
+  justify-content: center;       /* centra el texto horizontalmente */
+  align-items: center;           /* centra el texto verticalmente */
+  width: min(100%, 330px);       /* ancho: hasta 330px, pero nunca más que la pantalla */
+  min-height: 3.8rem;            /* altura mínima del botón */
+  padding: 0.8rem 1.6rem;        /* espacio entre el marco y el texto: arriba/abajo | lados */
+  text-align: center;
+  text-decoration: none;         /* quita el subrayado de los enlaces */
+  font-family: var(--font-pixel-body);   /* fuente del texto del botón */
+  font-weight: 700;              /* negrita */
+  font-size: clamp(0.95rem, 2.4vw, 1.1rem);  /* tamaño adaptable: mínimo | ideal | máximo */
+  letter-spacing: 1px;           /* separación entre letras */
+  color: var(--yellow-accent);   /* texto amarillo */
+  text-shadow: 0 0 6px rgba(255, 210, 63, 0.5);  /* resplandor suave en el texto */
+
+  transition: transform 0.2s ease, filter 0.2s ease;  /* hace que los cambios del hover sean suaves (0.2 segundos) */
+}
+
+/* efecto al pasar el cursor encima: el botón sube un poco y proyecta una sombra oscura
+   debajo para que "resalte". No cambia de color ni se rellena. */
+.neon-btn:hover {
+  color: var(--yellow-accent);   /* el texto se mantiene amarillo */
+  transform: translateY(-3px);   /* sube 3px */
+  filter: drop-shadow(0 8px 6px rgba(0, 0, 0, 0.85));  /* sombra: 0 a los lados, 8px hacia abajo, 6px de difuminado */
+}
+
+/* mientras se hace clic: baja 1px y la sombra se achica (efecto de "presionar") */
+.neon-btn:active {
+  transform: translateY(1px);
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.8));
+}
+
+/* al navegar con el teclado (tecla Tab): muestra un contorno punteado amarillo (accesibilidad) */
+.neon-btn:focus-visible {
+  outline: 2px dashed var(--yellow-accent);
+  outline-offset: 4px;           /* separación entre el botón y el contorno */
+}
+
+
+/* panel rosa de necesitas ayuda */
+.neon-panel {
+  --p: 5px;                      /* tamaño de cada escalón de las esquinas */
+  --g: 4px;                      /* grosor del marco rosa (antes 2px). Sube o baja este número para cambiarlo */
+  --color-marco: var(--border-color);           /* color de la línea: rosa */
+  --color-brillo: rgba(255, 62, 165, 0.8);      /* color del brillo: rosa */
+
+  display: flex;
+  flex-direction: column;        /* texto arriba, botón abajo */
+  align-items: center;           /* todo centrado */
+  gap: 1.2rem;                   /* espacio entre el texto y el botón */
+  width: min(100%, 480px);       /* ancho: hasta 480px, pero nunca más que la pantalla */
+  margin-top: 1.5rem;            /* espacio extra arriba, separándolo del botón anterior */
+  padding: 1.8rem 1.5rem 2.2rem; /* espacio interno: arriba | lados | abajo */
+}
+
+/* texto necesitas ayuda */
+.neon-panel__texto {
+  margin: 0;                     /* quita el margen que trae el <p> por defecto */
+  font-weight: 700;              /* negrita */
+  font-size: 33px;               /* tamaño de la letra (valor fijo en píxeles) */
+  letter-spacing: 1px;           /* separación entre letras */
+  color: var(--yellow-accent);   /* amarillo */
+  text-shadow: 0 0 6px rgba(255, 210, 63, 0.5);  /* resplandor suave */
+}
+
+
+/* botones legales */
+.soporte-legal {
+  display: flex;
+  flex-direction: column;        /* un botón debajo del otro */
+  align-items: center;
+  gap: 4rem;                     /* espacio entre los dos botones de abajo */
+  width: 100%;
+  margin-top: 2rem;              /* espacio EXTRA entre el panel rosa y estos botones
+                                    (se suma al gap de .soporte) */
+}
+
+/* responsividad */
+@media (max-width: 430px) {
+  .soporte { gap: 1.5rem; padding-top: 2rem; }   /* menos espacio entre bloques y arriba */
+  .neon-panel { padding: 1.4rem 1rem 1.8rem; }   /* panel rosa más compacto */
+}
