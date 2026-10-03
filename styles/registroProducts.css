@@ -74,6 +74,19 @@ h1 {
           drop-shadow(0 0 6px rgba(102, 245, 236, 0.55));
 }
 
+/*Clase para restingir el spinner de input de tipo number*/
+/* Chrome, Safari, Edge, Opera */
+input.sin-flechas::-webkit-outer-spin-button,
+input.sin-flechas::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input.sin-flechas {
+  -moz-appearance: textfield;
+}
+
 /* Que el foco se note, pero sin el azul feo de Bootstrap. */
 .frame-content .form-control:focus,
 .frame-content .form-select:focus {
