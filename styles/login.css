@@ -62,6 +62,8 @@
       height: stretch;
       background-color: var(--bg-color);
       border-radius: 0rem 17rem 17rem 0rem;
+      justify-items: center;
+      align-content: center;
   }
 
   /* Seccion Login */
@@ -157,4 +159,11 @@
           font-size: 0.85rem;
           width: 100%;
       }
+  }
+
+
+  .info-text {
+      padding: 8rem;
+      margin: 4rem;
+      color: var(--yellow-accent);
   }

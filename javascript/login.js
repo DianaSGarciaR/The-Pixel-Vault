@@ -45,7 +45,7 @@ formNewUser.addEventListener("submit", (event => {
         let user = { ...newUser, ...NEW_USER }
         createUser(user);
     } else {
-        renderizar(false, LIST_ERRORES, resultadoRegistro);
+        renderizarMensajes(false, LIST_ERRORES, resultadoRegistro);
     }
 }));
 
@@ -56,6 +56,8 @@ const createUser = (dataUser) => {
     setLocalStorage("LIST_USERS", LIST_USERS);
     //! === END: Esta pArte se sustituye cuando Se implemente BackEnd === */
     showFormulario(null, 'sectionLogin');
+    renderizarMensajes(true, [], resultadoRegistro);
+
 };
 
 /* =============================== END: Create user ===============================*/
@@ -79,7 +81,6 @@ formLogin.addEventListener("submit", (event => {
     if (!validarPasword(starLoginF.password, null, "LOGIN", LIST_ERRORES)) {
         formularioValido = false;
     }
-    console.log("starLoginF", starLoginF);
 
     //! Validar ya que esto se realiza en Back End
     if (!existUserByEmailAndPassword(starLoginF.email, starLoginF.password, LIST_ERRORES)) {
@@ -90,7 +91,7 @@ formLogin.addEventListener("submit", (event => {
     if (formularioValido) {
         starLogin(starLoginF);
     } else {
-        renderizar(false, LIST_ERRORES, resultadoRegistro);
+        renderizarMensajes(false, LIST_ERRORES, resultadoRegistro);
     }
 }));
 
@@ -160,7 +161,6 @@ function validExistUser(email, LIST_ERRORES) {
 function existUserByEmailAndPassword(email, password, LIST_ERRORES) {
     let esValido = false;
     let existUser = LIST_USERS.filter(user => user.email === email && user.password === password);
-    console.log("existUser", existUser);
     if (existUser && existUser.length > 0) {
         esValido = true;
     } else {
@@ -175,11 +175,13 @@ function showFormulario(event, elementId) {
     if (event) {
         event.preventDefault();
     }
-    console.log("showFormulario", event);
+    /** Muestra formuario Registro y coculta el fomulario login */
     if (elementId === "sectionCreateUser") {
+        renderizarMensajes(null, [], resultadoRegistro);
         showOrHideElements("SHOW", "sectionCreateUser");
         showOrHideElements("HIDEN", "sectionLogin");
     } else if (elementId === "sectionLogin") {
+        /** Muestra formuario login y coculta formulario Registro */
         showOrHideElements("SHOW", "sectionLogin");
         showOrHideElements("HIDEN", "sectionCreateUser");
     }
@@ -188,12 +190,12 @@ function showFormulario(event, elementId) {
 
 /** ================= STAR: Mensajes ================= */
 // Mensajes de error 
-function renderizar(statusForm, mensajes, contenedor) {
+function renderizarMensajes(statusForm, mensajes, contenedor) {
     if (!contenedor) return;
 
     if (statusForm) {
         contenedor.innerHTML = '<div class="alert alert-success mt-3" style="background-color: #122418; color: #2ecc71; border: 1px solid #2a7e43;">El registro se realizó con éxito.</div>';
-    } else {
+    } else if (!statusForm) {
         contenedor.innerHTML = "";
         let htmlContent = '<div class="alert alert-danger mt-3" style="background-color: #2a0808; color: #ff6b6b; border: 1px solid #842029;"><ul class="mb-0">';
         for (const mensaje of mensajes) {
@@ -201,6 +203,8 @@ function renderizar(statusForm, mensajes, contenedor) {
         }
         htmlContent += '</ul></div>';
         contenedor.innerHTML = htmlContent;
+    } else {
+        contenedor.innerHTML = "";
     }
 }
 /** ================= END: Mensajes ================= */
