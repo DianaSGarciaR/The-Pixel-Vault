@@ -1,11 +1,10 @@
 
 import { productosp } from "../services/dataCatalogo.js";
-const carrito = [];
+
 
 
 const productsElement = document.querySelector("#productos");
-const contenedorCarrito = document.querySelector('#contenedor-carrito');
-const totalCarrito = document.querySelector('#total-carrito');
+
 
 //Seleccionamos el elemento del DOM donde se van a renderizar las cards de los productos
 let modalsContainer = document.body; // En donde se renderiza el modal
@@ -47,7 +46,7 @@ let renderProduct = (product) => {
                     <p class="precio">$${product.precio} MXN</p>
                     <p>${product.descripcion}</p>
                     <div class="carrito-container">
-                        <button class="carrito">
+                        <button class="carrito" data-id ="${product.id}">
                             Añadir al Carrito
                         </button>
                     </div>
@@ -107,6 +106,58 @@ juegosElement.addEventListener("click",(e) => {
     }
 });
 //#########################################################
+fix/carrito-carmen
+//----Inicio localStorage---------------------------------
+function agregarProductoAlCarrito(product_id) {
+  const carritoActual = JSON.parse(localStorage.getItem('carrito_compras')) || [];
+
+  const productoSeleccionado = productosp.find(p => p.id === product_id);
+  if (!productoSeleccionado) return;
+
+  const productoEnCarrito = carritoActual.find(item => item.id === product_id);
+
+  if (productoEnCarrito) {
+    productoEnCarrito.cantidad += 1;
+  } else {
+   
+    carritoActual.push({
+      ...productoSeleccionado,
+      cantidad: 1
+    });
+  }
+  localStorage.setItem('carrito_compras', JSON.stringify(carritoActual));
+}
+
+// Función para mostrar una notificación rápida
+function mostrarNotificacion(mensaje) {
+    // Verificar si ya existe una notificación para reutilizarla o crearla
+    let toast = document.querySelector('#toast-notificacion');
+
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'toast-notificacion';
+        toast.className = 'toast-cyber';
+        document.body.appendChild(toast);
+    }
+
+    toast.textContent = mensaje;
+    toast.classList.add('show');
+
+    // Ocultar automáticamente después de 2.5 segundos
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 2500);
+}
+
+modalsContainer.addEventListener('click', (e) => {
+    const btnAgregar = e.target.closest('.carrito');
+    if(btnAgregar){
+        const idProducto = Number(btnAgregar.dataset.id);
+        agregarProductoAlCarrito(idProducto);
+        mostrarNotificacion('¡Agregaste al carrito!');
+    }
+});
+=======
 
 // Seleccionamos el contenedor de la sección de filtros
 const filtrosElement = document.querySelector("#menuFiltros"); 
