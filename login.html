@@ -39,92 +39,92 @@
   <!--* --------- FIN : Banner Principal ---------- -->
 
   <!--* --------- INICIO : Iniciar sesion ---------- -->
-    <div class="ejemplo">
-      <div class="contenido row" id="groupItems">
-        <div id="seccionInfo" class="col-12 col-lg-4">
-          <h3>The Pixel Vault</h3>
-          <p text-center>
-            Tu aventura comienza aquí.
-            Explora los lanzamientos más recientes,
-            consigue productos únicos y conecta
-            con otros apasionados del gaming.
-          </p>
-        </div>
+  <div class="ejemplo">
+    <div class="contenido row" id="groupItems">
+      <div id="seccionInfo" class="col-12 col-lg-4">
+        <h3>The Pixel Vault</h3>
+        <p text-center>
+          Tu aventura comienza aquí.
+          Explora los lanzamientos más recientes,
+          consigue productos únicos y conecta
+          con otros apasionados del gaming.
+        </p>
+      </div>
 
-        <div id="sectionForm" class="col-12 col-lg-8 view-element">
-          <div id="sectionLogin" class="col-12 col-lg-8 view-element">
-            <h4 class="text-center">Bienvenido de nuevo</h4>
-            <form id="formLogin">
+      <div id="sectionForm" class="col-12 col-lg-8 view-element">
+        <div id="sectionLogin" class="col-12 col-lg-8 view-element">
+          <h4 class="text-center">Bienvenido de nuevo</h4>
+          <form id="formLogin">
 
-              <div class="format-input">
-                <label for="exampleInputEmail1" class="form-label">Usuario</label>
-                <input type="email" class="form-control" name="email" id="exampleInputEmail1"
-                  aria-describedby="emailHelp" placeholder="ejemplo@gmail.com">
-              </div>
-
-              <div class="format-input">
-                <label for="forInputPassword" class="form-label">Password</label>
-                <input type="password" id="inputPassword" name="password" class="form-control">
-              </div>
-
-              <div class="btn-magenta-container">
-
-                <button type="submit" class="btn-magenta">Iniciar sesión</button>
-              </div>
-              <div class="text-center prueba">
-                <br>
-                ¿No tienes cuenta? <a href="showFormulario('sectionCreateUser')"
-                  onclick="showFormulario(event, 'sectionCreateUser')">Regístrate</a>
-              </div>
-            </form>
-          </div>
-
-          <div id="sectionCreateUser" class="col-12 col-lg-8 view-element" hidden>
-            <h4 class="text-center">REGISTRATE</h4>
-            <br>
-
-            <div class="text-center" hidden>
-              <div class="">Continuar con Google o ingresa tus datos</div>
-              <div class="btn-red-container">
-                <button type="button" class="btn-red">
-                  Continuar con Google
-                </button>
-              </div>
+            <div class="format-input">
+              <label for="exampleInputEmail1" class="form-label">Usuario</label>
+              <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="ejemplo@gmail.com">
             </div>
 
-            <form id="formNewUser">
-              <div class="format-input">
-                <label class="form-label">Usuario (email)</label>
-                <input type="email" class="form-control" id="inputEmail" name="email" placeholder="ejemplo@gmail.com">
-              </div>
-              <div class="format-input">
-                <label class="form-label">Password</label>
-                <input type="password" id="inputPassword" name="password" class="form-control"
-                  placeholder="min 8 caracteres">
-              </div>
+            <div class="format-input">
+              <label for="forInputPassword" class="form-label">Password</label>
+              <input type="password" id="inputPassword" name="password" class="form-control">
+            </div>
 
-              <div class="format-input">
-                <label class="form-label">Confirmación</label>
-                <input type="password" id="inputPasswordConfirm" name="passwordConfirm" class="form-control"
-                  placeholder="min 8 caracteres">
-              </div>
+            <div class="btn-magenta-container">
 
-              <div class="btn-magenta-container">
-                <button type="submit" class="btn-magenta">Crear</button>
-              </div>
-
-              <div class="text-center">
-                <br>
-                ¿Ya tiene cuenta? <a href="" onclick="showFormulario(event,'sectionLogin')">Inicia
-                  sesion</a>
-              </div>
-          </div>
+              <button type="submit" class="btn-magenta">Iniciar sesión</button>
+            </div>
+            <div class="text-center prueba">
+              <br>
+              ¿No tienes cuenta? <a href="showFormulario('sectionCreateUser')"
+                onclick="showFormulario(event, 'sectionCreateUser')">Regístrate</a>
+            </div>
           </form>
-          <div id="resultadoRegistro"></div>
         </div>
+
+        <div id="sectionCreateUser" class="col-12 col-lg-8 view-element" hidden>
+          <h4 class="text-center">REGISTRATE</h4>
+          <br>
+
+          <div class="text-center" hidden>
+            <div class="">Continuar con Google o ingresa tus datos</div>
+            <div class="btn-red-container">
+              <button type="button" class="btn-red">
+                Continuar con Google
+              </button>
+            </div>
+          </div>
+
+          <form id="formNewUser">
+            <div class="format-input">
+              <label class="form-label">Usuario (email)</label>
+              <input type="email" class="form-control" id="inputEmail" name="email" placeholder="ejemplo@gmail.com">
+            </div>
+            <div class="format-input">
+              <label class="form-label">Password</label>
+              <input type="password" id="inputPassword" name="password" class="form-control"
+                placeholder="min 8 caracteres">
+            </div>
+
+            <div class="format-input">
+              <label class="form-label">Confirmación</label>
+              <input type="password" id="inputPasswordConfirm" name="passwordConfirm" class="form-control"
+                placeholder="min 8 caracteres">
+            </div>
+
+            <div class="btn-magenta-container">
+              <button type="submit" class="btn-magenta">Crear</button>
+            </div>
+
+            <div class="text-center">
+              <br>
+              ¿Ya tiene cuenta? <a href="" onclick="showFormulario(event,'sectionLogin')">Inicia
+                sesion</a>
+            </div>
+        </div>
+        </form>
+        <div id="resultadoRegistro"></div>
       </div>
-    </div>  
-    
+    </div>
+  </div>
+
 
   <div class="text-center pixelify info-text">
     <h4>Contacto: <br><a href="">ThepixelVault@gmail.com</a> es la mejor manera de contactar
