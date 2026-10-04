@@ -1,0 +1,249 @@
+ /*==============Inicio pruebas para marcos mejorados por Natalia ======================*/
+ .ejemplo {
+     position: relative;
+     margin: 4rem;
+     z-index: 1;
+     border: 1vw solid transparent;
+     background-color: rgba(0, 0, 0, 0.1);
+     backdrop-filter: blur(4px);
+     -webkit-backdrop-filter: blur(8px);
+     border-radius: 25px;
+ }
+
+ .ejemplo::before {
+     position: absolute;
+     content: "";
+     z-index: -0;
+     top: -2vw;
+     left: -2vw;
+     right: -2vw;
+     bottom: -2vw;
+     border: 6vw solid transparent;
+     border-image-slice: 6;
+     border-image-repeat: repeat;
+     border-image-source: url('../assets/marco-pixel-azul.svg');
+     filter: drop-shadow(0 0 10px #00E5FF) drop-shadow(0 0 5px #a0ebf3);
+ }
+
+ /*====================Fin de pruebas para marcos mejorados por Natalia===================*/
+
+ a {
+     color: var(--cyan-accent);
+     position: relative;
+     z-index: 1;
+ }
+
+ a :hover {
+     color: var(--panel-color);
+
+ }
+
+ /* ------- INICIO : Marco neon ------- */
+
+ .contenido {
+
+     padding: 0rem;
+     position: relative;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     text-align: justify;
+     color: var(--yellow-accent);
+     /*     clip-path: polygon(5% 5%, 95% 5%, 95% 95%, 5% 95%);*/
+ }
+
+ /* Seccion Registro usario */
+ #seccionInfo {
+     font-family: var(--font-pixel-sub);
+     z-index: -1;
+     padding: 6rem;
+     background-image: url(../assets/miCuentaFondo.png);
+     background-size: cover;
+     height: stretch;
+     text-align: center;
+     align-content: center;
+     clip-path: polygon(
+             /* Exquena superior - izquierda: 10 píxeles desde la izquierda y 0 desde arriba*/
+             50px 0,
+             /* Exquena superior - derecha: 10 píxeles desde la derecha y 0 desde arriba*/
+             100% 0,
+             /* Bajamos lado derecho: Seguimos por el lado derecho hasta 10px antes de llegar abajo */
+             100% 100%,
+             /* Esquina inferior - izquierda */
+             50px 100%,
+             /* Cerrar la esquina Izquierda */
+             0 calc(100% - 50px),
+             0 50px);
+ }
+
+ #seccionInfo h3 {
+     color: var(--border-color);
+ }
+
+ /* Seccion Registro usario */
+ #sectionForm {
+     padding: 5rem;
+     height: stretch;
+     justify-items: center;
+     align-content: center;
+ }
+
+ /* Seccion Login */
+ #sectionForm h4 {
+     font-family: var(--font-pixel-header);
+ }
+
+ .format-input {
+     width: 100%;
+     max-width: 500px;
+     margin: 2rem auto 0;
+ }
+
+ .format-input label {
+     font-family: var(--font-pixel-header);
+ }
+
+ .format-input input {
+     clip-path: polygon(
+             /*10 píxeles desde la izquierda y 0 desde arriba*/
+             10px 0,
+             /*10 píxeles desde la derecha y 0 desde arriba*/
+             calc(100% - 10px) 0,
+             /*10 píxeles desde la derecha y 10 píxeles desde abajo*/
+             100% 10px,
+             /* Seguimos por el lado derecho hasta 10px antes de llegar abajo */
+             100% calc(100% - 10px),
+             /* 10px antes del borde derecho */
+             calc(100% - 10px) 100%,
+             /* parte inferior hasta 10px desde la izquierda */
+             10px 100%,
+             /* extremo izquierdo, pero 10px antes de llegar arriba */
+             0 calc(100% - 10px),
+             /* extremo izquierdo, pero 10px antes de llegar arriba */
+             0 10px);
+ }
+
+ .format-input input :focus {
+     transform: scale(1.05);
+     filter: drop-shadow(0rem 0rem 1rem var(--border-color));
+ }
+
+ /* ============= STAR: Botones ============= */
+ .btn-magenta-container,
+ .btn-red-container {
+     display: block;
+     width: 100%;
+     max-width: 500px;
+     margin: 2rem auto 0;
+     filter: drop-shadow(0 0 8px var(--border-color));
+     transition: transform 0.2s ease, filter 0.2s ease;
+ }
+
+ .btn-magenta,
+ .btn-red {
+     display: block;
+     width: 100%;
+     padding: 12px;
+     font-family: var(--font-pixel-sub);
+     font-weight: bold;
+     font-size: 1rem;
+     text-transform: uppercase;
+     border: none !important;
+     border-radius: 0 !important;
+     cursor: pointer;
+     clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px),
+             calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+ }
+
+ .btn-magenta {
+     background-color: var(--border-color) !important;
+     color: white;
+ }
+
+ .btn-red {
+     background-color: red !important;
+     color: white;
+ }
+
+ .btn-magenta:hover {
+     color: var(--panel-color);
+ }
+
+ .btn-magenta-container:hover {
+     transform: scale(1.05);
+     filter: drop-shadow(0 0 16px var(--border-color));
+ }
+
+ .btn-red-container:hover {
+     transform: scale(1.05);
+     filter: drop-shadow(0 0 16px white);
+ }
+
+ /* ============= END: Botones ============= */
+
+ /* =============== Responsabilidad ============== */
+ @media (max-width: 971px) {
+     .btn-magenta-container {
+         margin: 0.2rem auto 0;
+         max-width: 150px;
+         width: 100%;
+         display: flex;
+         justify-content: center;
+     }
+
+     .btn-magenta {
+         padding: 8px;
+         font-size: 0.85rem;
+         width: 100%;
+     }
+
+     h4 {
+         justify-content: center;
+         font-size: 1.5rem;
+     }
+
+     #seccionInfo {
+         padding: 3rem;
+         clip-path: none;
+         border-radius: 50px 50px 0px 0px;
+     }
+
+ }
+
+ @media(max-width: 510px) {
+     h4 {
+         font-size: 1.2rem;
+     }
+
+     #seccionInfo {
+         padding: 3rem;
+         clip-path: none;
+     }
+
+     #sectionForm {
+         padding: 2rem;
+     }
+ }
+
+ @media(max-width: 470px) {
+     h4 {
+         font-size: 0.9rem;
+     }
+ }
+
+ .info-text {
+     text-align: center;
+     margin: 4rem;
+     color: var(--yellow-accent);
+ }
+
+ #resultadoRegistro {
+     transition: opacity 0.5s ease;
+     /* Desvanecimiento suave */
+ }
+
+ .oculto {
+     opacity: 0;
+     pointer-events: none;
+     /* Evita que se pueda interactuar cuando esté invisible */
+ }
