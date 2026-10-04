@@ -4,15 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contáctanos</title>
+  <title>Login</title>
 
   <!-- !LINK BOOSTRAP-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <!-- !FIN LINK BOOSTRAP-->
 
-  <link rel="stylesheet" href="styles/login.css" />
-  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="./styles/login.css" />
+  <link rel="stylesheet" href="./styles/styles.css" />
 
   <!--Link de fuente-->
   <style>
@@ -39,12 +39,7 @@
   <!--* --------- FIN : Banner Principal ---------- -->
 
   <!--* --------- INICIO : Iniciar sesion ---------- -->
-  <section>
-    <div class="contenedor-pixel">
-      <div class="capa-blur"></div>
-      <svg class="marcoAzul" viewBox="0 0 64 33" preserveAspectRatio="none">
-        <use href="#plantillaSVG"></use>
-      </svg>
+    <div class="ejemplo">
       <div class="contenido row" id="groupItems">
         <div id="seccionInfo" class="col-12 col-lg-4">
           <h3>The Pixel Vault</h3>
@@ -79,7 +74,7 @@
               <div class="text-center prueba">
                 <br>
                 ¿No tienes cuenta? <a href="showFormulario('sectionCreateUser')"
-                  onclick="showFormulario(event, 'sectionCreateUser')">Registrate</a>
+                  onclick="showFormulario(event, 'sectionCreateUser')">Regístrate</a>
               </div>
             </form>
           </div>
@@ -109,7 +104,7 @@
               </div>
 
               <div class="format-input">
-                <label class="form-label">Confirmacion</label>
+                <label class="form-label">Confirmación</label>
                 <input type="password" id="inputPasswordConfirm" name="passwordConfirm" class="form-control"
                   placeholder="min 8 caracteres">
               </div>
@@ -128,12 +123,11 @@
           <div id="resultadoRegistro"></div>
         </div>
       </div>
-    </div>
-    </div>
-  </section>
+    </div>  
+    
 
   <div class="text-center pixelify info-text">
-    <h4>Contacto: <a href="">ThepixelVault@gmail.com</a> es la mejor manera de contactar
+    <h4>Contacto: <br><a href="">ThepixelVault@gmail.com</a> es la mejor manera de contactar
       con nuestro equipo de atención
       al cliente para
       cualquier consulta sobre pedidos, información de seguimiento y detalles de los productos.
@@ -144,93 +138,6 @@
     </h4>
 
   </div>
-
-  <!--* Figura SVG de los marcos pixelados para contenido -->
-  <svg style="display: none;">
-    <defs>
-      <g id="plantillaSVG" shape-rendering="crispEdges">
-        <!-- Parte superior -->
-        <rect x="6" y="0" width="52" height="1" />
-        <!-- Parte superior izquerda -->
-        <rect x="5" y="1" width="1" height="1" />
-        <rect x="4" y="2" width="1" height="1" />
-        <rect x="3" y="3" width="1" height="1" />
-        <rect x="2" y="4" width="1" height="1" />
-        <rect x="1" y="5" width="1" height="1" />
-        <rect x="0" y="6" width="1" height="1" />
-
-        <!-- Parte superior derecha -->
-        <rect x="58" y="1" width="1" height="1" />
-        <rect x="59" y="2" width="1" height="1" />
-        <rect x="60" y="3" width="1" height="1" />
-        <rect x="61" y="4" width="1" height="1" />
-        <rect x="62" y="5" width="1" height="1" />
-
-        <!-- Parte izquierda <rect x="0" y="7" width="1" height="20" />-->
-        <rect x="0" y="7" width="1" height="1" />
-        <rect x="0" y="8" width="1" height="1" />
-        <rect x="0" y="9" width="1" height="1" />
-        <rect x="0" y="10" width="1" height="1" />
-        <rect x="0" y="11" width="1" height="1" />
-        <rect x="0" y="12" width="1" height="1" />
-        <rect x="0" y="13" width="1" height="1" />
-        <rect x="0" y="14" width="1" height="1" />
-        <rect x="0" y="15" width="1" height="1" />
-        <rect x="0" y="16" width="1" height="1" />
-        <rect x="0" y="17" width="1" height="1" />
-        <rect x="0" y="18" width="1" height="1" />
-        <rect x="0" y="19" width="1" height="1" />
-        <rect x="0" y="20" width="1" height="1" />
-        <rect x="0" y="21" width="1" height="1" />
-        <rect x="0" y="22" width="1" height="1" />
-        <rect x="0" y="23" width="1" height="1" />
-        <rect x="0" y="24" width="1" height="1" />
-        <rect x="0" y="25" width="1" height="1" />
-        <rect x="0" y="26" width="1" height="1" />
-
-        <!-- Parte derecha <rect x="63" y="6" width="1" height="21" />-->
-        <rect x="63" y="6" width="1" height="1" />
-        <rect x="63" y="7" width="1" height="1" />
-        <rect x="63" y="8" width="1" height="1" />
-        <rect x="63" y="9" width="1" height="1" />
-        <rect x="63" y="10" width="1" height="1" />
-        <rect x="63" y="11" width="1" height="1" />
-        <rect x="63" y="12" width="1" height="1" />
-        <rect x="63" y="13" width="1" height="1" />
-        <rect x="63" y="14" width="1" height="1" />
-        <rect x="63" y="15" width="1" height="1" />
-        <rect x="63" y="16" width="1" height="1" />
-        <rect x="63" y="17" width="1" height="1" />
-        <rect x="63" y="18" width="1" height="1" />
-        <rect x="63" y="19" width="1" height="1" />
-        <rect x="63" y="20" width="1" height="1" />
-        <rect x="63" y="22" width="1" height="1" />
-        <rect x="63" y="23" width="1" height="1" />
-        <rect x="63" y="24" width="1" height="1" />
-        <rect x="63" y="25" width="1" height="1" />
-        <rect x="63" y="26" width="1" height="1" />
-        <rect x="63" y="21" width="1" height="1" />
-
-
-        <!-- Parte inferior izquierda -->
-        <rect x="1" y="27" width="1" height="1" />
-        <rect x="2" y="28" width="1" height="1" />
-        <rect x="3" y="29" width="1" height="1" />
-        <rect x="4" y="30" width="1" height="1" />
-        <rect x="5" y="31" width="1" height="1" />
-
-        <!-- Parte inferior derecha -->
-        <rect x="62" y="27" width="1" height="1" />
-        <rect x="61" y="28" width="1" height="1" />
-        <rect x="60" y="29" width="1" height="1" />
-        <rect x="59" y="30" width="1" height="1" />
-        <rect x="58" y="31" width="1" height="1" />
-
-        <!-- Parte inferiro -->
-        <rect x="6" y="32" width="52" height="1" />
-      </g>
-    </defs>
-  </svg>
 
   <!--* ---------- FIN : Iniciar sesion ------------ -->
 
