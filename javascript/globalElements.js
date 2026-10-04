@@ -22,16 +22,33 @@
  * 3. Incluir este archivo JavaScript en el HTML:
  *      <script src="/javascript/globalElements.js"></script>
 */
+const dataUser = localStorage.getItem("DATA_USER");
+const urlMicuenta = "mi-cuenta.html";
+const urlLogin = "login.html";
 const mainNavbar = document.querySelector(".navThePixelVault");
 const listMenuBtn = [
   { id: "inicio", icon: "💻", name: "INICIO", pathHtml: "index.html" },
   { id: "tienda", icon: "🛍️", name: "TIENDA / CATÁLOGO", pathHtml: "tienda.html" },
   { id: "catalogo", icon: "🎧", name: "CATÁLOGO", pathHtml: "tienda.html" },
-  { id: "miCuenta", icon: "🧑‍🦱", name: "MI CUENTA", pathHtml: "mi-cuenta.html" },
+  { id: "miCuenta", icon: "👤", name: "MI CUENTA", "pathHtml": dataUser ? urlMicuenta : urlLogin },
   { id: "contactanos", icon: "📞", name: "CONTÁCTENOS", pathHtml: "contactanos.html" },
   { id: "nosotros", icon: "🏫", name: "NOSOTROS", pathHtml: "acercaNosotros.html" },
   { id: "carrito", icon: "🛒", name: "CARRITO", pathHtml: "miCarrito.html" }
 ];
+
+/** Obtenermos la inforacion de usuario desde el almacenamiento local,
+ * si existe retorna el objeto Usuario, de lo contrario se retorna null */
+const getValidUrlMicuenta = () => {
+  let urlMicuenta = "mi-cuenta.html";
+  let urlLogin = "login.html";
+
+  const dataUser = getItemLocalStorage("DATA_USER");
+  console.log("dataUser", dataUser);
+  if (dataUser) {
+    return urlMicuenta;
+  }
+  return urlLogin;
+};
 
 const renderNavbar = () => {
   // Solo metemos los tres bloques hijos directamente. 
@@ -62,7 +79,7 @@ const renderNavbar = () => {
                           <span>ATENCIÓN AL CLIENTE</span>
                         </a>
 
-                        <a href="mi-cuenta.html" class="radial-item item-4 head yellow-accent">
+                        <a href="${dataUser ? urlMicuenta : urlLogin}" class="radial-item item-4 head yellow-accent">
                           <div class="icon">👤</div>
                           <span>MI CUENTA</span>
                         </a>

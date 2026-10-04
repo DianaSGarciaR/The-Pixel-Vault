@@ -21,7 +21,10 @@ formEl.addEventListener("submit", (event) => {
     // Se ejecuta cuando el usuario envía el formulario.
     event.preventDefault();
 
-    if (!formEl.checkValidity()) {
+    //ejecutamos las validaciones personalizadas
+    const formularioValido = validarFormAlEnviar();
+
+    if (!formularioValido) {
         return;
     }
     // Evita que la página recargue por defecto al enviar el formulario.
@@ -30,11 +33,11 @@ formEl.addEventListener("submit", (event) => {
     const formData = new FormData(formEl);
     //console.log(formData);
     const dataArray = [...formData];
-    
+
 
     // Convierte el arreglo de pares clave-valor en un objeto JavaScript.
     const producto = Object.fromEntries(dataArray);
-    
+
 
     // Agrega el nuevo producto al arreglo general.
     productos.push(producto);
@@ -42,10 +45,10 @@ formEl.addEventListener("submit", (event) => {
     // Guarda la lista actualizada en localStorage.
     setLocalStorage("productos", productos);
 
-   
+
 
     // Limpia los campos del formulario para dejarlo listo para otro registro.
-    formEl.reset();
+    limpiarFormulario();
 });
 
 
@@ -71,41 +74,44 @@ const getItemLocalStorage = (key) => {
 
 
 /**========== Inicio código validación de formulario ========== */
-/** =========================================================
- * VALIDACIÓN DEL FORMULARIO DE REGISTRO DE PRODUCTOS
- * ========================================================= */
 
 const formulario = document.getElementById("registro-products-form");
+const inputImagen = document.getElementById("imagen");
+const nombreImagen = document.querySelector(".file-field__name");
 
-
-/** =========================================================
- * FUNCIÓN AUXILIAR PARA MOSTRAR UN MENSAJE DE ERROR
- * ========================================================= */
-
+/*FUNCIÓN AUXILIAR PARA MOSTRAR UN MENSAJE DE ERROR*/
 function mostrarError(input, mensaje, idError) {
 
     // Si ya existe un mensaje de error, lo eliminamos
     const errorAnterior = document.getElementById(idError);
-
     if (errorAnterior) {
         errorAnterior.remove();
     }
 
     const errorSpan = document.createElement("span");
-
     errorSpan.textContent = mensaje;
     errorSpan.style.color = "red";
     errorSpan.style.display = "block";
     errorSpan.id = idError;
+    // Opcional: Agregar una clase de Bootstrap para espaciado superior
+    errorSpan.classList.add("mt-1"); 
 
-    input.insertAdjacentElement("afterend", errorSpan);
+    // BUSCAMOS EL CONTENEDOR CORRECTO:
+    // .closest('.col-sm-10') sube en el DOM hasta encontrar ese contenedor div
+    const contenedorPadre = input.closest(".col-sm-10");
+
+    if (contenedorPadre) {
+        // Lo añade al final del div .col-sm-10 (debajo del input-group)
+        contenedorPadre.appendChild(errorSpan);
+    } else {
+        // Respaldo por si no encuentra la clase: lo pone después del input
+        input.insertAdjacentElement("afterend", errorSpan);
+    }
 }
 
 
-/** =========================================================
- * FUNCIÓN PARA ELIMINAR UN MENSAJE DE ERROR
- * ========================================================= */
 
+/**FUNCIÓN PARA ELIMINAR UN MENSAJE DE ERROR*/
 function eliminarError(idError) {
 
     const error = document.getElementById(idError);
@@ -116,20 +122,14 @@ function eliminarError(idError) {
 }
 
 
-/** =========================================================
- * VALIDACIONES MIENTRAS EL USUARIO ESCRIBE
- * ========================================================= */
-
+/**VALIDACIONES MIENTRAS EL USUARIO ESCRIBE */
 formulario.addEventListener("input", function (event) {
 
     const input = event.target;
     const valor = input.value.trim();
 
 
-    // ---------------------------------------------------------
     // VALIDACIÓN DEL NOMBRE
-    // ---------------------------------------------------------
-
     if (input.id === "nameProduct") {
 
         eliminarError("nameProduct-error");
@@ -145,10 +145,7 @@ formulario.addEventListener("input", function (event) {
     }
 
 
-    // ---------------------------------------------------------
     // VALIDACIÓN DE LA DESCRIPCIÓN
-    // ---------------------------------------------------------
-
     if (input.id === "Descripcion") {
 
         eliminarError("descripcion-error");
@@ -164,10 +161,7 @@ formulario.addEventListener("input", function (event) {
     }
 
 
-    // ---------------------------------------------------------
     // VALIDACIÓN DEL PRECIO
-    // ---------------------------------------------------------
-
     if (input.id === "precio") {
 
         eliminarError("precio-error");
@@ -184,41 +178,34 @@ formulario.addEventListener("input", function (event) {
         }
     }
 
-
-    // ---------------------------------------------------------
     // VALIDACIÓN DEL GÉNERO
-    // ---------------------------------------------------------
-
     if (input.id === "genero") {
 
         eliminarError("genero-error");
 
-        if (valor.length < 5) {
+        if (valor.length < 3) {
 
             mostrarError(
                 input,
-                "El género debe contener al menos 5 caracteres.",
+                "El género debe contener al menos 3 caracteres.",
                 "genero-error"
             );
         }
     }
 
 
-    // ---------------------------------------------------------
     // VALIDACIÓN DEL STOCK
-    // ---------------------------------------------------------
-
     if (input.id === "stock") {
 
         eliminarError("stock-error");
 
         const stock = Number(valor);
 
-        if (valor === "" || stock < 1 || stock > 20) {
+        if (valor === "" || stock < 1) {
 
             mostrarError(
                 input,
-                "El stock debe estar entre 1 y 20 piezas.",
+                "El stock debe ser de mayor que cero",
                 "stock-error"
             );
         }
@@ -226,19 +213,12 @@ formulario.addEventListener("input", function (event) {
 });
 
 
-/** =========================================================
- * VALIDACIÓN DE LOS SELECT
- * ========================================================= */
-
+/**VALIDACIÓN DE LOS SELECT */
 formulario.addEventListener("change", function (event) {
 
     const select = event.target;
 
-
-    // ---------------------------------------------------------
     // VALIDACIÓN DEL TIPO DE PRODUCTO
-    // ---------------------------------------------------------
-
     if (select.id === "tipo") {
 
         eliminarError("tipo-error");
@@ -254,10 +234,7 @@ formulario.addEventListener("change", function (event) {
     }
 
 
-    // ---------------------------------------------------------
     // VALIDACIÓN DE LA CALIFICACIÓN
-    // ---------------------------------------------------------
-
     if (select.id === "cal") {
 
         eliminarError("calificacion-error");
@@ -274,15 +251,13 @@ formulario.addEventListener("change", function (event) {
 });
 
 
-/** =========================================================
- * VALIDACIÓN AL ENVIAR EL FORMULARIO
- * ========================================================= */
-
-formulario.addEventListener("submit", function (event) {
+/**VALIDACIÓN AL ENVIAR EL FORMULARI*/
+function validarFormAlEnviar() {
 
     // Obtenemos todos los campos
     const nombre = document.getElementById("nameProduct");
     const tipo = document.getElementById("tipo");
+    const imagen = document.getElementById("imagen");
     const descripcion = document.getElementById("Descripcion");
     const precio = document.getElementById("precio");
     const genero = document.getElementById("genero");
@@ -292,10 +267,7 @@ formulario.addEventListener("submit", function (event) {
     let formularioValido = true;
 
 
-    /** -------------------------------------------------------
-     * NOMBRE
-     * ------------------------------------------------------- */
-
+    /** NOMBRE */
     eliminarError("nameProduct-error");
 
     if (nombre.value.trim().length < 5) {
@@ -310,10 +282,7 @@ formulario.addEventListener("submit", function (event) {
     }
 
 
-    /** -------------------------------------------------------
-     * TIPO
-     * ------------------------------------------------------- */
-
+    /** TIPO */
     eliminarError("tipo-error");
 
     if (tipo.value === "") {
@@ -328,10 +297,7 @@ formulario.addEventListener("submit", function (event) {
     }
 
 
-    /** -------------------------------------------------------
-     * DESCRIPCIÓN
-     * ------------------------------------------------------- */
-
+    /** DESCRIPCIÓN */
     eliminarError("descripcion-error");
 
     const descripcionValor = descripcion.value.trim();
@@ -351,9 +317,7 @@ formulario.addEventListener("submit", function (event) {
     }
 
 
-    /** -------------------------------------------------------
-     * PRECIO
-     * ------------------------------------------------------- */
+    /** PRECIO */
 
     eliminarError("precio-error");
 
@@ -374,13 +338,10 @@ formulario.addEventListener("submit", function (event) {
     }
 
 
-    /** -------------------------------------------------------
-     * GÉNERO
-     * ------------------------------------------------------- */
-
+    /** GÉNERO */
     eliminarError("genero-error");
 
-    if (genero.value.trim().length < 5) {
+    if (genero.value.trim().length < 3) {
 
         mostrarError(
             genero,
@@ -392,38 +353,23 @@ formulario.addEventListener("submit", function (event) {
     }
 
 
-    /** -------------------------------------------------------
-     * STOCK
-     * ------------------------------------------------------- */
-
+    /** STOCK */
     eliminarError("stock-error");
 
     const stockValor = Number(stock.value);
 
     if (
         stock.value === "" ||
-        stockValor < 1 ||
-        stockValor > 20
+        stockValor < 1
     ) {
 
         mostrarError(
             stock,
-            "El stock debe estar entre 1 o más piezas.",
+            "El stock debe estar entre una o más piezas.",
             "stock-error"
         );
 
         formularioValido = false;
-    }
-
-
-    /** -------------------------------------------------------
-     * CALIFICACIÓN
-     * ------------------------------------------------------- */
-
-    if (event.target.id === "tipo" || event.target.id === "cal") {
-
-        console.log("Select:", event.target.id);
-        console.log("Valor:", event.target.value);
     }
 
     eliminarError("calificacion-error");
@@ -439,48 +385,88 @@ formulario.addEventListener("submit", function (event) {
         formularioValido = false;
     }
 
-
-    /** -------------------------------------------------------
-     * EVITAR ENVÍO SI HAY ALGÚN ERROR
-     * ------------------------------------------------------- */
-
     if (!formularioValido) {
-
-        event.preventDefault();
-
-        // Lleva al usuario al inicio del formulario
+        // Si hay errores, sube la pantalla para que el usuario los vea
         formulario.scrollIntoView({
             behavior: "smooth",
             block: "start"
         });
+        return false;
+    }
+    return true;
+}
+ 
+    function limpiarFormulario(){
+    // Limpiamos el formulario manualmente de forma segura
+    formulario.reset();
+
+    eliminarError("nameProduct-error");
+    eliminarError("tipo-error");
+    eliminarError("descripcion-error");
+    eliminarError("precio-error");
+    eliminarError("genero-error");
+    eliminarError("stock-error");
+    eliminarError("calificacion-error");
+    // Restauramos visualmente el campo personalizado de la imagen
+    if (nombreImagen) {
+        nombreImagen.textContent = "Ningún archivo seleccionado";
+    }
+
+    // Mostrar un mensaje de éxito al usuario en el div
+    const resultado = document.getElementById("resultadoRegistro");
+    if (resultado) {
+        resultado.textContent = "¡Producto registrado con éxito!";
+        resultado.style.color = "green";
+
+        // Desaparecer el mensaje de éxito después de 4 segundos
+        setTimeout(() => {
+            resultado.textContent = "";
+        }, 4000);
+    }
+    }
+
+
+inputImagen.addEventListener("change", function () {
+
+    // Eliminamos cualquier error anterior
+    eliminarError("imagen-error");
+
+    // Verificamos si el usuario seleccionó algún archivo
+    if (inputImagen.files.length === 0) {
+
+        nombreImagen.textContent = "Ningún archivo seleccionado";
+
+        mostrarError(
+            inputImagen,
+            "Debes seleccionar una imagen.",
+            "imagen-error"
+        );
 
         return;
     }
 
+    // Obtenemos el archivo seleccionado
+    const archivo = inputImagen.files[0];
 
-    // Si llegamos aquí, todos los campos son válidos
-    console.log("Formulario válido.");
-});
+    // Verificamos que realmente sea una imagen
+    if (!archivo.type.startsWith("image/")) {
 
+        nombreImagen.textContent = "Archivo no válido";
 
-const inputImagen = document.getElementById("imagen");
-const nombreImagen = document.querySelector(".file-field__name");
+        mostrarError(
+            inputImagen,
+            "El archivo seleccionado debe ser una imagen.",
+            "imagen-error"
+        );
 
-inputImagen.addEventListener("change", function () {
+        // Eliminamos el archivo seleccionado
+        inputImagen.value = "";
 
-    if (inputImagen.files.length > 0) {
-
-        // Obtenemos el archivo que seleccionó el usuario
-        const archivo = inputImagen.files[0];
-
-        // Mostramos el nombre del archivo
-        nombreImagen.textContent = archivo.name;
-
-        //console.log("Imagen seleccionada:", archivo);
-    } else {
-
-        nombreImagen.textContent = "Ningún archivo seleccionado";
+        return;
     }
+
+    // Si llegamos aquí, la imagen es válida
+    nombreImagen.textContent = archivo.name;
 });
 
 /**========== Fin código validación de formulario ========== */
