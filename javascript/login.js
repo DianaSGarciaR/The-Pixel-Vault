@@ -177,7 +177,7 @@ function showFormulario(event, elementId) {
     }
     /** Muestra formuario Registro y coculta el fomulario login */
     if (elementId === "sectionCreateUser") {
-        renderizarMensajes(null, [], resultadoRegistro);
+
         showOrHideElements("SHOW", "sectionCreateUser");
         showOrHideElements("HIDEN", "sectionLogin");
     } else if (elementId === "sectionLogin") {
@@ -185,6 +185,10 @@ function showFormulario(event, elementId) {
         showOrHideElements("SHOW", "sectionLogin");
         showOrHideElements("HIDEN", "sectionCreateUser");
     }
+
+    setTimeout(() => {
+        resultadoRegistro.classList.add('oculto');
+    }, 5000);
 }
 /** ================= END: Mostrar/Ocultar elementos ================= */
 
@@ -192,7 +196,7 @@ function showFormulario(event, elementId) {
 // Mensajes de error 
 function renderizarMensajes(statusForm, mensajes, contenedor) {
     if (!contenedor) return;
-
+    resultadoRegistro.classList.remove('oculto');
     if (statusForm) {
         contenedor.innerHTML = '<div class="alert alert-success mt-3" style="background-color: #122418; color: #2ecc71; border: 1px solid #2a7e43;">El registro se realizó con éxito.</div>';
     } else if (!statusForm) {

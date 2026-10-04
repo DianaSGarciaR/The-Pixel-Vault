@@ -236,3 +236,14 @@
      margin: 4rem;
      color: var(--yellow-accent);
  }
+
+ #resultadoRegistro {
+     transition: opacity 0.5s ease;
+     /* Desvanecimiento suave */
+ }
+
+ .oculto {
+     opacity: 0;
+     pointer-events: none;
+     /* Evita que se pueda interactuar cuando esté invisible */
+ }
