@@ -1,0 +1,114 @@
+.arcade {
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- Inicia carrusel neón ---------- */
+
+.neon-carousel-wrapper {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 20px;
+}
+
+.neon-slide-frame {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid var(--cyan-accent);
+  box-shadow:
+    0 0 15px var(--cyan-accent),
+    0 0 35px rgba(45, 226, 230, 0.4),
+    inset 0 0 25px rgba(255, 62, 165, 0.15);
+  transform: translateZ(0);
+  isolation: isolate;
+}
+
+.neon-slide-img {
+  width: 100%;
+  height: 550px; 
+  object-fit: cover;
+  object-position: top; 
+  display: block;
+  filter: brightness(0.75) saturate(1.1);
+  border-radius: 14px;
+}
+
+.neon-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 11, 30, 0.95) 10%, transparent 100%);
+  padding: 30px 24px 20px;
+  text-align: left;
+}
+
+.neon-title {
+  font-family: var(--font-pixel-header);
+  font-size: 1.3rem;
+  color: var(--yellow-accent);
+  text-shadow: 0 0 10px rgba(255, 210, 63, 0.7);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.neon-subtitle {
+  font-family: var(--font-pixel-body);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  opacity: 0.9;
+  max-width: 500px;
+}
+
+/* Controles prev/next */
+.neon-control {
+  width: 48px;
+  height: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 11, 30, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--border-color);
+  opacity: 1;
+  transition: all 0.25s ease;
+}
+
+.neon-control:hover {
+  background: var(--border-color);
+  box-shadow: 0 0 20px var(--border-color), 0 0 40px rgba(255, 62, 165, 0.5);
+}
+
+.neon-arrow {
+  font-size: 1.4rem;
+  color: var(--cyan-accent);
+  font-weight: bold;
+}
+
+.carousel-control-prev { left: -24px; }
+.carousel-control-next { right: -24px; }
+
+/* Indicadores */
+.neon-carousel-wrapper .carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--cyan-accent);
+  margin: 0 6px;
+}
+
+.neon-carousel-wrapper .carousel-indicators .active {
+  background-color: var(--yellow-accent);
+  box-shadow: 0 0 8px var(--yellow-accent);
+}
+
+@media (max-width: 600px) {
+  .neon-slide-img { height: 260px; }
+  .neon-control { width: 38px; height: 38px; }
+  .carousel-control-prev { left: 4px; }
+  .carousel-control-next { right: 4px; }
+}
+
+/* ---------- Termina carrusel neón ---------- */
