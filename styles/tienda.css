@@ -494,6 +494,7 @@
   overflow: hidden;
   position: relative;
   transition: border-color 0.4s ease;
+  color:var(--text-bright);
 }
 .notch:hover .card {
   border-color: rgba(45, 226, 230, 0.65); 
@@ -577,6 +578,7 @@
   text-align: center;
   transition: color 0.3s ease;
 }
+
 .notch:hover h3 {
   color: #2de2e6;
   text-shadow: 0 0 8px rgba(45, 226, 230, 0.5);
@@ -620,6 +622,14 @@
   .notch, .card, .card .art img, .cta { transition: none; }
 }
 
+.card .body p {
+  color: #E7E3F5 !important;
+  font-family: var(--font-pixel-body);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  text-align: center; /* Alineado al centro para coincidir con el título */
+}
  
  /* Inicio:  Estilos para el mensaje flotante (Toast) */
 .toast-cyber {
