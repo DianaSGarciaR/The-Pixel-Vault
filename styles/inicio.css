@@ -1,0 +1,205 @@
+#arcade {
+  width: 90vw;
+  height: auto;
+  margin:0 auto;
+  padding-top: 5vw;
+  filter: drop-shadow(0px 0px 20px rgb(159, 58, 253));
+  position: relative;
+  z-index: 0;
+}
+
+/* LETRAS MATRIX*/
+
+.matrix-bg{
+    background: rgba(0, 11, 30, 0.6);
+  margin: 0;
+  height: 15vh;
+  box-shadow: 0 0 10px #e100ff, 0 0 20px #e100ff, 0 0 30px #e100ff;
+  position: relative;
+}
+
+.matrix-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+  z-index: 2;
+}
+
+.matrix-text {
+  color: #e100ff;
+  font-size: 4.5vw;
+  font-family: var(--font-pixel-header);
+  position: relative;
+  top: 1vw;
+  text-shadow: 0 0 10px #e100ff, 0 0 20px #e100ff, 0 0 30px #e100ff;
+  z-index: 2;
+}
+
+.matrix-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: glitch 2s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translate(-2px, -2px);
+  color: #e100ff;
+  text-shadow: 0 0 5px #e100ff, 0 0 15px #e100ff;
+}
+
+.rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(67, 3, 119, 0.1) 0,
+    rgba(204, 0, 255, 0.473) 2px,
+    transparent 4px
+  );
+  animation: rain 10s linear infinite;
+  z-index: 1; /* Place it behind the text */
+}
+
+/* Animation for the rain effect */
+@keyframes rain {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(50%);
+  }
+}
+
+/* Glitch effect for the text */
+@keyframes glitch {
+  0%, 100% {
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    transform: translate(0);
+  }
+  33% {
+    clip-path: polygon(0 0, 100% 0, 100% 15%, 0 15%);
+    transform: translate(-5px, -5px);
+  }
+  66% {
+    clip-path: polygon(0 85%, 100% 85%, 100% 100%, 0 100%);
+    transform: translate(5px, 5px);
+  }
+}
+
+
+/* ---------- Inicia carrusel neón ---------- */
+
+.neon-carousel-wrapper {
+  max-width: 1600px;
+  margin: 3rem auto;
+  padding: 0 20px;
+}
+
+.neon-slide-frame {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid var(--cyan-accent);
+  box-shadow:
+    0 0 15px var(--cyan-accent),
+    0 0 35px rgba(45, 226, 230, 0.4),
+    inset 0 0 25px rgba(255, 62, 165, 0.15);
+  transform: translateZ(0);
+  isolation: isolate;
+}
+
+.neon-slide-img {
+  width: 100%;
+  height: 550px; 
+  object-fit: cover;
+  object-position: top; 
+  display: block;
+  filter: brightness(0.75) saturate(1.1);
+  border-radius: 14px;
+}
+
+.neon-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 11, 30, 0.95) 10%, transparent 100%);
+  padding: 30px 24px 20px;
+  text-align: left;
+}
+
+.neon-title {
+  font-family: var(--font-pixel-header);
+  font-size: 1.3rem;
+  color: var(--yellow-accent);
+  text-shadow: 0 0 10px rgba(255, 210, 63, 0.7);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.neon-subtitle {
+  font-family: var(--font-pixel-body);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  opacity: 0.9;
+  max-width: 500px;
+}
+
+/* Controles prev/next */
+.neon-control {
+  width: 48px;
+  height: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 11, 30, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--border-color);
+  opacity: 1;
+  transition: all 0.25s ease;
+}
+
+.neon-control:hover {
+  background: var(--border-color);
+  box-shadow: 0 0 20px var(--border-color), 0 0 40px rgba(255, 62, 165, 0.5);
+}
+
+.neon-arrow {
+  font-size: 1.4rem;
+  color: var(--cyan-accent);
+  font-weight: bold;
+}
+
+.carousel-control-prev { left: -24px; }
+.carousel-control-next { right: -24px; }
+
+/* Indicadores */
+.neon-carousel-wrapper .carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--cyan-accent);
+  margin: 0 6px;
+}
+
+.neon-carousel-wrapper .carousel-indicators .active {
+  background-color: var(--yellow-accent);
+  box-shadow: 0 0 8px var(--yellow-accent);
+}
+
+@media (max-width: 600px) {
+  .neon-slide-img { height: 260px; }
+  .neon-control { width: 38px; height: 38px; }
+  .carousel-control-prev { left: 4px; }
+  .carousel-control-next { right: 4px; }
+}
+
+/* ---------- Termina carrusel neón ---------- */

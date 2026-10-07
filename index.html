@@ -11,7 +11,8 @@
   <!-- !FIN LINK BOOSTRAP-->
 
   <!-- ? ENLACES DE ARCHIVOS CSS-->
-  <link rel="stylesheet" href="./styles/styles.css" /> <!--Se agregó el ./ a la ruta del archivo (Beto)-->
+  <link rel="stylesheet" href="./styles/styles.css" />
+  <link rel="stylesheet" href="./styles/inicio.css" /> <!--Se agregó el ./ a la ruta del archivo (Beto)-->
 
   <!-- Archivo para letras, tamaños, colores etc-->
   <!--Link de fuente-->
@@ -27,15 +28,97 @@
 
   <!--* --------- FIN: navbar --------- -->
 
-  <!--* INICIO : Banner Principal ---->
-  <section class="banner-container">
-    <!-- Imagen de fondo-->
-    <img class="banner-frame" src="./assets/banner-img.png" alt="Marco del Banner"><!--Se agregó el ./ a la ruta del archivo (Beto)-->
+
+<img id="arcade"class="banner-frame" src="./assets/arcade.png" alt="arcade">
+
+<!--*------------Letras Matrix------------------>
+<div class="matrix-bg">
+  <div class="matrix-container">
+    <h1 class="matrix-text" data-text="¿QUÉ VAS A JUGAR HOY?">¿QUÉ VAS A JUGAR HOY?</h1>
+    <div class="rain"></div>
+  </div>
+</div>
+<!--*------------Termina letras Matrix------------------>
+
+<!--* INICIO : Carrusel Destacados Neón ---->
+<section class="neon-carousel-wrapper">
+  <div id="carruselDestacados" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+
+    <!-- Indicadores -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carruselDestacados" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Football Stars"></button>
+      <button type="button" data-bs-target="#carruselDestacados" data-bs-slide-to="1" aria-label="Galaxy Explorer"></button>
+      <button type="button" data-bs-target="#carruselDestacados" data-bs-slide-to="2" aria-label="Dragon Quest"></button>
+    </div>
+
+    <!-- Slides -->
+    <div class="carousel-inner">
+
+      <div class="carousel-item">
+        <div class="neon-slide-frame">
+          <img src="./assets/footbal_carrusel.png" class="d-block w-100 neon-slide-img" alt="Football Stars">
+        </div>
+        <div class="carousel-caption neon-caption">
+          <h3 class="neon-title">FOOTBALL STARS</h3>
+          <p class="neon-subtitle">Forma tu equipo y compite en emocionantes partidos.</p>
+        </div>
+      </div>
+
+      <div class="carousel-item active">
+        <div class="neon-slide-frame">
+          <img src="./assets/galaxy_carrusel.png" class="d-block w-100 neon-slide-img" alt="Galaxy Explorer">
+        </div>
+        <div class="carousel-caption neon-caption">
+          <h3 class="neon-title">GALAXY EXPLORER</h3>
+          <p class="neon-subtitle">Viaja por el espacio y descubre nuevos planetas.</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="neon-slide-frame">
+          <img src="./assets/dragon_carrusel.png" class="d-block w-100 neon-slide-img" alt="Dragon Quest">
+        </div>
+        <div class="carousel-caption neon-caption">
+          <h3 class="neon-title">DRAGON QUEST</h3>
+          <p class="neon-subtitle">Embárcate en una aventura para derrotar al poderoso dragón.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Controles -->
+    <button class="carousel-control-prev neon-control" type="button" data-bs-target="#carruselDestacados" data-bs-slide="prev">
+      <span class="neon-arrow">❮</span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next neon-control" type="button" data-bs-target="#carruselDestacados" data-bs-slide="next">
+      <span class="neon-arrow">❯</span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+
+  </div>
+</section>
+<!--* FIN : Carrusel Destacados Neón ---->
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--* INICIO Banner comentado ---->
     <!-- Contenedor de la pantalla central con los botones -->
-    <div class="banner-screen">
-      <h3 href="./acercaNosotros.html" class="yellow-accent btn-yellow head">Conócenos</h3> <!--Se agregó el ./ a la ruta del archivo (Beto)-->
+    <!--<div class="banner-screen">
+      <h3 href="./acercaNosotros.html" class="yellow-accent btn-yellow head">Conócenos</h3> Se agregó el ./ a la ruta del archivo (Beto)--> 
       <!-- <nav class="banner-nav">
       <a href="novedades.html" class="banner-btn btn-cyan quantico" data-section="Novedades">
         <span>NOVEDADES</span>
@@ -50,8 +133,6 @@
     </div>
   </section>
   <!--* FIN : Banner Principal Sci-Fi ---->
-
-
   <!--Pruebas de fuentes-->
   <!-- <main>
     <div class="pressStart">
