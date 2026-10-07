@@ -680,7 +680,25 @@
   padding: 4px 8px;
   border-radius: 4px;
 }
-
+.mb-1{
+  font-family:var(--font-pixel-body);
+  color: var(--text-bright);
+}
+.mb-0{
+    font-family:var(--font-pixel-body);
+  color: var(--text-bright);
+}
+.mb-3{
+  color:var(--amber)
+  
+}
+.fontstylecheckout{
+  font-family:var(--font-pixel-body);
+  text-align:center;
+}
+.bkcCheckout{
+  background-color: var(--panel-color);
+}
 /* Botones de acción generales (como el bote de basura) */
 .action-btn {
   color: #ffeb3b;
