@@ -18,8 +18,11 @@
 
 .fuente {
   font-family: var(--font-pixel-body);
+  text-align: center;
 }
-
+.fuente strong {
+    filter: url(#neon-glow2);
+}
 :root {
   --bg-color: #000B1E;
   /*background color */

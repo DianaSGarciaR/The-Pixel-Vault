@@ -62,7 +62,7 @@
   color: var(--yellow-accent);
 }
 
-.contenido h2 {
+.contenido h3 {
   filter: drop-shadow(0px 0px 10px #fdf364);
   text-align: center;
   padding: 3rem;
@@ -368,6 +368,7 @@
     width:100%; height:100%;
     display:block; overflow:visible;
     pointer-events:none; /* el marco es decorativo, no debe bloquear clics sobre el texto */
+    z-index: 2;
 }
 
 .frame-path{
@@ -388,13 +389,43 @@
    padding) es lo que determina cuánto debe medir .frame-demo. El SVG
    sigue siendo absolute, así que no le afecta este cambio y sigue
    cubriendo todo el marco. */
-.content{
-    position:relative;
-    z-index:1;
-    height:100%;
-    padding:15% 9%;
-    display:flex; align-items:center; justify-content:center;
-    overflow:visible; /* ya no hace falta recortar ni hacer scroll */
+.content {
+    position: relative;
+    z-index: 1;
+    
+    /* SOLUCIÓN 1: Deja espacio para que el trazo del SVG respire */
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    margin: 4px auto;
+
+    padding: 15% 9%;
+    display: flex; 
+    align-items: center; 
+    text-align:justify;
+    justify-content: center;
+    background: rgba(23, 18, 51, .7);
+    
+.anEstilo{
+  color: var(--yellow-accent);
+  font-family:'Quantico', monospace;
+ 
+}
+
+.anEstilo strong{
+  font-size:1.5rem;
+  filter: url(#neon-glow2);
+}
+    /* Recorte biselado (ajustado a los bordes reducidos) */
+    clip-path: polygon(
+        14px 0%, 
+        calc(100% - 14px) 0%, 
+        100% 14px, 
+        100% calc(100% - 14px), 
+        calc(100% - 14px) 100%, 
+        14px 100%, 
+        0% calc(100% - 14px), 
+        0% 14px
+    );
 }
 
 .content p{
@@ -410,7 +441,7 @@
        cada caso. */
     font-size: clamp(0.72rem, 3.4cqi + 0.2rem, 1.1rem);
     line-height:1.5; letter-spacing:.02em;
-    color: var(--yellow-accent); text-align:justify;
+    color: var(--yellow-accent); text-align:center;
 }
 
 /* NOTA: antes existía aquí una regla aparte "#projectDesc { font-size:.9rem; ... }".
@@ -476,4 +507,4 @@
     filter: url(#neon-glow2);
 }
 
-/**=============================FIN DE ESTILOS PARA DESCRIPCIÓN Y MISSION LOGS =================================
+/**=============================FIN DE ESTILOS PARA DESCRIPCIÓN Y MISSION LOGS =================================*/
