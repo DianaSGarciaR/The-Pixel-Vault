@@ -41,7 +41,6 @@
  /* ------- INICIO : Marco neon ------- */
 
  .contenido {
-
      padding: 0rem;
      position: relative;
      display: flex;
@@ -56,11 +55,11 @@
  #seccionInfo {
      font-family: var(--font-pixel-sub);
      z-index: -1;
-     padding: 6rem;
+     padding: 4rem;
      background-image: url(../assets/miCuentaFondo.png);
      background-size: cover;
      height: stretch;
-     text-align: center;
+     text-align: justify;
      align-content: center;
      clip-path: polygon(
              /* Exquena superior - izquierda: 10 píxeles desde la izquierda y 0 desde arriba*/
@@ -78,6 +77,8 @@
 
  #seccionInfo h3 {
      color: var(--border-color);
+     text-align: center;
+     padding-bottom: 1rem;
  }
 
  /* Seccion Registro usario */
@@ -91,7 +92,7 @@
  /* Seccion Login */
  #sectionForm h4 {
      font-family: var(--font-pixel-header);
- }
+    }
 
  .format-input {
      width: 100%;
@@ -180,7 +181,15 @@
  }
 
  /* ============= END: Botones ============= */
-
+.info-text h4{
+    font-family: var(--font-pixel-header);
+    font-size: medium;
+}
+.info-text p{
+    font-family: var(--font-pixel-body);
+    text-align: justify;
+    padding-inline: 5rem;
+}
  /* =============== Responsabilidad ============== */
  @media (max-width: 971px) {
      .btn-magenta-container {

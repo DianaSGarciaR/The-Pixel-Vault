@@ -124,8 +124,6 @@ const renderNavbar = () => {
     <img class="logo" src="./assets/ThePixelVaultLogo.png">
     ${mobileBurgerMenu}
     <div class="contenedorBarras divNavLeft">
-        <img class="barraRosa" src="./assets/navBarraRosa.png">
-        <img class="barraAzul" src="./assets/navBarraAzul.png">
         <a href="./miCarrito.html">
         <img class="barraAzul" src="./assets/carrito.png">
         </a>

@@ -47,25 +47,56 @@
     color: var(--yellow-accent);
     margin-top: 16vw;
     filter:
-        drop-shadow(0 0 8px var(--yellow-accent)) drop-shadow(0 0 10px var(--text-bright));
+        drop-shadow(0 0 10px var(--yellow-accent));
 }
 
 .container {
     display: block;
-    max-width: 90vw;
-    margin-bottom: 5rem;
+    max-width: 100vw;
+    margin-bottom: 3rem;
 }
 
 .contenedor-tarjeta-rosa {
     position: relative;
     z-index: 1;
-    width: 100%;
+    width: 80%;
+    height: 75%;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 4vw solid transparent;
     backdrop-filter: blur(50px);
-    padding-bottom: 3vw;
+    padding-top: 2vw;
+    margin-left: 4rem;
+}
+
+.contenedor-tarjeta-rosa-pago {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4vw solid transparent;
+    backdrop-filter: blur(50px);
+    padding-top: 2vw;
+    margin-left: 1.8rem;
+}
+
+.contenedor-tarjeta-rosa-pago::before {
+    content: "";
+    position: absolute;
+    top: -4vw;
+    left: -4vw;
+    right: -4vw;
+    bottom: -4vw;
+    z-index: -1;
+    border: 4vw solid transparent;
+    border-image-slice: 6;
+    border-image-repeat: repeat;
+    border-image-source: url('../assets/marco-pixel-rosa.svg');
+    filter: drop-shadow(0 0 10px #ff00ea) drop-shadow(0 0 5px #ffffff);
 }
 
 .contenedor-tarjeta-rosa::before {
@@ -95,6 +126,7 @@
     font-family: sans-serif;
     border: 4vw solid transparent;
     backdrop-filter: blur(5px);
+    margin-left: 1.8rem;
 }
 
 .contenedor-tarjeta-azul::before {
@@ -169,15 +201,15 @@
     color: var(--yellow-accent) !important;
     margin-bottom: 2vw;
     margin-inline: 3px;
-    font-size: 3vw;
+    font-size: 2vw;
     filter:
-        drop-shadow(0 0 8px var(--yellow-accent)) drop-shadow(0 0 10px var(--text-bright));
+        drop-shadow(0 0 8px var(--yellow-accent));
 }
 
 .contenido-tarjeta {
     font-family: var(--font-pixel-body);
     color: var(--text-main);
-    font-size: 1.8vw;
+    font-size: 1.2vw;
     height: 100%;
 }
 
@@ -193,7 +225,7 @@
 }
 
 #direccion {
-    margin-top: 3vw;
+    margin-top: 4vw;
 }
 
 .btn img {

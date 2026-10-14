@@ -1,7 +1,7 @@
 export const LIST_TRIPULANTES = [
     {
         id: "1", name: "Beto",
-        descripcion: "Soy Desarrollador Full Stack Jr. y me encargo de conectar el *frontend* con la lógica del *backend* para construir aplicaciones web sólidas. Con mi base en Física Aplicada y armas como Java y Python, analizo y resuelvo cada reto técnico como si fuera un jefe de nivel. ¡Siempre listo para colaborar y subir de experiencia en el equipo!",
+        descripcion: "Soy Desarrollador Full Stack Jr. y me encargo de conectar el frontend con la lógica del backend para construir aplicaciones web sólidas. Con mi base en Física Aplicada y armas como Java y Python, analizo y resuelvo cada reto técnico como si fuera un jefe de nivel. ¡Siempre listo para colaborar y subir de experiencia en el equipo!",
         infoBtn: { btnImgUrl: "assets/botonBeto.png" },
         infoModal: {
             cardImgUrl: "assets/cardBeto.png",
@@ -41,7 +41,7 @@ export const LIST_TRIPULANTES = [
     },
     {
         id: "5", name: "Diana", 
-        descripcion: "Desarrolladora Java Full Stack experta en Java, Spring Boot, Angular y MySQL, con experiencia creando y optimizando soluciones web empresariales (GitLab, Jira). Enfocada en la resolución de problemas y el análisis de sistemas, ¡lista para aportar talento y crecer en un nuevo reto tecnológico!",
+        descripcion: "Desarrolladora Full Stack experta en Java, Spring Boot, Angular y MySQL, con experiencia creando y optimizando soluciones web empresariales (GitLab, Jira). Enfocada en la resolución de problemas y el análisis de sistemas, ¡lista para aportar talento y crecer en un nuevo reto tecnológico!",
         infoBtn: { btnImgUrl: "assets/botonDiana.png" },
         infoModal: {
             cardImgUrl: "assets/cardDiana.png",
@@ -61,7 +61,7 @@ export const LIST_TRIPULANTES = [
     },
     {
         id: "7", name: "Fernando",
-        descripcion: "Especialista en desarrollo Java Fullstack (HTML, CSS, JS, Git, APIs) experto en transformar retos técnicos en soluciones escalables.Fusiono mi experiencia en soporte y metodologías ágiles con una fuerte vocación pedagógica y de liderazgo para optimizar procesos, conectar sistemas e impulsar proyectos con impacto real.",
+        descripcion: "Especialista en desarrollo Java Fullstack (HTML, CSS, JS, Git, APIs) experto transformando retos técnicos en soluciones escalables. Fusiono mi experiencia en soporte y metodologías ágiles con una fuerte vocación pedagógica y de liderazgo para optimizar procesos, conectar sistemas e impulsar proyectos con impacto real.",
         infoBtn: { btnImgUrl: "assets/botonFer.png" },
         infoModal: {
             cardImgUrl: "assets/cardFer.png",
@@ -81,7 +81,7 @@ export const LIST_TRIPULANTES = [
     },
     {
         id: "9", name: "natalia",
-        descripcion: "Desarrolladora Java Full Stack apasionada por fusionar la precisión del código con un diseño visual impecable.Experta en integrar lógica frontend y backend para optimizar componentes y acelerar flujos de trabajo en equipo. ¡Lista para aportar innovación tecnológica a nuevos retos!",
+        descripcion: "Desarrolladora Java Full Stack apasionada por fusionar la precisión del código con un diseño visual impecable y altamente creativo. Experta en integrar lógica frontend y backend para optimizar componentes y acelerar flujos de trabajo en equipo. ¡Lista para aportar innovación tecnológica a nuevos retos!",
         infoBtn: { btnImgUrl: "assets/botonNat.png" },
         infoModal: {
             cardImgUrl: "assets/cardNat.png",
@@ -91,7 +91,7 @@ export const LIST_TRIPULANTES = [
     },
     {
         id: "10", name: "Osorio", 
-        descripcion: "Ingeniero en Tecnologías de la Información con más de 7 años de trayectoria en soporte, infraestructura y asesoría técnica, enfocado ahora en el desarrollo Backend con Java.Con sólida formación en POO, bases de datos relacionales, Spring Boot, APIs REST, Docker y metodologías ágiles.",
+        descripcion: "Ingeniero en Tecnologías de la Información con más de 7 años de trayectoria en soporte, infraestructura y asesoría técnica, enfocado ahora en el desarrollo Backend en Java. Con sólida formación en POO, bases de datos relacionales, Spring Boot, APIs REST, Docker y metodologías ágiles.",
         infoBtn: { btnImgUrl: "assets/botonOsorio.png" },
         infoModal: {
             cardImgUrl: "assets/cardOsorio.png",
