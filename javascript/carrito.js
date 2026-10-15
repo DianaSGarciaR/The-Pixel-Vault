@@ -2,6 +2,7 @@
 const contenedorCarrito = document.querySelector('#contenedor-carrito');
 const totalCarrito = document.querySelector('#total-carrito');
 const contadorCarritoBadge = document.querySelector('#contador-carrito');
+const subtotalCarrito = document.querySelector('#subtotal-carrito');
 
 // Variable global en memoria para manipular los productos en esta vista
 let carrito = [];
@@ -50,6 +51,7 @@ function renderizarCarrito() {
     if (carrito.length === 0) {
         contenedorCarrito.innerHTML = '<p class="empty-cart-msg">El carrito está vacío.</p>';
         if (totalCarrito) totalCarrito.textContent = '$0 MXN';
+        if (subtotalCarrito) subtotalCarrito.textContent = '$0 MXN';
         return;
     }
 
@@ -100,6 +102,9 @@ function renderizarCarrito() {
 
     if (totalCarrito) {
         totalCarrito.textContent = `$${sumaTotal} MXN`;
+    }
+    if (subtotalCarrito) {
+        subtotalCarrito.textContent = `$${sumaTotal} MXN`; 
     }
 }
 
