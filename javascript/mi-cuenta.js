@@ -124,3 +124,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+/*codigo del boton de cerrar sesion */
+const btnCerrarSesion = document.getElementById("cerrarsesion");
+
+btnCerrarSesion.addEventListener("click", () => {
+    localStorage.removeItem("DATA_USER");      
+    localStorage.removeItem("avatarGuardado"); 
+    localStorage.removeItem("switchGuardado"); 
+
+    window.location.href = "index.html";       
+});c

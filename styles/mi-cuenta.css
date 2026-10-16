@@ -394,3 +394,32 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: center;
 }
+
+/* estilos del boton de cerrar sesion */
+
+.boton-cerrar {
+    font-family: var(--font-pixel-body); 
+    font-weight: 700; /* para que se vean mas gruesas tipo negritas */
+    font-size: clamp(14px, 1.3vw, 22px);  
+    letter-spacing: 0.1vw; /* Separación de cada letras */
+    color: var(--text-main);         
+    background: none;                     
+    border: none;                         
+    border-radius: 0; /* esto es para las esquinas cortadas*/
+    padding: 0.6vw 2vw;                   
+    margin: 6px;                         
+    box-shadow: /*codigo por linea del borde para que se vea cortada*/
+        0 -4px 0 0 #f52b2b,  
+        0 4px 0 0 #f52b2b,    
+        -4px 0 0 0 #f52b2b,  
+        4px 0 0 0 #f52b2b;    
+
+    filter: drop-shadow(0 0 6px #f52b2b) /* brillo */
+            drop-shadow(0 0 2px #ffffff); 
+    transition: filter 0.2s, transform 0.2s; /* Cambio suave al pasar el cursor */
+}
+.boton-cerrar:hover {
+    filter: drop-shadow(0 0 12px #f52b2b) /* El brillo se hace más grande cuando el cursor pasa sobre de el boton */
+            drop-shadow(0 0 1px #ffffff);
+    transform: scale(1.05); /* El botón crece cuando se pasa el cursor sobre de el*/
+}
