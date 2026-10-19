@@ -206,20 +206,29 @@
 
 /*--------------Videojuego---------------------*/
 
-
+.arcade-wrapper {
+    width: 90vw;
+    margin: 0 auto;
+    padding-top: 5vw;
+    position: relative;
+}
 
 .game-container {
-    width: 120rem;
-    aspect-ratio: 16 / 9;
-    border: none;
-    overflow: hidden;
-
-    transform: perspective(800px) scale(1.1) rotateX(8deg);
     position: absolute;
     z-index: 3;
-    top: 43rem;
-    justify-self: center;
-    text-align: center;
+
+    /* Tamaño relativo al contenedor */
+    width: 100%;
+    aspect-ratio: 16 / 9;
+
+    top: 32vw;
+    left: 50%;
+
+    overflow: hidden;
+    border-radius: 30px;
+
+    transform: translateX(-50%) perspective(800px) scale(1.02) rotateX(8deg);
+    transform-origin: top center;
 }
 
 .game-container iframe {
@@ -228,4 +237,15 @@
     height: 100%;
     border: none;
 }
+
+
+
+@media (max-width: 1000px){
+  .game-container {
+        display: none !important;
+    }
+}
+
+
+
 /*--------------Fin del Videojuego---------------------*/
