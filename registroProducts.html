@@ -35,18 +35,18 @@
             <!--* Inicio de formulario -->
             <form id="registro-products-form" autocomplete="off">
             <div class="mb-3 row">
-                <label for="nameProduct" class="col-sm-2 col-form-label titulo-campo">Nombre:</label>
-                <div class="col-sm-10">
+                <label for="nameProduct" class="col-sm-3 col-form-label titulo-campo">Nombre:</label>
+                <div class="col-sm-9">
                     <input type="text" class="form-control" id="nameProduct" name="nameProduct"
-                        placeholder="Escribe el nombre del producto" required><!--required para que sean obligatorios los campos-->
+                        placeholder="Nombre del producto" required><!--required para que sean obligatorios los campos-->
                 </div>
             </div>
 
             <div class="mb-3 row">
-                <label for="tipo" class="col-sm-2 col-form-label titulo-campo">Tipo:</label>
-                <div class="col-sm-10">
+                <label for="tipo" class="col-sm-3 col-form-label titulo-campo">Tipo:</label>
+                <div class="col-sm-9">
                     <select class="form-select" aria-label="Default select example" id="tipo" name="tipo" required>
-                        <option selected value="" disabled>Selecciona el tipo de producto</option>
+                        <option selected value="" disabled>Tipo de producto</option>
                         <option value="1">Videojuegos</option>
                         <option value="2">Merch</option>
                     </select>
@@ -55,8 +55,8 @@
 
             <!--Botón de categoría-->
             <div class="mb-3 row">
-                <label for="categoria" class="col-sm-2 col-form-label titulo-campo">Categoría:</label>
-                <div class="col-sm-10">
+                <label for="categoria" class="col-sm-3 col-form-label titulo-campo">Categoría:</label>
+                <div class="col-sm-9">
                     <select class="form-select" aria-label="Default select example" id="categoria" name="categoria" required>
                         
                     </select>
@@ -103,8 +103,8 @@
 
 
             <div class="mb-3 row">
-                <label for="imagen" class="form-label col-sm-2 titulo-campo">Imagen:</label>
-                <div class="col-sm-10">
+                <label for="imagen" class="form-label col-sm-3 titulo-campo">Imagen:</label>
+                <div class="col-sm-9">
                     <!--
           El <input type="file"> real queda oculto (clase file-field__input);
           esta <label> es el botón que en verdad se ve. Como la label tiene
@@ -121,8 +121,8 @@
 
 
             <div class="mb-3 row">
-                <label for="Descripcion" class="col-sm-2 col-form-label titulo-campo">Descripción:</label>
-                <div class="col-sm-10">
+                <label for="Descripcion" class="col-sm-3 col-form-label titulo-campo">Descripción:</label>
+                <div class="col-sm-9">
                     <textarea class="form-control" id="Descripcion" rows="3" name="descripcion"
                         placeholder="Escribe una breve descripción del producto" required></textarea>
                 </div>
@@ -130,8 +130,8 @@
 
 
             <div class="mb-3 row">
-                <label for="precio" class="col-sm-2 col-form-label titulo-campo">Precio:</label>
-                <div class="col-sm-10">
+                <label for="precio" class="col-sm-3 col-form-label titulo-campo">Precio:</label>
+                <div class="col-sm-9">
                     <div class="input-group">
                         <span class="input-group-text">$</span>
                         <input type="number" class="form-control sin-flechas" id="precio" name="precio" min="0"
@@ -142,28 +142,28 @@
             </div>
 
             <div class="mb-3 row">
-                <label for="genero" class="col-sm-2 col-form-label titulo-campo">Género:</label>
-                <div class="col-sm-10">
+                <label for="genero" class="col-sm-3 col-form-label titulo-campo">Género:</label>
+                <div class="col-sm-9">
                     <input type="text" class="form-control" id="genero" name="genero"
-                        placeholder="Escribe el género del producto" required>
+                        placeholder="Género del producto" required>
                 </div>
             </div>
 
 
 
             <div class="mb-3 row">
-                <label for="stock" class="form-label col-sm-2 titulo-campo">Stock:</label>
-                <div class="col-sm-10">
+                <label for="stock" class="form-label col-sm-3 titulo-campo">Stock:</label>
+                <div class="col-sm-9">
                     <input type="number" class="form-control sin-flechas" id="stock" name="stock" list="opcionesNumero" min="1"
-                        max="20" placeholder="Escribe el número de piezas existentes" required>
+                        max="20" placeholder="Número de piezas existentes" required>
                 </div>
             </div>
 
             <div class="mb-3 row">
-                <label for="cal" class="col-sm-2 col-form-label titulo-campo">Calificación:</label>
-                <div class="col-sm-10">
+                <label for="cal" class="col-sm-3 col-form-label titulo-campo">Calificación:</label>
+                <div class="col-sm-9">
                     <select class="form-select" aria-label="Default select example" id="cal" name="cal" required>
-                        <option selected value=""  disabled>Selecciona la calificación del producto</option>
+                        <option selected value=""  disabled>Calificación del producto</option>
                         <option value="1s">⭐</option>
                         <option value="2s">⭐⭐</option>
                         <option value="3s">⭐⭐⭐</option>

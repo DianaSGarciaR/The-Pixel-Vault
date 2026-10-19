@@ -80,7 +80,7 @@ function renderizarCarrito() {
                 <div class="cantidad">
                   <span class="quantity-label">Cantidad</span>
                   <div class="quantity-control">
-                    <button class="qty-btn js-qty-decrease" aria-label="Disminuir cantidad">—</button>
+                    <button class="qty-btn js-qty-decrease" aria-label="Disminuir cantidad">&minus;</button>
                     <span class="qty-number">${product.cantidad}</span>
                     <button class="qty-btn js-qty-increase" aria-label="Aumentar cantidad">+</button>
                   </div>

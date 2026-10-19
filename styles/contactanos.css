@@ -1,62 +1,29 @@
-/*
- * MARCO NEÓN DEL FORMULARIO
- */
-
-/* Contenedor que determina el tamaño real del marco. */
-.frame-demo {
-  position: relative;
-  width: 520px;
-  max-width: 100%;
-  height: auto;
-  margin: 0 auto 4rem;
+.formulario{
+    position:relative;
+    backdrop-filter: blur(50px);
+    z-index: 1;
+    border: 4vw solid transparent;
+    height: auto;
+    width: 80%;
+    justify-self: center;
+    max-width: 600px;
 }
-
-/* SVG que ocupa todo el contenedor y sirve como capa visual del marco. para que el formulario se vea dentro del margen */
-.frame-demo svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  overflow: visible;
-  pointer-events: none;
+h5{
+  font-size: clamp(10px, 4vw, 25px) !important;
 }
-
-/* Apariencia del marco exterior */
-.frame-path {
-  fill: none;
-  stroke: var(--yellow-accent);
-  stroke-width: 4px; /*grosor del marco*/
-  shape-rendering: crispEdges; /*para que los bordes no se vean borrosos*/
-  stroke-linejoin: miter;
-  filter: url(#neon-glow) drop-shadow(0 0 12px rgba(255, 62, 165, 0.8));
-  animation: pulse 3.2s ease-in-out infinite;
-}
-
-
-
-
-.content {
-  position: relative;
-  z-index: 1;
-  height: 100%;
-  padding: 14% 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
-}
-
-/* Responsividad a pantallas pequeñas, a partir de los 600px*/
-@media (max-width: 600px){
-    .frame-demo{
-        /* Se quita la proporción fija 2:1: en vez de recortar contenido
-           que no cabe, el marco crece en altura lo que haga falta. */
-        aspect-ratio: unset;
-        height:auto;
-        width:90%;
-    }
-    
+.formulario::before{
+    position: absolute;
+    z-index: -1;
+    content:"";
+    top: -4vw; 
+    left: -4vw; 
+    right: -4vw;
+    bottom: -4vw; 
+    border: 4vw solid transparent;
+    border-image-slice: 6;
+    border-image-repeat: repeat;
+    border-image-source: url('../assets/marco-pixel-amarillo.svg');
+    filter: drop-shadow(0 0 10px #ff00ea) drop-shadow(0 0 5px #ffffff);
 }
 
 /*
