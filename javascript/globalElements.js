@@ -43,7 +43,7 @@ const getValidUrlMicuenta = () => {
   let urlLogin = "login.html";
 
   const dataUser = getItemLocalStorage("DATA_USER");
-  console.log("dataUser", dataUser);
+  
   if (dataUser) {
     return urlMicuenta;
   }
