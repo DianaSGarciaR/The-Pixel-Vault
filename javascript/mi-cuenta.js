@@ -129,9 +129,9 @@ document.addEventListener("DOMContentLoaded", () => {
 const btnCerrarSesion = document.getElementById("cerrarsesion");
 
 btnCerrarSesion.addEventListener("click", () => {
-    localStorage.removeItem("DATA_USER");      
-    localStorage.removeItem("avatarGuardado"); 
-    localStorage.removeItem("switchGuardado"); 
+    localStorage.removeItem("DATA_USER");
+    localStorage.removeItem("avatarGuardado");
+    localStorage.removeItem("switchGuardado");
 
-    window.location.href = "index.html";       
-});c
+    window.location.href = "index.html";
+});
