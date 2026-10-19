@@ -30,12 +30,11 @@ body {
   border: none;
   outline: none;
   box-shadow: none;
-  border-radius: 30px;
   position: relative;
     width: 55%;
-    height: 55%;
+    height: 62.8%;
     overflow: hidden;
-    clip-path: inset(0 round 30px);
+    clip-path: inset(0 round 20px);
 }
 
 #unity-canvas {
@@ -43,7 +42,6 @@ body {
     width: 100% !important;
     height: 100% !important;
     border: none;
-    border-radius: 30px;
 }
 
 #unity-footer {
