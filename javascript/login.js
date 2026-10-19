@@ -12,7 +12,9 @@ const resultadoRegistro = document.querySelector("#resultadoRegistro");
  */
 let LIST_USERS = [];
 
-
+/**
+ * @deprecated
+ */
 /* =============================== START: Create user ===============================*/
 formNewUser.addEventListener("submit", (event => {
     const newUser = Object.fromEntries([...new FormData(formNewUser)]);
@@ -103,7 +105,7 @@ const starLogin = (dataLoginUser) => {
     // !=== STAR: Esta parte se complementa cuando implemente BackEnd === 
     setLocalStorage("DATA_USER", dataLoginUser);
     //! === END: Esta parte se complementa cuando implemente BackEnd === */
-    window.location.href = "mi-cuenta.html";
+    window.location.href = "index.html";
 };
 /* =============================== END: Login ===============================*/
 

@@ -326,9 +326,9 @@ const renderfooter = () => {
       <div class="footer-column">
         <h3 class="column-title">COLECCIÓN</h3>
         <ul class="footer-links">
-          <li><a href="#"><span class="play-icon">▶</span>Login</a></li>
-          <li><a href="#"><span class="play-icon">▶</span>Registro de usuario</a></li>
-          <li><a href="mi-cuenta.html"><span class="play-icon">▶</span>Mi cuenta</a></li>
+          <li><a href="${dataUser ? urlMicuenta : urlLogin}"><span class="play-icon">▶</span>Login</a></li>
+          <!-- <li><a href="#"><span class="play-icon">▶</span>Registro de usuario</a></li> -->
+          <!-- <li><a href="mi-cuenta.html"><span class="play-icon">▶</span>Mi cuenta</a></li> -->
           <li><a href="miCarrito.html"><span class="play-icon">▶</span>Mi carrito</a></li>
         </ul>
       </div>
@@ -338,7 +338,7 @@ const renderfooter = () => {
         <h3 class="column-title">SOPORTE</h3>
         <ul class="footer-links">
           <li><a href="tienda.html"><span class="play-icon">▶</span>Tienda de videojuegos</a></li>
-          <li><a href="tienda.html"><span class="play-icon">▶</span>Tienda de mercancía</a></li>
+          <!-- <li><a href="tienda.html"><span class="play-icon">▶</span>Tienda de mercancía</a></li> -->
         </ul>
       </div>
 
