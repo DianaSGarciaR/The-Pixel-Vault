@@ -228,6 +228,7 @@ body {
   margin: 4rem auto;
   overflow: hidden;
   border-radius: 16px;
+  font-size: clamp(10px, 4vw, 25px) !important;
 }
 
 /*Imagen del Marco Metálico */

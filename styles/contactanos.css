@@ -8,7 +8,9 @@
     justify-self: center;
     max-width: 600px;
 }
-
+h5{
+  font-size: clamp(10px, 4vw, 25px) !important;
+}
 .formulario::before{
     position: absolute;
     z-index: -1;
