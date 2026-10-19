@@ -203,3 +203,29 @@
 }
 
 /* ---------- Termina carrusel neón ---------- */
+
+/*--------------Videojuego---------------------*/
+
+
+
+.game-container {
+    width: 120rem;
+    aspect-ratio: 16 / 9;
+    border: none;
+    overflow: hidden;
+
+    transform: perspective(800px) scale(1.1) rotateX(8deg);
+    position: absolute;
+    z-index: 3;
+    top: 43rem;
+    justify-self: center;
+    text-align: center;
+}
+
+.game-container iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+/*--------------Fin del Videojuego---------------------*/
