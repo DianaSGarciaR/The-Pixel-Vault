@@ -36,7 +36,7 @@
 /* Base unificada para todos los marcos contenedores */
 .marcoAzul, .marcoRosa, .marcoAmarillo {
   position: relative;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(10px);
   z-index: 1;
   text-align: center;
   box-sizing: border-box;
@@ -135,7 +135,7 @@ p {
 }
 .marcoAzul:hover .neon-btn {
   color: #ffffff;
-  text-shadow: 3px 3px 3px #000000;
+  
   text-shadow: 0 0 15px #00ffdd, 0 0 20px #ffffff;
   transform: scale(1.2);
 }
@@ -199,7 +199,7 @@ p {
   border-radius: 0;                       
   box-shadow: 0 0 15px #00ffff, 0 0 5px #ffffff;
   color: #ffffff;
-  font-family: var(--font-pixel-sub);
+  font-family: var(--font-pixel-body);
 }
 
 .modal-pixel .modal-header {
