@@ -1,7 +1,42 @@
+.gameboy-banner-container { 
+  display: grid;
+  justify-items: center !important; 
+  position: relative; 
+  margin-top: 7vw !important;
+  overflow: visible !important;
+} 
+
+.gameboy-banner-img { 
+  height: clamp(40vw, 100vw - 50vw, 50vw) !important; 
+  width: auto !important; 
+  position: relative; 
+  z-index: 0; 
+  filter: drop-shadow(0 0 20px rgba(147, 51, 234, 0.75));
+} 
+
+.gameboy-screen-text { 
+  position: absolute; 
+  z-index: 1; 
+  top: 26%;
+  left: 50%;
+  transform: translateX(-49%);
+  width: 50%; 
+  box-sizing: border-box;
+  text-align: center; 
+  margin: 0;
+  display: block;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-family: var(--font-pixel-header);
+  font-size: clamp(7px, 3.3vw, 40px) !important; 
+}
+
  /*==============Inicio pruebas para marcos mejorados por Natalia ======================*/
  .ejemplo {
      position: relative;
-     margin: 4rem;
+     margin: clamp(1.5rem, 5vw, 4rem);
      z-index: 1;
      border: 1vw solid transparent;
      background-color: rgba(0, 0, 0, 0.1);
@@ -13,7 +48,7 @@
  .ejemplo::before {
      position: absolute;
      content: "";
-     z-index: -0;
+     z-index: 0;
      top: -2vw;
      left: -2vw;
      right: -2vw;
@@ -31,6 +66,7 @@
      color: var(--cyan-accent);
      position: relative;
      z-index: 1;
+     transition: color 0.2s ease;
  }
 
  a :hover {
@@ -41,7 +77,6 @@
  /* ------- INICIO : Marco neon ------- */
 
  .contenido {
-
      padding: 0rem;
      position: relative;
      display: flex;
@@ -56,34 +91,40 @@
  #seccionInfo {
      font-family: var(--font-pixel-sub);
      z-index: -1;
-     padding: 6rem;
+     padding: clamp(1.5rem, 6vw, 4rem);
      background-image: url(../assets/miCuentaFondo.png);
      background-size: cover;
-     height: stretch;
-     text-align: center;
+     background-position: center;
+     height: auto;
+     min-height: min-content; 
+     text-align: justify;
      align-content: center;
      clip-path: polygon(
-             /* Exquena superior - izquierda: 10 píxeles desde la izquierda y 0 desde arriba*/
-             50px 0,
-             /* Exquena superior - derecha: 10 píxeles desde la derecha y 0 desde arriba*/
-             100% 0,
-             /* Bajamos lado derecho: Seguimos por el lado derecho hasta 10px antes de llegar abajo */
-             100% 100%,
-             /* Esquina inferior - izquierda */
-             50px 100%,
-             /* Cerrar la esquina Izquierda */
-             0 calc(100% - 50px),
-             0 50px);
+        4vw 0,
+        100% 0,
+        100% 100%,
+        4vw 100%,
+        0 calc(100% - 4vw),
+        0 4vw
+    );
  }
+
+ @media (min-width: 972px) {
+    #seccionInfo {
+        min-height: 100vh;
+    }
+}
 
  #seccionInfo h3 {
      color: var(--border-color);
+     text-align: center;
+     padding-bottom: 1rem;
+     font-size: clamp(1rem, 4vw, 2.5rem);
  }
 
  /* Seccion Registro usario */
  #sectionForm {
-     padding: 5rem;
-     height: stretch;
+     padding: clamp(1.5rem, 8vw, 5rem);
      justify-items: center;
      align-content: center;
  }
@@ -91,52 +132,59 @@
  /* Seccion Login */
  #sectionForm h4 {
      font-family: var(--font-pixel-header);
- }
+     font-size: clamp(1rem, 3vw, 2rem);
+    text-align: center;
+    }
 
  .format-input {
      width: 100%;
      max-width: 500px;
-     margin: 2rem auto 0;
+     margin: 1.5rem auto 0;
+     margin-bottom: 2rem;
+     margin-top: 2rem;
  }
 
  .format-input label {
      font-family: var(--font-pixel-header);
+     font-size: clamp(0.7rem, 2vw, 1.1rem);
+     margin-bottom: 1rem;
  }
 
  .format-input input {
-     clip-path: polygon(
-             /*10 píxeles desde la izquierda y 0 desde arriba*/
-             10px 0,
-             /*10 píxeles desde la derecha y 0 desde arriba*/
-             calc(100% - 10px) 0,
-             /*10 píxeles desde la derecha y 10 píxeles desde abajo*/
-             100% 10px,
-             /* Seguimos por el lado derecho hasta 10px antes de llegar abajo */
-             100% calc(100% - 10px),
-             /* 10px antes del borde derecho */
-             calc(100% - 10px) 100%,
-             /* parte inferior hasta 10px desde la izquierda */
-             10px 100%,
-             /* extremo izquierdo, pero 10px antes de llegar arriba */
-             0 calc(100% - 10px),
-             /* extremo izquierdo, pero 10px antes de llegar arriba */
-             0 10px);
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    clip-path: polygon(
+        8px 0, calc(100% - 8px) 0,
+        100% 8px, 100% calc(100% - 8px),
+        calc(100% - 8px) 100%, 8px 100%,
+        0 calc(100% - 8px), 0 8px
+    );
+    opacity: 0.5;
  }
 
  .format-input input :focus {
-     transform: scale(1.05);
+     transform: scale(1.02);
      filter: drop-shadow(0rem 0rem 1rem var(--border-color));
- }
+    outline: none;
+    }
 
  /* ============= STAR: Botones ============= */
  .btn-magenta-container,
  .btn-red-container {
-     display: block;
-     width: 100%;
-     max-width: 500px;
-     margin: 2rem auto 0;
-     filter: drop-shadow(0 0 8px var(--border-color));
-     transition: transform 0.2s ease, filter 0.2s ease;
+    display: block;
+    width: 100%;
+    justify-self: center;
+    padding: 12px 20px;
+    font-family: var(--font-pixel-sub);
+    font-weight: bold;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    text-transform: uppercase;
+    border: none !important;
+    border-radius: 0 !important;
+    cursor: pointer;
+    clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px),
+             calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
  }
 
  .btn-magenta,
@@ -180,62 +228,36 @@
  }
 
  /* ============= END: Botones ============= */
+.info-text {
+    text-align: center;
+    margin: clamp(1rem, 4vw, 4rem) auto;
+    padding: 0 1rem;
+    padding-top: 1.5rem;
+    color: var(--yellow-accent);
+}
 
+ .info-text h4{
+    font-family: var(--font-pixel-header);
+    font-size: clamp(0.8rem, 2vw, 1.3rem);
+}
+.info-text p{
+    font-family: var(--font-pixel-body);
+    text-align: justify;
+    padding-inline: clamp(1rem, 5vw, 5rem); 
+    font-size: clamp(0.85rem, 1.8vw, 1rem);
+}
  /* =============== Responsabilidad ============== */
- @media (max-width: 971px) {
-     .btn-magenta-container {
-         margin: 0.2rem auto 0;
-         max-width: 150px;
-         width: 100%;
-         display: flex;
-         justify-content: center;
-     }
+@media (max-width: 768px) {
+    .btn-magenta-container,
+    .btn-red-container {
+        max-width: 280px; /* Tamaño mucho más cómodo para pulgares en móviles */
+    }
 
-     .btn-magenta {
-         padding: 8px;
-         font-size: 0.85rem;
-         width: 100%;
-     }
-
-     h4 {
-         justify-content: center;
-         font-size: 1.5rem;
-     }
-
-     #seccionInfo {
-         padding: 3rem;
-         clip-path: none;
-         border-radius: 50px 50px 0px 0px;
-     }
-
- }
-
- @media(max-width: 510px) {
-     h4 {
-         font-size: 1.2rem;
-     }
-
-     #seccionInfo {
-         padding: 3rem;
-         clip-path: none;
-     }
-
-     #sectionForm {
-         padding: 2rem;
-     }
- }
-
- @media(max-width: 470px) {
-     h4 {
-         font-size: 0.9rem;
-     }
- }
-
- .info-text {
-     text-align: center;
-     margin: 4rem;
-     color: var(--yellow-accent);
- }
+    #seccionInfo {
+        clip-path: none; /* Elimina cortes complejos en pantallas muy pequeñas */
+        border-radius: 25px 25px 0 0;
+    }
+}
 
  #resultadoRegistro {
      transition: opacity 0.5s ease;

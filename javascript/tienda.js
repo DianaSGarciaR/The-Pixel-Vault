@@ -45,7 +45,6 @@ let renderProduct = (product) => {
                     <p class="precio">$${product.precio} MXN</p>
                     <p>${product.descripcion}</p>
                     <div class="carrito-container">
-                        <button class="carrito">
                         <button class="carrito" data-id ="${product.id}">
                             Añadir al Carrito
                         </button>

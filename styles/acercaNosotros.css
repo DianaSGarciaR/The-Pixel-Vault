@@ -1,92 +1,47 @@
 /**----------ROSTER DEL EQUIPO----------*/
-
-.contenedor-tarjeta {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  max-width: 100%;
-  margin: 10%;
-  position: relative;
+.team-content{
+    position:relative;
+    backdrop-filter: blur(50px);
+    z-index: 1;
+    border: 8vw solid transparent;
+    height: auto;
+    margin: 8vw;
+    margin-top: 5rem;
 }
 
-/* Contenedor de la tarjeta rosa */
-.tarjeta-rosa {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  margin: 0;
-    margin-bottom: 3rem;
-}
-
-.capa-blur {
-  grid-area: 1 / 1 / 2 / 2;
-  z-index: 1;
-  background-color: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 25px;
-}
-
-.marcoAzul {
-  grid-area: 1 / 1 / 2 / 2;
-  width: 100%;
-  height: 100%;
-  justify-self: center;
-  align-self: center;
-  z-index: 1;
-  fill: #00E5FF;
-  filter: drop-shadow(0px 0px 10px #00E5FF) drop-shadow(0px 0px 3px #a0ebf3);
-}
-
-.marcoRosa {
-  grid-area: 1 / 1 / 2 / 2;
-  width: 100%;
-  height: 100%;
-  justify-self: center;
-  align-self: center;
-  z-index: 1;
-  fill: #FF3EA5;
-  filter: drop-shadow(0px 0px 10px #FF3EA5) drop-shadow(0px 0px 3px #a0ebf3);
-}
-
-.contenido {
-  grid-area: 1 / 1 / 2 / 2;
-  z-index: 2;
-  padding: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: justify;
-  color: var(--yellow-accent);
-}
-
-.contenido h3 {
-  filter: drop-shadow(0px 0px 10px #fdf364);
-  text-align: center;
-  padding: 3rem;
-  font-family: var(--font-pixel-header);
+.team-content::before{
+    position: absolute;
+    z-index: -1;
+    content:"";
+    top: -8vw; 
+    left: -8vw; 
+    right: -8vw;
+    bottom: -8vw; 
+    border: 8vw solid transparent;
+    border-image-slice: 6;
+    border-image-repeat: repeat;
+    border-image-source: url('../assets/marco-pixel-rosa.svg');
+    filter: drop-shadow(0 0 10px #ff00ea) drop-shadow(0 0 5px #ffffff);
 }
 
 .contenido p {
   font-size: large;
-  padding: 3rem;
+  font-family: var(--font-pixel-body);
+  text-align: justify;
+  padding-bottom: 2vw;
 }
 
 /* Grid para los miembros del equipo - 2 filas de 5 */
 .team-grid {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  gap: 2vw;
   width: 100%;
-  margin: 0 auto;
 }
 
 .team-row {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
 }
 
 .team-member {
@@ -132,12 +87,18 @@
   justify-content: space-between;
   align-items: center;
 }
-
+.team-title{
+  text-align: center;
+  font-family: var(--font-pixel-header);
+  margin-bottom: 2rem;
+  color: var(--yellow-accent);
+  font-size: clamp(18px, 5vw, 30px);
+}
 .modal-title {
   color: #FFD23F !important;
   font-family: var(--font-pixel-header);
   font-weight: bold;
-  font-size: 1rem;
+  font-size: clamp(12px, 3vw, 25px) !important;
   filter: drop-shadow(0 0 10px #e7b204);
   margin: 0;
 }
@@ -150,6 +111,12 @@
   height: 1.5em;
   padding: 0.5em;
   transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#missionLogs {
+  margin: 5vw;
+  margin-bottom: 2rem;
+  color: var(--yellow-accent);
 }
 
 .btn-close:hover {
@@ -264,6 +231,7 @@
   }
 }
 
+
 @media (max-width: 576px) {
   .modal-member-image {
     max-width: 250px;
@@ -275,73 +243,7 @@
 }
 
 /* Responsive - Tablets y móviles grandes */
-@media (max-width: 991px) {
-  .team-description-column {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .contenedor-tarjeta {
-    margin: 10% 5%;
-  }
-  
-  .tarjeta-rosa {
-    min-height: 280px;
-  }
-  
-  .contenido-rosa {
-    padding: 2rem 5%;
-  }
-  
-  .team-row {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
-  }
-  
-  .team-member {
-    max-width: 70px;
-  }
-}
 
-/* Responsive - Móviles */
-@media (max-width: 768px) {
-  .team-row {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 0.8rem;
-  }
-  
-  .team-member {
-    max-width: 55px;
-  }
-  
-  .contenido-rosa {
-    padding: 1.5rem 5%;
-  }
-  
-  .team-grid {
-    gap: 1.5rem;
-  }
-}
-
-/* Responsive - Móviles pequeños */
-@media (max-width: 576px) {
-  .team-row {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 0.5rem;
-  }
-  
-  .team-member {
-    max-width: 45px;
-  }
-  
-  .contenido h1 {
-    font-size: 1.5rem;
-  }
-  
-  .fuente {
-    font-size: 0.9rem;
-  }
-}
 
 /** ============ SECCIÓN DE ESTILOS PARA LA DESCRIPCIÓN DEL PROYECTO Y LOS MISSION LOGS ======================
 /* ==========================================================================
@@ -389,48 +291,41 @@
    padding) es lo que determina cuánto debe medir .frame-demo. El SVG
    sigue siendo absolute, así que no le afecta este cambio y sigue
    cubriendo todo el marco. */
-.content {
-    position: relative;
+
+.content{
+    position:relative;
     z-index: 1;
-    
-    /* SOLUCIÓN 1: Deja espacio para que el trazo del SVG respire */
-    width: calc(100% - 8px);
-    height: calc(100% - 8px);
-    margin: 4px auto;
-
-    padding: 15% 9%;
-    display: flex; 
-    align-items: center; 
-    text-align:justify;
-    justify-content: center;
-    background: rgba(23, 18, 51, .7);
-    
-.anEstilo{
-  color: var(--yellow-accent);
-  font-family:'Quantico', monospace;
- 
+    border: 3vw solid transparent;
+    height: auto;
+    backdrop-filter: blur(50px);
+    padding: 1rem;
+}
+.content::before{
+  position: absolute;
+    z-index: -1;
+    content:"";
+    top: -3vw; 
+    left: -3vw;
+    right: -3vw;
+    bottom: -3vw;
+    border: 3vw solid transparent;
+    border-image-slice: 6;
+    border-image-repeat: repeat;
+    border-image-source: url('../assets/marco-pixel-azul.svg');
+    filter: drop-shadow(0 0 10px #0084ff) drop-shadow(0 0 5px #ffffff);
 }
 
-.anEstilo strong{
-  font-size:1.5rem;
-  filter: url(#neon-glow2);
-}
-    /* Recorte biselado (ajustado a los bordes reducidos) */
-    clip-path: polygon(
-        14px 0%, 
-        calc(100% - 14px) 0%, 
-        100% 14px, 
-        100% calc(100% - 14px), 
-        calc(100% - 14px) 100%, 
-        14px 100%, 
-        0% calc(100% - 14px), 
-        0% 14px
-    );
+.content h3 {
+  font-family: var(--font-pixel-header);
+  color: var(--font-pixel-header);
+  font-size:clamp(10px, 5vw, 20px);
+  margin-bottom: 1.5rem;
 }
 
 .content p{
     margin:0;
     font-family:'Quantico', monospace;
+    text-align: justify !important;
 
     /* NUEVO: "cqi" = 1% del ancho del contenedor de consulta más
        cercano (o sea, de .frame-demo). Antes se usaba "vw" (ancho de
@@ -439,9 +334,8 @@
        cada marco ajusta su propio texto según su propio ancho,
        automáticamente, sin necesitar un breakpoint distinto para
        cada caso. */
-    font-size: clamp(0.72rem, 3.4cqi + 0.2rem, 1.1rem);
     line-height:1.5; letter-spacing:.02em;
-    color: var(--yellow-accent); text-align:center;
+    color: var(--yellow-accent);
 }
 
 /* NOTA: antes existía aquí una regla aparte "#projectDesc { font-size:.9rem; ... }".
@@ -457,19 +351,7 @@
 /* ==========================================================================
    ADAPTACIÓN EN PANTALLAS PEQUEÑAS
    ========================================================================== */
-@media (max-width: 767.98px){
-    .frame-demo{
-        /* Se quita la proporción fija 2:1: en vez de recortar contenido
-           que no cabe, el marco crece en altura lo que haga falta. */
-        aspect-ratio: unset;
-        height:auto;
-        width:100%;
-    }
-    .content{
-        height:auto;       /* ahora el propio texto define el alto */
-        padding:24px 20px; /* en móvil, un padding en px es más predecible que uno en % */
-    }
-}
+
 
 /* ==========================================================================
    ÍCONOS (coin, misión, visión, valor, propósito)
@@ -498,13 +380,6 @@
     max-width:45%;
     object-fit:contain; /* conserva la proporción del ícono: nunca lo deforma ni lo recorta */
     border-radius:.5rem;
-}
-
-#missionLogs{
-    margin-bottom: 4rem;
-    margin-top: 2rem;
-    color: var(--yellow-accent);
-    filter: url(#neon-glow2);
 }
 
 /**=============================FIN DE ESTILOS PARA DESCRIPCIÓN Y MISSION LOGS =================================*/
