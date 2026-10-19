@@ -1,5 +1,5 @@
 
-import { productosp } from ".../services/dataCatalogo.js";
+import { productosp } from "../services/dataCatalogo.js";
 
 
 const productsElement = document.querySelector("#productos");
