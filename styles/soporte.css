@@ -231,7 +231,7 @@ p {
   opacity: 1;
 }
 
-/* Fondo oscuro detrás del modal */
+/* Fondo oscuro detrás del modal   */
 .modal-backdrop.show {
   opacity: 0.8;
 }
