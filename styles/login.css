@@ -92,7 +92,7 @@
      font-family: var(--font-pixel-sub);
      z-index: -1;
      padding: clamp(1.5rem, 6vw, 4rem);
-     background-image: url(../assets/miCuentaFondo.png);
+     background-image: url("../assets/miCuentaFondo.webp");
      background-size: cover;
      background-position: center;
      height: auto;
