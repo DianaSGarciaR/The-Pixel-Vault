@@ -1,10 +1,10 @@
 export const LIST_TRIPULANTES = [
     {
         id: "1", name: "Beto",
-        descripcion: "Soy Desarrollador Full Stack Jr. y me encargo de conectar el *frontend* con la lógica del *backend* para construir aplicaciones web sólidas. Con mi base en Física Aplicada y armas como Java y Python, analizo y resuelvo cada reto técnico como si fuera un jefe de nivel. ¡Siempre listo para colaborar y subir de experiencia en el equipo!",
-        infoBtn: { btnImgUrl: "assets/botonBeto.png" },
+        descripcion: "Soy Desarrollador Full Stack Jr. y me encargo de conectar el frontend con la lógica del backend para construir aplicaciones web sólidas. Con mi base en Física Aplicada y armas como Java y Python, analizo y resuelvo cada reto técnico como si fuera un jefe de nivel. ¡Siempre listo para colaborar y subir de experiencia en el equipo!",
+        infoBtn: { btnImgUrl: "assets/botonBeto.webp" },
         infoModal: {
-            cardImgUrl: "assets/cardBeto.png",
+            cardImgUrl: "assets/cardBeto.webp",
             linkedindUrl: "https://www.linkedin.com/in/alberto-pedraza-pedraza/",
             gitHubUrl: "https://github.com/Alberto-Pedraza"
         }
@@ -12,9 +12,9 @@ export const LIST_TRIPULANTES = [
     {
         id: "2", name: "Alen",
         descripcion: "Desarrollador Java Full Stack Jr. con sólida experiencia en soporte técnico y resolución de fallas. Especializado en analizar sistemas, optimizar procesos y aplicar código limpio (JavaScript, HTML, CSS, Git). ¡Listo para aportar lógica y comunicación efectiva al equipo!",
-        infoBtn: { btnImgUrl: "assets/botonAlen.png" },
+        infoBtn: { btnImgUrl: "assets/botonAlen.webp" },
         infoModal: {
-            cardImgUrl: "assets/cardAlen.png",
+            cardImgUrl: "assets/cardAlen.webp",
             linkedindUrl: "https://www.linkedin.com/in/alejandro-sanchez-mendoza/?locale=es",
             gitHubUrl: "https://github.com/13ale07"
         }
@@ -22,9 +22,9 @@ export const LIST_TRIPULANTES = [
     {
         id: "3", name: "Jazmín",
         descripcion: "Desarrolladora Java Full Stack y estudiante de Ciencias de la Informática en el IPN, con bases sólidas en Java, SQL, Git y análisis de datos (Certificación IBM). Apasionada por el código limpio y el trabajo en equipo, ¡lista para transformar ideas en soluciones tecnológicas funcionales!",
-        infoBtn: { btnImgUrl: "assets/botonJaz.png" },
+        infoBtn: { btnImgUrl: "assets/botonJaz.webp" },
         infoModal: {
-            cardImgUrl: "assets/cardJaz.png",
+            cardImgUrl: "assets/cardJaz.webp",
             linkedindUrl: "https://www.linkedin.com/in/blanca-jazmin-hern%C3%A1ndez-miranda/",
             gitHubUrl: "https://github.com/jazhn40-design"
         }
@@ -32,19 +32,19 @@ export const LIST_TRIPULANTES = [
     {
         id: "4", name: "Daniel",
         descripcion: "Desarrollador Java Full Stack con experiencia en Python, FastAPI, SQL y Flutter para crear APIs REST e integrar sistemas. Enfocado en consolidar su carrera en desarrollo web y metodologías ágiles, busca aportar soluciones reales y eficientes en proyectos tecnológicos de alto impacto.",
-        infoBtn: { btnImgUrl: "assets/botonDani.png" },
+        infoBtn: { btnImgUrl: "assets/botonDani.webp" },
         infoModal: {
-            cardImgUrl: "assets/cardDani.png",
+            cardImgUrl: "assets/cardDani.webp",
             linkedindUrl: "https://www.linkedin.com/in/danielcastroperez/",
             gitHubUrl: "https://github.com/DanielCastroPerez"
         }
     },
     {
         id: "5", name: "Diana", 
-        descripcion: "Desarrolladora Java Full Stack experta en Java, Spring Boot, Angular y MySQL, con experiencia creando y optimizando soluciones web empresariales (GitLab, Jira). Enfocada en la resolución de problemas y el análisis de sistemas, ¡lista para aportar talento y crecer en un nuevo reto tecnológico!",
-        infoBtn: { btnImgUrl: "assets/botonDiana.png" },
+        descripcion: "Desarrolladora Full Stack experta en Java, Spring Boot, Angular y MySQL, con experiencia creando y optimizando soluciones web empresariales (GitLab, Jira). Enfocada en la resolución de problemas y el análisis de sistemas, ¡lista para aportar talento y crecer en un nuevo reto tecnológico!",
+        infoBtn: { btnImgUrl: "assets/botonDiana.webp" },
         infoModal: {
-            cardImgUrl: "assets/cardDiana.png",
+            cardImgUrl: "assets/cardDiana.webp",
             linkedindUrl: "https://www.linkedin.com/in/diana-sarai-garcia-ramirez/",
             gitHubUrl: "https://github.com/DianaSGarciaR"
         }
@@ -52,19 +52,19 @@ export const LIST_TRIPULANTES = [
     {
         id: "6", name: "Diego",
         descripcion: "Desarrollador web y de videojuegos apasionado por fusionar la creatividad con la técnica. Con experiencia en HTML, CSS, JavaScript, Bootstrap, Angular, Laravel, Unity y bases de datos (Git/GitHub), y fortaleciendo su perfil como Java Full Stack en Generation. ¡Listo para afrontar nuevos retos y aportar valor a cualquier equipo de tecnología!",
-        infoBtn: { btnImgUrl: "assets/botonDiego.png" },
+        infoBtn: { btnImgUrl: "assets/botonDiego.webp" },
         infoModal: {
-            cardImgUrl: "assets/cardDiego.png",
+            cardImgUrl: "assets/cardDiego.webp",
             linkedindUrl: "https://www.linkedin.com/in/diegoglezc/",
             gitHubUrl: "https://github.com/DiegoG1608"
         }
     },
     {
         id: "7", name: "Fernando",
-        descripcion: "Especialista en desarrollo Java Fullstack (HTML, CSS, JS, Git, APIs) experto en transformar retos técnicos en soluciones escalables.Fusiono mi experiencia en soporte y metodologías ágiles con una fuerte vocación pedagógica y de liderazgo para optimizar procesos, conectar sistemas e impulsar proyectos con impacto real.",
-        infoBtn: { btnImgUrl: "assets/botonFer.png" },
+        descripcion: "Especialista en desarrollo Java Fullstack (HTML, CSS, JS, Git, APIs) experto transformando retos técnicos en soluciones escalables. Fusiono mi experiencia en soporte y metodologías ágiles con una fuerte vocación pedagógica y de liderazgo para optimizar procesos, conectar sistemas e impulsar proyectos con impacto real.",
+        infoBtn: { btnImgUrl: "assets/botonFer.webp" },
         infoModal: {
-            cardImgUrl: "assets/cardFer.png",
+            cardImgUrl: "assets/cardFer.webp",
             linkedindUrl: "https://www.linkedin.com/in/fernando--nava/",
             gitHubUrl: "https://github.com/FernandoNava2"
         }
@@ -72,29 +72,29 @@ export const LIST_TRIPULANTES = [
     {
         id: "8", name: "Carmen",
         descripcion: "Desarrolladora Java Full Stack y especialista en Spring Boot, JavaScript y bases de datos. Con experiencia en equipos ágiles(Scrum) y diseño de APIs, se enfoca en entregar software escalable y de alta calidad que impulse directamente los objetivos del negocio.",
-        infoBtn: { btnImgUrl: "assets/botonCarmen.png" },
+        infoBtn: { btnImgUrl: "assets/botonCarmen.webp" },
         infoModal: {
-            cardImgUrl: "assets/cardCarmen.png",
+            cardImgUrl: "assets/cardCarmen.webp",
             linkedindUrl: "https://www.linkedin.com/in/maria-del-carmen-galindo-ramirez/",
             gitHubUrl: "https://github.com/mariadelcarmengalindodev-afk"
         }
     },
     {
         id: "9", name: "natalia",
-        descripcion: "Desarrolladora Java Full Stack apasionada por fusionar la precisión del código con un diseño visual impecable.Experta en integrar lógica frontend y backend para optimizar componentes y acelerar flujos de trabajo en equipo. ¡Lista para aportar innovación tecnológica a nuevos retos!",
-        infoBtn: { btnImgUrl: "assets/botonNat.png" },
+        descripcion: "Desarrolladora Java Full Stack apasionada por fusionar la precisión del código con un diseño visual impecable y altamente creativo. Experta en integrar lógica frontend y backend para optimizar componentes y acelerar flujos de trabajo en equipo. ¡Lista para aportar innovación tecnológica a nuevos retos!",
+        infoBtn: { btnImgUrl: "assets/botonNat.webp" },
         infoModal: {
-            cardImgUrl: "assets/cardNat.png",
+            cardImgUrl: "assets/cardNat.webp",
             linkedindUrl: "https://www.linkedin.com/in/nataliagonzalezcoca/",
             gitHubUrl: "https://github.com/NataliaGonzalezCoca"
         }
     },
     {
         id: "10", name: "Osorio", 
-        descripcion: "Ingeniero en Tecnologías de la Información con más de 7 años de trayectoria en soporte, infraestructura y asesoría técnica, enfocado ahora en el desarrollo Backend con Java.Con sólida formación en POO, bases de datos relacionales, Spring Boot, APIs REST, Docker y metodologías ágiles.",
-        infoBtn: { btnImgUrl: "assets/botonOsorio.png" },
+        descripcion: "Ingeniero en Tecnologías de la Información con más de 7 años de trayectoria en soporte, infraestructura y asesoría técnica, enfocado ahora en el desarrollo Backend en Java. Con sólida formación en POO, bases de datos relacionales, Spring Boot, APIs REST, Docker y metodologías ágiles.",
+        infoBtn: { btnImgUrl: "assets/botonOsorio.webp" },
         infoModal: {
-            cardImgUrl: "assets/cardOsorio.png",
+            cardImgUrl: "assets/cardOsorio.webp",
             linkedindUrl: "https://www.linkedin.com/in/salvador-osorio-palma/",
             gitHubUrl: "https://github.com/osoriopalma"
         }

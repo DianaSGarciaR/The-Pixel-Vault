@@ -47,25 +47,62 @@
     color: var(--yellow-accent);
     margin-top: 16vw;
     filter:
-        drop-shadow(0 0 8px var(--yellow-accent)) drop-shadow(0 0 10px var(--text-bright));
+        drop-shadow(0 0 10px var(--yellow-accent));
 }
 
 .container {
     display: block;
     max-width: 90vw;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
+    aspect-ratio: 16/9;
 }
 
 .contenedor-tarjeta-rosa {
     position: relative;
     z-index: 1;
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 4vw solid transparent;
     backdrop-filter: blur(50px);
-    padding-bottom: 3vw;
+    padding-top: 2vw;
+    height: 100%;
+    max-height: 90vw;
+    padding-bottom: 4vw;
+}
+
+.contenedor-tarjeta-rosa-pago {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4vw solid transparent;
+    backdrop-filter: blur(50px);
+    padding-bottom: 1vw;
+}
+
+.arriba{
+    max-height: 80vw;
+}
+
+#guardarpago{
+    margin-top: 3rem;
+}
+
+.contenedor-tarjeta-rosa-pago::before {
+    content: "";
+    position: absolute;
+    top: -4vw;
+    left: -4vw;
+    right: -4vw;
+    bottom: -4vw;
+    z-index: -1;
+    border: 4vw solid transparent;
+    border-image-slice: 6;
+    border-image-repeat: repeat;
+    border-image-source: url('../assets/marco-pixel-rosa.svg');
+    filter: drop-shadow(0 0 10px #ff00ea) drop-shadow(0 0 5px #ffffff);
 }
 
 .contenedor-tarjeta-rosa::before {
@@ -86,24 +123,23 @@
 .contenedor-tarjeta-azul {
     position: relative;
     z-index: 1;
-    width: 100%;
     aspect-ratio: 1/1;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1vw;
     font-family: sans-serif;
     border: 4vw solid transparent;
     backdrop-filter: blur(5px);
+    --borde-marco: 4vw;
 }
 
 .contenedor-tarjeta-azul::before {
     content: "";
     position: absolute;
-    top: -4vw;
-    left: -4vw;
-    right: -4vw;
-    bottom: -4vw;
+    top: calc(var(--borde-marco) * -1);
+    left: calc(var(--borde-marco) * -1);
+    right: calc(var(--borde-marco) * -1);
+    bottom: calc(var(--borde-marco) * -1);
     z-index: -1;
     border: 4vw solid transparent;
     border-image-slice: 6;
@@ -168,17 +204,16 @@
     font-family: var(--font-pixel-sub);
     color: var(--yellow-accent) !important;
     margin-bottom: 2vw;
-    margin-inline: 3px;
     font-size: 3vw;
     filter:
-        drop-shadow(0 0 8px var(--yellow-accent)) drop-shadow(0 0 10px var(--text-bright));
+        drop-shadow(0 0 8px var(--yellow-accent));
 }
 
 .contenido-tarjeta {
     font-family: var(--font-pixel-body);
     color: var(--text-main);
-    font-size: 1.8vw;
-    height: 100%;
+    font-size: 2vw;
+    height: auto;
 }
 
 .contenedor-chico-amarillo:focus {
@@ -190,10 +225,6 @@
     size-adjust: unset;
     filter: drop-shadow(0 0 2px #ebfc02) drop-shadow(0 0 2px #f1e08f);
     color: #ffffff;
-}
-
-#direccion {
-    margin-top: 3vw;
 }
 
 .btn img {
@@ -227,14 +258,6 @@
     color: var(--text-main) !important;
 }
 
-.metodos-pago {
-    margin-top: 2vw;
-}
-
-#metodos-pago {
-    margin: 3vw;
-}
-
 .form-check-input {
     background-color: transparent !important;
     border-color: var(--yellow-accent) !important;
@@ -262,39 +285,45 @@ input[type=number]::-webkit-outer-spin-button {
     cursor: pointer;
 }
 
+#direccion{
+    margin-top: 2rem;
+}
+
 .contenido-tarjeta.perfil {
     position: absolute;
-    top: -2.2vw;
-    left: -3vw;
-    width: calc(100% + 6vw);
-    height: calc(100% + 6vw);
+    top: calc(var(--borde-marco) * -1);
+    left: calc(var(--borde-marco) * -1);
+    width: calc(100% + (var(--borde-marco) * 2));
+    height: calc(100% + (var(--borde-marco) * 2));
     z-index: -2;
 }
 
 .avatar-renderizado {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     overflow: hidden;
 }
 
 #imagenperfil {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    overflow: hidden;
-    border-radius: 60px;
+    object-fit: cover;
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% calc(100% - 4.5vw),  
+        calc(100% - 4.5vw) 100%,  
+        4.5vw 100%,  
+        0% calc(100% - 4.5vw)     
+    );
 }
 
 #lapizperfil {
     position: absolute;
     bottom: -1.5vw;
     right: -3.5vw;
-    z-index: 3;
-}
-
-#datos-usuario {
-    margin-bottom: 3vw;
+    z-index: 3
 }
 
 .guardar {
@@ -318,6 +347,7 @@ input[type=number]::-webkit-outer-spin-button {
     box-shadow: 0px 0px 30px #bd34fd;
     font-family: var(--font-pixel-header);
     border: none;
+    
 }
 
 .modal-header {
@@ -326,12 +356,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .modal-body {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, auto);
-    gap: 20px;
-    justify-items: center;
-    align-items: center;
     padding: 25px;
 }
 
@@ -345,12 +369,14 @@ input[type=number]::-webkit-outer-spin-button {
     justify-content: center;
     align-items: center;
     width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .modal-body img {
-    height: 15vw;
-    max-height: 120px;
-    width: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
     object-fit: contain;
     padding: 8px;
     border-radius: 12px;
@@ -379,7 +405,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: #ff00ea;
     border: none;
     padding: 12px 24px;
-    font-size: 2vw !important;
+    font-size: clamp(14px, 1.5vw, 20px) !important;
     color: #ffffff;
     border-radius: 6px;
     transition: background-color 0.2s, filter 0.2s;
@@ -393,4 +419,211 @@ input[type=number]::-webkit-outer-spin-button {
 .modal-footer {
     display: flex;
     justify-content: center;
+}
+
+.btn-close:hover {
+    opacity: 1;
+    filter: invert(1) drop-shadow(0 0 8px #bd34fd); /* Brillo púrpura cyberpunk */
+}
+/* estilos del boton de cerrar sesion */
+
+.boton-cerrar {
+    font-family: var(--font-pixel-body); 
+    font-weight: 700; /* para que se vean mas gruesas tipo negritas */
+    font-size: 1.5vw;  
+    letter-spacing: 0.1vw; /* Separación de cada letras */
+    color: var(--text-main);         
+    background: none;                     
+    border: none;                         
+    border-radius: 0; /* esto es para las esquinas cortadas*/
+    padding: 0.6vw 2vw;                                         
+    box-shadow: /*codigo por linea del borde para que se vea cortada*/
+        0 -0.5vw 0 0 #f52b2b,  
+        0 0.5vw 0 0 #f52b2b,    
+        -0.5vw 0 0 0 #f52b2b,  
+        0.5vw 0 0 0 #f52b2b;    
+
+    filter: drop-shadow(0 0 6px #f52b2b) /* brillo */
+            drop-shadow(0 0 2px #ffffff); 
+    transition: filter 0.2s, transform 0.2s; /* Cambio suave al pasar el cursor */
+}
+.boton-cerrar:hover {
+    filter: drop-shadow(0 0 12px #f52b2b) /* El brillo se hace más grande cuando el cursor pasa sobre de el boton */
+            drop-shadow(0 0 1px #ffffff);
+    transform: scale(1.05); /* El botón crece cuando se pasa el cursor sobre de el*/
+}
+/* Vista móvil (< 550px): Dos columnas compactas, centradas y perfectamente proporcionadas */
+@media (max-width: 550px) {
+    .row.arriba > .col-3,
+    .row.arriba > .col-9 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    
+    .row.arriba {
+        max-height: none !important;
+    }
+
+    .contenedor-tarjeta-rosa {
+        max-height: none !important;
+        height: auto !important;
+    }
+    
+    /* Contenedor izquierdo en Grid de 2 columnas, limitado en ancho y centrado */
+    .row.arriba > .col-3 {
+        display: grid !important;
+        grid-template-columns: auto auto !important;
+        grid-template-rows: auto auto !important;
+        gap: 0.2rem 3rem !important; /* Espacio reducido para que queden más pegados */
+        align-items: center !important;
+        justify-content: center !important;
+        max-width: 340px !important; /* Deja espacio libre a los lados y centra el bloque */
+        margin: 0 auto 2rem auto !important;
+    }
+
+    /* 1. Foto de perfil más compacta (Columna 1, Fila 1) */
+    .row.arriba > .col-3 > .contenedor-tarjeta-azul {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+        width: 90px !important;
+        max-width: 90px !important;
+        height: 90px !important;
+        aspect-ratio: 1/1 !important;
+        margin: 0 auto !important;
+    }
+
+    /* 2. Botón Cerrar sesión más pegado a la foto (Columna 1, Fila 2) */
+    .row.arriba > .col-3 > div.text-center {
+        grid-column: 1 !important;
+        grid-row: 2 !important;
+        text-align: center !important;
+        margin: 0 !important;
+    }
+
+    .row.arriba > .col-3 div.text-center .boton-cerrar {
+        font-size: 0.75rem !important;
+        padding: 0.3rem 0.6rem !important;
+    }
+
+    /* 3. Métodos de pago más chicos y adaptados a la altura (Columna 2) */
+    .row.arriba > .col-3 > .contenedor-tarjeta-rosa-pago {
+        grid-column: 2 !important;
+        grid-row: 1 / span 2 !important;
+        height: 100% !important;
+        max-width: 175px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        padding: 0.6rem 0.4rem !important;
+    }
+
+    .row.arriba > .col-3 > .contenedor-tarjeta-rosa-pago h3 {
+        font-size: 0.75rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .row.arriba > .col-3 > .contenedor-tarjeta-rosa-pago .form-check {
+        margin-bottom: 0.3rem !important;
+    }
+
+    .row.arriba > .col-3 > .contenedor-tarjeta-rosa-pago .form-check-label img {
+        max-height: 20px !important;
+        width: auto !important;
+    }
+}
+/* Ajuste definitivo para los lapicitos en móvil (< 550px) sin romper la estructura */
+@media (max-width: 550px) {
+    /* Permitimos que los botones floten fuera de los límites de las tarjetas sin recortarse */
+    .row.arriba > .col-3,
+    .contenedor-tarjeta-azul,
+    .contenedor-tarjeta-rosa-pago,
+    .contenedor-tarjeta-rosa,
+    .contenido-tarjeta.perfil {
+        overflow: visible !important;
+    }
+
+    /* Aseguramos que los contenedores de las tarjetas tengan posición relativa para anclar los botones */
+    .contenedor-tarjeta-azul,
+    .contenedor-tarjeta-rosa-pago,
+    .contenedor-tarjeta-rosa {
+        position: relative !important;
+    }
+
+    /* Estilo y posición fija para todos los lapicitos de edición en celular */
+    #lapizperfil,
+    #editarpago,
+    #editardatos {
+        position: absolute !important;
+        height: 30px !important;
+        width: auto !important;
+        bottom: -8px !important;
+        right: -15px !important;
+        top: auto !important;
+        left: auto !important;
+        z-index: 20 !important;
+    }
+
+    /* Ajuste específico para el lápiz de la foto de perfil */
+    #lapizperfil {
+        bottom: -15px !important;
+        right: -18px !important;
+    }
+}
+
+/* Separación exclusiva para pantallas superiores a 550px (Escritorio / Tablet) */
+@media (min-width: 551px) {
+    /* Agrega un espacio entre las columnas superiores y la tarjeta de datos del usuario */
+    .row.arriba > .col-9 {
+        padding-left: 3rem !important; /* Ajusta este valor según el nivel de separación/gap que desees */
+    }
+
+    /* Si quieres espacio interno superior para que el formulario respire por dentro */
+    .contenedor-tarjeta-rosa {
+        padding-top: 3vw !important;
+    }
+}
+/* Textos responsivos y fluidos para dispositivos móviles (< 550px) */
+@media (max-width: 550px) {
+    /* 1. Títulos principales y de sección */
+    .container h3 {
+        font-size: 4.5vw !important;
+        margin-bottom: 1.5vw !important;
+    }
+
+    /* 2. Textos generales y contenidos de tarjetas */
+    .contenido-tarjeta {
+        font-size: 3.5vw !important;
+    }
+
+    /* 3. Etiquetas de formularios y campos de entrada */
+    .form-label {
+        font-size: 3vw !important;
+        margin-bottom: 0.1rem !important;
+    }
+
+    .contenedor-chico-amarillo {
+        height: 36px !important;
+        font-size: 3.2vw !important;
+        letter-spacing: 0.1vw !important;
+    }
+
+    /* 4. Botones de guardar y editar datos */
+    .guardar {
+        font-size: 3vw !important;
+        padding: 0.5rem 1rem !important;
+    }
+
+    /* 5. Tabla del historial de pedidos para que no desborde */
+    .table th, 
+    .table td {
+        font-size: 3vw !important;
+        padding: 0.5rem 0.4rem !important;
+        white-space: nowrap; /* Evita saltos de línea extraños en celdas */
+    }
+
+    /* 6. Textos del modal de avatares */
+    .modal-title {
+        font-size: 4vw !important;
+    }
 }

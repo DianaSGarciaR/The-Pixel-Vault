@@ -55,7 +55,7 @@
 
 /* Títulos con estética Cyberpunk/Gamer */
 .section-title {
-  font-size: 1.2rem;
+  font-size: clamp(10px, 3vw, 18px);
   font-family:var(--font-pixel-header); /* Estilo retro/pixel */
  word-break: break-word;
   color: var(--yellow-accent);
@@ -139,7 +139,7 @@
   font-size: 0.85rem;
   color: var(--ink-dim);
   font-weight: 600;
-  font-family:var(--font-pixel-body)
+  font-family:var(--font-pixel-body);
 }
 .price-tags {
   display: flex;
@@ -156,6 +156,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  margin-bottom:5px;
 }
 .filter-tag:hover {
   border-color: var(--amber);
@@ -206,12 +207,13 @@
     position: relative;
     background: radial-gradient(circle, #50027e, #06000a);
     filter: drop-shadow(0 0 10px #b700ff);
-    min-height: 85dvh;
+    min-height: 90dvh;
+    min-width: 100%;
     height: auto;
     border: none;
     border-radius: 20px;
     overflow: hidden;
-    padding: 2.5rem;
+    padding: 3vw;
     box-sizing: border-box;
 }
 .container-back {
@@ -255,8 +257,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 2rem;
-    padding-left: 6rem;
+    padding: 1rem;
+    padding-left: 5rem;
     color: #ffffff;
     box-shadow: 0 0 30px #030303;
     box-sizing: border-box;
@@ -266,6 +268,7 @@
     z-index: 4; 
     width: 50%; 
     max-width: 320px;
+    min-width: 200px;
     object-fit: contain;
     border-radius: 12.5%;
     top: 50%;
@@ -288,17 +291,18 @@
     text-align: right;
 }
 .container-descripcion h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.4rem;
+    font-weight: 500;
     color: #3bd8ff;
     margin-bottom: 0.8rem;
     text-align: right;
+    font-family: var(--font-pixel-body);
 }
 .container-descripcion .precio {
-    font-family: 'Quantico', sans-serif;
+    font-family: var(--font-pixel-sub);
     color: var(--amber);
-    font-size: 1.3rem;
-    font-weight: 700;
+    font-size: 1.8rem;
+    font-weight: 300;
     text-align: right;
     text-shadow: 0 0 6px rgba(255, 210, 63, 0.3);
     padding-bottom: 1rem;
@@ -309,6 +313,7 @@
     line-height: 1.4;
     text-align: justify;
     padding-left: 2rem;
+    font-family: var(--font-pixel-body);
 }
 .carrito-container {
   display: block;
@@ -368,19 +373,18 @@
 @media (max-width: 768px) {
     .modal-content {
         position: relative;
-        height: auto;
-        min-height: 80dvh;
-        padding: 1.2rem;
-        overflow-y: auto;
+        max-height: 80%;
+        padding: 3rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        overflow: hidden;
     }
     .container-back {
         position: absolute;
         width: 88%;
-        height: 55%;
+        height: 50%;
         top: 10%;
         left: 50%;
         transform: translateX(-50%);
@@ -393,19 +397,19 @@
     .container-descripcion {
         position: relative;
         z-index: 2;
-        width: 88%;
-        margin: 4.5rem auto 1rem auto;
+        width: 90%;
+        height: 50%;
+        margin: 10rem auto 1rem auto;
         left: 0;
         right: 0;
         transform: none;
         height: auto;
         min-height: auto;
-        padding: 2.2rem 1.2rem 1.2rem 1.2rem;
+        padding: 4.5rem 0rem 1rem;
         text-align: center;
         display: flex;
-        flex-direction: column;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
         box-sizing: border-box;
         background: rgba(255, 255, 255, 0.08);
         backdrop-filter: blur(20px);
@@ -416,8 +420,8 @@
     .imagen-modal {
         position: absolute;
         z-index: 4;
-        width: 50%;
-        max-width: 200px;
+        width:50%;
+        max-width: 220px;
         object-fit: contain;
         top: 15%;
         left: 50%;
@@ -428,29 +432,18 @@
         transform: translateX(-50%) translateY(-5px) scale(1.05);
     }
     .container-descripcion h1 {
-        font-size: 1.4rem;
-        word-break: break-word;
-        width: 100%;
         text-align: center;
+        padding-top: 3vw;
     }
     .container-descripcion h3 {
-        font-size: 0.85rem;
-        margin-bottom: 0.3rem;
-        width: 100%;
         text-align: center;
     }
     .container-descripcion .precio {
         text-align: center;
-        font-size: 0.95rem;
-        margin-bottom: 0.4rem;
-        width: 100%;
     }
     .container-descripcion p {
         font-size: 0.8rem;
-        text-align: center;
-        line-height: 1.35;
-        margin-bottom: 0.8rem;
-        width: 100%;
+        padding-right: 5vw;
     }
     .carrito-container {
         margin: 0.2rem auto 0;
@@ -619,7 +612,7 @@
   transform: scale(1.03);
 }
 @media (prefers-reduced-motion: reduce) { 
-  .notch, .card, .card .art img, .cta { transition: none; }
+  .notch, .card, .card .art img, .cta .modal-content { transition: none; }
 }
 
 .card .body p {
@@ -660,65 +653,147 @@
  /* Fin:  Estilos para el mensaje flotante (Toast) */
 
 
- /* Inicio: Estilo de botones del carrito */
- /* Contenedor principal y texto general */
-.cantidad,
-.quantity-label,
+/* Alineación y tamaño del precio dentro de la tarjeta del carrito */
+.card .card-action-row,
+.card-action-row {
+    display: flex !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin-top: 0.8rem;
+}
+
+.card .price,
+.card-action-row .price {
+    font-size: 1.25rem !important; /* Poquitito más grande que el estándar */
+    font-weight: bold;
+    text-align: center !important;
+    display: block !important;
+    width: 100% !important;
+}
+
+/* Contenedor principal de la sección de cantidad y acciones */
+.cantidad {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+    color: #ffeb3b;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.quantity-label {
+    color: #ffeb3b;
+    font-family: var(--font-pixel-body);
+}
+
+/* Controles de incremento/decremento centrados */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    margin: 0.5rem 0;
+    width: 100%;
+}
+
 .qty-number {
-  color: #ffeb3b; /* Amarillo brillante */
-  font-size: 1.1rem; /* Tamaño de letra mediano */
-  font-weight: 500;
+    font-family: var(--font-pixel-body);
+    font-size: 1.1rem;
+    color: #fff;
+    min-width: 25px;
+    text-align: center;
 }
 
-/* Botones de incremento/decremento (— y +) */
+/* Botones de incremento/decremento (— y +) perfectamente cuadrados e iguales */
 .qty-btn {
-  color: #ffeb3b;
-  font-size: 1.2rem; /* Sutilmente más grande para destacar los símbolos */
-  background: transparent;
-  border: 1px solid #ffeb3b;
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 4px;
+    color: #ffeb3b;
+    font-size: 1.1rem;
+    background: transparent;
+    border: 1px solid #ffeb3b;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
 }
-.mb-1{
-  font-family:var(--font-pixel-body);
-  color: var(--text-bright);
+
+.qty-btn:hover {
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+    background-color: rgba(247, 2, 132, 0.2) !important;
+    box-shadow: 0 0 10px rgba(255, 62, 165, 0.6) !important;
 }
-.mb-0{
-    font-family:var(--font-pixel-body);
-  color: var(--text-bright);
+
+.item-actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0.8rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); 
 }
-.mb-3{
-  color:var(--amber)
-  
-}
-.fontstylecheckout{
-  font-family:var(--font-pixel-body);
-  text-align:center;
-}
-.bkcCheckout{
-  background-color: var(--panel-color);
-}
-/* Botones de acción generales (como el bote de basura) */
+
 .action-btn {
-  color: #ffeb3b;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+    color: #ffeb3b;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-/* Tamaño y color del ícono SVG */
+.action-btn:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 8px #ffffff);
+}
+
 .action-btn svg {
-  width: 26px; /* Ícono más grande (originalmente 18px) */
-  height: 26px;
-  stroke: #ffeb3b; /* Asegura el color amarillo en el trazo */
-  stroke-width: 2px;
+    width: 24px;
+    height: 24px;
+    stroke: #ffeb3b;
+    stroke-width: 2px;
 }
 
- /* Fin: Estilo de botones del carrito */
+.action-btn:hover svg {
+    stroke: #ffffff;
+}
 
+.bkcCheckout .text-uppercase{
+    font-family: var(--font-pixel-header);
+    text-align: center;
+    font-size: medium;
+}
 
+.bkcCheckout .justify-content-between{
+  color: #c7c9c8 !important;
+  font-family: var(--font-pixel-body);
+}
+
+.btn-outline-info{
+  font-family: var(--font-pixel-body);
+}
+
+.btn-outline-info:hover{
+  color: #510285;
+}
+
+.btn-cyan:hover{
+    color: #aa38f7;
+    transform: scale(1.1);
+}
+
+.text-center{
+  color: #c7c9c8 !important;
+}

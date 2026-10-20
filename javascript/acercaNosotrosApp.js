@@ -143,10 +143,10 @@ const renderModalsTeam = (listInfoModal) => {
                   <p class="fuente">${listInfoModal[i].descripcion}</p>
                   <div class="links">
                     <a href="${listInfoModal[i].infoModal.linkedindUrl}" class="linkedin">
-                      <img src="assets/linkedin.png" id="linkedin" alt="logo Linkedin">
+                      <img src="assets/linkedin.webp" id="linkedin" alt="logo Linkedin">
                     </a>
                     <a href="${listInfoModal[i].infoModal.gitHubUrl}" class="github">
-                      <img src="assets/github.png" id="github" alt="logo Github">
+                      <img src="assets/github.webp" id="github" alt="logo Github">
                     </a>
                   </div>
                 </div>
