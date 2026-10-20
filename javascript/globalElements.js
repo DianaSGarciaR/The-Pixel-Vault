@@ -101,7 +101,7 @@ const renderNavbar = () => {
   let mobileBurgerMenu = `
     <div class="burgerMenu" id="responsBurgerMenu">
       <a class="iconMoneda" onclick="viewOptionBurgerMenu()">
-        <img src="../assets/btnJuego.webp" id="btnJuego">
+        <img src="../assets/btnJuego.png" id="btnJuego">
       </a>
     </div>
     `;
@@ -121,11 +121,11 @@ const renderNavbar = () => {
         </div>
       </div>
     </div>
-    <img class="logo" src="../assets/ThePixelVaultLogo.webp" alt="Logo de The Pixel Vault">
+    <img class="logo" src="../assets/ThePixelVaultLogo.png" alt="Logo de The Pixel Vault">
     ${mobileBurgerMenu}
     <div class="contenedorBarras divNavLeft">
         <a href="./miCarrito.html">
-        <img class="barraAzul" src="../assets/carrito.webp" alt="Carrito de compras">
+        <img class="barraAzul" src="../assets/carrito.png" alt="Carrito de compras">
         </a>
     </div>
     `;
