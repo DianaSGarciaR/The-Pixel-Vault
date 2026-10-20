@@ -3,7 +3,7 @@ const BASE_URL = "http://localhost:8080/api/";
 
 export const createProduct = async function (productObject) {
   try {
-    const response = await fetch(`${BASE_URL}/categories/1/products`, {
+    const response = await fetch(`${BASE_URL}categories/1/products`, {
       method: "POST",
       headers: {
         "Content-Type":"application/json"
@@ -22,7 +22,7 @@ export const createProduct = async function (productObject) {
 
 export const addProductToCategory = async function (productId,categoryId) {
   try {
-    const response = await fetch(`${BASE_URL}/products/${productId}/categories/${categoryId}`, {
+    const response = await fetch(`${BASE_URL}products/${productId}/categories/${categoryId}`, {
       method: "POST",
       headers: {
         "Content-Type":"application/json"

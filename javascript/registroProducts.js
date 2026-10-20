@@ -51,8 +51,8 @@ formEl.addEventListener("submit", (event) => {
     const producto = Object.fromEntries(dataArray);
 
     createProduct(producto);
-    addProductToCategory(1,type);
-    addProductToCategory(1,category);
+    //addProductToCategory(1,type);
+    //addProductToCategory(1,category);
 
     // Agrega el nuevo producto al arreglo general.
     productos.push(producto);
