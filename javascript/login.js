@@ -1,6 +1,23 @@
 
 const keyEncryption = 22;
-const NEW_USER = { tipo_user: "COSTOMER", status: 0 }; // Valores que no vienen en el formuario
+const NEW_USER = {
+    userName: "-",
+    userMiddleName: "-",
+    userLastNameFirst: "-",
+    userLastNameSecond: "-",
+    userPhone: "-",
+    status: 1,
+    roleId: 1,
+    userAddress: {
+        city: "-",
+        state: "-",
+        number: "-",
+        sector: "-",
+        street: "-",
+        country: "-",
+        zipCode: "-"
+    }
+};
 const formNewUser = document.querySelector("#formNewUser");
 const formLogin = document.querySelector("#formLogin");
 
@@ -172,6 +189,7 @@ function existUserByEmailAndPassword(email, password, LIST_ERRORES) {
 
 /** ======== STAR: Mostrar/Ocultar formulario ================= */
 function showFormulario(event, elementId) {
+    console.log("event ", event)
     if (event) {
         event.preventDefault();
     }
