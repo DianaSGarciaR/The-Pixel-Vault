@@ -54,7 +54,7 @@ body {
   /* Tu imagen y el degradado */
   background-image:
     linear-gradient(rgba(5, 10, 20, 0.45), rgba(5, 10, 20, 0.75)),
-    url("../assets/fondo.jpg");
+    url("../assets/fondo.webp");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center top 5rem;
@@ -114,7 +114,7 @@ body {
 }
 
 .navThePixelVault {
-  background-image: url(../assets/navbarFondo.jpg) !important; /*Se agregó el ../ a la ruta del archivo (Beto)*/
+  background-image: url("../assets/navbarFondo.webp") !important; /*Se agregó el ../ a la ruta del archivo (Beto)*/
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -134,7 +134,7 @@ body {
   height: 12vw;
   min-height: 8rem;
   min-width: 8rem;
-  background-image: url(../assets/botonmenu.png);/*Se agregó el ../ a la ruta del archivo (Beto)*/
+  background-image: url("../assets/botonMenu.webp");/*Se agregó el ../ a la ruta del archivo (Beto)*/
   background-size: contain;
   background-position: top;
   background-repeat: no-repeat;
@@ -166,7 +166,7 @@ body {
   left: 25%;
   width: 50%;
   height: 50%;
-  background-image: url(../assets/monedapeso.png);/*Se agregó el ./ a la ruta del archivo (Beto)*/
+  background-image: url("../assets/monedapeso.webp");/*Se agregó el ./ a la ruta del archivo (Beto)*/
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -378,7 +378,7 @@ body {
 }
 
 .btnImg {
-  background-image: url("../assets/botonmenu.png");
+  background-image: url("../assets/botonMenu.webp");
   width: 120px;
   height: auto;
 
