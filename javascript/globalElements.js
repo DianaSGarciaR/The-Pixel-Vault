@@ -59,7 +59,7 @@ const renderNavbar = () => {
                         
                         <!-- Centro -->
                         <div class="radial-center">
-                          <img src="../assets/logo_vertical.jpg" alt="Logo P" class="center-logo"> 
+                          <img src="../assets/logo_vertical.png" alt="Logo P" class="center-logo"> 
                           <!--<h3 class="center-letter head yellow-accent">THE PIXEL <br>VAULT </h3>--!>
                         </div>
 
