@@ -19,3 +19,21 @@ export const createProduct = async function (productObject) {
     console.error("Fallo en la peticion: ", error.message);
   }
 };
+
+export const addProductToCategory = async function (productId,categoryId) {
+  try {
+    const response = await fetch(`${BASE_URL}/products/${productId}/categories/${categoryId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type":"application/json"
+      }
+    });
+    if (!response.ok)
+      throw Error("Error al agregar el producto a categoría: ", response.status);
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error("Fallo en la peticion: ", error.message);
+  }
+};
