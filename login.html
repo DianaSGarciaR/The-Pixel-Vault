@@ -5,7 +5,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
-
   <!-- !LINK BOOSTRAP-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -14,7 +13,8 @@
   <link rel="stylesheet" href="./styles/login.css" />
   <link rel="stylesheet" href="./styles/styles.css" />
 
-  <!--Link de fuente--> <style>
+  <!--Link de fuente-->
+  <style>
     @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap");
   </style>
 </head>
@@ -25,13 +25,12 @@
   <!--* ---------- FIN: navbar ----------- -->
 
   <!--* -------- INICIO : Banner Principal -------- -->
-<section class="gameboy-banner-container">
+  <section class="gameboy-banner-container">
     <!-- Imagen de la consola -->
-    <img class="gameboy-banner-img" src="../assets/banner_login.webp" alt="Marco del Banner">
-    
+    <img class="gameboy-banner-img" src="./assets/banner_login.webp" alt="Marco del Banner">
     <!-- Franja de texto totalmente aislada -->
     <h3 class="gameboy-screen-text yellow-accent btn-yellow">LOGIN</h3>
-</section>
+  </section>
   <!--* --------- FIN : Banner Principal ---------- -->
 
   <!--* --------- INICIO : Iniciar sesion ---------- -->
@@ -69,8 +68,7 @@
             </div>
             <div class="text-center prueba">
               <br>
-              ¿No tienes cuenta? <a href="showFormulario('sectionCreateUser')"
-                onclick="showFormulario(event, 'sectionCreateUser')">Regístrate</a>
+              ¿No tienes cuenta? <a href="" id="viewRegistrate">Regístrate</a>
             </div>
           </form>
         </div>
@@ -111,8 +109,7 @@
 
             <div class="text-center">
               <br>
-              ¿Ya tiene cuenta? <a href="" onclick="showFormulario(event,'sectionLogin')">Inicia
-                sesión</a>
+              ¿Ya tiene cuenta? <a href="" id="viewLogin">Inicia sesión</a>
             </div>
         </div>
         </form>
@@ -123,19 +120,18 @@
 
 
   <div class="info-text">
-    <h4>CONTACTO</h4> <br><p><a href="">ThepixelVault@gmail.com</a> es la mejor manera de contactar
+    <h4>CONTACTO</h4> <br>
+    <p><a href="">ThepixelVault@gmail.com</a> es la mejor manera de contactar
       con nuestro equipo de atención
       al cliente para
       cualquier consulta sobre pedidos, información de seguimiento y detalles de los productos.
-        Por favor, tenga paciencia mientras espera una respuesta; por lo general, no leemos ni respondemos correos
-        electrónicos durante los fines de semana.
-      </p>
+      Por favor, tenga paciencia mientras espera una respuesta; por lo general, no leemos ni respondemos correos
+      electrónicos durante los fines de semana.
+    </p>
 
   </div>
 
   <!--* ---------- FIN : Iniciar sesion ------------ -->
-
-
 
 
   <!-- Footer: su contenido se inserta desde globalElements.js. -->
@@ -143,7 +139,7 @@
 
   <!-- ! ENLACES DE ARCHIVOS JAVASCRIP-->
   <script src="./javascript/globalElements.js"></script>
-  <script src="./javascript/login.js"></script>
+  <script type="module" src="./javascript/login.js"></script>
   <!-- ! FIN DE ENLACES DE ARCHIVOS JAVASCRIP-->
   <!-- !LINK BOOSTRAP-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

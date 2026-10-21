@@ -63,7 +63,7 @@ function renderizarCarrito() {
 
         const productCol = document.createElement('div');
         productCol.className = 'col-12 col-sm-6 col-lg-4';
-        
+
         productCol.innerHTML = `
             <div class="card notch" data-id="${product.id}">
               <div class="art">
@@ -104,7 +104,7 @@ function renderizarCarrito() {
         totalCarrito.textContent = `$${sumaTotal} MXN`;
     }
     if (subtotalCarrito) {
-        subtotalCarrito.textContent = `$${sumaTotal} MXN`; 
+        subtotalCarrito.textContent = `$${sumaTotal} MXN`;
     }
 }
 
@@ -138,3 +138,95 @@ document.addEventListener('DOMContentLoaded', () => {
     renderizarCarrito();
     actualizarContadorUI();
 });
+
+// 7. Modal de proceder al pago
+const modalPago = document.querySelector('#modalPago');
+const formPago = document.querySelector('#formPago');
+const listaProductos = document.querySelector('#pagoProductos');
+
+let temporizadorAviso;
+function mostrarAviso(texto) {
+    const aviso = document.querySelector('#avisoPago');
+    if (!aviso) return;
+
+    aviso.textContent = texto;
+    aviso.classList.add('show');
+
+    clearTimeout(temporizadorAviso);
+    temporizadorAviso = setTimeout(() => aviso.classList.remove('show'), 3500);
+}
+
+function pintarProductosModal() {
+    listaProductos.innerHTML = carrito.map((p, i) => `
+        <button type="button" class="pv-prod ${i === 0 ? 'activo' : ''}" title="${p.nombre}">
+            <img src="${p.imagen}" alt="${p.nombre}">
+            <span class="pv-prod__cant">x${p.cantidad}</span>
+        </button>
+    `).join('');
+}
+
+function iniciarModalPago() {
+    if (!modalPago) return;
+
+    modalPago.addEventListener('show.bs.modal', (e) => {
+        if (carrito.length === 0) {
+            e.preventDefault();
+            mostrarAviso('Tu carrito está vacío.');
+            return;
+        }
+        pintarProductosModal();
+    });
+
+    document.querySelector('#pagoPrev').addEventListener('click', () => {
+        listaProductos.scrollBy({ left: -180 });
+    });
+    document.querySelector('#pagoNext').addEventListener('click', () => {
+        listaProductos.scrollBy({ left: 180 });
+    });
+
+    listaProductos.addEventListener('click', (e) => {
+        const boton = e.target.closest('.pv-prod');
+        if (!boton) return;
+        listaProductos.querySelectorAll('.pv-prod').forEach(b => b.classList.remove('activo'));
+        boton.classList.add('activo');
+    });
+
+    const soloDigitos = (texto) => texto.replace(/\D/g, '');
+
+    document.querySelector('#numTarjeta').addEventListener('input', (e) => {
+        e.target.value = soloDigitos(e.target.value).slice(0, 16).replace(/(.{4})/g, '$1 ').trim();
+    });
+
+    document.querySelector('#expiracion').addEventListener('input', (e) => {
+        const d = soloDigitos(e.target.value).slice(0, 4);
+        e.target.value = d.length > 2 ? `${d.slice(0, 2)} / ${d.slice(2)}` : d;
+    });
+
+    ['#cvv', '#cp'].forEach(selector => {
+        const campo = document.querySelector(selector);
+        if (!campo) return;
+        campo.addEventListener('input', () => {
+            campo.value = soloDigitos(campo.value).slice(0, selector === '#cvv' ? 4 : 5);
+        });
+    });
+
+    formPago.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        if (!formPago.checkValidity()) {
+            formPago.classList.add('was-validated');
+            return;
+        }
+
+        // para enviar al backend (Spring Boot).
+        bootstrap.Modal.getInstance(modalPago).hide();
+        mostrarAviso('¡Pago confirmado! 🎮');
+    });
+
+    modalPago.addEventListener('hidden.bs.modal', () => {
+        formPago.reset();
+        formPago.classList.remove('was-validated');
+    });
+}
+
+iniciarModalPago();

@@ -69,7 +69,6 @@ juegosElement.addEventListener("click",(e) => {
     if(e.target.id == "Videojuegos"){
         productsElement.innerHTML= "";
         const pr = "Videojuego";
-        console.log("Ya dió click");
         productosp.map((product) =>{
             if(product.tipo == pr){
                 renderProduct(product);
@@ -78,7 +77,6 @@ juegosElement.addEventListener("click",(e) => {
     }else if(e.target.id == "Fisicos"){
         productsElement.innerHTML= "";
         const pr = "Físico";
-        console.log("Ya dió click");
         productosp.map((product) =>{
             if(product.categoria == pr){
                 renderProduct(product);
@@ -87,7 +85,6 @@ juegosElement.addEventListener("click",(e) => {
     }else if(e.target.id == "Digitales"){
         productsElement.innerHTML= "";
         const pr = "Digital";
-        console.log("Ya dió click");
         productosp.map((product) =>{
             if(product.categoria == pr){
                 renderProduct(product);
@@ -96,7 +93,6 @@ juegosElement.addEventListener("click",(e) => {
     }else if(e.target.id == "EdicionEspecial"){
         productsElement.innerHTML= "";
         const pr = "Edición especial";
-        console.log("Ya dió click");
         productosp.map((product) =>{
             if(product.categoria == pr){
                 renderProduct(product);

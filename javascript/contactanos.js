@@ -1,3 +1,4 @@
+import { createContactSupport } from "./../services/contactSupport.service.js";
 
 /* ===================================== INICIO VALIDACION FORMULARIO ======================================= */
 document.addEventListener("DOMContentLoaded", () => {
@@ -44,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (formularioValido) {
         const data = new FormData(formulario);
+        const contactSupportObject = Object.fromEntries([...new FormData(formulario)]);
         try{
           const response = await fetch(formulario.action,{
             method:formulario.method,
@@ -55,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
           if(response.ok){
             formulario.reset();
             renderizar(true,[],resultadoRegistro);
+            createContactSupport(contactSupportObject);
           }else{
             mensajesError.push("Hubo un error al enviar el formulario, Intenta más tarde");
             renderizar(false,mensajesError,resultadoRegistro);
