@@ -1,13 +1,3 @@
-#arcade {
-  width: 90vw;
-  height: auto;
-  margin:0 auto;
-  padding-top: 5vw;
-  filter: drop-shadow(0px 0px 20px rgb(159, 58, 253));
-  position: relative;
-  z-index: 0;
-}
-
 /* LETRAS MATRIX*/
 
 .matrix-bg{
@@ -203,3 +193,84 @@
 }
 
 /* ---------- Termina carrusel neón ---------- */
+
+/*--------------Videojuego---------------------*/
+.arcade-wrapper {
+  position: relative;
+  width: 90vw;
+  margin: 0 auto;
+  padding-top: 5vw;
+}
+
+/* Por defecto (Pantallas grandes) */
+#arcade {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0px 0px 20px rgb(159, 58, 253));
+  display: block; /* Visible en PC */
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+#arcadecel {
+  display: none; /* Oculto en PC */
+}
+
+.contenedorjuego {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.game-container {
+  position: absolute;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: none;
+  transform-style: preserve-3d;
+  transform: perspective(500px) scale(1.07) rotateX(8.5deg);
+  top: 31.8%;
+  left: 0.4%;
+  right: 0;
+  margin: 0 auto;
+  pointer-events: auto;
+}
+
+.game-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Pantallas pequeñas (Móviles / Tablets) */
+@media (max-width: 1000px) {
+  #arcade {
+    display: none !important; /* Oculta arcade de PC */
+  }
+  
+  #arcadecel {
+    display: block !important; /* Muestra arcade de celular */
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0px 0px 20px rgb(159, 58, 253));
+  }
+
+  .game-container {
+    display: none !important; /* Oculta el juego */
+  }
+}
+
+
+
+
+/*--------------Fin del Videojuego---------------------*/

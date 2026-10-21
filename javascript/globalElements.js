@@ -43,7 +43,7 @@ const getValidUrlMicuenta = () => {
   let urlLogin = "login.html";
 
   const dataUser = getItemLocalStorage("DATA_USER");
-  console.log("dataUser", dataUser);
+  
   if (dataUser) {
     return urlMicuenta;
   }
@@ -59,7 +59,7 @@ const renderNavbar = () => {
                         
                         <!-- Centro -->
                         <div class="radial-center">
-                          <img src="../assets/logo_vertical.jpg" alt="Logo P" class="center-logo"> 
+                          <img src="../assets/logo_vertical.png" alt="Logo P" class="center-logo"> 
                           <!--<h3 class="center-letter head yellow-accent">THE PIXEL <br>VAULT </h3>--!>
                         </div>
 
@@ -101,7 +101,7 @@ const renderNavbar = () => {
   let mobileBurgerMenu = `
     <div class="burgerMenu" id="responsBurgerMenu">
       <a class="iconMoneda" onclick="viewOptionBurgerMenu()">
-        <img src="../assets/btnJuego.webp" id="btnJuego">
+        <img src="../assets/btnJuego.png" id="btnJuego">
       </a>
     </div>
     `;
@@ -121,11 +121,11 @@ const renderNavbar = () => {
         </div>
       </div>
     </div>
-    <img class="logo" src="../assets/ThePixelVaultLogo.webp" alt="Logo de The Pixel Vault">
+    <img class="logo" src="../assets/ThePixelVaultLogo.png" alt="Logo de The Pixel Vault">
     ${mobileBurgerMenu}
     <div class="contenedorBarras divNavLeft">
         <a href="./miCarrito.html">
-        <img class="barraAzul" src="../assets/carrito.webp" alt="Carrito de compras">
+        <img class="barraAzul" src="../assets/carrito.png" alt="Carrito de compras">
         </a>
     </div>
     `;
@@ -315,10 +315,10 @@ const renderfooter = () => {
       <div class="footer-column">
         <h3 class="column-title">NAVEGACIÓN</h3>
         <ul class="footer-links">
+          <li><a href="${dataUser ? urlMicuenta : urlLogin}"><span class="play-icon">▶</span>Login</a></li>
           <li><a href="index.html"><span class="play-icon">▶</span> Inicio</a></li>
           <li><a href="contactanos.html"><span class="play-icon">▶</span> Contáctanos</a></li>
           <li><a href="acercaNosotros.html"><span class="play-icon">▶</span> Acerca de nosotros</a></li>
-          <li><a href="soporte.html"><span class="play-icon">▶</span> Soporte y atención al cliente</a></li>
         </ul>
       </div>
 
@@ -326,7 +326,8 @@ const renderfooter = () => {
       <div class="footer-column">
         <h3 class="column-title">COLECCIÓN</h3>
         <ul class="footer-links">
-          <li><a href="${dataUser ? urlMicuenta : urlLogin}"><span class="play-icon">▶</span>Login</a></li>
+          <li><a href="tienda.html"><span class="play-icon">▶</span>Tienda de videojuegos</a></li>
+          <!-- <li><a href="tienda.html"><span class="play-icon">▶</span>Tienda de mercancía</a></li> -->
           <!-- <li><a href="#"><span class="play-icon">▶</span>Registro de usuario</a></li> -->
           <!-- <li><a href="mi-cuenta.html"><span class="play-icon">▶</span>Mi cuenta</a></li> -->
           <li><a href="miCarrito.html"><span class="play-icon">▶</span>Mi carrito</a></li>
@@ -337,8 +338,7 @@ const renderfooter = () => {
       <div class="footer-column">
         <h3 class="column-title">SOPORTE</h3>
         <ul class="footer-links">
-          <li><a href="tienda.html"><span class="play-icon">▶</span>Tienda de videojuegos</a></li>
-          <!-- <li><a href="tienda.html"><span class="play-icon">▶</span>Tienda de mercancía</a></li> -->
+        <li><a href="soporte.html"><span class="play-icon">▶</span> Soporte y atención al cliente</a></li>
         </ul>
       </div>
 

@@ -63,7 +63,7 @@
                 <input class="form-check-input" type="checkbox" role="switch" id="switchMastercard" disabled>
               </div><br>
               <div class="form-check form-switch">
-                <label class="form-check-label" for="switchPaypal"><img src="assets/paypal.webp" alt="PaypalLogo"
+                <label class="form-check-label" for="switchPaypal"><img src="assets/paypal.png" alt="PaypalLogo"
                     style="height: 5vw;"></label>
                 <input class="form-check-input" type="checkbox" role="switch" id="switchPaypal" disabled>
               </div><br>
@@ -77,91 +77,129 @@
         <div class="contenedor-tarjeta-rosa h-100">
           <div class="contenido-tarjeta">
             <form id="datos-usuario">
-              <h3>Datos del usuario</h3>
-              <div class="row">
-                <div class="col-6">
-                  <div class="mb-1">
-                    <label for="nombre" class="form-label">Nombre</label><br>
-                    <input class="contenedor-chico-amarillo" name="nombre" type="text" class="form-control" id="nombre"
-                      placeholder="Nombre" disabled>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="mb-1">
-                    <label for="apellidos" class="form-label">Apellidos</label><br>
-                    <input class="contenedor-chico-amarillo" name="apellidos" type="text" class="form-control"
-                      id="apellidos" placeholder="Apellidos" disabled>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-8">
-                  <div class="mb-1">
-                    <label for="email" class="form-label">E-mail</label><br>
-                    <input class="contenedor-chico-amarillo" name="email" type="email" class="form-control" id="email"
-                      placeholder="example@example.com" disabled>
-                  </div>
-                </div>
-                <div class="col-4">
-                  <div class="mb-1">
-                    <label for="telefono" class="form-label">Teléfono</label><br>
-                    <input class="contenedor-chico-amarillo" type="number" class="form-control" id="telefono"
-                      placeholder="1234567890" disabled>
-                  </div>
-                </div>
-              </div>
-              <h3 id="direccion">Dirección</h3>
-              <div class="row">
-                <div class="col-8">
-                  <div class="mb-1">
-                    <label for="calle" class="form-label">Calle</label><br>
-                    <input class="contenedor-chico-amarillo" name="calle" type="text" class="form-control" id="calle"
-                      placeholder="Calle" disabled>
-                  </div>
-                </div>
-                <div class="col-4">
-                  <div class="mb-1">
-                    <label for="numero" class="form-label">Número</label><br>
-                    <input class="contenedor-chico-amarillo" name="numero" type="number" class="form-control"
-                      id="numero" placeholder="11" disabled>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  <div class="mb-1">
-                    <label for="colonia" class="form-label">Colonia/Alcaldía</label><br>
-                    <input class="contenedor-chico-amarillo" name="colonia" type="text" class="form-control"
-                      id="colonia" placeholder="Colonia" disabled>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="mb-1">
-                    <label for="municipio" class="form-label">Municipio</label><br>
-                    <input class="contenedor-chico-amarillo" name="municipio" type="text" class="form-control"
-                      id="municipio" placeholder="Municipio" disabled>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-9">
-                  <div class="mb-1">
-                    <label for="estado" class="form-label">Estado/Ciudad</label><br>
-                    <input class="contenedor-chico-amarillo" name="estado" type="text" class="form-control" id="estado"
-                      placeholder="Estado/Ciudad" disabled>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <div class="mb-1">
-                    <label for="postal" class="form-label">CP</label><br>
-                    <input class="contenedor-chico-amarillo" name="postal" type="number" class="form-control"
-                      id="postal" placeholder="12345" disabled>
-                  </div>
-                </div>
-              </div>
-              <button id="guardardatos" type="button" class="btn guardar d-none">Guardar</button>
-              <button id="editardatos" type="button" class="btn"><img src="assets/lapiz.svg" alt="Editar"></button>
-            </form>
+  <h3>Datos del usuario</h3>
+  
+  <!-- Fila 1: Nombre y Segundo Nombre -->
+  <div class="row">
+    <div class="col-6">
+      <div class="mb-1">
+        <label for="nombre" class="form-label">Primer Nombre</label><br>
+        <input class="contenedor-chico-amarillo" name="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre" disabled>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="mb-1">
+        <!-- REQUERIDO POR USERMIDDLENAME -->
+        <label for="segundoNombre" class="form-label">Segundo Nombre</label><br>
+        <input class="contenedor-chico-amarillo" name="segundoNombre" type="text" class="form-control" id="segundoNombre" placeholder="Segundo Nombre" disabled>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fila 2: Apellidos separados -->
+  <div class="row">
+    <div class="col-6">
+      <div class="mb-1">
+        <label for="apellidoPaterno" class="form-label">Primer Apellido</label><br>
+        <input class="contenedor-chico-amarillo" name="apellidoPaterno" type="text" class="form-control" id="apellidoPaterno" placeholder="Apellido Paterno" disabled>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="mb-1">
+        <label for="apellidoMaterno" class="form-label">Segundo Apellido</label><br>
+        <input class="contenedor-chico-amarillo" name="apellidoMaterno" type="text" class="form-control" id="apellidoMaterno" placeholder="Apellido Materno" disabled>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fila 3: E-mail y Teléfono -->
+  <div class="row">
+    <div class="col-8">
+      <div class="mb-1">
+        <label for="email" class="form-label">E-mail</label><br>
+        <input class="contenedor-chico-amarillo" name="email" type="email" class="form-control" id="email" placeholder="example@example.com" disabled>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="mb-1">
+        <label for="telefono" class="form-label">Teléfono</label><br>
+        <input class="contenedor-chico-amarillo" type="text" class="form-control" id="telefono" placeholder="1234567890" disabled>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="mb-1">
+        <label for="password" class="form-label">Contraseña</label><br>
+        <div class="position-relative d-inline-block w-100">
+          <input class="contenedor-chico-amarillo" name="password" type="password" class="form-control" id="password" placeholder="••••••••" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="direccion">Dirección</h3>
+  
+  <!-- Fila 5: Calle y Número -->
+  <div class="row">
+    <div class="col-8">
+      <div class="mb-1">
+        <label for="calle" class="form-label">Calle</label><br>
+        <input class="contenedor-chico-amarillo" name="calle" type="text" class="form-control" id="calle" placeholder="Calle" disabled>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="mb-1">
+        <label for="numero" class="form-label">Número</label><br>
+        <input class="contenedor-chico-amarillo" name="numero" type="text" class="form-control" id="numero" placeholder="11" disabled>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fila 6: Colonia y Municipio -->
+  <div class="row">
+    <div class="col-6">
+      <div class="mb-1">
+        <label for="colonia" class="form-label">Colonia/Alcaldía</label><br>
+        <input class="contenedor-chico-amarillo" name="colonia" type="text" class="form-control" id="colonia" placeholder="Colonia" disabled>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="mb-1">
+        <label for="municipio" class="form-label">Municipio</label><br>
+        <input class="contenedor-chico-amarillo" name="municipio" type="text" class="form-control" id="municipio" placeholder="Municipio" disabled>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fila 7: Estado, País y C.P. -->
+  <div class="row">
+    <div class="col-5">
+      <div class="mb-1">
+        <label for="estado" class="form-label">Estado/Ciudad</label><br>
+        <input class="contenedor-chico-amarillo" name="estado" type="text" class="form-control" id="estado" placeholder="Estado/Ciudad" disabled>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="mb-1">
+        <label for="pais" class="form-label">País</label><br>
+        <input class="contenedor-chico-amarillo" name="pais" type="text" class="form-control" id="pais" placeholder="País" disabled>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="mb-1">
+        <label for="postal" class="form-label">C.P.</label><br>
+        <input class="contenedor-chico-amarillo" name="postal" type="number" class="form-control" id="postal" placeholder="00000" disabled>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tus botones originales e intactos -->
+  <button id="guardardatos" type="button" class="btn guardar d-none">Guardar</button>
+  <button id="editardatos" type="button" class="btn"><img src="assets/lapiz.svg" alt="Editar"></button>
+</form>
+
           </div>
         </div>
       </div>

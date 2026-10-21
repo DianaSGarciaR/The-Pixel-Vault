@@ -1,0 +1,10 @@
+<svg xmlns="http://w3.org" width="64" height="33" viewBox="0 0 64 33" style="shape-rendering: crispEdges;">
+  <!-- Barra superior y sus esquinas escalonadas -->
+  <path d="M6,0h52v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1H11V6h-1V5H9V4H8V3H7V2H6V1H5V0z" fill="#FFD23F" />
+  
+  <!-- Laterales izquierdo y derecho -->
+  <path d="M0,6h1v21h-1z M63,6h1v21h-1z" fill="#FFD23F" />
+  
+  <!-- Barra inferior y sus esquinas escalonadas -->
+  <path d="M5,32h54v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1H12v1h-1v1h-1v1h-1v1h-1v1h-1v1z" fill="#FFD23F" />
+</svg>
