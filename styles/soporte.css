@@ -36,7 +36,7 @@
 /* Base unificada para todos los marcos contenedores */
 .marcoAzul, .marcoRosa, .marcoAmarillo {
   position: relative;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(10px);
   z-index: 1;
   text-align: center;
   box-sizing: border-box;
@@ -135,7 +135,7 @@ p {
 }
 .marcoAzul:hover .neon-btn {
   color: #ffffff;
-  text-shadow: 3px 3px 3px #000000;
+  
   text-shadow: 0 0 15px #00ffdd, 0 0 20px #ffffff;
   transform: scale(1.2);
 }
@@ -187,4 +187,83 @@ p {
   gap: 2rem; /* Espaciado entre Términos y Privacidad */
   width: 100%;
   margin-top: 1rem; 
+}
+
+/* ==========================================================================
+   ODALES 
+   ========================================================================== */
+
+.modal-pixel {
+  background: rgba(8, 8, 28, 0.95);     
+  border: 4px solid #00ffff;              
+  border-radius: 0;                       
+  box-shadow: 0 0 15px #00ffff, 0 0 5px #ffffff;
+  color: #ffffff;
+  font-family: var(--font-pixel-body);
+}
+
+.modal-pixel .modal-header {
+  border-bottom: 3px solid #ff00ea;       /* línea rosa de separación */
+}
+
+.modal-pixel .modal-title {
+  font-family: var(--font-pixel-header);
+  color: var(--yellow-accent);
+  font-size: clamp(1.1rem, 4vw, 1.6rem);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+}
+
+.modal-pixel .modal-body h3 {
+  color: var(--yellow-accent);
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  margin-top: 1rem;
+}
+
+/* reduce el tamaño de p */
+.modal-pixel p {
+  font-size: clamp(14px, 3.5vw, 16px);
+  text-align: left;
+}
+
+/* para poner la x en blanco y se vea sobre el fondo */
+.modal-pixel .btn-close {
+  filter: invert(1);
+  opacity: 1;
+}
+
+/* Fondo oscuro detrás del modal   */
+.modal-backdrop.show {
+  opacity: 0.8;
+}
+
+/* --- seccion de preguntas frecuentes --- */
+.accordion-pixel .accordion-item {
+  background: transparent;
+  border: 2px solid #00ffff;
+  border-radius: 0;
+  margin-bottom: 0.8rem;
+}
+
+.accordion-pixel .accordion-button {
+  background: transparent;
+  color: var(--yellow-accent);
+  font-family: var(--font-pixel-sub);
+  font-weight: bold;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.accordion-pixel .accordion-button:not(.collapsed) {
+  background: rgba(0, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+/* hace que la flechita de cada pregunta se vea blanca */
+.accordion-pixel .accordion-button::after {
+  filter: invert(1);
+}
+
+.accordion-pixel .accordion-body {
+  color: #ffffff;
+  font-size: clamp(14px, 3.5vw, 16px);
 }
