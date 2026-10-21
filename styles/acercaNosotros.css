@@ -1,3 +1,38 @@
+.banner-container {
+  position: relative;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  width: 100%;
+  overflow: visible !important;
+}
+
+.banner-frame {
+  width: clamp(170px, 40vw, 700px) !important;
+  display: block;
+  margin: 0;
+  filter: drop-shadow(0 0 20px #ffe655);
+}
+
+.banner-screen {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: none !important;
+  pointer-events: none; 
+}
+
+.banner-screen h3 {
+  font-size: clamp(10px, 3vw, 40px);
+  position: absolute;
+  margin: 0;
+  pointer-events: auto; 
+  top: 112%;   
+  left: 50%;  
+  transform: translate(-50%, -50%); 
+}
+
+
 /**----------ROSTER DEL EQUIPO----------*/
 .team-content{
     position:relative;

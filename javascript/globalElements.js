@@ -116,6 +116,7 @@ const renderNavbar = () => {
         <img class="insertcoin" src="../assets/insertcoin.webp" rel="insertcoin">
         <div class="ranura" id="ranura"></div>
         <div class="moneda" id="moneda"></div>
+        <div class="boton" id="boton"></div> 
         <div class="menu" id="menudesplegable">
           ${botonMenu}
         </div>
@@ -166,8 +167,13 @@ renderNavbar();
 /* --------- INICIO: MENU INTERACTIVO --------- */
 const moneda = document.querySelector('#moneda');
 const ranura = document.querySelector('#ranura');
+const boton = document.querySelector('#boton');
 const menudesplegable = document.querySelector('#menudesplegable');
 const dropSound = new Audio(`./assets/sonidomoneda.mp3`);
+
+boton.addEventListener("pointerdown", (e) => {
+  openMenu();
+});
 
 let interactuando = false;
 let agarreX, agarreY;
