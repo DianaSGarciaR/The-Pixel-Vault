@@ -1,3 +1,6 @@
+import { createProduct } from "../services/registroProductsService.js"
+import { addProductToCategory } from "../services/registroProductsService.js";
+
 // Busca en el DOM el formulario con el id "registro-products-form".
 const formEl = document.getElementById("registro-products-form");
 
@@ -29,12 +32,25 @@ formEl.addEventListener("submit", (event) => {
 
     // Recolecta todos los campos del formulario en un objeto iterable.
     const formData = new FormData(formEl);
+
+    //Se guardan los dos datos que no son necesarios para crear el producto y que se van a añadir como categorías del producto
+    const type = formData.get("tipo");
+    formData.delete("tipo");
+    const category = formData.get("categoryName");
+    formData.delete("categoryName");
+
+
+    //console.log(formData);
     const dataArray = [...formData];
 
+    
 
     // Convierte el arreglo de pares clave-valor en un objeto JavaScript.
     const producto = Object.fromEntries(dataArray);
 
+    createProduct(producto);
+    //addProductToCategory(1,type);
+    //addProductToCategory(1,category);
 
     // Agrega el nuevo producto al arreglo general.
     productos.push(producto);
@@ -73,8 +89,6 @@ const getItemLocalStorage = (key) => {
 /**========== Inicio código validación de formulario ========== */
 
 const formulario = document.getElementById("registro-products-form");
-const inputImagen = document.getElementById("imagen");
-const nombreImagen = document.querySelector(".file-field__name");
 
 /*FUNCIÓN AUXILIAR PARA MOSTRAR UN MENSAJE DE ERROR*/
 function mostrarError(input, mensaje, idError) {
@@ -127,7 +141,7 @@ formulario.addEventListener("input", function (event) {
 
 
     // VALIDACIÓN DEL NOMBRE
-    if (input.id === "nameProduct") {
+    if (input.id === "name") {
 
         eliminarError("nameProduct-error");
 
@@ -141,9 +155,24 @@ formulario.addEventListener("input", function (event) {
         }
     }
 
+     // VALIDACIÓN DEL NOMBRE
+    if (input.id === "image") {
+
+        eliminarError("image-error");
+
+        if (valor.length < 10) {
+
+            mostrarError(
+                input,
+                "La ruta tiene que tener al menos 10 caracteres.",
+                "image-error"
+            );
+        }
+    }
+
 
     // VALIDACIÓN DE LA DESCRIPCIÓN
-    if (input.id === "Descripcion") {
+    if (input.id === "description") {
 
         eliminarError("descripcion-error");
 
@@ -159,7 +188,7 @@ formulario.addEventListener("input", function (event) {
 
 
     // VALIDACIÓN DEL PRECIO
-    if (input.id === "precio") {
+    if (input.id === "price") {
 
         eliminarError("precio-error");
 
@@ -176,7 +205,7 @@ formulario.addEventListener("input", function (event) {
     }
 
     // VALIDACIÓN DEL GÉNERO
-    if (input.id === "genero") {
+    if (input.id === "attributes") {
 
         eliminarError("genero-error");
 
@@ -186,6 +215,21 @@ formulario.addEventListener("input", function (event) {
                 input,
                 "El género debe contener al menos 3 caracteres.",
                 "genero-error"
+            );
+        }
+    }
+
+    // VALIDACIÓN DEL GÉNERO
+    if (input.id === "game") {
+
+        eliminarError("game-error");
+
+        if (valor.length < 2) {
+
+            mostrarError(
+                input,
+                "La consola debe contener al menos 2 caracteres.",
+                "game-error"
             );
         }
     }
@@ -232,7 +276,7 @@ formulario.addEventListener("change", function (event) {
 
 
     // VALIDACIÓN DE LA CALIFICACIÓN
-    if (select.id === "cal") {
+    if (select.id === "rating") {
 
         eliminarError("calificacion-error");
 
@@ -248,18 +292,19 @@ formulario.addEventListener("change", function (event) {
 });
 
 
-/**VALIDACIÓN AL ENVIAR EL FORMULARI*/
+/**VALIDACIÓN AL ENVIAR EL FORMULARIO*/
 function validarFormAlEnviar() {
 
     // Obtenemos todos los campos
-    const nombre = document.getElementById("nameProduct");
+    const nombre = document.getElementById("name");
     const tipo = document.getElementById("tipo");
-    const imagen = document.getElementById("imagen");
-    const descripcion = document.getElementById("Descripcion");
-    const precio = document.getElementById("precio");
-    const genero = document.getElementById("genero");
+    const imagen = document.getElementById("image");
+    const descripcion = document.getElementById("description");
+    const precio = document.getElementById("price");
+    const genero = document.getElementById("attributes");
+    const consola = document.getElementById("game");
     const stock = document.getElementById("stock");
-    const calificacion = document.getElementById("cal");
+    const calificacion = document.getElementById("rating");
 
     let formularioValido = true;
 
@@ -293,6 +338,19 @@ function validarFormAlEnviar() {
         formularioValido = false;
     }
 
+    /** IMAGEN */
+    eliminarError("image-error");
+
+    if (imagen.value.trim().length < 10) {
+
+        mostrarError(
+            genero,
+            "La ruta tiene que tener al menos 10 caracteres.",
+            "image-error"
+        );
+
+        formularioValido = false;
+    }
 
     /** DESCRIPCIÓN */
     eliminarError("descripcion-error");
@@ -342,8 +400,22 @@ function validarFormAlEnviar() {
 
         mostrarError(
             genero,
-            "El género debe contener al menos 5 caracteres.",
+            "El género debe contener al menos 3 caracteres.",
             "genero-error"
+        );
+
+        formularioValido = false;
+    }
+
+    /** CONSOLA */
+    eliminarError("game-error");
+
+    if (consola.value.trim().length < 2) {
+
+        mostrarError(
+            consola,
+           "La consola debe contener al menos 2 caracteres.",
+            "game-error"
         );
 
         formularioValido = false;
@@ -402,12 +474,10 @@ function validarFormAlEnviar() {
     eliminarError("descripcion-error");
     eliminarError("precio-error");
     eliminarError("genero-error");
+    eliminarError("game-error");
     eliminarError("stock-error");
     eliminarError("calificacion-error");
-    // Restauramos visualmente el campo personalizado de la imagen
-    if (nombreImagen) {
-        nombreImagen.textContent = "Ningún archivo seleccionado";
-    }
+    eliminarError("image-error")
 
     // Mostrar un mensaje de éxito al usuario en el div
     const resultado = document.getElementById("resultadoRegistro");
@@ -422,48 +492,5 @@ function validarFormAlEnviar() {
     }
     }
 
-
-inputImagen.addEventListener("change", function () {
-
-    // Eliminamos cualquier error anterior
-    eliminarError("imagen-error");
-
-    // Verificamos si el usuario seleccionó algún archivo
-    if (inputImagen.files.length === 0) {
-
-        nombreImagen.textContent = "Ningún archivo seleccionado";
-
-        mostrarError(
-            inputImagen,
-            "Debes seleccionar una imagen.",
-            "imagen-error"
-        );
-
-        return;
-    }
-
-    // Obtenemos el archivo seleccionado
-    const archivo = inputImagen.files[0];
-
-    // Verificamos que realmente sea una imagen
-    if (!archivo.type.startsWith("image/")) {
-
-        nombreImagen.textContent = "Archivo no válido";
-
-        mostrarError(
-            inputImagen,
-            "El archivo seleccionado debe ser una imagen.",
-            "imagen-error"
-        );
-
-        // Eliminamos el archivo seleccionado
-        inputImagen.value = "";
-
-        return;
-    }
-
-    // Si llegamos aquí, la imagen es válida
-    nombreImagen.textContent = archivo.name;
-});
 
 /**========== Fin código validación de formulario ========== */
