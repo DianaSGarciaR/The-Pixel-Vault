@@ -1,5 +1,7 @@
+/* =========== import =========== */
+import { createUser } from "../services/loginApi.service.js";
 
-const keyEncryption = 22;
+/* =========== variable =========== */
 const NEW_USER = {
     userName: "-",
     userMiddleName: "-",
@@ -18,6 +20,9 @@ const NEW_USER = {
         zipCode: "-"
     }
 };
+const viewRegistrate = document.querySelector("#viewRegistrate");
+const viewLogin = document.querySelector("#viewLogin");
+
 const formNewUser = document.querySelector("#formNewUser");
 const formLogin = document.querySelector("#formLogin");
 
@@ -62,21 +67,29 @@ formNewUser.addEventListener("submit", (event => {
     if (formularioValido) {
         delete newUser.passwordConfirm;
         let user = { ...newUser, ...NEW_USER }
-        createUser(user);
+        //createNewUser(user);
+        try {
+            createNewUser(user);
+        } catch (error) {
+            LIST_ERRORES.push("Error de conexión. Revisa tu acceso a internet");
+            renderizarMensajes(false, LIST_ERRORES, resultadoRegistro);
+        }
     } else {
         renderizarMensajes(false, LIST_ERRORES, resultadoRegistro);
     }
 }));
 
-const createUser = (dataUser) => {
+const createNewUser = (dataUser) => {
     // !=== STAR: Esta pArte se sustituye cuando Se implemente BackEnd === 
     // Se deja solo para simular el guardado de datos en la base de datos, cuando se implemente el BackEnd esta parte se eliminara
-    LIST_USERS.push(dataUser);
-    setLocalStorage("LIST_USERS", LIST_USERS);
-    //! === END: Esta pArte se sustituye cuando Se implemente BackEnd === */
+    //LIST_USERS.push(dataUser);
+    //setLocalStorage("LIST_USERS", LIST_USERS);
+    console.log("dataUser ", dataUser)
+    createUser(dataUser);
+
+    //! === END: Esta parte se sustituye cuando Se implemente BackEnd === */
     showFormulario(null, 'sectionLogin');
     renderizarMensajes(true, [], resultadoRegistro);
-
 };
 
 /* =============================== END: Create user ===============================*/
@@ -191,7 +204,6 @@ function existUserByEmailAndPassword(email, password, LIST_ERRORES) {
 
 /** ======== STAR: Mostrar/Ocultar formulario ================= */
 function showFormulario(event, elementId) {
-    console.log("event ", event)
     if (event) {
         event.preventDefault();
     }
@@ -211,6 +223,15 @@ function showFormulario(event, elementId) {
     }, 5000);
 }
 /** ================= END: Mostrar/Ocultar elementos ================= */
+
+/** ===================== =============== */
+viewRegistrate.addEventListener("click", (event) => {
+    showFormulario(event, 'sectionCreateUser');
+});
+
+viewLogin.addEventListener("click", (event) => {
+    showFormulario(event, 'sectionLogin');
+});
 
 /** ================= STAR: Mensajes ================= */
 // Mensajes de error 
