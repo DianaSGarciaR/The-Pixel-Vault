@@ -43,7 +43,7 @@ const getValidUrlMicuenta = () => {
   let urlLogin = "login.html";
 
   const dataUser = getItemLocalStorage("DATA_USER");
-  console.log("dataUser", dataUser);
+  
   if (dataUser) {
     return urlMicuenta;
   }
@@ -59,7 +59,7 @@ const renderNavbar = () => {
                         
                         <!-- Centro -->
                         <div class="radial-center">
-                          <img src="./assets/logo_vertical.png" alt="Logo P" class="center-logo"> 
+                          <img src="../assets/logo_vertical.png" alt="Logo P" class="center-logo"> 
                           <!--<h3 class="center-letter head yellow-accent">THE PIXEL <br>VAULT </h3>--!>
                         </div>
 
@@ -101,7 +101,7 @@ const renderNavbar = () => {
   let mobileBurgerMenu = `
     <div class="burgerMenu" id="responsBurgerMenu">
       <a class="iconMoneda" onclick="viewOptionBurgerMenu()">
-        <img src="./assets/btnJuego.png" id="btnJuego">
+        <img src="../assets/btnJuego.png" id="btnJuego">
       </a>
     </div>
     `;
@@ -113,7 +113,7 @@ const renderNavbar = () => {
       <!-- Imagen - Se anida dentro de este div para evitar que un fragmento del elemento quede visible en pantallas móviles. -->
       <div class="menuinteractivo divNavRight" id="menuinteractivo">
         <!-- Imagen - Se anida dentro de este div para evitar que un fragmento del elemento quede visible en pantallas móviles. -->
-        <img class="insertcoin" src="./assets/insertcoin.png" rel="insertcoin">
+        <img class="insertcoin" src="../assets/insertcoin.webp" rel="insertcoin">
         <div class="ranura" id="ranura"></div>
         <div class="moneda" id="moneda"></div>
         <div class="menu" id="menudesplegable">
@@ -121,11 +121,11 @@ const renderNavbar = () => {
         </div>
       </div>
     </div>
-    <img class="logo" src="./assets/ThePixelVaultLogo.png">
+    <img class="logo" src="../assets/ThePixelVaultLogo.png" alt="Logo de The Pixel Vault">
     ${mobileBurgerMenu}
     <div class="contenedorBarras divNavLeft">
         <a href="./miCarrito.html">
-        <img class="barraAzul" src="./assets/carrito.png">
+        <img class="barraAzul" src="../assets/carrito.png" alt="Carrito de compras">
         </a>
     </div>
     `;
@@ -326,9 +326,9 @@ const renderfooter = () => {
       <div class="footer-column">
         <h3 class="column-title">COLECCIÓN</h3>
         <ul class="footer-links">
-          <li><a href="#"><span class="play-icon">▶</span>Login</a></li>
-          <li><a href="#"><span class="play-icon">▶</span>Registro de usuario</a></li>
-          <li><a href="mi-cuenta.html"><span class="play-icon">▶</span>Mi cuenta</a></li>
+          <li><a href="${dataUser ? urlMicuenta : urlLogin}"><span class="play-icon">▶</span>Login</a></li>
+          <!-- <li><a href="#"><span class="play-icon">▶</span>Registro de usuario</a></li> -->
+          <!-- <li><a href="mi-cuenta.html"><span class="play-icon">▶</span>Mi cuenta</a></li> -->
           <li><a href="miCarrito.html"><span class="play-icon">▶</span>Mi carrito</a></li>
         </ul>
       </div>
@@ -338,7 +338,7 @@ const renderfooter = () => {
         <h3 class="column-title">SOPORTE</h3>
         <ul class="footer-links">
           <li><a href="tienda.html"><span class="play-icon">▶</span>Tienda de videojuegos</a></li>
-          <li><a href="tienda.html"><span class="play-icon">▶</span>Tienda de mercancía</a></li>
+          <!-- <li><a href="tienda.html"><span class="play-icon">▶</span>Tienda de mercancía</a></li> -->
         </ul>
       </div>
 

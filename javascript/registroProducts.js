@@ -1,6 +1,5 @@
 // Busca en el DOM el formulario con el id "registro-products-form".
 const formEl = document.getElementById("registro-products-form");
-//console.log(formEl);
 
 let productos = [];
 // Este arreglo guardará todos los productos que se registren o que se lean desde localStorage.
@@ -13,7 +12,6 @@ window.addEventListener("load", () => {
     // Si existen, los cargamos en el arreglo para mostrarlos o trabajarlos luego.
     productos = [...getItemLocalStorage("productos")];
 
-    //console.log(productos);
 });
 
 
@@ -31,7 +29,6 @@ formEl.addEventListener("submit", (event) => {
 
     // Recolecta todos los campos del formulario en un objeto iterable.
     const formData = new FormData(formEl);
-    //console.log(formData);
     const dataArray = [...formData];
 
 
