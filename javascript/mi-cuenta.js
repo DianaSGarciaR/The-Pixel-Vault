@@ -1,3 +1,5 @@
+import { obtenerUsuario } from '../services/DataUser.js';
+
 const perfil = document.getElementById('imagenperfil'); 
 const guardarcambios = document.querySelector('.modal-footer .btn-primary'); 
 const modalElemento = document.getElementById('exampleModal'); 
@@ -90,6 +92,39 @@ document.addEventListener('DOMContentLoaded', () => {
 const inputsUsuario = document.querySelectorAll('#datos-usuario input'); 
 const btnEditarDatos = document.getElementById('editardatos'); 
 const btnGuardarDatos = document.getElementById('guardardatos'); 
+const mensajeErrorUsuario = document.getElementById('error-usuario');
+let usuarioActual;
+
+async function cargarDatosUsuario() {
+    try {
+        // Aqui llamo a mi funcion que tiene los datos de la api
+        usuarioActual = await obtenerUsuario();
+
+        // Lo mando a llamr cada valor en usuarioActual
+        document.getElementById('nombre').value = usuarioActual.userName || '';
+        document.getElementById('segundoNombre').value = usuarioActual.userMiddleName || '';
+        document.getElementById('apellidoPaterno').value = usuarioActual.userLastNameFirst || '';
+        document.getElementById('apellidoMaterno').value = usuarioActual.userLastNameSecond || '';
+        document.getElementById('email').value = usuarioActual.email || '';
+        document.getElementById('telefono').value = usuarioActual.userPhone || '';
+
+        // La dirección viene dentro de userAddress en la respuesta.
+        const direccion = usuarioActual.userAddress || {};
+        document.getElementById('calle').value = direccion.street || '';
+        document.getElementById('numero').value = direccion.number || '';
+        document.getElementById('colonia').value = direccion.sector || '';
+        document.getElementById('municipio').value = direccion.city || '';
+        document.getElementById('estado').value = direccion.state || '';
+        document.getElementById('pais').value = direccion.country || '';
+        document.getElementById('postal').value = direccion.zipCode || '';
+    } catch (error) {
+        console.error('No se pudieron cargar los datos del usuario:', error);
+        mensajeErrorUsuario.textContent = 'No se pudieron cargar tus datos. Revisa que el servidor esté activo.';
+        mensajeErrorUsuario.classList.remove('d-none');
+    }
+}
+
+cargarDatosUsuario();
 
 document.addEventListener('click', (e) => { 
     if (e.target.id === 'editardatos' || e.target.closest('#editardatos')) { 
@@ -97,69 +132,77 @@ document.addEventListener('click', (e) => {
         if (btnEditarDatos) btnEditarDatos.classList.add('d-none'); 
         if (btnGuardarDatos) btnGuardarDatos.classList.remove('d-none'); 
     } 
-    if (e.target.id === 'guardardatos') { 
-        const BaseDatosUsuario = {}; 
-        inputsUsuario.forEach(input => { 
-            BaseDatosUsuario[input.id] = input.value; 
-            input.disabled = true; 
-        }); 
-        localStorage.setItem('DATA_USER', JSON.stringify(BaseDatosUsuario)); 
-
-        // Temporales hasta conectar con crear usuario
-        const userId = 1; 
-        const roleId = 1; 
-
-const updatedUserData = {
-    email: document.getElementById('email').value,
-    password: document.getElementById('password').value,
-    userName: document.getElementById('nombre').value,
-    userMiddleName: document.getElementById('segundoNombre').value,
-    userPhone: document.getElementById('telefono').value,
-    userLastNameFirst: document.getElementById('apellidoPaterno').value,
-    status: 1,
-    userLastNameSecond: document.getElementById('apellidoMaterno').value,
-    roleId: parseInt(roleId) || 1,
-    userAddress: {
-        city: document.getElementById('municipio').value,
-        state: document.getElementById('estado').value,
-        number: document.getElementById('numero').value,
-        sector: document.getElementById('colonia').value,
-        street: document.getElementById('calle').value,
-        country: document.getElementById('pais').value,
-        zipCode: parseInt(document.getElementById('postal').value) || null
+    if (e.target.id === 'guardardatos') {
+        guardarDatosUsuario(); // para cuando se modifique algun cammpo
     }
-};
+});
 
-        // 3. Enviar la petición PUT a Spring Boot 
-        fetch(`http://localhost:8080/api/users/${userId}/${roleId}`, { 
-            method: 'PUT', 
-            headers: { 'Content-Type': 'application/json' }, 
-            body: JSON.stringify(updatedUserData) 
-        }) 
-        .then(response => { 
-            if (!response.ok) { 
-                return response.json().then(err => { 
-                    throw new Error(`Error en el servidor (Código ${response.status})`); 
-                }); 
-            } 
-            return response.json(); 
-        }) 
-        .then(data => { 
-            if (btnGuardarDatos) btnGuardarDatos.classList.add('d-none'); 
-            if (btnEditarDatos) btnEditarDatos.classList.remove('d-none'); 
-        }) 
-        .catch(error => { 
-            inputsUsuario.forEach(input => input.disabled = false); 
-        }); 
-    } 
-}); 
+async function guardarDatosUsuario() {
+        if (!usuarioActual) {
+            mensajeErrorUsuario.textContent = 'Primero hay que cargar los datos del usuario.';
+            mensajeErrorUsuario.classList.remove('d-none');
+            return;
+        }
+
+        // El ID viene del usuario cargado. El 3 y el 1 son valores de respaldo.
+        const userId = usuarioActual && usuarioActual.id ? usuarioActual.id : 3;
+        const roleId = usuarioActual && usuarioActual.roleId ? usuarioActual.roleId : 1;
+        const updatedUserData = {
+            email: document.getElementById('email').value,
+            password: document.getElementById('password').value,
+            userName: document.getElementById('nombre').value,
+            userMiddleName: document.getElementById('segundoNombre').value,
+            userPhone: document.getElementById('telefono').value,
+            userLastNameFirst: document.getElementById('apellidoPaterno').value,
+            status: usuarioActual && usuarioActual.status ? usuarioActual.status : 1,
+            userLastNameSecond: document.getElementById('apellidoMaterno').value,
+            roleId,
+            userAddress: {
+                city: document.getElementById('municipio').value,
+                state: document.getElementById('estado').value,
+                number: document.getElementById('numero').value,
+                sector: document.getElementById('colonia').value,
+                street: document.getElementById('calle').value,
+                country: document.getElementById('pais').value,
+                zipCode: parseInt(document.getElementById('postal').value, 10) || null
+            }
+        };
+
+        try {
+            const response = await fetch(`http://localhost:8080/api/users/${userId}/${roleId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updatedUserData)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error en el servidor (Código ${response.status})`);
+            }
+
+            // Guardamos lo escrito para que siga disponible en la página.
+            const BaseDatosUsuario = {};
+            inputsUsuario.forEach(input => {
+                BaseDatosUsuario[input.id] = input.value;
+                input.disabled = true;
+            });
+            localStorage.setItem('DATA_USER', JSON.stringify(BaseDatosUsuario));
+            mensajeErrorUsuario.classList.add('d-none');
+            if (btnGuardarDatos) btnGuardarDatos.classList.add('d-none');
+            if (btnEditarDatos) btnEditarDatos.classList.remove('d-none');
+        } catch (error) {
+            console.error('No se pudieron guardar los datos del usuario:', error);
+            mensajeErrorUsuario.textContent = 'No se pudieron guardar tus cambios. Intenta de nuevo.';
+            mensajeErrorUsuario.classList.remove('d-none');
+            inputsUsuario.forEach(input => input.disabled = false);
+        }
+}
 
 document.addEventListener('DOMContentLoaded', () => { 
     const datosMemoria = localStorage.getItem('DATA_USER'); 
     if (datosMemoria) { 
         const data = JSON.parse(datosMemoria); 
         inputsUsuario.forEach(input => { 
-            if (data[input.id] !== undefined) { 
+            if (input.id !== 'password' && data[input.id] !== undefined) {
                 input.value = data[input.id]; 
             } 
             input.disabled = true; 
