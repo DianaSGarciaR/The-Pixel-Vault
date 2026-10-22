@@ -1,18 +1,16 @@
+import { obtenerProductos } from "../services/productService.js";
 
-// Variable global para almacenar los productos que vienen de la BD
 let productosp = [];
-
 const productsElement = document.querySelector("#productos");
-let modalsContainer = document.body; 
+let modalsContainer = document.body;
 
-// Función para renderizar un producto (Mantiene tu diseño cyber intacto)
+// Función para renderizar un producto 
 let renderProduct = (product) => {
     const productCard = `
     <div class="col-12 col-sm-6 col-lg-4">
         <div class="notch">
             <div class="card">
                 <div class="art">
-                    <!-- Ojo: Asegúrate de que las propiedades coincidan con los atributos del modelo de Java (product.image, product.name, etc.) -->
                     <img src="${product.image}" class="card-img-top" alt="${product.name}">
                     <span class="badge">Nuevo</span>
                     <small>${product.game || 'General'}</small>
@@ -54,31 +52,22 @@ let renderProduct = (product) => {
     modalsContainer.insertAdjacentHTML('beforeend', productModal);
 };
 
-// ==========================================
-// NUEVO: Función Asíncrona para cargar productos de Spring Boot
-// ==========================================
 const cargarProductosDesdeBackend = async () => {
-    try {
-        const response = await fetch('http://localhost:8080/api/products');
-        if (!response.ok) {
-            throw new Error('Error al conectar con el servidor');
-        }
-        
-        productosp = await response.json(); // Guardamos los datos reales de la BD
-        
-        // Limpiamos y pintamos los productos iniciales
-        productsElement.innerHTML = "";
-        productosp.forEach((product) => renderProduct(product));
-
-    } catch (error) {
-        console.error("No se pudo cargar el catálogo del backend:", error);
-        productsElement.innerHTML = `<p class="text-danger text-center">Error: No se pudo conectar con el servidor de la API.</p>`;
+    productosp = await obtenerProductos();
+    
+    if (productosp.length === 0) {
+        productsElement.innerHTML = `<p class="text-danger text-center">Error: No se pudo conectar con el servidor de la API o no hay productos.</p>`;
+        return;
     }
+
+    productsElement.innerHTML = "";
+    productosp.forEach((product) => renderProduct(product));
 };
 
 // Ejecutamos la carga al iniciar la página
 document.addEventListener("DOMContentLoaded", cargarProductosDesdeBackend);
-//----Inicio localStorage---------------------------------
+
+//----Inicio localStorage-----
 function agregarProductoAlCarrito(product_id) {
   const carritoActual = JSON.parse(localStorage.getItem('carrito_compras')) || [];
 
@@ -149,14 +138,14 @@ filtrosElement.addEventListener("click", (e) => {
         // Filtro por Precio
         if (filterType === "price") {
             const [min, max] = filterValue.split("-").map(Number);
-            if (product.precio >= min && product.precio <= max) {
+            if (product.price >= min && product.price <= max) {
                 renderProduct(product);
             }
         }
         
         // Filtro por Plataforma convertimos a minúsculas 
-        else if (filterType === "platform") {
-            if (product.plataforma.toLowerCase().includes(filterValue.toLowerCase())) {
+        else if (filterType === "game") {
+            if (product.game.toLowerCase().includes(filterValue.toLowerCase())) {
                 renderProduct(product);
             }
         }
