@@ -1,0 +1,292 @@
+.banner-container {
+  position: relative;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  width: 100%;
+  overflow: visible !important;
+}
+
+.banner-frame {
+  width: clamp(170px, 40vw, 700px) !important;
+  display: block;
+  margin: 0;
+  filter: drop-shadow(0 0 20px #ffe655);
+}
+
+.banner-screen {
+  position: absolute;
+  top: 0;
+  width: clamp(170px, 40vw, 700px); 
+  height: 100%;
+  background: none !important;
+  pointer-events: none; 
+}
+
+.banner-screen h3 {
+  font-size: 1.5vw; 
+  position: absolute;
+  margin: 0;
+  pointer-events: auto; 
+  top: 88.5%;   
+  left: 40%;  
+  transform: translate(-50%, -50%) rotate(12.5deg); 
+  white-space: nowrap; 
+}
+
+@media (max-width: 480px) {
+  .banner-screen h3 {
+    font-size: 8px;
+  }
+}
+
+/* ==========================================================================
+   1. CONTENEDOR GENERAL Y TÍTULO
+   ========================================================================== */
+
+.soporte {
+  display: flex; /* activa flexbox para acomodar los hijos */
+  flex-direction: column; /* uno debajo del otro (en columna) */
+  align-items: center; /* los centra horizontalmente */
+  gap: 2.5rem; /* espacio entre cada bloque (título, botón, panel, etc) */
+  min-height: 70vh; /* altura mínima: 70% de la pantalla */
+  font-family: var(--font-pixel-sub); /* fuente por defecto de esta vista */
+  box-sizing: border-box;
+}
+
+.soporte-titulo {
+  margin-bottom: 2rem;
+  text-align: center; /* texto centrado */
+  font-family: var(--font-pixel-header); /* fuente pixelada de títulos */
+  font-weight: 700; /* negrita */
+  font-size: clamp(1.4rem, 4vw, 2.2rem); /* tamaño adaptable: mínimo | ideal | máximo */
+  letter-spacing: 1px; /* separación entre letras */
+  color: var(--yellow-accent); /* color amarillo */
+  /* Sombra de texto dura (estilo RPG de 8-bits) sin difuminar */
+  text-shadow: 
+    3px 3px 0px rgba(0, 0, 0, 0.8),
+    -1px -1px 0px rgba(0, 0, 0, 0.8),  
+    1px -1px 0px rgba(0, 0, 0, 0.8),
+    -1px 1px 0px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================================================
+   2. ESTRUCTURA BASE DE LOS MARCOS (CONTENEDORES)
+   ========================================================================== */
+
+/* Base unificada para todos los marcos contenedores */
+.marcoAzul, .marcoRosa, .marcoAmarillo {
+  position: relative;
+  backdrop-filter: blur(10px);
+  z-index: 1;
+  text-align: center;
+  box-sizing: border-box;
+  background: transparent; 
+  transition: transform 0.1s steps(2); 
+}
+
+.marcoAzul, .marcoRosa {
+  border: clamp(6px, 1.5vw, 14px) solid transparent; 
+  width: 90%;             
+  max-width: 420px;       
+  padding: 2rem 1.5rem;   
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.marcoAmarillo {
+  border: clamp(6px, 1.5vw, 14px) solid transparent;
+  padding: 0.8rem 1.5rem;
+  display: inline-flex;   
+  margin-top: 0.5rem;
+}
+
+.neon-btn {
+  text-decoration: none;
+  color: var(--yellow-accent);
+  font-size: clamp(14px, 3.5vw, 18px);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  transition: color 0.1s steps(2);
+}
+
+p {
+  font-size: clamp(16px, 4vw, 22px);
+  color: #ffffff;
+  margin: 0 0 1rem 0;   
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+.marcoAzul::before, .marcoRosa::before, .marcoAmarillo::before {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  top: calc(-1 * clamp(6px, 1.5vw, 14px)); 
+  left: calc(-1 * clamp(6px, 1.5vw, 14px));
+  right: calc(-1 * clamp(6px, 1.5vw, 14px));
+  bottom: calc(-1 * clamp(6px, 1.5vw, 14px));
+  border: clamp(6px, 1.5vw, 14px) solid transparent;
+  border-image-slice: 6;
+  border-image-repeat: stretch;
+  image-rendering: pixelated; 
+  image-rendering: crisp-edges;
+  transition: filter 0.1s steps(2);
+}
+
+.marcoAzul::before {
+  border-image-source: url('../assets/marco-pixel-azul.svg');
+  filter: drop-shadow(0 0 10px #00ffff) drop-shadow(0 0 5px #ffffff);
+}
+
+.marcoRosa::before {
+  border-image-source: url('../assets/marco-pixel-rosa.svg');
+  filter: drop-shadow(0 0 10px #ff00ea) drop-shadow(0 0 5px #ffffff);
+}
+
+.marcoAmarillo::before {
+  border-image-source: url('../assets/marco-pixel-amarillo.svg');
+  filter: drop-shadow(0 0 10px #ffee00) drop-shadow(0 0 5px #ffffff);
+}
+
+.marcoAzul:hover {
+  transform: translate(-3px, -3px); 
+}
+
+.marcoAzul:hover::before {
+  filter: brightness(1.5) drop-shadow(2px 4px 2px rgba(0, 238, 255, 0.9)); 
+}
+
+.marcoAzul:hover .neon-btn {
+  color: #ffffff;
+  text-shadow: 0 0 15px #00ffdd, 0 0 20px #ffffff;
+  transform: scale(1.2);
+}
+
+.marcoRosa:hover {
+  transform: translate(-3px, -3px);
+}
+
+.marcoRosa:hover::before {
+  filter: brightness(1.5) drop-shadow(2px 4px 2px rgba(212, 0, 255, 0.9));
+}
+
+.marcoRosa:hover .neon-btn {
+  color: #ffffff;
+  text-shadow: 0 0 15px #ff00ea, 0 0 20px #ffffff;
+  transform: scale(1.2);
+}
+
+.marcoAmarillo:hover {
+  transform: translate(3px, 3px); 
+}
+
+.marcoAmarillo:hover::before {
+  filter: brightness(1.5) drop-shadow(2px 4px 2px rgba(255, 230, 0, 0.9));
+}
+
+.marcoAmarillo:hover .neon-btn {
+  color: #ffffff;
+  text-shadow: 0 0 15px #fffb00, 0 0 20px #ffffff;
+  transform: scale(1.2);
+}
+
+.marcoAzul:active, .marcoRosa:active, .marcoAmarillo:active {
+  transform: translate(3px, 3px); 
+  transition: transform 0.02s;
+}
+
+/* ==========================================================================
+   6. SECCIÓN LEGAL Y PERSONALIZACIÓN EXTRA
+   ========================================================================== */
+
+.soporte-legal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem; /* Espaciado entre Términos y Privacidad */
+  width: 100%;
+  margin-top: 1rem; 
+}
+
+/* ==========================================================================
+   ODALES 
+   ========================================================================== */
+
+.modal-pixel {
+  background: rgba(8, 8, 28, 0.95);     
+  border: 4px solid #00ffff;              
+  border-radius: 0;                       
+  box-shadow: 0 0 15px #00ffff, 0 0 5px #ffffff;
+  color: #ffffff;
+  font-family: var(--font-pixel-body);
+}
+
+.modal-pixel .modal-header {
+  border-bottom: 3px solid #ff00ea;       /* línea rosa de separación */
+}
+
+.modal-pixel .modal-title {
+  font-family: var(--font-pixel-header);
+  color: var(--yellow-accent);
+  font-size: clamp(1.1rem, 4vw, 1.6rem);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+}
+
+.modal-pixel .modal-body h3 {
+  color: var(--yellow-accent);
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  margin-top: 1rem;
+}
+
+/* reduce el tamaño de p */
+.modal-pixel p {
+  font-size: clamp(14px, 3.5vw, 16px);
+  text-align: left;
+}
+
+/* para poner la x en blanco y se vea sobre el fondo */
+.modal-pixel .btn-close {
+  filter: invert(1);
+  opacity: 1;
+}
+
+/* Fondo oscuro detrás del modal   */
+.modal-backdrop.show {
+  opacity: 0.8;
+}
+
+/* --- seccion de preguntas frecuentes --- */
+.accordion-pixel .accordion-item {
+  background: transparent;
+  border: 2px solid #00ffff;
+  border-radius: 0;
+  margin-bottom: 0.8rem;
+}
+
+.accordion-pixel .accordion-button {
+  background: transparent;
+  color: var(--yellow-accent);
+  font-family: var(--font-pixel-sub);
+  font-weight: bold;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.accordion-pixel .accordion-button:not(.collapsed) {
+  background: rgba(0, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+/* hace que la flechita de cada pregunta se vea blanca */
+.accordion-pixel .accordion-button::after {
+  filter: invert(1);
+}
+
+.accordion-pixel .accordion-body {
+  color: #ffffff;
+  font-size: clamp(14px, 3.5vw, 16px);
+}

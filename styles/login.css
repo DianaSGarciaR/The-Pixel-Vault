@@ -1,28 +1,34 @@
-.gameboy-banner-container { 
+/* Evita que display:flex/grid de nuestras reglas rompa el atributo hidden */
+[hidden] {
+  display: none !important;
+}
+
+/* ============= Banner ============= */
+.gameboy-banner-container {
   display: grid;
-  justify-items: center !important; 
-  position: relative; 
+  justify-items: center !important;
+  position: relative;
   margin-top: 7vw !important;
   overflow: visible !important;
-} 
+}
 
-.gameboy-banner-img { 
-  height: clamp(40vw, 100vw - 50vw, 50vw) !important; 
-  width: auto !important; 
-  position: relative; 
-  z-index: 0; 
+.gameboy-banner-img {
+  height: clamp(40vw, 100vw - 50vw, 50vw) !important;
+  width: auto !important;
+  position: relative;
+  z-index: 0;
   filter: drop-shadow(0 0 20px rgba(147, 51, 234, 0.75));
-} 
+}
 
-.gameboy-screen-text { 
-  position: absolute; 
-  z-index: 1; 
+.gameboy-screen-text {
+  position: absolute;
+  z-index: 1;
   top: 26%;
   left: 50%;
   transform: translateX(-49%);
-  width: 50%; 
+  width: 50%;
   box-sizing: border-box;
-  text-align: center; 
+  text-align: center;
   margin: 0;
   display: block;
   background: transparent !important;
@@ -30,242 +36,240 @@
   border: none !important;
   box-shadow: none !important;
   font-family: var(--font-pixel-header);
-  font-size: clamp(7px, 3.3vw, 40px) !important; 
+  font-size: clamp(7px, 3.3vw, 40px) !important;
 }
 
- /*==============Inicio pruebas para marcos mejorados por Natalia ======================*/
- .ejemplo {
-     position: relative;
-     margin: clamp(1.5rem, 5vw, 4rem);
-     z-index: 1;
-     border: 1vw solid transparent;
-     background-color: rgba(0, 0, 0, 0.1);
-     backdrop-filter: blur(4px);
-     -webkit-backdrop-filter: blur(8px);
-     border-radius: 25px;
- }
-
- .ejemplo::before {
-     position: absolute;
-     content: "";
-     z-index: 0;
-     top: -2vw;
-     left: -2vw;
-     right: -2vw;
-     bottom: -2vw;
-     border: 6vw solid transparent;
-     border-image-slice: 6;
-     border-image-repeat: repeat;
-     border-image-source: url('../assets/marco-pixel-azul.svg');
-     filter: drop-shadow(0 0 10px #00E5FF) drop-shadow(0 0 5px #a0ebf3);
- }
-
- /*====================Fin de pruebas para marcos mejorados por Natalia===================*/
-
- a {
-     color: var(--cyan-accent);
-     position: relative;
-     z-index: 1;
-     transition: color 0.2s ease;
- }
-
- a :hover {
-     color: var(--panel-color);
-
- }
-
- /* ------- INICIO : Marco neon ------- */
-
- .contenido {
-     padding: 0rem;
-     position: relative;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     text-align: justify;
-     color: var(--yellow-accent);
-     /*     clip-path: polygon(5% 5%, 95% 5%, 95% 95%, 5% 95%);*/
- }
-
- /* Seccion Registro usario */
- #seccionInfo {
-     font-family: var(--font-pixel-sub);
-     z-index: -1;
-     padding: clamp(1.5rem, 6vw, 4rem);
-     background-image: url("../assets/miCuentaFondo.webp");
-     background-size: cover;
-     background-position: center;
-     height: auto;
-     min-height: min-content; 
-     text-align: justify;
-     align-content: center;
-     clip-path: polygon(
-        4vw 0,
-        100% 0,
-        100% 100%,
-        4vw 100%,
-        0 calc(100% - 4vw),
-        0 4vw
-    );
- }
-
- @media (min-width: 972px) {
-    #seccionInfo {
-        min-height: 100vh;
-    }
+/* ============= Marco neon (contenedor) ============= */
+.ejemplo {
+  --marco: clamp(12px, 4vw, 32px);   /* grosor único del marco */
+  position: relative;
+  margin: clamp(1.5rem, 5vw, 4rem);
+  z-index: 1;
+  /* Sin border propio: el contenido llega hasta el borde exterior
+     y el marco se dibuja ENCIMA, así la imagen queda pegada a la línea neón */
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 25px;
 }
 
- #seccionInfo h3 {
-     color: var(--border-color);
-     text-align: center;
-     padding-bottom: 1rem;
-     font-size: clamp(1rem, 4vw, 2.5rem);
- }
+.ejemplo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;                 /* por encima del contenido */
+  pointer-events: none;       /* no bloquea clics en formularios y links */
+  box-sizing: border-box;
+  border: var(--marco) solid transparent;
+  border-image-slice: 6;
+  border-image-repeat: stretch;
+  border-image-source: url('../assets/marco-pixel-azul.svg');
+  filter: drop-shadow(0 0 10px #00E5FF) drop-shadow(0 0 5px #a0ebf3);
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
 
- /* Seccion Registro usario */
- #sectionForm {
-     padding: clamp(1.5rem, 8vw, 5rem);
-     justify-items: center;
-     align-content: center;
- }
+/* ============= Links ============= */
+a {
+  color: var(--cyan-accent);
+  position: relative;
+  z-index: 1;
+  transition: color 0.2s ease;
+}
 
- /* Seccion Login */
- #sectionForm h4 {
-     font-family: var(--font-pixel-header);
-     font-size: clamp(1rem, 3vw, 2rem);
-    text-align: center;
-    }
+a:hover {
+  color: var(--panel-color);
+}
 
- .format-input {
-     width: 100%;
-     max-width: 500px;
-     margin: 1.5rem auto 0;
-     margin-bottom: 2rem;
-     margin-top: 2rem;
- }
+/* ============= Contenido: fila con dos paneles ============= */
+.contenido {
+  --bs-gutter-x: 0;           /* quita márgenes/padding negativos de .row */
+  --bs-gutter-y: 0;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: stretch;       /* ambos paneles miden lo mismo de alto */
+  padding: 0;
+  overflow: hidden;           /* la imagen respeta las esquinas redondeadas */
+  text-align: justify;
+  color: var(--yellow-accent);
+  clip-path: polygon(30px 0, calc(100% - 30px) 0, 100% 30px, 100% calc(100% - 30px),
+    calc(100% - 30px) 100%, 30px 100%, 0 calc(100% - 30px), 0 30px);
+}
 
- .format-input label {
-     font-family: var(--font-pixel-header);
-     font-size: clamp(0.7rem, 2vw, 1.1rem);
-     margin-bottom: 1rem;
- }
+@media (min-width: 992px) {   /* mismo breakpoint que col-lg de Bootstrap */
+  .contenido {
+    min-height: 100vh;
+  }
+}
 
- .format-input input {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    clip-path: polygon(
-        8px 0, calc(100% - 8px) 0,
-        100% 8px, 100% calc(100% - 8px),
-        calc(100% - 8px) 100%, 8px 100%,
-        0 calc(100% - 8px), 0 8px
-    );
-    opacity: 0.5;
- }
+/* ---- Panel con imagen: cubierto al 100% ---- */
+#seccionInfo {
+  font-family: var(--font-pixel-sub);
+  padding: clamp(1.5rem, 6vw, 4rem);
+  background-image: url("../assets/miCuentaFondo.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 220px;          
+  display: flex;              
+  flex-direction: column;
+  justify-content: center;
+  text-align: justify;
+}
 
- .format-input input :focus {
-     transform: scale(1.02);
-     filter: drop-shadow(0rem 0rem 1rem var(--border-color));
-    outline: none;
-    }
+#seccionInfo h3 {
+  color: var(--border-color);
+  text-align: center;
+  padding-bottom: 1rem;
+  font-size: clamp(1rem, 4vw, 2.5rem);
+}
 
- /* ============= STAR: Botones ============= */
- .btn-magenta-container,
- .btn-red-container {
-    display: block;
-    width: 100%;
-    justify-self: center;
-    padding: 12px 20px;
-    font-family: var(--font-pixel-sub);
-    font-weight: bold;
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    text-transform: uppercase;
-    border: none !important;
-    border-radius: 0 !important;
-    cursor: pointer;
-    clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px),
-             calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
- }
+#sectionForm {
+  padding: clamp(1.5rem, 8vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
- .btn-magenta,
- .btn-red {
-     display: block;
-     width: 100%;
-     padding: 12px;
-     font-family: var(--font-pixel-sub);
-     font-weight: bold;
-     font-size: 1rem;
-     text-transform: uppercase;
-     border: none !important;
-     border-radius: 0 !important;
-     cursor: pointer;
-     clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px),
-             calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
- }
+.form-panel {
+  width: 100%;
+  max-width: 500px;
+}
 
- .btn-magenta {
-     background-color: var(--border-color) !important;
-     color: white;
- }
+#sectionForm h4 {
+  font-family: var(--font-pixel-header);
+  font-size: clamp(1rem, 3vw, 2rem);
+  text-align: center;
+}
 
- .btn-red {
-     background-color: red !important;
-     color: white;
- }
+/* ============= Campos ============= */
+.format-input {
+  width: 100%;
+  max-width: 500px;
+  margin: 2rem auto;
+}
 
- .btn-magenta:hover {
-     color: var(--panel-color);
- }
+.format-input label {
+  font-family: var(--font-pixel-header);
+  font-size: clamp(0.7rem, 2vw, 1.1rem);
+  margin-bottom: 1rem;
+}
 
- .btn-magenta-container:hover {
-     transform: scale(1.05);
-     filter: drop-shadow(0 0 16px var(--border-color));
- }
+.format-input input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  clip-path: polygon(
+    8px 0, calc(100% - 8px) 0,
+    100% 8px, 100% calc(100% - 8px),
+    calc(100% - 8px) 100%, 8px 100%,
+    0 calc(100% - 8px), 0 8px
+  );
+  opacity: 0.5;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
 
- .btn-red-container:hover {
-     transform: scale(1.05);
-     filter: drop-shadow(0 0 16px white);
- }
+.format-input input:focus {
+  transform: scale(1.02);
+  opacity: 1;
+  filter: drop-shadow(0 0 1rem var(--border-color));
+  outline: none;
+}
 
- /* ============= END: Botones ============= */
+/* ============= Botones ============= */
+.btn-magenta-container,
+.btn-red-container {
+  display: block;
+  width: 100%;
+  justify-self: center;
+  padding: 12px 20px;
+  font-family: var(--font-pixel-sub);
+  font-weight: bold;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  text-transform: uppercase;
+  border: none !important;
+  border-radius: 0 !important;
+  cursor: pointer;
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px),
+    calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+}
+
+.btn-magenta,
+.btn-red {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-family: var(--font-pixel-sub);
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border: none !important;
+  border-radius: 0 !important;
+  cursor: pointer;
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px),
+    calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+}
+
+.btn-magenta {
+  background-color: var(--border-color) !important;
+  color: white;
+}
+
+.btn-red {
+  background-color: red !important;
+  color: white;
+}
+
+.btn-magenta:hover {
+  color: var(--panel-color);
+}
+
+.btn-magenta-container:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 16px var(--border-color));
+}
+
+.btn-red-container:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 16px white);
+}
+
+/* ============= Texto de contacto ============= */
 .info-text {
-    text-align: center;
-    margin: clamp(1rem, 4vw, 4rem) auto;
-    padding: 0 1rem;
-    padding-top: 1.5rem;
-    color: var(--yellow-accent);
+  text-align: center;
+  margin: clamp(1rem, 4vw, 4rem) auto;
+  padding: 1.5rem 1rem 0;
+  color: var(--yellow-accent);
 }
 
- .info-text h4{
-    font-family: var(--font-pixel-header);
-    font-size: clamp(0.8rem, 2vw, 1.3rem);
+.info-text h4 {
+  font-family: var(--font-pixel-header);
+  font-size: clamp(0.8rem, 2vw, 1.3rem);
 }
-.info-text p{
-    font-family: var(--font-pixel-body);
-    text-align: justify;
-    padding-inline: clamp(1rem, 5vw, 5rem); 
-    font-size: clamp(0.85rem, 1.8vw, 1rem);
+
+.info-text p {
+  font-family: var(--font-pixel-body);
+  text-align: justify;
+  padding-inline: clamp(1rem, 5vw, 5rem);
+  font-size: clamp(0.85rem, 1.8vw, 1rem);
 }
- /* =============== Responsabilidad ============== */
+
+/* ============= Responsive ============= */
 @media (max-width: 768px) {
-    .btn-magenta-container,
-    .btn-red-container {
-        max-width: 280px; /* Tamaño mucho más cómodo para pulgares en móviles */
-    }
-
-    #seccionInfo {
-        clip-path: none; /* Elimina cortes complejos en pantallas muy pequeñas */
-        border-radius: 25px 25px 0 0;
-    }
+  .btn-magenta-container,
+  .btn-red-container {
+    max-width: 280px;   /* tamaño cómodo para pulgares */
+  }
 }
 
- #resultadoRegistro {
-     transition: opacity 0.5s ease;
-     /* Desvanecimiento suave */
- }
+/* ============= Utilidades ============= */
+#resultadoRegistro {
+  transition: opacity 0.5s ease;   /* desvanecimiento suave */
+}
 
- .oculto {
-     opacity: 0;
-     pointer-events: none;
-     /* Evita que se pueda interactuar cuando esté invisible */
- }
+.oculto {
+  opacity: 0;
+  pointer-events: none;            /* no interactuable cuando está invisible */
+}
