@@ -1,13 +1,13 @@
+import { obtenerProductos } from "../services/productService.js";
 // 1. Referencias al DOM
 const contenedorCarrito = document.querySelector('#contenedor-carrito');
 const totalCarrito = document.querySelector('#total-carrito');
 const contadorCarritoBadge = document.querySelector('#contador-carrito');
 const subtotalCarrito = document.querySelector('#subtotal-carrito');
 
-// Variable global en memoria para manipular los productos en esta vista
-let carrito = [];
+let carrito = [];   
 
-// 2. Funciones de sincronización con localStorage
+// Funciones de sincronización con localStorage
 function cargarCarritoDesdeStorage() {
     carrito = JSON.parse(localStorage.getItem('carrito_compras')) || [];
 }
@@ -16,7 +16,7 @@ function guardarCarritoEnStorage() {
     localStorage.setItem('carrito_compras', JSON.stringify(carrito));
 }
 
-// 3. Operaciones del Carrito (Modificar cantidad y eliminar)
+// Operaciones del Carrito (Modificar cantidad y eliminar)
 function cambiarCantidad(idProducto, cambio) {
     const producto = carrito.find(item => item.id === idProducto);
     if (!producto) return;
@@ -58,7 +58,7 @@ function renderizarCarrito() {
     let sumaTotal = 0;
 
     carrito.forEach(product => {
-        const subtotal = product.precio * product.cantidad;
+        const subtotal = product.price * product.cantidad;
         sumaTotal += subtotal;
 
         const productCol = document.createElement('div');
@@ -67,15 +67,15 @@ function renderizarCarrito() {
         productCol.innerHTML = `
             <div class="card notch" data-id="${product.id}">
               <div class="art">
-                <img src="${product.imagen}" class="card-img-top" alt="${product.nombre}">
-                <span class="badge">${product.genero}</span>
-                <small>${product.plataforma}</small>
+                <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                <span class="badge">Nuevo</span>
+                <small>${product.game || 'General'}</small>
               </div>
               <div class="body">
-                <h3>${product.nombre}</h3>
-                <p>${product.descripcion || ''}</p>
+                <h3>${product.name}</h3>
+                <p>${product.description || ''}</p>
                 <div class="card-action-row">
-                    <span class="price">$${subtotal} MXN</span>
+                    <span class="price">$${product.price} MXN</span> 
                 </div>
                 <div class="cantidad">
                   <span class="quantity-label">Cantidad</span>
@@ -133,12 +133,30 @@ if (contenedorCarrito) {
 }
 
 // 6. Carga e Inicialización
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     cargarCarritoDesdeStorage();
+
+    // Sincronizamos con el backend para mantener precios y datos frescos
+    try {
+        const productosBD = await obtenerProductos();
+        if (productosBD && productosBD.length > 0) {
+            carrito = carrito.map(itemCart => {
+                const prodFresh = productosBD.find(p => p.id === itemCart.id);
+                return prodFresh ? { ...prodFresh, cantidad: itemCart.cantidad } : itemCart;
+            });
+            guardarCarritoEnStorage();
+        }
+    } catch (error) {
+        console.error("Error al sincronizar con la API:", error);
+    }
+
+    // ¡Estas son las funciones que faltaban ejecutar!
     renderizarCarrito();
     actualizarContadorUI();
+    
+    // Inicializamos el modal de pago
+    iniciarModalPago();
 });
-
 // 7. Modal de proceder al pago
 const modalPago = document.querySelector('#modalPago');
 const formPago = document.querySelector('#formPago');
@@ -158,8 +176,8 @@ function mostrarAviso(texto) {
 
 function pintarProductosModal() {
     listaProductos.innerHTML = carrito.map((p, i) => `
-        <button type="button" class="pv-prod ${i === 0 ? 'activo' : ''}" title="${p.nombre}">
-            <img src="${p.imagen}" alt="${p.nombre}">
+        <button type="button" class="pv-prod ${i === 0 ? 'activo' : ''}" title="${p.name}">
+            <img src="${p.image}" alt="${p.name}">
             <span class="pv-prod__cant">x${p.cantidad}</span>
         </button>
     `).join('');
