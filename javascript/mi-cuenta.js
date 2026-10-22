@@ -5,7 +5,11 @@ import { getAllOrdersByIdUser } from "../services/miCuentaApi.service.js"
 const perfil = document.getElementById('imagenperfil');
 const guardarcambios = document.querySelector('.modal-footer .btn-primary');
 const modalElemento = document.getElementById('exampleModal');
+const tableHistoyOrders = document.querySelector("#tableHistoyOrders");
 
+
+
+let LIST_ERRORES = [];
 /* Cambio de avatar en perfil */
 let avatarselect = '';
 document.addEventListener('click', (e) => {
@@ -182,22 +186,76 @@ if (btnCerrarSesion) {
     });
 }
 
+/**
+ * Converit una fecha al formatro dd/mmm/yyyyy
+ * @param {*} date 
+ * @returns dd/mmm/yyyyy
+ */
+const formatDateDDMMYYYY = (date) => {
+    let newDate = new Date(date);
+    let day = ((newDate.getDay() < 10) ? ("0" + newDate.getDay()) : newDate.getDay());
+    let month = ((newDate.getMonth() < 10) ? ("0" + newDate.getMonth()) : newDate.getMonth());
+    let year = newDate.getFullYear();
+    return `${day}/${month}/${year}`;
+}
+
+/** ========= STAR: Historial de pedidos ========= */
+// ! IMPORTANTE Cuando se libero el login obtener el id del usuario
+let userId = 1;
+let listHistoryOrders = await getAllOrdersByIdUser(null, userId);
+
 const renderTableHistory = (listMyOrdes) => {
-    console.log("renderTableHistory " + listMyOrdes)
-    let row = ``;
-    for (let i = 0; i < listMyOrdes.length; i++) {
-        row += `<tr>
-                <th scope="row">PED-${id}</th>
-                <td>${orderDate}</td>
-                <td>${total}</td>
-                <td>Entregado</td>
+    let rows = ``;
+    let content = ``;
+    if (listMyOrdes.length > 0) {
+        for (let i = 0; i < listMyOrdes.length; i++) {
+            rows += `<tr>
+                <th scope="row">PED-${listMyOrdes[i].id}</th>
+                <td>${formatDateDDMMYYYY(listMyOrdes[i].orderDate)}</td>
+                <td>$${listMyOrdes[i].total}</td>
+                <td>${listMyOrdes[i].orderTrackings[0]?.orderStatus ? listMyOrdes[i].orderTrackings[0]?.orderStatus : "En proceso"}</td>
             </tr> `;
+        }
+        content = `<table class="table">
+            <thead> <tr>
+                <th scope="col">ID DEL PEDIDO</th> <th scope="col">FECHA</th> 
+                <th scope="col">TOTAL</th> <th scope="col">ESTADO</th>
+            </tr> </thead>
+            <tbody class="table-group-divider"> ${rows} </tbody>
+          </table>`
+    } else {
+        content = `<h5>Sin pedidos</h5><img src="/assets/Bolsa_compras_triste.webp" width="200px">`
     }
-    return row;
+    tableHistoyOrders.insertAdjacentHTML("afterend", content);
 };
 
 const getOrdersByIdUser = () => {
-    console.log(getAllOrdersByIdUser(1));
+    LIST_ERRORES = [];
+    listHistoryOrders = (listHistoryOrders ? listHistoryOrders : []);
+    renderTableHistory(listHistoryOrders);
+    LIST_ERRORES.push("Error de conexión. Revisa tu acceso a internet");
 };
 
 getOrdersByIdUser();
+/** ========= END: Historial de pedidos ========= */
+
+/** ================= STAR: Mensajes ================= */
+// Mensajes de error 
+function renderizarMensajes(statusForm, mensajes, contenedor) {
+    if (!contenedor) return;
+    resultadoRegistro.classList.remove('oculto');
+    if (statusForm) {
+        contenedor.innerHTML = '<div class="alert alert-success mt-3" style="background-color: #122418; color: #2ecc71; border: 1px solid #2a7e43;">El registro se realizó con éxito.</div>';
+    } else if (!statusForm) {
+        contenedor.innerHTML = "";
+        let htmlContent = '<div class="alert alert-danger mt-3" style="background-color: #2a0808; color: #ff6b6b; border: 1px solid #842029;"><ul class="mb-0">';
+        for (const mensaje of mensajes) {
+            htmlContent += `<li>${mensaje}</li>`;
+        }
+        htmlContent += '</ul></div>';
+        contenedor.innerHTML = htmlContent;
+    } else {
+        contenedor.innerHTML = "";
+    }
+}
+/** ================= END: Mensajes ================= */
