@@ -29,11 +29,11 @@ const mainNavbar = document.querySelector(".navThePixelVault");
 const listMenuBtn = [
   { id: "inicio", icon: "💻", name: "INICIO", pathHtml: "index.html" },
   { id: "tienda", icon: "🛍️", name: "TIENDA / CATÁLOGO", pathHtml: "tienda.html" },
-  { id: "catalogo", icon: "🎧", name: "CATÁLOGO", pathHtml: "tienda.html" },
+  // { id: "catalogo", icon: "🎧", name: "CATÁLOGO", pathHtml: "tienda.html" },
   { id: "miCuenta", icon: "👤", name: "MI CUENTA", "pathHtml": dataUser ? urlMicuenta : urlLogin },
   { id: "contactanos", icon: "📞", name: "CONTÁCTENOS", pathHtml: "contactanos.html" },
   { id: "nosotros", icon: "🏫", name: "NOSOTROS", pathHtml: "acercaNosotros.html" },
-  { id: "carrito", icon: "🛒", name: "CARRITO", pathHtml: "miCarrito.html" }
+  //{ id: "carrito", icon: "🛒", name: "CARRITO", pathHtml: "miCarrito.html" }
 ];
 
 /** Obtenermos la inforacion de usuario desde el almacenamiento local,
@@ -43,7 +43,7 @@ const getValidUrlMicuenta = () => {
   let urlLogin = "login.html";
 
   const dataUser = getItemLocalStorage("DATA_USER");
-  
+
   if (dataUser) {
     return urlMicuenta;
   }
