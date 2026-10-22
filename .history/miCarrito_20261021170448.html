@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Carrito | The Pixel Vault</title>
+
+  <!-- BOOTSTRAP 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+
+  <!-- ESTILOS  -->
+  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="styles/tienda.css" />
+
+  <!-- FUENTES GOOGLE -->
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+  </style>
+</head>
+
+<body>
+  <div id="avisoPago" class="pv-aviso" role="status" aria-live="polite"></div> <!--mensaje -->
+  <!-- Navbar -->
+  <main class="navThePixelVault"></main>
+    <!-- Banner principal de la página. -->
+    <section class="banner-container">
+    <!-- Imagen de fondo -->
+    <img class="banner-frame" src="./assets/banner-img.webp" alt="Marco del Banner">
+    
+    <!-- Contenedor de la pantalla central con los botones -->
+    <div class="banner-screen">
+        <!-- El enlace envuelve al h3 para que sea clickeable -->
+        <a href="acercaNosotros.html" style="text-decoration: none;">
+            <h3 class="yellow-accent btn-yellow head">Registrar <br> productos</h3>
+        </a>
+    </div>
+</section>
+  <!-- SECCIÓN PRINCIPAL DEL CARRITO -->
+  <section class="container my-5">
+    <h2 class="section-title mb-4">CARRITO DE COMPRAS</h2>
+
+    <div class="row g-4">
+
+
+      <div class="col-lg-8">
+        <div id="contenedor-carrito" class="row g-3">
+        </div>
+      </div>
+
+      <!-- COLUMNA DERECHA: Resumen de Compra y Checkout (Sticky) -->
+      <div class="col-lg-4 ">
+        <div class="card bkcCheckout text-light border-accent p-4 position-sticky" style="top: 2rem;">
+          <h4 class="text-uppercase mb-3 pb-2 border-bottom border-secondary fontstylecheckout">Resumen del Pedido</h4>
+
+          <div class="d-flex justify-content-between mb-2 fs-6 text-secondary mb-1">
+            <span>Subtotal</span>
+            <span id="subtotal-carrito">$0 MXN</span>
+          </div>
+
+          <div class="d-flex justify-content-between mb-3 fs-6 text-secondary mb-1">
+            <span>Envío</span>
+            <span class="text-success fw-bold">Gratis</span>
+          </div>
+
+          <!-- Cupón de descuento -->
+          <div class="input-group mb-3 mb-1">
+            <input type="text" class="form-control bg-dark text-light border-secondary" placeholder="Código de cupón">
+            <button class="btn btn-outline-info" type="button">Aplicar</button>
+          </div>
+
+          <hr class="border-secondary my-3" />
+
+          <!-- Total -->
+          <div class="d-flex justify-content-between align-items-center mb-4 mb-1">
+            <span class="fs-5 fw-bold">TOTAL:</span>
+            <span id="total-carrito" class="fs-3 text-cyan fw-bold">$0 MXN</span>
+          </div>
+
+          <!-- Botón de acción principal (CTA) -->
+          <button class="btn btn-cyan btn-lg w-100 fw-bold text-uppercase py-3 mb-3 fontstylecheckout" type="button"
+            data-bs-toggle="modal" data-bs-target="#modalPago">
+            Proceder al Pago 🚀
+          </button>
+
+          <!-- Sellos de confianza / Métodos de pago -->
+          <div class="mt-4 text-center text-muted small">
+            <p class="mb-1">💳 Aceptamos tarjetas de débito, crédito y PayPal</p>
+            <p class="mb-0">🔒 Compra 100% Segura y Encriptada</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- MODAL PROCEDER AL PAGO -->
+  <div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="modalPagoTitulo" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered pv-dialog">
+      <div class="modal-content pv-modal">
+        <div class="pv-modal__borde">
+          <form class="pv-modal__interior" id="formPago" novalidate>
+
+            <header class="pv-header">
+              <h5 class="pv-titulo" id="modalPagoTitulo">
+                <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="9" cy="20" r="1.5" />
+                  <circle cx="18" cy="20" r="1.5" />
+                  <path d="M2 3h3l2.6 12.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.5L21 8H6" />
+                </svg>
+                Proceder al pago
+              </h5>
+              <button type="button" class="pv-cerrar" data-bs-dismiss="modal" aria-label="Cerrar">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="3"
+                  stroke-linecap="round" aria-hidden="true">
+                  <path d="M5 5l14 14M19 5L5 19" />
+                </svg>
+              </button>
+            </header>
+
+            <h6 class="pv-seccion">1. Productos</h6>
+            <div class="pv-tira">
+              <button type="button" class="pv-flecha" id="pagoPrev" aria-label="Anterior">&#10094;</button>
+              <div class="pv-tira__lista" id="pagoProductos"></div>
+              <button type="button" class="pv-flecha" id="pagoNext" aria-label="Siguiente">&#10095;</button>
+            </div>
+
+            <h6 class="pv-seccion">2. Datos de pago</h6>
+            <label class="pv-label" for="numTarjeta">Número de tarjeta</label>
+            <input class="form-control pv-input mb-3" id="numTarjeta" inputmode="numeric" autocomplete="cc-number"
+              placeholder="1234 5678 9012 3456" pattern="\d{4} \d{4} \d{4} \d{4}" required />
+
+            <div class="row g-3 mb-3">
+              <div class="col-6">
+                <label class="pv-label" for="expiracion">Fecha de expiración</label>
+                <input class="form-control pv-input" id="expiracion" inputmode="numeric" autocomplete="cc-exp"
+                  placeholder="MM / AA" pattern="(0[1-9]|1[0-2]) / \d{2}" required />
+              </div>
+              <div class="col-6">
+                <label class="pv-label" for="cvv">CVV</label>
+                <input class="form-control pv-input" id="cvv" inputmode="numeric" autocomplete="cc-csc"
+                  placeholder="123" pattern="\d{3,4}" required />
+              </div>
+            </div>
+
+            <label class="pv-label" for="titular">Nombre del titular</label>
+            <input class="form-control pv-input mb-3" id="titular" autocomplete="cc-name"
+              placeholder="Como aparece en la tarjeta" required />
+
+            <fieldset class="pv-caja">
+              <legend class="pv-seccion pv-seccion--caja">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                </svg>
+                3. Dirección de envío
+              </legend>
+              <!--Dirección-->
+              <div class="row g-3">
+
+                <div class="col-8">
+                  <label for="calle" class="pv-label">Calle</label>
+                  <input name="calle" type="text" class="form-control pv-input" id="calle" placeholder="Calle" required>
+                </div>
+                <div class="col-4">
+                  <label for="numero" class="pv-label">Número</label>
+                  <input name="numero" type="text" class="form-control pv-input" id="numero" placeholder="11" required>
+                </div>
+
+                <div class="col-6">
+                  <label for="colonia" class="pv-label">Colonia/Alcaldía</label>
+                  <input name="colonia" type="text" class="form-control pv-input" id="colonia" placeholder="Colonia"
+                    required>
+                </div>
+                <div class="col-6">
+                  <label for="municipio" class="pv-label">Municipio</label>
+                  <input name="municipio" type="text" class="form-control pv-input" id="municipio"
+                    placeholder="Municipio" required>
+                </div>
+
+                <div class="col-5">
+                  <label for="estado" class="pv-label">Estado/Ciudad</label>
+                  <input name="estado" type="text" class="form-control pv-input" id="estado" placeholder="Estado/Ciudad"
+                    required>
+                </div>
+                <div class="col-4">
+                  <label for="pais" class="pv-label">País</label>
+                  <input name="pais" type="text" class="form-control pv-input" id="pais" placeholder="País" required>
+                </div>
+                <div class="col-3">
+                  <label for="cp" class="pv-label">C.P.</label>
+                  <input name="cp" type="text" inputmode="numeric" pattern="\d{5}" class="form-control pv-input" id="cp"
+                    placeholder="00000" required>
+                </div>
+
+              </div>
+              <!--Fin dirección-->
+            </fieldset>
+
+
+
+            <p class="pv-segura">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+              </svg>
+              Tu información está protegida y encriptada.
+              <span class="pv-segura__candado" aria-hidden="true">🔒</span>
+            </p>
+
+            <button type="submit" class="pv-confirmar">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <rect x="2" y="5" width="20" height="14" rx="2" />
+                <path d="M2 10h20M6 15h4" />
+              </svg>
+              Confirmar pago
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-container"></footer>
+
+
+  <script src="./javascript/globalElements.js"></script>
+  <script src="./javascript/contactanos.js"></script>
+  <script src="./javascript/productosJSON.js"></script>
+  <script type="module" src="./javascript/tienda.js"></script>
+  <script type="module" src="/javascript/carrito.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

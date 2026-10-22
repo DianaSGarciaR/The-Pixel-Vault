@@ -1,0 +1,210 @@
+h1 {
+  color: var(--yellow-accent);
+  text-align: center;
+  /* El tamaño del título se adapta proporcionalmente entre 1.8rem y 2.5rem según la pantalla */
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-family: var(--font-pixel-body);
+}
+
+/* MARCO NEÓN DEL FORMULARIO */
+.frame-demo {
+  position: relative;
+  backdrop-filter: blur(50px);
+  z-index: 1;
+  
+  /* 1. Usamos clamp() en los bordes en vw para que no aplasten el contenido en móviles */
+  border: clamp(12px, 4vw, 35px) solid transparent;
+  
+  height: auto;
+  
+  /* 2. En lugar de un min-width estricto, usamos min() para que se adapte al 90% o hasta 700px de forma segura */
+  width: min(90%, 700px);
+  
+  /* 3. margin con 'auto' a los lados para asegurar que siempre esté centrado */
+  margin: 1.5rem auto;
+  
+  box-sizing: border-box; /* Evita que paddings o bordes rompan el ancho total */
+}
+
+.frame-demo::before {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  
+  /* Sincronizamos el marco exterior de manera fluida con el borde del contenedor */
+  top: clamp(-35px, -4vw, -12px);
+  left: clamp(-35px, -4vw, -12px);
+  right: clamp(-35px, -4vw, -12px);
+  bottom: clamp(-35px, -4vw, -12px);
+  
+  border: clamp(12px, 4vw, 35px) solid transparent;
+  border-image-slice: 6;
+  border-image-repeat: repeat;
+  border-image-source: url('../assets/marco-pixel-amarillo.svg');
+  filter: drop-shadow(0 0 10px #ff00ea) drop-shadow(0 0 5px #ffffff);
+}
+
+.frame-content {
+  /* El relleno interior también se reduce proporcionalmente con la pantalla */
+  padding: clamp(1.5rem, 3vw, 2.75rem) clamp(1rem, 2.5vw, 2.25rem);
+}
+
+/* ETIQUETAS (Títulos de campo) */
+.titulo-campo {
+  font-family: var(--font-pixel-body);
+  color: white;
+  /* La fuente se achica de forma fluida */
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  display: block;
+  text-align: center;
+  margin-bottom: 0.4rem;
+}
+
+/* CAMPOS DEL FORMULARIO (Inputs y Selects) */
+.frame-content .form-control,
+.frame-content .form-select,
+.frame-content .input-group {
+  background-color: transparent;
+  color: #ffe27a;
+  border: 14px solid transparent;
+  border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Crect x='2' y='2' width='56' height='56' rx='20' fill='none' stroke='%2366f5ec' stroke-width='4'/%3E%3C/svg%3E")
+    24 / 14px stretch;
+  border-radius: 0;
+  /* Padding interno proporcional para que el texto y placeholder respiren sin cortarse */
+  padding: clamp(0.4rem, 1.5vw, 0.7rem) clamp(0.5rem, 2vw, 1rem);
+  box-shadow: none;
+  font-family: var(--font-pixel-body);
+  /* El texto y los placeholders se achican proporcionalmente de tamaño */
+  font-size: clamp(0.75rem, 2vw, 0.95rem) !important;
+  text-align: center;
+
+  filter: drop-shadow(0 0 2px rgba(102, 245, 236, 0.85))
+          drop-shadow(0 0 6px rgba(102, 245, 236, 0.55));
+}
+
+/* Restricción de spinner en inputs numéricos */
+input.sin-flechas::-webkit-outer-spin-button,
+input.sin-flechas::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input.sin-flechas {
+  -moz-appearance: textfield;
+}
+
+.frame-content .form-control:focus,
+.frame-content .form-select:focus {
+  background-color: transparent;
+  color: #ffe27a;
+  box-shadow: none;
+  filter: drop-shadow(0 0 3px rgba(102, 245, 236, 1))
+          drop-shadow(0 0 9px rgba(102, 245, 236, 0.75));
+}
+
+.frame-content .form-control::placeholder {
+  color: rgba(255, 226, 122, 0.6);
+  font-size: 0.95em;
+}
+
+.frame-content .input-group .form-control,
+.frame-content .input-group .input-group-text {
+  border: none;
+  background-color: transparent;
+  color: #ffe27a;
+  filter: none;
+}
+
+.frame-content .form-select {
+  background-image: none;
+  color-scheme: dark;
+}
+
+.frame-content .form-select option {
+  background-color: #0b1130;
+  color: #ffe27a;
+}
+
+/* CAMPO DE IMAGEN */
+.frame-content .file-field__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.frame-content .file-field {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.frame-content .file-field__button {
+  border: 2px solid #66f5ec;
+  border-radius: 6px;
+  padding: 0.35rem 0.9rem;
+  color: #ffe27a;
+  font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+  transition: background-color 0.2s ease;
+}
+
+.frame-content .file-field__name {
+  color: rgba(255, 226, 122, 0.6);
+  font-size: clamp(0.7rem, 1.8vw, 0.85rem);
+  word-break: break-word;
+  max-width: 100%;
+  text-align: center;
+}
+
+.frame-content .file-field:hover .file-field__button {
+  background-color: rgba(102, 245, 236, 0.15);
+}
+
+.frame-content .file-field__input:focus ~ .file-field .file-field__button {
+  box-shadow: 0 0 0 2px rgba(102, 245, 236, 0.5);
+}
+
+/* BOTÓN GUARDAR */
+.btn-fucsia {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  margin: clamp(1.5rem, 3vw, 3rem) auto 0;
+  padding: 10px 20px;
+  background-color: var(--border-color) !important;
+  color: #ffffff;
+  font-family: var(--font-pixel-body);
+  font-weight: bold;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  border: none !important;
+  border-radius: 0 !important;
+
+  clip-path: polygon(
+    10px 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    10px 100%,
+    0 calc(100% - 10px),
+    0 10px
+  );
+
+  filter: drop-shadow(0 0 8px rgba(255, 0, 127, 0.8));
+  transition: transform 0.2s ease, filter 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-fucsia:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 14px rgba(255, 0, 127, 1));
+}

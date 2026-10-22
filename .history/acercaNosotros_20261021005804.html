@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- !LINK BOOSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <!-- !FIN LINK BOOSTRAP-->
+    <!-- ? ENLACES DE ARCHIVOS CSS-->
+    <link rel="stylesheet" href="./styles/acercaNosotros.css" /> <!--Se agregó el ./ a la ruta del archivo (Beto)-->
+    <!-- Archivo solo para diseño de cards, amnimacio ecpeificos solo para esta vista (archivo: acercaNosotros.html )-->
+    <link rel="stylesheet" href="./styles/styles.css" /> <!--Se agregó el ./ a la ruta del archivo (Beto)-->
+    <!-- Archivo para letras, tamaños, colores etc-->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    </style>
+</head>
+
+<body>
+    <!--* --------- INICIO: navbar --------- -->
+    <main class="navThePixelVault"></main>
+    <!--* --------- FIN: navbar --------- -->
+
+    <!--* INICIO : Banner Principal ---->
+    <section class="banner-container">
+        <!-- Imagen de fondo-->
+        <img class="banner-frame" src="./assets/banner-img.webp"
+            alt="Marco del Banner"><!--Se agregó el ./ a la ruta del archivo (Beto)-->
+        <!-- Contenedor de la pantalla central con los botones -->
+        <div class="banner-screen">
+            <h3 href="acercaNosotros.html" class="yellow-accent btn-yellow head" class="head">Conócenos</h3>
+            <!-- <nav class="banner-nav">
+      <a href="novedades.html" class="banner-btn btn-cyan quantico" data-section="Novedades">
+        <span>NOVEDADES</span>
+      </a>
+      <a href="preventas.html" class="banner-btn btn-yellow quantico" data-section="Preventas">
+        <span>PREVENTAS</span>
+      </a>
+      <a href="edicion-especial.html" class="banner-btn btn-pink quantico" data-section="Edición Especial">
+        <span>EDICIÓN ESPECIAL</span>
+      </a> -->
+            </nav>
+        </div>
+    </section>
+    <!--* FIN : Banner Principal Sci-Fi ---->
+    <!-- *=========================================
+    * DESCRIPCIÓN DEL PROYECTO
+    * ============================================== -->
+    <br>
+    <div class="container text-center">
+        <div class="row">
+            <!-- CAMBIO: antes era col-3 / col-6 / col-3 en todas las
+                 pantallas. Ahora el marco ocupa el 100% del ancho en
+                 móvil (col-12) y solo se limita a la mitad a partir de
+                 pantallas grandes (col-lg-6), centrado con mx-auto. -->
+            <div class="col-12 col-lg-6 mx-auto">
+                <div class="frame-demo" id="frameDemo">
+                    <div class="content">
+                        <h3>The Pixel Vault</h3>
+                            <p>
+                            Es un colectivo de ingeniería web y diseño enfocado en la industria del
+                            videojuego. Nació gracias a diez creativos de distintas disciplinas que unieron sus habilidades con una sola meta: crear interfaces inmersivas
+                            y experiencias digitales que estén a la altura de los mundos virtuales que representan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- *===========================================
+    * FIN DE LA DESCRIPCIÓN DEL PROYECTO
+    * ================================================ -->
+    <br>
+    <br>
+    <!-- *=========================================
+    * SECCIÓN MISSION LOGS
+    * ============================================== -->
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+
+            </div>
+            <div class="col align-self-center">
+                <div id="missionLogs" class="head">
+                    <h3>MISSION LOGS</h3>
+                    <h4>Escala y crecimiento</h4>
+                </div>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+    </div>
+    <!-- CAMBIO EN LAS 3 FILAS DE ABAJO:
+         1) col-4 (fijo en todas las pantallas) -> col-12 col-lg-4:
+            en móvil cada bloque ocupa todo el ancho y se apila; a
+            partir de pantallas grandes (lg, ≥992px) vuelven a quedar
+            3 en una fila, como antes.
+         2) Se quitaron los "align-self-start/center/end": eran los
+            que creaban el efecto escalonado. Al quitarlos, las
+            columnas vuelven al comportamiento por defecto de
+            Bootstrap (align-items:stretch), o sea, la misma altura
+            que el marco vecino — así "max-height:100%" en los
+            íconos (ver styles.css) tiene sentido.
+         3) La fila interna con columnas vacías para separar los
+            íconos (col-md-3 / col-md-6 / col-md-3) se reemplazó por
+            un solo contenedor ".icon-pair" que los centra con flexbox. -->
+    <div class="container text-center">
+        <div class="row align-items-stretch g-4">
+            <div class="col-12 col-lg-5">
+                <div class="frame-demo" id="frameDemo2">
+                    <div class="content">
+                        <h3>Problemática</h3>
+                            <p>
+                            The Pixel Vault surge a partir de identificar inexistencia de una tienda que ofrezca una
+                            experiencia personalizada para los amantes de los videojuegos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-2 icon-pair align-self-center">
+                <img src="./assets/coin.webp" class="badge-icon" alt="coin.webp">
+                <img src="./assets/mision.webp" class="badge-icon" alt="mision.webp ">
+            </div>
+            <div class="col-12 col-lg-5">
+                <div class="frame-demo" id="frameDemo3">
+                    <div class="content">
+                        <h3>Misión</h3>
+                             <p>
+                            Ofrecer a la comunidad gamer una amplia gama de mercancía que les permita materializar su
+                            identidad con experiencias personalizadas, así como conectarla con nuevos descubrimientos
+                            que le sorprendan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="container text-center">
+        <div class="row align-items-stretch g-4">
+            <div class="col-12 col-lg-5">
+                <div class="frame-demo" id="frameDemo4">
+                    <div class="content">
+                        <h3>Visión</h3>
+                            <p>
+                            Liderar a los puntos de encuentro para la comunidad gamer en México, siendo reconocidos por
+                            revitalizar el formato físico y ofrecer experiencias personalizadas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-2 icon-pair align-self-center">
+                <img src="./assets/vision.webp" class="badge-icon" alt="vision.webp">
+                <img src="./assets/valor.webp" class="badge-icon" alt="valor.webp">
+            </div>
+            <div class="col-12 col-lg-5">
+                <div class="frame-demo" id="frameDemo5">
+                    <div class="content">
+                        <h3>Valores</h3>
+                            <p>
+                            Comunidad, autenticidad, transparencia, orientación al cliente, calidad, lealtad,
+                            sostenibilidad del formato físico, libre expresión y búsqueda de identidad.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="container text-center">
+        <div class="row align-items-stretch g-4">
+            <!-- Columna vacía solo para mantener el ritmo visual de 3
+                 columnas en escritorio; se oculta en móvil (d-none) para
+                 no dejar un espacio en blanco antes del contenido. -->
+            <div class="col-12 col-lg-5 d-none d-lg-block"></div>
+            <div class="col-12 col-lg-2 icon-pair align-self-center">
+                <img src="./assets/proposito.webp" class="badge-icon" alt="proposito.webp">
+            </div>
+            <div class="col-12 col-lg-5">
+                <div class="frame-demo" id="frameDemo6">
+                    <div class="content">
+                        <h3>¿Qué resolvemos?</h3>
+                            <p>
+                            Te acercamos a tus videojuegos favoritos así como a las nuevas experiencias que anhelas
+                            descubrir, expresando tu identidad en cada compra.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- *=========================================
+    * FIN DE LA SECCIÓN MISSION LOGS
+    * ============================================== -->
+
+
+    <!--*-------------------Inicio de PERFILES DE EQUIPO----------------->
+    <div class="contenedor-tarjeta">
+        <div class="team-content contenido">
+            <h3 class="team-title"><strong>Roster de la Tripulación</strong></h3>
+            <div class="row align-items-center">
+                <div class="col-12 team-description-column">
+                    <p class="fuente">
+                        Conoce a las mentes creativas detrás de <span><strong>THE PIXEL VAULT</strong></span> que dieron vida a una interfaz inmersiva
+                        en el front-end, y los guardianes del control de calidad que mantuvieron el repositorio en orden cazando bugs.
+                        Juntos unimos talento, café y pasión por los videojuegos para forjar este refugio digital desde
+                        cero. ¡El viaje apenas comienza!
+                    </p>
+                </div>
+                <div class="col-12">
+                    <div class="contenedor-tarjeta tarjeta-rosa">
+                        <div class="contenido contenido-rosa">
+                            <div class="team-grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--* ---------------- INICIO: MODALES ---------------->
+    <main class="modals-team"></main>
+    <!--* ----------------- FIN: MODALES ------------------>
+
+    <!--* --------- INICIO: navbar --------- -->
+    <footer class="footer-container"></footer>
+    <!--* --------- FIN: navbar --------- -->
+
+    <!--Fin de pie de footer-->
+    <!--* Figura SVG de los marcos pixelados para contenido-->
+    <svg style="display: none;">
+        <defs>
+            <g id="plantillaSVG" shape-rendering="crispEdges">
+                <rect x="6" y="0" width="52" height="1" />
+                <rect x="5" y="1" width="1" height="1" />
+                <rect x="58" y="1" width="1" height="1" />
+                <rect x="4" y="2" width="1" height="1" />
+                <rect x="59" y="2" width="1" height="1" />
+                <rect x="3" y="3" width="1" height="1" />
+                <rect x="60" y="3" width="1" height="1" />
+                <rect x="2" y="4" width="1" height="1" />
+                <rect x="61" y="4" width="1" height="1" />
+                <rect x="1" y="5" width="1" height="1" />
+                <rect x="62" y="5" width="1" height="1" />
+                <rect x="0" y="6" width=".5" height="1" />
+                <rect x="63" y="6" width=".5" height="1" />
+                <rect x="0" y="7" width=".5" height="1" />
+                <rect x="63" y="7" width=".5" height="1" />
+                <rect x="0" y="8" width=".5" height="1" />
+                <rect x="63" y="8" width=".5" height="1" />
+                <rect x="0" y="9" width=".5" height="1" />
+                <rect x="63" y="9" width=".5" height="1" />
+                <rect x="0" y="10" width=".5" height="1" />
+                <rect x="63" y="10" width=".5" height="1" />
+                <rect x="0" y="11" width=".5" height="1" />
+                <rect x="63" y="11" width=".5" height="1" />
+                <rect x="0" y="12" width=".5" height="1" />
+                <rect x="63" y="12" width=".5"height="1" />
+                <rect x="0" y="13" width=".5" height="1" />
+                <rect x="63" y="13" width=".5" height="1" />
+                <rect x="0" y="14" width=".5" height="1" />
+                <rect x="63" y="14" width=".5" height="1" />
+                <rect x="0" y="15" width=".5" height="1" />
+                <rect x="63" y="15" width=".5" height="1" />
+                <rect x="0" y="16" width=".5" height="1" />
+                <rect x="63" y="16" width=".5" height="1" />
+                <rect x="0" y="17" width=".5" height="1" />
+                <rect x="63" y="17" width=".5" height="1" />
+                <rect x="0" y="18" width=".5" height="1" />
+                <rect x="63" y="18" width=".5" height="1" />
+                <rect x="0" y="19" width=".5" height="1" />
+                <rect x="63" y="19" width=".5" height="1" />
+                <rect x="0" y="20" width=".5" height="1" />
+                <rect x="63" y="20" width=".5" height="1" />
+                <rect x="0" y="21" width=".5" height="1" />
+                <rect x="0" y="22" width=".5" height="1" />
+                <rect x="63" y="22" width=".5" height="1" />
+                <rect x="0" y="23" width=".5" height="1" />
+                <rect x="63" y="23" width=".5" height="1" />
+                <rect x="0" y="24" width=".5" height="1" />
+                <rect x="63" y="24" width=".5" height="1" />
+                <rect x="0" y="25" width=".5" height="1" />
+                <rect x="63" y="25" width=".5" height="1" />
+                <rect x="0" y="26" width=".5" height="1" />
+                <rect x="63" y="26" width=".5" height="1" />
+                <rect x="1" y="27" width=".5" height="1" />
+                <rect x="62" y="27" width=".5" height="1" />
+                <rect x="2" y="28" width=".5" height="1" />
+                <rect x="61" y="28" width=".5" height="1" />
+                <rect x="3" y="29" width=".5" height="1" />
+                <rect x="60" y="29" width=".5" height="1" />
+                <rect x="4" y="30" width=".5" height="1" />
+                <rect x="59" y="30" width=".5" height="1" />
+                <rect x="5" y="31" width=".5" height="1" />
+                <rect x="58" y="31" width=".5" height="1" />
+                <rect x="6" y="32" width="52" height="1" />
+                <rect x="63" y="21" width=".5" height="1" />
+            </g>
+        </defs>
+    </svg>
+    <!-- ! ENLACES DE ARCHIVOS JAVASCRIP-->
+    <script src="./javascript/globalElements.js"></script>
+    <script src="./javascript/acercaNosotrosApp.js" type="module"></script>
+    <!-- ! FIN DE ENLACES DE ARCHIVOS JAVASCRIP-->
+    <!-- !LINK BOOSTRAP-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <!-- !FIN LINK BOOSTRAP-->
+</body>
+
+</html>

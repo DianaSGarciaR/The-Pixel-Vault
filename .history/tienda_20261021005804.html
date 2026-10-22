@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo</title>
+
+    <!-- !LINK BOOSTRAP-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <!-- !FIN LINK BOOSTRAP-->
+    <link rel="stylesheet" href="./styles/tienda.css" /> <!--Estilos específicos del catálogo-->
+    <link rel="stylesheet" href="./styles/styles.css" /> <!-- Estilos generales de todo el ecommerce-->
+
+    <!--Link de fuente-->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar-->
+    <main class="navThePixelVault"></main>
+
+    <!--↓↓↓↓↓↓↓↓↓↓↓Agrega aquí tu código↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+    
+    <!--* INICIO : Banner Principal ---->
+      <section class="banner-container">
+        <!-- Imagen de fondo-->
+        <img class="banner-frame" src="./assets/banner-img.webp" alt="Marco del Banner">
+        <!-- Contenedor de la pantalla central con los botones -->
+        <div class="banner-screen">
+          <h3 class="yellow-accent btn-yellow head" class="head" >Catálogo</h3>
+        </div>
+      </section>
+    <!--* FIN : Banner Principal Sci-Fi ---->
+
+    
+
+
+    <!--* ============================== Prueba card ========================-->
+    
+    <section class="container-fluid my">
+      <div class="row g-4">
+        <!-- Menú Lateral -->
+        <div class="col-12 col-md-3">
+          <aside class="banner-sidebar">
+  <!-- Sección Videojuegos -->
+  <div class="section menu-group">
+    <button 
+      class="section-title menu-toggle d-md-none" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#menuVideojuegos" 
+      aria-expanded="false"
+    >
+    <span>VIDEOJUEGOS</span>
+      <span class="chevron">▼</span>
+    </button>
+    <h3 class="section-title d-none d-md-block">JUEGOS</h3>
+    <div class="collapse d-md-block" id="menuVideojuegos">
+    <ul class="menu-list">
+      <li><a href="#Videojuegos" id="Videojuegos"><span class="arrow">▶</span>TODOS</a></li>
+      <li><a href="#Fisicos" id="Fisicos"><span class="arrow">▶</span>FÍSICOS</a></li>
+      <li><a href="#Digitales" id="Digitales"><span class="arrow">▶</span>DIGITALES</a></li>
+      <li><a href="#EdicionEspecial" id="EdicionEspecial"><span class="arrow">▶</span>EDICIÓN ESPECIAL</a></li>
+    </ul>
+  </div>
+  </div>
+  <div class="menu-divider"></div>
+
+  <!-- Sección Merch -->
+   <div class="section menu-group">
+    <button 
+      class="section-title menu-toggle d-md-none" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#menuMerch" 
+      aria-expanded="false"
+    >
+   <span>MERCH</span>
+      <span class="chevron">▼</span>
+    </button>
+    <h3 class="section-title d-none d-md-block">MERCH</h3>
+    <div class="collapse d-md-block" id="menuMerch">
+    <ul class="menu-list">
+      <li><a href="#"><span class="arrow">▶</span>CDs Y VINILES</a></li>
+      <li><a href="#"><span class="arrow">▶</span>PELUCHES</a></li>
+      <li><a href="#"><span class="arrow">▶</span>ARTE Y POSTERS</a></li>
+      <li><a href="#"><span class="arrow">▶</span>ACCESORIOS</a></li>
+      <li><a href="#"><span class="arrow">▶</span>ROPA Y CALZADO</a></li>
+    </ul>
+    </div>
+  </div>
+
+ <div class="menu-divider"></div>
+
+  <div class="section menu-group">
+  <button 
+    class="section-title menu-toggle d-md-none" 
+    type="button" 
+    data-bs-toggle="collapse" 
+    data-bs-target="#menuFiltros" 
+    aria-expanded="false"
+  >
+    <span>FILTROS</span>
+    <span class="chevron">▼</span>
+  </button>
+  <h3 class="section-title d-none d-md-block">FILTROS</h3>
+
+  <div class="collapse d-md-block" id="menuFiltros">
+    
+    <!-- Filtro: Rango de Precio -->
+    <div class="filter-box">
+      <span class="filter-label">RANGO DE PRECIO</span>
+      <div class="filter-options">
+        <button class="filter-tag" data-filter-type="price" data-filter-value="0-1000">$0 - $1000</button>
+        <button class="filter-tag" data-filter-type="price" data-filter-value="1000-2000">$1000 - $2000</button>
+      </div>
+    </div>
+<br>
+    <!-- Filtro: Plataforma -->
+    <div class="filter-box">
+      <span class="filter-label">PLATAFORMA</span>
+      <div class="filter-options">
+        <button class="filter-tag" data-filter-type="platform" data-filter-value="pc">PC</button>
+        <button class="filter-tag" data-filter-type="platform" data-filter-value="ps5">PS5</button>
+        <button class="filter-tag" data-filter-type="platform" data-filter-value="xbox">XBOX</button>
+        <button class="filter-tag" data-filter-type="platform" data-filter-value="switch">SWITCH</button>
+      </div>
+    </div>
+<br>
+    <!-- Filtro: Género -->
+    <div class="filter-box">
+      <span class="filter-label">GÉNERO</span>
+      <div class="filter-options">
+        <button class="filter-tag" data-filter-type="genre" data-filter-value="acción">Acción</button>
+        <button class="filter-tag" data-filter-type="genre" data-filter-value="rpg">RPG</button>
+        <button class="filter-tag" data-filter-type="genre" data-filter-value="carreras">Carreras</button>
+        <button class="filter-tag" data-filter-type="genre" data-filter-value="aventura">Aventura</button>
+        <button class="filter-tag" data-filter-type="genre" data-filter-value="terror">Terror</button>
+        <button class="filter-tag" data-filter-type="genre" data-filter-value="peleas">Peleas</button>
+        <button class="filter-tag" data-filter-type="genre" data-filter-value="deportes">Deportes</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+</aside>
+        </div>
+         <!-- Grid de Productos -->
+        <div class="col-12 col-md-9">
+          <div id="productos" class="row g-4">
+            
+          </div>  
+        </div>
+      </div>
+    </section>
+
+
+    <!--↑↑↑↑↑↑↑↑↑↑↑Agrega aquí tu código↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+
+  
+
+    <!-- Footer: su contenido se inserta desde globalElements.js. -->
+    <footer class="footer-container"></footer>
+
+    <!-- ! ENLACES DE ARCHIVOS JAVASCRIP-->
+    <script src="./javascript/globalElements.js"></script>
+    <script src="./javascript/productosJSON.js"></script> <!--JSON con los productos del catlogo-->
+    <script type="module" src="./javascript/tienda.js"></script><!-- Logica que maneja el DOM--> 
+    <!-- ! FIN DE ENLACES DE ARCHIVOS JAVASCRIP-->
+    <!-- !LINK BOOSTRAP-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <!-- !FIN LINK BOOSTRAP-->
+  </body>
+</html>
