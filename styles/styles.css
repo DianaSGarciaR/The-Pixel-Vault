@@ -51,7 +51,7 @@ body {
   /* El color del body pintará la zona del navbar y del footer */
   background-color: var(--bg-color);
 
-  /* Tu imagen y el degradado */
+  /* Imagen y el degradado */
   background-image:
     linear-gradient(rgba(5, 10, 20, 0.45), rgba(5, 10, 20, 0.75)),
     url("../assets/fondo.webp");

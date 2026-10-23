@@ -248,3 +248,13 @@ function iniciarModalPago() {
 }
 
 iniciarModalPago();
+
+carrito.forEach(product => {
+    orderApiService.registrarProducto(orderIdValue, product)
+    .then(data => {
+        console.log('Producto registrado:', data);
+    })
+    .catch(error => {
+        console.error('Error al registrar el producto:', error);
+    });
+});
