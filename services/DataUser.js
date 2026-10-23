@@ -1,5 +1,5 @@
-export async function obtenerUsuario() {
-    const url = 'http://localhost:8080/api/users/3';
+export async function obtenerUsuario(userId) {
+    const url = `http://localhost:8080/api/users/${userId}`;
     const response = await fetch(url);
 
     if (!response.ok) {

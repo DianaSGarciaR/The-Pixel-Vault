@@ -7,7 +7,24 @@ const perfil = document.getElementById('imagenperfil');
 const guardarcambios = document.querySelector('.modal-footer .btn-primary');
 const modalElemento = document.getElementById('exampleModal');
 const tableHistoyOrders = document.querySelector("#tableHistoyOrders");
+const TOKEN = localStorage.getItem("TOKEN");
+
 let LIST_ERRORES = [];
+
+/**
+ *? Obtener un valor del LocalStorage
+ * @param {*} key 
+ * @returns 
+ */
+const getItemLocalStorage = (key) => {
+    //? Validar que existan items
+    if (localStorage.getItem == null) return;
+    //? Obtener el item (text) y lo convertimos a json
+    const data = JSON.parse(localStorage.getItem(key));
+    return data;
+}
+const DATA_USER = getItemLocalStorage("DATA_USER");
+
 
 /* Cambio de avatar en perfil */
 let avatarselect = '';
@@ -103,7 +120,7 @@ let usuarioActual;
 async function cargarDatosUsuario() {
     try {
         // Aqui llamo a mi funcion que tiene los datos de la api
-        usuarioActual = await obtenerUsuario();
+        usuarioActual = await obtenerUsuario(DATA_USER.id);
 
         // Lo mando a llamr cada valor en usuarioActual
         document.getElementById('nombre').value = usuarioActual.userName || '';
@@ -242,8 +259,7 @@ const formatDateDDMMYYYY = (date) => {
 
 /** ========= STAR: Historial de pedidos ========= */
 // ! IMPORTANTE Cuando se libero el login obtener el id del usuario
-let userId = 2;
-let listHistoryOrders = await getAllOrdersByIdUser(null, userId);
+let listHistoryOrders = await getAllOrdersByIdUser(TOKEN.substring(1, TOKEN.length - 1), DATA_USER.id);
 
 const renderTableHistory = (listMyOrdes) => {
     let rows = ``;
@@ -276,5 +292,8 @@ const getOrdersByIdUser = () => {
     renderTableHistory(listHistoryOrders);
     LIST_ERRORES.push("Error de conexión. Revisa tu acceso a internet");
 };
+
+
+
 
 getOrdersByIdUser();

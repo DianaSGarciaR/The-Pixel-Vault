@@ -1,12 +1,11 @@
 const BASE_URL = "http://localhost:8080/api/orders";
 
 export const getAllOrdersByIdUser = async function (token, usersId) {
-    console.log("PRUEBA" + `${BASE_URL}/users/${usersId}/orders`)
     try {
         const response = await fetch(`${BASE_URL}/users/${usersId}/orders`, {
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${token}`
             },
         });
         if (!response.ok)

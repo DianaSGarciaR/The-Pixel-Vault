@@ -1,5 +1,5 @@
 /* =========== import =========== */
-import { createUser, loginUser } from "../services/loginApi.service.js";
+import { createUser, loginUser, getUserByEmail } from "../services/loginApi.service.js";
 
 /* =========== variable =========== */
 const NEW_USER = {
@@ -88,8 +88,11 @@ formLogin.addEventListener("submit", async (event) => {
         try {
             const { token } = await loginUser(dataLoginUser);
             setLocalStorage("TOKEN", token);
+
+            let user = await getUserByEmail(token, dataLoginUser.email);
+            console.log("user ", user)
             // Guardamos solo email del user
-            setLocalStorage("DATA_USER", { email: dataLoginUser.email });
+            setLocalStorage("DATA_USER", { id: user.id, email: user.email });
             formNewUser.reset();
             window.location.href = "index.html";
         } catch (error) {
