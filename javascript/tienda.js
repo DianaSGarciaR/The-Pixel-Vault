@@ -144,17 +144,107 @@ filtrosElement.addEventListener("click", (e) => {
         }
         
         // Filtro por Plataforma convertimos a minúsculas 
-        else if (filterType === "game") {
-            if (product.game.toLowerCase().includes(filterValue.toLowerCase())) {
+        else if (filterType === "platform") {
+            if (product.game == filterValue) {
                 renderProduct(product);
             }
         }
         
         // Filtro por Género
         else if (filterType === "genre") {
-            if (product.genero.toLowerCase() === filterValue.toLowerCase()) {
+            if (product.attributes.toLowerCase() === filterValue.toLowerCase()) {
                 renderProduct(product);
             }
         }
+    });
+});
+
+
+// Seleccionamos el contenedor de la sección de filtros
+const filtrosVideojuegos = document.querySelector("#menuVideojuegos"); 
+
+filtrosVideojuegos.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Obtenemos el valor desde los atributos data-*
+    const filterId = e.target.id;
+    // Limpiamos los productos actuales antes de renderizar los filtrados
+    productsElement.innerHTML = "";
+
+    productosp.forEach((product) => {
+        // Filtro por Precio
+        if (filterId === "Videojuegos") {
+            if (product.categories.some(item => item.categoryName ==="Videojuegos")) {
+                renderProduct(product);
+            }
+        }
+        
+        // Filtro por Plataforma convertimos a minúsculas 
+        else if (filterId === "Físico") {
+            if (product.categories.some(item => item.categoryName ==="Físico")) {
+                renderProduct(product);
+            }
+        }
+        
+        // Filtro por Género
+        else if (filterId === "Digital") {
+            if (product.categories.some(item => item.categoryName ==="Digital")) {
+                renderProduct(product);
+            }
+        }
+        // Filtro por Género
+        else if (filterId === "Edición Especial") {
+            if (product.categories.some(item => item.categoryName ==="Edición Especial")) {
+                renderProduct(product);
+            }
+        }
+    });
+});
+
+// Seleccionamos el contenedor de la sección de filtros
+const filtrosMerch = document.querySelector("#menuMerch"); 
+
+filtrosMerch.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Obtenemos el valor desde los atributos data-*
+    const filterId = e.target.id;
+    // Limpiamos los productos actuales antes de renderizar los filtrados
+    productsElement.innerHTML = "";
+
+    productosp.forEach((product) => {
+        // Filtro por CDs y Viniles
+        if (filterId === "CDs y Viniles") {
+            if (product.categories.some(item => item.categoryName ==="CDs y Viniles")) {
+                renderProduct(product);
+            }
+        }
+        
+        // Filtro Peluches 
+        else if (filterId === "Peluches") {
+            if (product.categories.some(item => item.categoryName ==="Peluches")) {
+                renderProduct(product);
+            }
+        }
+        
+        // Filtro por Arte y Pósters
+        else if (filterId === "Arte y Pósters") {
+            if (product.categories.some(item => item.categoryName ==="Arte y Pósters")) {
+                renderProduct(product);
+            }
+        }
+        // Filtro por Accesorios
+        else if (filterId === "Accesorios") {
+            if (product.categories.some(item => item.categoryName ==="Accesorios")) {
+                renderProduct(product);
+            }
+        }
+        // Filtro por Accesorios
+        else if (filterId === "Ropa y Calzado") {
+            if (product.categories.some(item => item.categoryName ==="Ropa y Calzado")) {
+                renderProduct(product);
+            }
+        }
+
     });
 });
