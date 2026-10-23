@@ -6,7 +6,7 @@ export const getAllOrdersByIdUser = async function (token, usersId) {
         const response = await fetch(`${BASE_URL}/users/${usersId}/orders`, {
             headers: {
                 "Content-Type": "application/json",
-                //Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
             },
         });
         if (!response.ok)

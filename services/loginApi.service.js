@@ -1,13 +1,13 @@
-const BASE_URL = "http://localhost:8080/api/users";
+const BASE_URL = "http://localhost:8080/api/auth";
 
 export const createUser = async function (usertObject) {
     try {
-        const response = await fetch(`${BASE_URL}`, {
+        const response = await fetch(`${BASE_URL}/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(usertObject),
+            body: JSON.stringify(usertObject)
         });
         if (!response.ok)
             throw Error("Error al crear el user: ", response.status);
@@ -18,3 +18,22 @@ export const createUser = async function (usertObject) {
         console.error("Fallo en la peticion: ", error.message);
     }
 };
+
+export const loginUser = async function (loginObject) {
+    try {
+        const response = await fetch(`${BASE_URL}/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(loginObject)
+        });
+        if (!response.ok)
+            throw Error("Error al inicar sesion: ", response.status);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Fallo en la peticion: ", error.message);
+
+    }
+}
