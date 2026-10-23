@@ -1,24 +1,14 @@
 /* =========== import =========== */
-import { createUser } from "../services/loginApi.service.js";
+import { createUser, loginUser } from "../services/loginApi.service.js";
+//import { login } from "../services/loginApi.service.js";
 
 /* =========== variable =========== */
 const NEW_USER = {
-    userName: "-",
-    userMiddleName: "-",
-    userLastNameFirst: "-",
-    userLastNameSecond: "-",
-    userPhone: "-",
-    status: 1,
-    roleId: 1,
-    userAddress: {
-        city: "-",
-        state: "-",
-        number: "-",
-        sector: "-",
-        street: "-",
-        country: "-",
-        zipCode: "-"
-    }
+    "userName": "-----",
+    "userMiddleName": "-----",
+    "userLastNameFirst": "-----",
+    "userLastNameSecond": "-----",
+    "userPhone": "0000000000"
 };
 const viewRegistrate = document.querySelector("#viewRegistrate");
 const viewLogin = document.querySelector("#viewLogin");
@@ -67,7 +57,6 @@ formNewUser.addEventListener("submit", (event => {
     if (formularioValido) {
         delete newUser.passwordConfirm;
         let user = { ...newUser, ...NEW_USER }
-        //createNewUser(user);
         try {
             createNewUser(user);
         } catch (error) {
@@ -80,14 +69,7 @@ formNewUser.addEventListener("submit", (event => {
 }));
 
 const createNewUser = (dataUser) => {
-    // !=== STAR: Esta pArte se sustituye cuando Se implemente BackEnd === 
-    // Se deja solo para simular el guardado de datos en la base de datos, cuando se implemente el BackEnd esta parte se eliminara
-    //LIST_USERS.push(dataUser);
-    //setLocalStorage("LIST_USERS", LIST_USERS);
-    console.log("dataUser ", dataUser)
     createUser(dataUser);
-
-    //! === END: Esta parte se sustituye cuando Se implemente BackEnd === */
     showFormulario(null, 'sectionLogin');
     renderizarMensajes(true, [], resultadoRegistro);
 };
@@ -95,48 +77,58 @@ const createNewUser = (dataUser) => {
 /* =============================== END: Create user ===============================*/
 
 /* =============================== START: Login =============================*/
-formLogin.addEventListener("submit", (event => {
-    const starLoginF = Object.fromEntries([...new FormData(formLogin)]);
+formLogin.addEventListener("submit", async (event) => {
+    const dataLoginUser = Object.fromEntries([...new FormData(formLogin)]);
     let LIST_ERRORES = [];
     let formularioValido = true;
     event.preventDefault();
 
     /** 1. Validar y se elimana espacios */
-    starLoginF.email = ((starLoginF.email) ? (starLoginF.email).trim() : "");
-    starLoginF.password = ((starLoginF.password) ? (starLoginF.password).trim() : "");
+    dataLoginUser.email = ((dataLoginUser.email) ? (dataLoginUser.email).trim() : "");
+    dataLoginUser.password = ((dataLoginUser.password) ? (dataLoginUser.password).trim() : "");
 
-    if (!validarCorreo(starLoginF.email, LIST_ERRORES)) {
+    if (!validarCorreo(dataLoginUser.email, LIST_ERRORES)) {
         formularioValido = false;
     }
 
     /* validar password y si el pasword1 == pasword2 */
-    if (!validarPasword(starLoginF.password, null, "LOGIN", LIST_ERRORES)) {
+    if (!validarPasword(dataLoginUser.password, null, "LOGIN", LIST_ERRORES)) {
         formularioValido = false;
     }
 
-    //! Validar ya que esto se realiza en Back End
-    if (!existUserByEmailAndPassword(starLoginF.email, starLoginF.password, LIST_ERRORES)) {
-        formularioValido = false;
-    }
+    /*! Validar ya que esto se realiza en Back End
+    if (!existUserByEmailAndPassword(dataLoginUser.email, dataLoginUser.password, LIST_ERRORES)) {
+        formularioValido = false;}*/
 
     /* 2 Validamos si no exiten errores */
     if (formularioValido) {
-        starLogin(starLoginF);
+        console.log("1 ", dataLoginUser)
+        try {
+            const { token } = await loginUser(dataLoginUser);
+            console.log("2 ============= token ============ ", token)
+            setLocalStorage("TOKEN", token);
+            // Guardamos solo email del user
+            setLocalStorage("DATA_USER_EMAIL", dataLoginUser.email);
+            window.location.href = "index.html";
+        } catch (error) {
+            LIST_ERRORES.push("Error de conexión. Revisa tu acceso a internet");
+            renderizarMensajes(false, LIST_ERRORES, resultadoRegistro);
+        }
     } else {
         renderizarMensajes(false, LIST_ERRORES, resultadoRegistro);
     }
-}));
+});
 
 /**
  * Funcion para obtener info del ususario
  * @param {} dataLoginUser  es el objeto Usuario
  */
-const starLogin = (dataLoginUser) => {
-    // !=== STAR: Esta parte se complementa cuando implemente BackEnd === 
-    setLocalStorage("DATA_USER", dataLoginUser);
-    //! === END: Esta parte se complementa cuando implemente BackEnd === */
-    window.location.href = "index.html";
-};
+//const starLogin = (dataLoginUser) => {
+// !=== STAR: Esta parte se complementa cuando implemente BackEnd === 
+//setLocalStorage("DATA_USER", dataLoginUser);
+//! === END: Esta parte se complementa cuando implemente BackEnd === */
+//window.location.href = "index.html";
+//};
 /* =============================== END: Login ===============================*/
 
 /** ================= STAR: Funciones de validacion de campos para formulario ================= */
