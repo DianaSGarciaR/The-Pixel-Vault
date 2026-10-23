@@ -22,7 +22,7 @@
  * 3. Incluir este archivo JavaScript en el HTML:
  *      <script src="/javascript/globalElements.js"></script>
 */
-const dataUser = localStorage.getItem("DATA_USER_EMAIL");
+const dataUser = localStorage.getItem("DATA_USER");
 const urlMicuenta = "mi-cuenta.html";
 const urlLogin = "login.html";
 const mainNavbar = document.querySelector(".navThePixelVault");

@@ -34,6 +34,5 @@ export const loginUser = async function (loginObject) {
         return data;
     } catch (error) {
         console.error("Fallo en la peticion: ", error.message);
-
     }
 }

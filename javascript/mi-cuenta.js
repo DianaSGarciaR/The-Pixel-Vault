@@ -150,7 +150,7 @@ async function guardarDatosUsuario() {
     }
 
     // El ID viene del usuario cargado. El 3 y el 1 son valores de respaldo.
-    const userId = usuarioActual && usuarioActual.id ? usuarioActual.id : ;
+    const userId = usuarioActual && usuarioActual.id ? usuarioActual.id : 1;
     const roleId = usuarioActual && usuarioActual.roleId ? usuarioActual.roleId : 1;
     const updatedUserData = {
         email: document.getElementById('email').value,
@@ -220,6 +220,7 @@ const btnCerrarSesion = document.getElementById('cerrarsesion');
 if (btnCerrarSesion) {
     btnCerrarSesion.addEventListener('click', () => {
         localStorage.removeItem('DATA_USER');
+        localStorage.removeItem('TOKEN');
         localStorage.removeItem('avatarGuardado');
         localStorage.removeItem('switchGuardado');
         window.location.href = 'index.html';
