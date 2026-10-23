@@ -2,7 +2,6 @@
 
 > Tienda en línea de videojuegos digitales y merchandising con estética retro / pixel-art y neón.
 
-![Estado](https://img.shields.io/badge/estado-en%20desarrollo-yellow)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
@@ -47,7 +46,6 @@
 | **Backend** | Java, Spring Boot |
 | **Base de datos** | MySQL |
 | **Diseño** | Figma |
-| **Servicios externos** | Formspree (formulario de contacto) |
 | **Control de versiones** | Git y GitHub |
 
 ---
@@ -78,22 +76,14 @@ The-Pixel-Vault/
 │   ├── soporte.js
 │   ├── carrito.js
 │   └── mi-cuenta.js
-├── img/
+├── assets/
 └── README.md
 ```
-
-## 🎨 Diseño
-
-El diseño de las pantallas está en Figma: [Ver diseño en Figma]([[enlace-a-tu-figma]](https://www.figma.com/design/5U4eQ6WsQhtzSDkHyFOe5c/THE-PIXEL-VAULT?node-id=0-1&p=f&t=FxN53ZeCmJ6CuE3n-0))
-
-**Paleta principal:** cian neón · amarillo neón · rosa neón · fondo oscuro.
-
----
 
 ## 🌿 Flujo de trabajo con Git
 
 - `main`: versión estable.
-- `develop`: integración de funcionalidades. *(si lo usan)*
+- `developer`: integración de funcionalidades. *(si lo usan)*
 - Ramas por tarea, por ejemplo `Historial_Pedido`.
 
 Cada tarea se trabaja en su propia rama y se une a la rama principal mediante *Pull Request*.
