@@ -1,11 +1,29 @@
 import { obtenerProductos } from "../services/productService.js";
+import { createOrderData } from "../services/orderApi.service.js";
 // 1. Referencias al DOM
 const contenedorCarrito = document.querySelector('#contenedor-carrito');
 const totalCarrito = document.querySelector('#total-carrito');
 const contadorCarritoBadge = document.querySelector('#contador-carrito');
 const subtotalCarrito = document.querySelector('#subtotal-carrito');
+const TOKEN = localStorage.getItem("TOKEN");
+const resultadoRegistro = document.querySelector("#resultadoRegistro");
+let TOTAL_ORDER = 0;
 
-let carrito = [];   
+let carrito = [];
+
+/**
+ *? Obtener un valor del LocalStorage
+ 
+@param {*} key
+@returns */
+const getItemLocalStorage = (key) => {
+    //? Validar que existan items
+    if (localStorage.getItem == null) return;
+    //? Obtener el item (text) y lo convertimos a json
+    const data = JSON.parse(localStorage.getItem(key));
+    return data;
+}
+const DATA_USER = getItemLocalStorage("DATA_USER");
 
 // Funciones de sincronización con localStorage
 function cargarCarritoDesdeStorage() {
@@ -100,6 +118,7 @@ function renderizarCarrito() {
         contenedorCarrito.appendChild(productCol);
     });
 
+    TOTAL_ORDER = sumaTotal;
     if (totalCarrito) {
         totalCarrito.textContent = `$${sumaTotal} MXN`;
     }
@@ -153,7 +172,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // ¡Estas son las funciones que faltaban ejecutar!
     renderizarCarrito();
     actualizarContadorUI();
-    
+
     // Inicializamos el modal de pago
     iniciarModalPago();
 });
@@ -236,6 +255,32 @@ function iniciarModalPago() {
             return;
         }
 
+        let fecha = new Date(); // O cualquier fecha existente
+        let diasASumar = 10;
+
+        let orderObj = {
+            orders_date: (fecha.setDate(fecha.getDate() + diasASumar)),
+            total: TOTAL_ORDER
+        }
+
+        let ordenTraking = {
+            estimatedDeliveryDate: new Date(fecha.setDate(fecha.getDate() + diasASumar)),
+            orderStatus: "ENVIADO"
+        }
+
+        console.log("(TOKEN.substring(1, TOKEN.length - 1)):", (TOKEN.substring(1, TOKEN.length - 1)));
+        console.log(" DATA_USER.id:", DATA_USER.id);
+        console.log("orderObj:", orderObj);
+        console.log("carrito:", carrito);
+        console.log("ordenTraking:", ordenTraking);
+
+
+        try {
+            createOrderData((TOKEN.substring(1, TOKEN.length - 1)), DATA_USER.id, orderObj, carrito, ordenTraking);
+        } catch (error) {
+            LIST_ERRORES.push("Error de conexión. Revisa tu acceso a internet.");
+            renderizarMensajes(false, LIST_ERRORES, resultadoRegistro);
+        }
         // para enviar al backend (Spring Boot).
         bootstrap.Modal.getInstance(modalPago).hide();
         mostrarAviso('¡Pago confirmado! 🎮');
@@ -248,13 +293,34 @@ function iniciarModalPago() {
 }
 
 iniciarModalPago();
-
+/*
 carrito.forEach(product => {
     orderApiService.registrarProducto(orderIdValue, product)
-    .then(data => {
-        console.log('Producto registrado:', data);
-    })
-    .catch(error => {
-        console.error('Error al registrar el producto:', error);
-    });
-});
+        .then(data => {
+            console.log('Producto registrado:', data);
+        })
+        .catch(error => {
+            console.error('Error al registrar el producto:', error);
+        });
+});*/
+
+/** ================= STAR: Mensajes ================= */
+// Mensajes de error 
+function renderizarMensajes(statusForm, mensajes, contenedor) {
+    if (!contenedor) return;
+    resultadoRegistro.classList.remove('oculto');
+    if (statusForm) {
+        contenedor.innerHTML = '<div class="alert alert-success mt-3" style="background-color: #122418; color: #2ecc71; border: 1px solid #2a7e43;">El registro se realizó con éxito.</div>';
+    } else if (!statusForm) {
+        contenedor.innerHTML = "";
+        let htmlContent = '<div class="alert alert-danger mt-3" style="background-color: #2a0808; color: #ff6b6b; border: 1px solid #842029;"><ul class="mb-0">';
+        for (const mensaje of mensajes) {
+            htmlContent += `<li>${mensaje}</li>`;
+        }
+        htmlContent += '</ul></div>';
+        contenedor.innerHTML = htmlContent;
+    } else {
+        contenedor.innerHTML = "";
+    }
+}
+/** ================= END: Mensajes ================= */
