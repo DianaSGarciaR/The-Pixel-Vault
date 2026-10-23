@@ -1,5 +1,4 @@
 import { createProduct } from "../services/registroProductsService.js"
-import { addProductToCategory } from "../services/registroProductsService.js";
 
 // Busca en el DOM el formulario con el id "registro-products-form".
 const formEl = document.getElementById("registro-products-form");
@@ -47,10 +46,8 @@ formEl.addEventListener("submit", (event) => {
 
     // Convierte el arreglo de pares clave-valor en un objeto JavaScript.
     const producto = Object.fromEntries(dataArray);
-
-    createProduct(producto);
-    //addProductToCategory(1,type);
-    //addProductToCategory(1,category);
+    const token = localStorage.getItem("TOKEN");
+    createProduct(token,producto,type,category);
 
     // Agrega el nuevo producto al arreglo general.
     productos.push(producto);
