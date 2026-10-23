@@ -2,7 +2,7 @@ const BASE_URL = "http://localhost:8080/api/";
 
 export const createProduct = async function (token,productObject,type,category) {
   // PRIMER POST (crear producto)
-  const response = await fetch(`${BASE_URL}categories/1/products`, {
+  const response = await fetch(`${BASE_URL}products`, {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
     body: JSON.stringify(productObject),
