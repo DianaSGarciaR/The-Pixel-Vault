@@ -11,8 +11,7 @@
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
 
-<!-- Opcional: agrega aquí una captura o GIF de la página principal -->
-<!-- ![Vista previa](./docs/preview.png) -->
+
 
 ---
 
@@ -78,13 +77,13 @@ The-Pixel-Vault/
 │   ├── soporte.js
 │   ├── carrito.js
 │   └── mi-cuenta.js
-├── img/
+├── assets/
 └── README.md
 ```
 
 ## 🎨 Diseño
 
-El diseño de las pantallas está en Figma: [Ver diseño en Figma]([[enlace-a-tu-figma]](https://www.figma.com/design/5U4eQ6WsQhtzSDkHyFOe5c/THE-PIXEL-VAULT?node-id=0-1&p=f&t=FxN53ZeCmJ6CuE3n-0))
+El diseño de las pantallas está en Figma: [Ver diseño en Figma]([https://www.figma.com/design/5U4eQ6WsQhtzSDkHyFOe5c/THE-PIXEL-VAULT?node-id=0-1&p=f&t=FxN53ZeCmJ6CuE3n-0])
 
 **Paleta principal:** cian neón · amarillo neón · rosa neón · fondo oscuro.
 
@@ -93,7 +92,7 @@ El diseño de las pantallas está en Figma: [Ver diseño en Figma]([[enlace-a-tu
 ## 🌿 Flujo de trabajo con Git
 
 - `main`: versión estable.
-- `develop`: integración de funcionalidades. *(si lo usan)*
+- `developer`: integración de funcionalidades. 
 - Ramas por tarea, por ejemplo `Historial_Pedido`.
 
 Cada tarea se trabaja en su propia rama y se une a la rama principal mediante *Pull Request*.
