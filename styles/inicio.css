@@ -86,6 +86,7 @@
 
 /* ---------- Inicia carrusel neón ---------- */
 
+
 .neon-carousel-wrapper {
   max-width: 1800px;
   margin: 3rem auto;
@@ -96,9 +97,9 @@
   position: relative;
   border-radius: 16px;
   overflow: hidden;
-  border: 2px solid var(--cyan-accent);
+  border: 2px solid #00ffff;
   box-shadow:
-    0 0 15px var(--cyan-accent),
+    0 0 15px #00ffff,
     0 0 35px rgba(45, 226, 230, 0.4),
     inset 0 0 25px rgba(255, 62, 165, 0.15);
   transform: translateZ(0);
@@ -163,7 +164,7 @@
 
 .neon-arrow {
   font-size: 1.4rem;
-  color: var(--cyan-accent);
+  color: #00ffff;
   font-weight: bold;
 }
 
@@ -176,7 +177,7 @@
   height: 10px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.3);
-  border: 1px solid var(--cyan-accent);
+  border: 1px solid  #00ffff;
   margin: 0 6px;
 }
 
@@ -193,6 +194,7 @@
 }
 
 /* ---------- Termina carrusel neón ---------- */
+
 
 /*--------------Videojuego---------------------*/
 .arcade-wrapper {
@@ -274,3 +276,109 @@
 
 
 /*--------------Fin del Videojuego---------------------*/
+
+
+
+/* =========================================
+   ESTILOS PARA INVITACIÓN DE LOGIN (ARCADE)
+   ========================================= */
+
+.login-invite-wrapper {
+  max-width: 700px;
+  background-color: #0a0a14; 
+  border: 3px solid #00ffff; 
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4), inset 0 0 15px rgba(0, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decoración superior estilo scanline */
+.login-invite-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 255, 255, 0.05) 50%, transparent 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+.login-invite-title {
+  font-family: 'Pixelify Sans', sans-serif;
+  color: #ff00ff; /* Magenta neón */
+  text-shadow: 2px 2px 0px #000, 0 0 10px #ff00ff;
+  font-size: 2.5rem;
+  margin-bottom: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.login-invite-text {
+  font-family: 'Quantico', sans-serif;
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.login-invite-text strong {
+  color: #f7d002; /* Amarillo retro */
+}
+
+/* Botón estilo pixelado/retro */
+.login-btn-arcade {
+  font-family: 'Pixelify Sans', sans-serif;
+  display: inline-block;
+  background-color: #00ffff;
+  color: #000000 !important;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 12px 35px;
+  border: 2px solid #ffffff;
+  box-shadow: 5px 5px 0px #ff00ff; 
+  transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
+}
+
+.login-btn-arcade:hover {
+  transform: translate(3px, 3px); 
+  box-shadow: 2px 2px 0px #ff00ff;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Enlace para registrarse */
+.register-prompt {
+  font-family: 'Inter', sans-serif;
+  color: #aaaaaa;
+  font-size: 0.9rem;
+}
+
+.register-link {
+  color: #00ffff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.register-link:hover {
+  color: #ff00ff;
+  text-shadow: 0 0 5px #ff00ff;
+}
+
+/* Responsividad para móviles */
+@media (max-width: 576px) {
+  .login-invite-title {
+    font-size: 1.8rem;
+  }
+  .login-btn-arcade {
+    font-size: 1.2rem;
+    padding: 10px 25px;
+  }
+}
+/*--------------Fin de ogeate con nosotros---------------------*/
+
