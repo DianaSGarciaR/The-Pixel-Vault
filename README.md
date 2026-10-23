@@ -111,7 +111,6 @@ Cada tarea se trabaja en su propia rama y se une a la rama principal mediante *P
 - Daniel Castro Perez
 - Natalia González Coca
 - Alejandro Enrique Sanchez Mendoza
-Alejandro Enrique Sanchez Mendoza 
 ---
 
 <p align="center">Hecho con 💛 por el equipo de The Pixel Vault</p>
