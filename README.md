@@ -82,30 +82,6 @@ The-Pixel-Vault/
 └── README.md
 ```
 
----
-
-## 🗄️ Base de datos
-
-El modelo incluye las siguientes tablas principales:
-
-| Tabla | Descripción |
-|-------|-------------|
-| `user` | Datos de los usuarios. |
-| `user_role` | Roles de usuario. |
-| `order` | Pedidos realizados. |
-| `order_has_product` | Relación entre pedidos y productos. |
-| `order_tracking` | Seguimiento de cada pedido. |
-| `product` | Producto general, con subtablas por categoría. |
-| `contact_support` | Mensajes enviados desde Contáctanos / soporte. |
-
-**Subtablas de `product`:** `videogames`, `toys`, `clothes`, `art_and_posters`, `console_complements`, `accesories`.
-
-<!-- Opcional: agrega aquí la imagen del diagrama entidad-relación -->
-<!-- ![Diagrama de base de datos](./docs/diagrama-bd.png) -->
-
----
-
-
 ## 🎨 Diseño
 
 El diseño de las pantallas está en Figma: [Ver diseño en Figma]([[enlace-a-tu-figma]](https://www.figma.com/design/5U4eQ6WsQhtzSDkHyFOe5c/THE-PIXEL-VAULT?node-id=0-1&p=f&t=FxN53ZeCmJ6CuE3n-0))
@@ -125,15 +101,16 @@ Cada tarea se trabaja en su propia rama y se une a la rama principal mediante *P
 ---
 
 ## 👥 Equipo
-Diana Saraí García Ramírez
-Alberto Pedraza Pedraza
-Salvador Osorio Palma
-Diego González Celis
-Fernando Angel Chalqueño Nava
-Maria del Carmen Galindo Ramirez
-Blanca Jazmin Hernández Miranda
-Daniel Castro Perez
-Natalia González Coca
+- Diana Saraí García Ramírez
+- Alberto Pedraza Pedraza
+- Salvador Osorio Palma
+- Diego González Celis
+- Fernando Angel Chalqueño Nava
+- Maria del Carmen Galindo Ramirez
+- Blanca Jazmin Hernández Miranda
+- Daniel Castro Perez
+- Natalia González Coca
+- Alejandro Enrique Sanchez Mendoza
 Alejandro Enrique Sanchez Mendoza 
 ---
 
