@@ -29,11 +29,11 @@ const mainNavbar = document.querySelector(".navThePixelVault");
 const listMenuBtn = [
   { id: "inicio", icon: "💻", name: "INICIO", pathHtml: "index.html" },
   { id: "tienda", icon: "🛍️", name: "TIENDA / CATÁLOGO", pathHtml: "tienda.html" },
-  { id: "catalogo", icon: "🎧", name: "CATÁLOGO", pathHtml: "tienda.html" },
+  // { id: "catalogo", icon: "🎧", name: "CATÁLOGO", pathHtml: "tienda.html" },
   { id: "miCuenta", icon: "👤", name: "MI CUENTA", "pathHtml": dataUser ? urlMicuenta : urlLogin },
   { id: "contactanos", icon: "📞", name: "CONTÁCTENOS", pathHtml: "contactanos.html" },
   { id: "nosotros", icon: "🏫", name: "NOSOTROS", pathHtml: "acercaNosotros.html" },
-  { id: "carrito", icon: "🛒", name: "CARRITO", pathHtml: "miCarrito.html" }
+  //{ id: "carrito", icon: "🛒", name: "CARRITO", pathHtml: "miCarrito.html" }
 ];
 
 /** Obtenermos la inforacion de usuario desde el almacenamiento local,
@@ -43,7 +43,7 @@ const getValidUrlMicuenta = () => {
   let urlLogin = "login.html";
 
   const dataUser = getItemLocalStorage("DATA_USER");
-  
+
   if (dataUser) {
     return urlMicuenta;
   }
@@ -116,6 +116,7 @@ const renderNavbar = () => {
         <img class="insertcoin" src="../assets/insertcoin.webp" rel="insertcoin">
         <div class="ranura" id="ranura"></div>
         <div class="moneda" id="moneda"></div>
+        <div class="boton" id="boton"></div> 
         <div class="menu" id="menudesplegable">
           ${botonMenu}
         </div>
@@ -166,8 +167,13 @@ renderNavbar();
 /* --------- INICIO: MENU INTERACTIVO --------- */
 const moneda = document.querySelector('#moneda');
 const ranura = document.querySelector('#ranura');
+const boton = document.querySelector('#boton');
 const menudesplegable = document.querySelector('#menudesplegable');
 const dropSound = new Audio(`./assets/sonidomoneda.mp3`);
+
+boton.addEventListener("pointerdown", (e) => {
+  openMenu();
+});
 
 let interactuando = false;
 let agarreX, agarreY;

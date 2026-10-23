@@ -1,25 +1,15 @@
 /* =========== import =========== */
-import { createUser } from "../services/loginApi.service.js";
+import { createUser, loginUser, getUserByEmail } from "../services/loginApi.service.js";
 
 /* =========== variable =========== */
 const NEW_USER = {
-    userName: "-",
-    userMiddleName: "-",
-    userLastNameFirst: "-",
-    userLastNameSecond: "-",
-    userPhone: "-",
-    status: 1,
-    roleId: 1,
-    userAddress: {
-        city: "-",
-        state: "-",
-        number: "-",
-        sector: "-",
-        street: "-",
-        country: "-",
-        zipCode: "-"
-    }
+    "userName": "-----",
+    "userMiddleName": "-----",
+    "userLastNameFirst": "-----",
+    "userLastNameSecond": "-----",
+    "userPhone": "0000000000"
 };
+
 const viewRegistrate = document.querySelector("#viewRegistrate");
 const viewLogin = document.querySelector("#viewLogin");
 
@@ -28,15 +18,6 @@ const formLogin = document.querySelector("#formLogin");
 
 const resultadoRegistro = document.querySelector("#resultadoRegistro");
 
-/**
- *  @deprecated
- * ! LIST_USERS : Este list se borrara cuando se implente la Base de datos
- */
-let LIST_USERS = [];
-
-/**
- * @deprecated
- */
 /* =============================== START: Create user ===============================*/
 formNewUser.addEventListener("submit", (event => {
     const newUser = Object.fromEntries([...new FormData(formNewUser)]);
@@ -58,16 +39,10 @@ formNewUser.addEventListener("submit", (event => {
         formularioValido = false;
     }
 
-    //! Validar si exite el registro en la base de datos */
-    if (!validExistUser(newUser.email, LIST_ERRORES)) {
-        formularioValido = false;
-    }
-
     /* 2 Validamos si no exiten errores */
     if (formularioValido) {
         delete newUser.passwordConfirm;
         let user = { ...newUser, ...NEW_USER }
-        //createNewUser(user);
         try {
             createNewUser(user);
         } catch (error) {
@@ -80,63 +55,54 @@ formNewUser.addEventListener("submit", (event => {
 }));
 
 const createNewUser = (dataUser) => {
-    // !=== STAR: Esta pArte se sustituye cuando Se implemente BackEnd === 
-    // Se deja solo para simular el guardado de datos en la base de datos, cuando se implemente el BackEnd esta parte se eliminara
-    //LIST_USERS.push(dataUser);
-    //setLocalStorage("LIST_USERS", LIST_USERS);
-    console.log("dataUser ", dataUser)
     createUser(dataUser);
-
-    //! === END: Esta parte se sustituye cuando Se implemente BackEnd === */
     showFormulario(null, 'sectionLogin');
     renderizarMensajes(true, [], resultadoRegistro);
+    formNewUser.reset();
 };
 
 /* =============================== END: Create user ===============================*/
 
 /* =============================== START: Login =============================*/
-formLogin.addEventListener("submit", (event => {
-    const starLoginF = Object.fromEntries([...new FormData(formLogin)]);
+formLogin.addEventListener("submit", async (event) => {
+    const dataLoginUser = Object.fromEntries([...new FormData(formLogin)]);
     let LIST_ERRORES = [];
     let formularioValido = true;
     event.preventDefault();
 
     /** 1. Validar y se elimana espacios */
-    starLoginF.email = ((starLoginF.email) ? (starLoginF.email).trim() : "");
-    starLoginF.password = ((starLoginF.password) ? (starLoginF.password).trim() : "");
+    dataLoginUser.email = ((dataLoginUser.email) ? (dataLoginUser.email).trim() : "");
+    dataLoginUser.password = ((dataLoginUser.password) ? (dataLoginUser.password).trim() : "");
 
-    if (!validarCorreo(starLoginF.email, LIST_ERRORES)) {
+    if (!validarCorreo(dataLoginUser.email, LIST_ERRORES)) {
         formularioValido = false;
     }
 
     /* validar password y si el pasword1 == pasword2 */
-    if (!validarPasword(starLoginF.password, null, "LOGIN", LIST_ERRORES)) {
-        formularioValido = false;
-    }
-
-    //! Validar ya que esto se realiza en Back End
-    if (!existUserByEmailAndPassword(starLoginF.email, starLoginF.password, LIST_ERRORES)) {
+    if (!validarPasword(dataLoginUser.password, null, "LOGIN", LIST_ERRORES)) {
         formularioValido = false;
     }
 
     /* 2 Validamos si no exiten errores */
     if (formularioValido) {
-        starLogin(starLoginF);
+        try {
+            const { token } = await loginUser(dataLoginUser);
+            setLocalStorage("TOKEN", token);
+
+            let user = await getUserByEmail(token, dataLoginUser.email);
+            console.log("user ", user)
+            // Guardamos solo email del user
+            setLocalStorage("DATA_USER", { id: user.id, email: user.email });
+            formNewUser.reset();
+            window.location.href = "index.html";
+        } catch (error) {
+            LIST_ERRORES.push("Error de conexión. Revisa tu acceso a internet");
+            renderizarMensajes(false, LIST_ERRORES, resultadoRegistro);
+        }
     } else {
         renderizarMensajes(false, LIST_ERRORES, resultadoRegistro);
     }
-}));
-
-/**
- * Funcion para obtener info del ususario
- * @param {} dataLoginUser  es el objeto Usuario
- */
-const starLogin = (dataLoginUser) => {
-    // !=== STAR: Esta parte se complementa cuando implemente BackEnd === 
-    setLocalStorage("DATA_USER", dataLoginUser);
-    //! === END: Esta parte se complementa cuando implemente BackEnd === */
-    window.location.href = "index.html";
-};
+});
 /* =============================== END: Login ===============================*/
 
 /** ================= STAR: Funciones de validacion de campos para formulario ================= */
@@ -170,33 +136,6 @@ function validarPasword(paswordValor, passwordConfirmValor, type, LIST_ERRORES) 
     } else if (paswordValor !== passwordConfirmValor && type === "CREATE") {
         esValido = false;
         LIST_ERRORES.push("La contraseñas deben coincidir.");
-    }
-    return esValido;
-}
-
-/** 
- * @deprecated
- * !Evaluar esta funcion si se borrara cuando se implemente el BackEnd Y Base de datos */
-function validExistUser(email, LIST_ERRORES) {
-    let esValido = true;
-    let existUser = LIST_USERS.filter(user => user.email === email);
-    if (existUser && existUser.length > 0) {
-        esValido = false;
-        LIST_ERRORES.push("El email ingresado ya exite en el sistema");
-    }
-    return esValido;
-}
-
-/** 
- * @deprecated
- * !Evaluar esta funcion si se borrara cuando se implemente el BackEnd Y Base de datos */
-function existUserByEmailAndPassword(email, password, LIST_ERRORES) {
-    let esValido = false;
-    let existUser = LIST_USERS.filter(user => user.email === email && user.password === password);
-    if (existUser && existUser.length > 0) {
-        esValido = true;
-    } else {
-        LIST_ERRORES.push("Ususario no encontrado, verifique el correo y la contraseña.");
     }
     return esValido;
 }
@@ -296,6 +235,3 @@ const showOrHideElements = (type, elementId) => {
     }
 }
 /** ================= END: Logica css ================= */
-
-const getListUser = () => { LIST_USERS = getItemLocalStorage("LIST_USERS"); LIST_USERS = (LIST_USERS) ? LIST_USERS : []; };
-getListUser();

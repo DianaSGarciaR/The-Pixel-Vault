@@ -77,128 +77,143 @@
         <div class="contenedor-tarjeta-rosa h-100">
           <div class="contenido-tarjeta">
             <form id="datos-usuario">
-  <h3>Datos del usuario</h3>
-  
-  <!-- Fila 1: Nombre y Segundo Nombre -->
-  <div class="row">
-    <div class="col-6">
-      <div class="mb-1">
-        <label for="nombre" class="form-label">Primer Nombre</label><br>
-        <input class="contenedor-chico-amarillo" name="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre" disabled>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="mb-1">
-        <!-- REQUERIDO POR USERMIDDLENAME -->
-        <label for="segundoNombre" class="form-label">Segundo Nombre</label><br>
-        <input class="contenedor-chico-amarillo" name="segundoNombre" type="text" class="form-control" id="segundoNombre" placeholder="Segundo Nombre" disabled>
-      </div>
-    </div>
-  </div>
+              <h3>Datos del usuario</h3>
+              <p id="error-usuario" class="text-danger d-none" role="alert"></p>
 
-  <!-- Fila 2: Apellidos separados -->
-  <div class="row">
-    <div class="col-6">
-      <div class="mb-1">
-        <label for="apellidoPaterno" class="form-label">Primer Apellido</label><br>
-        <input class="contenedor-chico-amarillo" name="apellidoPaterno" type="text" class="form-control" id="apellidoPaterno" placeholder="Apellido Paterno" disabled>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="mb-1">
-        <label for="apellidoMaterno" class="form-label">Segundo Apellido</label><br>
-        <input class="contenedor-chico-amarillo" name="apellidoMaterno" type="text" class="form-control" id="apellidoMaterno" placeholder="Apellido Materno" disabled>
-      </div>
-    </div>
-  </div>
+              <!-- Fila 1: Nombre y Segundo Nombre -->
+              <div class="row">
+                <div class="col-6">
+                  <div class="mb-1">
+                    <label for="nombre" class="form-label">Primer Nombre</label><br>
+                    <input class="contenedor-chico-amarillo" name="nombre" type="text" class="form-control" id="nombre"
+                      placeholder="Nombre" disabled>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mb-1">
+                    <!-- REQUERIDO POR USERMIDDLENAME -->
+                    <label for="segundoNombre" class="form-label">Segundo Nombre</label><br>
+                    <input class="contenedor-chico-amarillo" name="segundoNombre" type="text" class="form-control"
+                      id="segundoNombre" placeholder="Segundo Nombre" disabled>
+                  </div>
+                </div>
+              </div>
 
-  <!-- Fila 3: E-mail y Teléfono -->
-  <div class="row">
-    <div class="col-8">
-      <div class="mb-1">
-        <label for="email" class="form-label">E-mail</label><br>
-        <input class="contenedor-chico-amarillo" name="email" type="email" class="form-control" id="email" placeholder="example@example.com" disabled>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="mb-1">
-        <label for="telefono" class="form-label">Teléfono</label><br>
-        <input class="contenedor-chico-amarillo" type="text" class="form-control" id="telefono" placeholder="1234567890" disabled>
-      </div>
-    </div>
-  </div>
+              <!-- Fila 2: Apellidos separados -->
+              <div class="row">
+                <div class="col-6">
+                  <div class="mb-1">
+                    <label for="apellidoPaterno" class="form-label">Primer Apellido</label><br>
+                    <input class="contenedor-chico-amarillo" name="apellidoPaterno" type="text" class="form-control"
+                      id="apellidoPaterno" placeholder="Apellido Paterno" disabled>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mb-1">
+                    <label for="apellidoMaterno" class="form-label">Segundo Apellido</label><br>
+                    <input class="contenedor-chico-amarillo" name="apellidoMaterno" type="text" class="form-control"
+                      id="apellidoMaterno" placeholder="Apellido Materno" disabled>
+                  </div>
+                </div>
+              </div>
 
-  <div class="row">
-    <div class="col-12">
-      <div class="mb-1">
-        <label for="password" class="form-label">Contraseña</label><br>
-        <div class="position-relative d-inline-block w-100">
-          <input class="contenedor-chico-amarillo" name="password" type="password" class="form-control" id="password" placeholder="••••••••" disabled>
-        </div>
-      </div>
-    </div>
-  </div>
+              <!-- Fila 3: E-mail y Teléfono -->
+              <div class="row">
+                <div class="col-8">
+                  <div class="mb-1">
+                    <label for="email" class="form-label">E-mail</label><br>
+                    <input class="contenedor-chico-amarillo" name="email" type="email" class="form-control" id="email"
+                      placeholder="example@example.com" disabled>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-1">
+                    <label for="telefono" class="form-label">Teléfono</label><br>
+                    <input class="contenedor-chico-amarillo" type="text" class="form-control" id="telefono"
+                      placeholder="1234567890" disabled>
+                  </div>
+                </div>
+              </div>
 
-  <h3 id="direccion">Dirección</h3>
-  
-  <!-- Fila 5: Calle y Número -->
-  <div class="row">
-    <div class="col-8">
-      <div class="mb-1">
-        <label for="calle" class="form-label">Calle</label><br>
-        <input class="contenedor-chico-amarillo" name="calle" type="text" class="form-control" id="calle" placeholder="Calle" disabled>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="mb-1">
-        <label for="numero" class="form-label">Número</label><br>
-        <input class="contenedor-chico-amarillo" name="numero" type="text" class="form-control" id="numero" placeholder="11" disabled>
-      </div>
-    </div>
-  </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="mb-1">
+                    <label for="password" class="form-label">Contraseña</label><br>
+                    <div class="position-relative d-inline-block w-100">
+                      <input class="contenedor-chico-amarillo" name="password" type="password" class="form-control"
+                        id="password" placeholder="••••••••" disabled>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-  <!-- Fila 6: Colonia y Municipio -->
-  <div class="row">
-    <div class="col-6">
-      <div class="mb-1">
-        <label for="colonia" class="form-label">Colonia/Alcaldía</label><br>
-        <input class="contenedor-chico-amarillo" name="colonia" type="text" class="form-control" id="colonia" placeholder="Colonia" disabled>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="mb-1">
-        <label for="municipio" class="form-label">Municipio</label><br>
-        <input class="contenedor-chico-amarillo" name="municipio" type="text" class="form-control" id="municipio" placeholder="Municipio" disabled>
-      </div>
-    </div>
-  </div>
+              <h3 id="direccion">Dirección</h3>
 
-  <!-- Fila 7: Estado, País y C.P. -->
-  <div class="row">
-    <div class="col-5">
-      <div class="mb-1">
-        <label for="estado" class="form-label">Estado/Ciudad</label><br>
-        <input class="contenedor-chico-amarillo" name="estado" type="text" class="form-control" id="estado" placeholder="Estado/Ciudad" disabled>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="mb-1">
-        <label for="pais" class="form-label">País</label><br>
-        <input class="contenedor-chico-amarillo" name="pais" type="text" class="form-control" id="pais" placeholder="País" disabled>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="mb-1">
-        <label for="postal" class="form-label">C.P.</label><br>
-        <input class="contenedor-chico-amarillo" name="postal" type="number" class="form-control" id="postal" placeholder="00000" disabled>
-      </div>
-    </div>
-  </div>
+              <!-- Fila 5: Calle y Número -->
+              <div class="row">
+                <div class="col-8">
+                  <div class="mb-1">
+                    <label for="calle" class="form-label">Calle</label><br>
+                    <input class="contenedor-chico-amarillo" name="calle" type="text" class="form-control" id="calle"
+                      placeholder="Calle" disabled>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-1">
+                    <label for="numero" class="form-label">Número</label><br>
+                    <input class="contenedor-chico-amarillo" name="numero" type="text" class="form-control" id="numero"
+                      placeholder="11" disabled>
+                  </div>
+                </div>
+              </div>
 
-  <!-- Tus botones originales e intactos -->
-  <button id="guardardatos" type="button" class="btn guardar d-none">Guardar</button>
-  <button id="editardatos" type="button" class="btn"><img src="assets/lapiz.svg" alt="Editar"></button>
-</form>
+              <!-- Fila 6: Colonia y Municipio -->
+              <div class="row">
+                <div class="col-6">
+                  <div class="mb-1">
+                    <label for="colonia" class="form-label">Colonia/Alcaldía</label><br>
+                    <input class="contenedor-chico-amarillo" name="colonia" type="text" class="form-control"
+                      id="colonia" placeholder="Colonia" disabled>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mb-1">
+                    <label for="municipio" class="form-label">Municipio</label><br>
+                    <input class="contenedor-chico-amarillo" name="municipio" type="text" class="form-control"
+                      id="municipio" placeholder="Municipio" disabled>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Fila 7: Estado, País y C.P. -->
+              <div class="row">
+                <div class="col-5">
+                  <div class="mb-1">
+                    <label for="estado" class="form-label">Estado/Ciudad</label><br>
+                    <input class="contenedor-chico-amarillo" name="estado" type="text" class="form-control" id="estado"
+                      placeholder="Estado/Ciudad" disabled>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-1">
+                    <label for="pais" class="form-label">País</label><br>
+                    <input class="contenedor-chico-amarillo" name="pais" type="text" class="form-control" id="pais"
+                      placeholder="País" disabled>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="mb-1">
+                    <label for="postal" class="form-label">C.P.</label><br>
+                    <input class="contenedor-chico-amarillo" name="postal" type="number" class="form-control"
+                      id="postal" placeholder="00000" disabled>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tus botones originales e intactos -->
+              <button id="guardardatos" type="button" class="btn guardar d-none">Guardar</button>
+              <button id="editardatos" type="button" class="btn"><img src="assets/lapiz.svg" alt="Editar"></button>
+            </form>
 
           </div>
         </div>
@@ -208,36 +223,7 @@
       <div class="contenedor-tarjeta-amarillo">
         <div class="contenido-tarjeta">
           <h3>Historial de pedidos</h3>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">ID DEL PEDIDO</th>
-                <th scope="col">FECHA</th>
-                <th scope="col">TOTAL</th>
-                <th scope="col">ESTADO</th>
-              </tr>
-            </thead>
-            <tbody class="table-group-divider">
-              <tr>
-                <th scope="row">PED-318859</th>
-                <td>27/04/2026</td>
-                <td>$1,200.00</td>
-                <td>Entregado</td>
-              </tr>
-              <tr>
-                <th scope="row">PED-423688</th>
-                <td>15/06/2026</td>
-                <td>$885.00</td>
-                <td>Entregado</td>
-              </tr>
-              <tr>
-                <th scope="row">PED-134975</th>
-                <td>01/09/2026</td>
-                <td>$2,510.00</td>
-                <td>Entregado</td>
-              </tr>
-            </tbody>
-          </table>
+          <div id="tableHistoyOrders"></div>
         </div>
       </div>
     </div>
@@ -252,10 +238,10 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel">Elige tu avatar</h1>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        
+
         <div class="modal-body">
           <div class="row g-4 justify-content-center">
-            
+
             <!-- Avatar 1 -->
             <div class="col-6 col-md-4 text-center">
               <input type="radio" name="avatar" id="av1" class="avatar-radio d-none">
@@ -310,15 +296,15 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
   <!--↑↑↑↑↑↑↑↑↑↑↑Agrega aquí tu código↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
 
   <!-- Footer: su contenido se inserta desde globalElements.js. -->
   <footer class="footer-container"></footer>
   <!-- ! ENLACES DE ARCHIVOS JAVASCRIP-->
-  <script src="javascript/mi-cuenta.js"></script>
+  <script type="module" src="./javascript/mi-cuenta.js"></script>
   <script src="./javascript/globalElements.js"></script>
-  <script src="./javascript/contactanos.js"></script>
+  <script type="module" src="./javascript/contactanos.js"></script>
   <!-- ! FIN DE ENLACES DE ARCHIVOS JAVASCRIP-->
   <!-- !LINK BOOSTRAP-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

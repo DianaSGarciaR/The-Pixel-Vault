@@ -1,3 +1,82 @@
+.banner-container {
+  position: relative;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  width: 100%;
+  overflow: visible !important;
+}
+
+.banner-frame {
+  width: clamp(170px, 50vw, 700px) !important;
+  display: block;
+  margin: 0;
+  filter: drop-shadow(0 0 20px #0077ff);
+}
+
+.banner-screen {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: none !important;
+  pointer-events: none; 
+}
+
+.banner-screen h3 {
+  font-size: clamp(10px, 3.8vw, 40px);
+  position: absolute;
+  margin: 0;
+  pointer-events: auto; 
+  top: 50%;   
+  left: 50%;  
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(2px 5px 2px #000000);
+}
+
+.banner-container-carrito {
+  position: relative;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  width: 100%;
+  overflow: visible !important;
+  margin-top: 3rem;
+}
+
+.banner-frame-carrito {
+  width: clamp(200px, 70vw, 900px) !important;
+  display: block;
+  margin: 0;
+  filter: drop-shadow(0 0 10px #b9babb);
+}
+
+.banner-screen-carrito {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: none !important;
+  pointer-events: none; 
+}
+
+.banner-screen-carrito h3 {
+  font-size: clamp(10px, 2.8vw, 40px);
+  position: absolute;
+  margin: 0;
+  pointer-events: auto; 
+  top: 35%;   
+  left: 50%;    
+  transform: translate(-50%, -50%) translateY(4%);  
+  border-radius: 5px;
+  background-color: rgb(177, 28, 1);
+  border: 3px solid #ffffff;  
+  padding-inline: 2vw;
+  padding-block: 0.8vw 0.2vw; 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
 /*---------------------- variables generales ------------------------*/
 :root {
   /* Para títulos principales*/
@@ -743,7 +822,6 @@
 }
 
 /* Fin:  Estilos para el mensaje flotante (Toast) */
-
 
 /* Alineación y tamaño del precio dentro de la tarjeta del carrito */
 .card .card-action-row,

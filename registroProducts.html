@@ -22,10 +22,15 @@
     <main class="navThePixelVault"></main>
     <!--* --------- FIN: navbar --------- -->
 <br>
-<br>
-    <h1>REGISTRAR PRODUCTOS</h1>
-    <br>
-    <br>
+    <!-- Banner principal de la página. -->
+    <section class="banner-container">
+    <!-- Imagen de fondo -->
+    <img class="banner-frame" src="./assets/banner-img.webp" alt="Marco del Banner">
+    <div class="banner-screen">
+            <h3 class="yellow-accent btn-yellow head">Registrar <br> productos</h3>
+    </div>
+</section>
+
     <div class="frame-demo" id="frameDemo">
         <!-- El marco amarillo ya no vive aquí: lo dibuja el CSS (.frame-demo::before) con un SVG -->
 
@@ -47,8 +52,8 @@
                 <div class="col-sm-9">
                     <select class="form-select" aria-label="Default select example" id="tipo" name="tipo" required>
                         <option selected value="" disabled>Tipo de producto</option>
-                        <option value="2">Videojuegos</option>
-                        <option value="3">Merch</option>
+                        <option value="1">Videojuegos</option>
+                        <option value="2">Merch</option>
                     </select>
                 </div>
             </div>
@@ -72,23 +77,23 @@
                 //Se hacen las dos listas de opciones, dependiendo del tipo de producto
                 const opcionesCategoriasVideojuegos = `
                     <option selected value="" disabled>Selecciona la categoría del producto</option>
-                    <option value="4">Físico</option>
-                    <option value="5">Digital</option>
-                    <option value="6">Edición Especial</option>
+                    <option value="3">Físico</option>
+                    <option value="4">Digital</option>
+                    <option value="5">Edición Especial</option>
                     `;
                 const opcionesCategoriasMerch = `
                     <option selected value="" disabled>Selecciona la categoría del producto</option>
-                    <option value="7">CDs y Viniles</option>
-                    <option value="8">Peluches</option>
-                    <option value="9">Arte y Pósters</option>
-                    <option value="10">Accesorios</option>
-                    <option value="11">Ropa y Calzado</option>
+                    <option value="6">CDs y Viniles</option>
+                    <option value="7">Peluches</option>
+                    <option value="8">Arte y Pósters</option>
+                    <option value="9">Accesorios</option>
+                    <option value="10">Ropa y Calzado</option>
                 `;
 
                 //Se escucha qué opción se eligió en el seleccionador de tipo y dependiendo de la que escogieron se renderiza la lista pertinente
                 tipoElement.addEventListener("change",(e)=>{
                     const valorSeleccionado = e.target.value;
-                    if(valorSeleccionado==3){
+                    if(valorSeleccionado==2){
                         categoriaElement.innerHTML = "";
                         categoriaElement.insertAdjacentHTML("beforeend",opcionesCategoriasMerch);
                     }else{

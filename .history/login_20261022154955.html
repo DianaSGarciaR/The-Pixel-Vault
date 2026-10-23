@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <!-- !LINK BOOSTRAP-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <!-- !FIN LINK BOOSTRAP-->
+
+  <link rel="stylesheet" href="./styles/login.css" />
+  <link rel="stylesheet" href="./styles/styles.css" />
+
+  <!--Link de fuente-->
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+  </style>
+</head>
+
+<body>
+  <!--* --------- INICIO: navbar --------- -->
+  <main class="navThePixelVault"></main>
+  <!--* ---------- FIN: navbar ----------- -->
+
+  <!--* -------- INICIO : Banner Principal -------- -->
+  <section class="gameboy-banner-container">
+    <img class="gameboy-banner-img" src="./assets/banner_login.webp" alt="Marco del Banner">
+    <h3 class="gameboy-screen-text yellow-accent btn-yellow">LOGIN</h3>
+  </section>
+  <!--* --------- FIN : Banner Principal ---------- -->
+
+  <!--* --------- INICIO : Iniciar sesion ---------- -->
+  <div class="ejemplo">
+    <div class="contenido row" id="groupItems">
+
+      <div id="seccionInfo" class="col-12 col-lg-4">
+        <h3>The Pixel Vault</h3>
+        <p class="text-center">
+          Tu aventura comienza aquí.
+          Explora los lanzamientos más recientes,
+          consigue productos únicos y conecta
+          con otros apasionados del gaming.
+        </p>
+      </div>
+
+      <div id="sectionForm" class="col-12 col-lg-8 view-element">
+
+        <!-- Login -->
+        <div id="sectionLogin" class="form-panel view-element">
+          <h4 class="text-center">Bienvenido de nuevo</h4>
+          <form id="formLogin">
+
+            <div class="format-input">
+              <label for="exampleInputEmail1" class="form-label">Usuario</label>
+              <input type="email" class="form-control" name="email" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="ejemplo@gmail.com">
+            </div>
+
+            <div class="format-input">
+              <label for="inputPassword" class="form-label">Password</label>
+              <input type="password" id="inputPassword" name="password" class="form-control">
+            </div>
+
+            <div class="btn-magenta-container">
+              <button type="submit" class="btn-magenta">Iniciar sesión</button>
+            </div>
+
+            <div class="text-center prueba">
+              <br>
+              ¿No tienes cuenta? <a href="" id="viewRegistrate">Regístrate</a>
+            </div>
+          </form>
+        </div>
+
+        <!-- Registro -->
+        <div id="sectionCreateUser" class="form-panel view-element" hidden>
+          <h4 class="text-center">REGÍSTRATE</h4>
+          <br>
+
+          <div class="text-center" hidden>
+            <div>Continuar con Google o ingresa tus datos</div>
+            <div class="btn-red-container">
+              <button type="button" class="btn-red">
+                Continuar con Google
+              </button>
+            </div>
+          </div>
+
+          <form id="formNewUser">
+            <div class="format-input">
+              <label for="inputEmail" class="form-label">Usuario (email)</label>
+              <input type="email" class="form-control" id="inputEmail" name="email" placeholder="ejemplo@gmail.com">
+            </div>
+
+            <div class="format-input">
+              <label for="inputPasswordNew" class="form-label">Password</label>
+              <!-- id único (antes estaba repetido "inputPassword") -->
+              <input type="password" id="inputPasswordNew" name="password" class="form-control"
+                placeholder="min 8 caracteres">
+            </div>
+
+            <div class="format-input">
+              <label for="inputPasswordConfirm" class="form-label">Confirmación</label>
+              <input type="password" id="inputPasswordConfirm" name="passwordConfirm" class="form-control"
+                placeholder="min 8 caracteres">
+            </div>
+
+            <div class="btn-magenta-container">
+              <button type="submit" class="btn-magenta">Crear</button>
+            </div>
+
+            <div class="text-center">
+              <br>
+              ¿Ya tiene cuenta? <a href="" id="viewLogin">Inicia sesión</a>
+            </div>
+          </form>
+        </div>
+
+        <div id="resultadoRegistro"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-text">
+    <h4>CONTACTO</h4> <br>
+    <p><a href="">ThepixelVault@gmail.com</a> es la mejor manera de contactar
+      con nuestro equipo de atención
+      al cliente para
+      cualquier consulta sobre pedidos, información de seguimiento y detalles de los productos.
+      Por favor, tenga paciencia mientras espera una respuesta; por lo general, no leemos ni respondemos correos
+      electrónicos durante los fines de semana.
+    </p>
+  </div>
+  <!--* ---------- FIN : Iniciar sesion ------------ -->
+
+
+  <!-- Footer: su contenido se inserta desde globalElements.js. -->
+  <footer class="footer-container"></footer>
+
+  <!-- ! ENLACES DE ARCHIVOS JAVASCRIP-->
+  <script src="./javascript/globalElements.js"></script>
+  <script type="module" src="./javascript/login.js"></script>
+  <!-- ! FIN DE ENLACES DE ARCHIVOS JAVASCRIP-->
+  <!-- !LINK BOOSTRAP-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <!-- !FIN LINK BOOSTRAP-->
+</body>
+
+</html>

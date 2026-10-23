@@ -1,30 +1,70 @@
-.formulario{
-    position:relative;
+.banner-container {
+  position: relative;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  width: 100%;
+  overflow: visible !important;
+}
+
+.banner-frame {
+  width: clamp(170px, 50vw, 700px) !important;
+  display: block;
+  margin: 0;
+  filter: drop-shadow(0 0 20px #0077ff);
+}
+
+.banner-screen {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: none !important;
+  pointer-events: none; 
+}
+
+.banner-screen h3 {
+  font-size: clamp(8px, 2.3vw, 30px);
+  position: absolute;
+  margin: 0;
+  pointer-events: auto; 
+  top: 23%;   
+  left: 50%;  
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(2px 2px 2px #000000);
+}
+
+.formulario {
+    position: relative;
     backdrop-filter: blur(50px);
     z-index: 1;
-    border: 4vw solid transparent;
+    border: clamp(8px, 4vw, 24px) solid transparent;
     height: auto;
     width: 80%;
     justify-self: center;
     max-width: 600px;
 }
-h5{
-  font-size: clamp(10px, 4vw, 25px) !important;
+
+h5 {
+    font-size: clamp(10px, 4vw, 25px) !important;
 }
-.formulario::before{
+
+.formulario::before {
     position: absolute;
     z-index: -1;
-    content:"";
-    top: -4vw; 
-    left: -4vw; 
-    right: -4vw;
-    bottom: -4vw; 
-    border: 4vw solid transparent;
+    content: "";
+    top: calc(-1 * clamp(8px, 4vw, 24px)); 
+    left: calc(-1 * clamp(8px, 4vw, 24px)); 
+    right: calc(-1 * clamp(8px, 4vw, 24px));
+    bottom: calc(-1 * clamp(8px, 4vw, 24px)); 
+    border: clamp(8px, 4vw, 24px) solid transparent;
     border-image-slice: 6;
-    border-image-repeat: repeat;
+    border-image-repeat: stretch;
     border-image-source: url('../assets/marco-pixel-amarillo.svg');
     filter: drop-shadow(0 0 10px #ff00ea) drop-shadow(0 0 5px #ffffff);
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
 }
+
 
 /*
  * FORMULARIO

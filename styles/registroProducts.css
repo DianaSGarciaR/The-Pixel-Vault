@@ -1,3 +1,38 @@
+.banner-container {
+  position: relative;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  width: 100%;
+  overflow: visible !important;
+}
+
+.banner-frame {
+  width: clamp(170px, 50vw, 700px) !important;
+  display: block;
+  margin: 0;
+  filter: drop-shadow(0 0 20px #a200ff);
+}
+
+.banner-screen {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: none !important;
+  pointer-events: none; 
+}
+
+.banner-screen h3 {
+  font-size: clamp(8px, 2.8vw, 35px);
+  position: absolute;
+  margin: 0;
+  pointer-events: auto; 
+  top: 50%;   
+  left: 50%;  
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(2px 5px 2px #000000);
+}
+
 h1 {
   color: var(--yellow-accent);
   text-align: center;
@@ -11,37 +46,28 @@ h1 {
   position: relative;
   backdrop-filter: blur(50px);
   z-index: 1;
-  
-  /* 1. Usamos clamp() en los bordes en vw para que no aplasten el contenido en móviles */
   border: clamp(12px, 4vw, 35px) solid transparent;
-  
   height: auto;
-  
-  /* 2. En lugar de un min-width estricto, usamos min() para que se adapte al 90% o hasta 700px de forma segura */
   width: min(90%, 700px);
-  
-  /* 3. margin con 'auto' a los lados para asegurar que siempre esté centrado */
   margin: 1.5rem auto;
-  
-  box-sizing: border-box; /* Evita que paddings o bordes rompan el ancho total */
+  box-sizing: border-box;
 }
 
 .frame-demo::before {
   position: absolute;
   z-index: -1;
   content: "";
-  
-  /* Sincronizamos el marco exterior de manera fluida con el borde del contenedor */
-  top: clamp(-35px, -4vw, -12px);
-  left: clamp(-35px, -4vw, -12px);
-  right: clamp(-35px, -4vw, -12px);
-  bottom: clamp(-35px, -4vw, -12px);
-  
+  top: calc(-1 * clamp(12px, 4vw, 35px));
+  left: calc(-1 * clamp(12px, 4vw, 35px));
+  right: calc(-1 * clamp(12px, 4vw, 35px));
+  bottom: calc(-1 * clamp(12px, 4vw, 35px));
   border: clamp(12px, 4vw, 35px) solid transparent;
   border-image-slice: 6;
-  border-image-repeat: repeat;
+  border-image-repeat: stretch;
   border-image-source: url('../assets/marco-pixel-amarillo.svg');
   filter: drop-shadow(0 0 10px #ff00ea) drop-shadow(0 0 5px #ffffff);
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
 .frame-content {

@@ -1,29 +1,24 @@
+import { obtenerProductos } from "../services/productService.js";
 
-import { productosp } from "../services/dataCatalogo.js";
-
-
+let productosp = [];
 const productsElement = document.querySelector("#productos");
+let modalsContainer = document.body;
 
-
-//Seleccionamos el elemento del DOM donde se van a renderizar las cards de los productos
-let modalsContainer = document.body; // En donde se renderiza el modal
-
-//Definimos la función para renderizar el producto
+// Función para renderizar un producto 
 let renderProduct = (product) => {
-    // CARDS
     const productCard = `
     <div class="col-12 col-sm-6 col-lg-4">
         <div class="notch">
             <div class="card">
                 <div class="art">
-                    <img src="${product.imagen}" class="card-img-top" alt="${product.nombre}">
-                    <span class="badge">${product.genero}</span>
-                    <small>${product.plataforma}</small>
+                    <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                    <span class="badge">Nuevo</span>
+                    <small>${product.game || 'General'}</small>
                 </div>
                 <div class="body">
-                    <h3>${product.nombre}</h3>
+                    <h3>${product.name}</h3>
                     <div class="card-action-row">
-                        <span class="price">$${product.precio} MXN</span>
+                        <span class="price">$${product.price} MXN</span>
                         <button type="button" class="cta notch-sm" data-bs-toggle="modal" data-bs-target="#modal-${product.id}">INSPECCIONAR</button>
                     </div>
                 </div>
@@ -31,21 +26,20 @@ let renderProduct = (product) => {
         </div>
     </div>`;
 
-    // MODAL
     const productModal = `
     <div class="modal fade" id="modal-${product.id}" tabindex="-1" aria-labelledby="modalLabel-${product.id}" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <button type="button" class="btn-cerrar-cyber" data-bs-dismiss="modal" aria-label="Close">&times;</button>
                 <div class="container-back"></div>
-                <img class="imagen-modal" src="${product.imagen}" alt="${product.nombre}">
+                <img class="imagen-modal" src="${product.image}" alt="${product.name}">
                 <div class="container-descripcion">
-                    <h1>${product.nombre}</h1>
-                    <h3>${product.plataforma}</h3>
-                    <p class="precio">$${product.precio} MXN</p>
-                    <p>${product.descripcion}</p>
+                    <h1>${product.name}</h1>
+                    <h3>${product.game || ''}</h3>
+                    <p class="precio">$${product.price} MXN</p>
+                    <p>${product.description}</p>
                     <div class="carrito-container">
-                        <button class="carrito" data-id ="${product.id}">
+                        <button class="carrito" data-id="${product.id}">
                             Añadir al Carrito
                         </button>
                     </div>
@@ -56,52 +50,24 @@ let renderProduct = (product) => {
 
     productsElement.insertAdjacentHTML('beforeend', productCard);
     modalsContainer.insertAdjacentHTML('beforeend', productModal);
-}
+};
 
-//Ahora sí mandamos a llamar a la función render product sobre cada uno de los productos del json
-
-productosp.map((product) => renderProduct(product));
-//Recordar que map va a recibir como argumento un callback, en este caso, la función a aplicar sobre cada uno de sus productos.
-const juegosElement = document.querySelector("#menuVideojuegos");
-
-juegosElement.addEventListener("click",(e) => {
-    e.preventDefault();
-    if(e.target.id == "Videojuegos"){
-        productsElement.innerHTML= "";
-        const pr = "Videojuego";
-        productosp.map((product) =>{
-            if(product.tipo == pr){
-                renderProduct(product);
-            }
-        })
-    }else if(e.target.id == "Fisicos"){
-        productsElement.innerHTML= "";
-        const pr = "Físico";
-        productosp.map((product) =>{
-            if(product.categoria == pr){
-                renderProduct(product);
-            }
-        })
-    }else if(e.target.id == "Digitales"){
-        productsElement.innerHTML= "";
-        const pr = "Digital";
-        productosp.map((product) =>{
-            if(product.categoria == pr){
-                renderProduct(product);
-            }
-        })
-    }else if(e.target.id == "EdicionEspecial"){
-        productsElement.innerHTML= "";
-        const pr = "Edición especial";
-        productosp.map((product) =>{
-            if(product.categoria == pr){
-                renderProduct(product);
-            }
-        })
+const cargarProductosDesdeBackend = async () => {
+    productosp = await obtenerProductos();
+    
+    if (productosp.length === 0) {
+        productsElement.innerHTML = `<p class="text-danger text-center">Error: No se pudo conectar con el servidor de la API o no hay productos.</p>`;
+        return;
     }
-});
-//#########################################################
-//----Inicio localStorage---------------------------------
+
+    productsElement.innerHTML = "";
+    productosp.forEach((product) => renderProduct(product));
+};
+
+// Ejecutamos la carga al iniciar la página
+document.addEventListener("DOMContentLoaded", cargarProductosDesdeBackend);
+
+//----Inicio localStorage-----
 function agregarProductoAlCarrito(product_id) {
   const carritoActual = JSON.parse(localStorage.getItem('carrito_compras')) || [];
 
@@ -172,23 +138,113 @@ filtrosElement.addEventListener("click", (e) => {
         // Filtro por Precio
         if (filterType === "price") {
             const [min, max] = filterValue.split("-").map(Number);
-            if (product.precio >= min && product.precio <= max) {
+            if (product.price >= min && product.price <= max) {
                 renderProduct(product);
             }
         }
         
         // Filtro por Plataforma convertimos a minúsculas 
         else if (filterType === "platform") {
-            if (product.plataforma.toLowerCase().includes(filterValue.toLowerCase())) {
+            if (product.game == filterValue) {
                 renderProduct(product);
             }
         }
         
         // Filtro por Género
         else if (filterType === "genre") {
-            if (product.genero.toLowerCase() === filterValue.toLowerCase()) {
+            if (product.attributes.toLowerCase() === filterValue.toLowerCase()) {
                 renderProduct(product);
             }
         }
+    });
+});
+
+
+// Seleccionamos el contenedor de la sección de filtros
+const filtrosVideojuegos = document.querySelector("#menuVideojuegos"); 
+
+filtrosVideojuegos.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Obtenemos el valor desde los atributos data-*
+    const filterId = e.target.id;
+    // Limpiamos los productos actuales antes de renderizar los filtrados
+    productsElement.innerHTML = "";
+
+    productosp.forEach((product) => {
+        // Filtro por Precio
+        if (filterId === "Videojuegos") {
+            if (product.categories.some(item => item.categoryName ==="Videojuegos")) {
+                renderProduct(product);
+            }
+        }
+        
+        // Filtro por Plataforma convertimos a minúsculas 
+        else if (filterId === "Físico") {
+            if (product.categories.some(item => item.categoryName ==="Físico")) {
+                renderProduct(product);
+            }
+        }
+        
+        // Filtro por Género
+        else if (filterId === "Digital") {
+            if (product.categories.some(item => item.categoryName ==="Digital")) {
+                renderProduct(product);
+            }
+        }
+        // Filtro por Género
+        else if (filterId === "Edición Especial") {
+            if (product.categories.some(item => item.categoryName ==="Edición Especial")) {
+                renderProduct(product);
+            }
+        }
+    });
+});
+
+// Seleccionamos el contenedor de la sección de filtros
+const filtrosMerch = document.querySelector("#menuMerch"); 
+
+filtrosMerch.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Obtenemos el valor desde los atributos data-*
+    const filterId = e.target.id;
+    // Limpiamos los productos actuales antes de renderizar los filtrados
+    productsElement.innerHTML = "";
+
+    productosp.forEach((product) => {
+        // Filtro por CDs y Viniles
+        if (filterId === "CDs y Viniles") {
+            if (product.categories.some(item => item.categoryName ==="CDs y Viniles")) {
+                renderProduct(product);
+            }
+        }
+        
+        // Filtro Peluches 
+        else if (filterId === "Peluches") {
+            if (product.categories.some(item => item.categoryName ==="Peluches")) {
+                renderProduct(product);
+            }
+        }
+        
+        // Filtro por Arte y Pósters
+        else if (filterId === "Arte y Pósters") {
+            if (product.categories.some(item => item.categoryName ==="Arte y Pósters")) {
+                renderProduct(product);
+            }
+        }
+        // Filtro por Accesorios
+        else if (filterId === "Accesorios") {
+            if (product.categories.some(item => item.categoryName ==="Accesorios")) {
+                renderProduct(product);
+            }
+        }
+        // Filtro por Accesorios
+        else if (filterId === "Ropa y Calzado") {
+            if (product.categories.some(item => item.categoryName ==="Ropa y Calzado")) {
+                renderProduct(product);
+            }
+        }
+
     });
 });

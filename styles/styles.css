@@ -51,7 +51,7 @@ body {
   /* El color del body pintará la zona del navbar y del footer */
   background-color: var(--bg-color);
 
-  /* Tu imagen y el degradado */
+  /* Imagen y el degradado */
   background-image:
     linear-gradient(rgba(5, 10, 20, 0.45), rgba(5, 10, 20, 0.75)),
     url("../assets/fondo.webp");
@@ -197,6 +197,23 @@ body {
   cursor: grabbing;
   /* Que aparezca la manito cerrada en el cursor */
   filter: drop-shadow(0 0 20px #ece51a);
+}
+
+.boton{
+    position: absolute;
+    border-radius: 8px;
+  bottom: 66%;
+  left: 11%;
+  width: 78.2%;
+  height: 22.5%;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.boton:hover{
+  border: 2px solid #f3e300;
+  box-shadow: 0 0 10px #ece51a;
+  background-color: #ffaa0048;
 }
 
 .menuinteractivo p {

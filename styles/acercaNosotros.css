@@ -1,27 +1,64 @@
+.banner-container {
+  position: relative;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  width: 100%;
+  overflow: visible !important;
+}
+
+.banner-frame {
+  width: clamp(170px, 40vw, 700px) !important;
+  display: block;
+  margin: 0;
+  filter: drop-shadow(0 0 20px #ffe655);
+}
+
+.banner-screen {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: none !important;
+  pointer-events: none; 
+}
+
+.banner-screen h3 {
+  font-size: clamp(10px, 3vw, 40px);
+  position: absolute;
+  margin: 0;
+  pointer-events: auto; 
+  top: 112%;   
+  left: 50%;  
+  transform: translate(-50%, -50%); 
+}
+
+
 /**----------ROSTER DEL EQUIPO----------*/
-.team-content{
-    position:relative;
+.team-content {
+    position: relative;
     backdrop-filter: blur(50px);
     z-index: 1;
-    border: 8vw solid transparent;
+    border: clamp(12px, 8vw, 48px) solid transparent;
     height: auto;
-    margin: 8vw;
+    margin: clamp(12px, 8vw, 48px);
     margin-top: 5rem;
 }
 
-.team-content::before{
+.team-content::before {
     position: absolute;
     z-index: -1;
-    content:"";
-    top: -8vw; 
-    left: -8vw; 
-    right: -8vw;
-    bottom: -8vw; 
-    border: 8vw solid transparent;
+    content: "";
+    top: calc(-1 * clamp(12px, 8vw, 48px)); 
+    left: calc(-1 * clamp(12px, 8vw, 48px)); 
+    right: calc(-1 * clamp(12px, 8vw, 48px));
+    bottom: calc(-1 * clamp(12px, 8vw, 48px)); 
+    border: clamp(12px, 8vw, 48px) solid transparent;
     border-image-slice: 6;
-    border-image-repeat: repeat;
+    border-image-repeat: stretch;
     border-image-source: url('../assets/marco-pixel-rosa.svg');
     filter: drop-shadow(0 0 10px #ff00ea) drop-shadow(0 0 5px #ffffff);
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
 }
 
 .contenido p {
@@ -295,7 +332,7 @@
 .content{
     position:relative;
     z-index: 1;
-    border: 3vw solid transparent;
+    border: clamp(8px, 3vw, 24px) solid transparent;
     height: auto;
     backdrop-filter: blur(50px);
     padding: 1rem;
@@ -304,13 +341,15 @@
   position: absolute;
     z-index: -1;
     content:"";
-    top: -3vw; 
-    left: -3vw;
-    right: -3vw;
-    bottom: -3vw;
-    border: 3vw solid transparent;
+    top: calc(-1 * clamp(8px, 3vw, 24px)); 
+    left: calc(-1 * clamp(8px, 3vw, 24px));
+    right: calc(-1 * clamp(8px, 3vw, 24px));
+    bottom: calc(-1 * clamp(8px, 3vw, 24px));
+    border: clamp(8px, 3vw, 24px) solid transparent;
     border-image-slice: 6;
-    border-image-repeat: repeat;
+    border-image-repeat: stretch;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
     border-image-source: url('../assets/marco-pixel-azul.svg');
     filter: drop-shadow(0 0 10px #0084ff) drop-shadow(0 0 5px #ffffff);
 }
