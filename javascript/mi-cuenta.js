@@ -7,7 +7,24 @@ const perfil = document.getElementById('imagenperfil');
 const guardarcambios = document.querySelector('.modal-footer .btn-primary');
 const modalElemento = document.getElementById('exampleModal');
 const tableHistoyOrders = document.querySelector("#tableHistoyOrders");
+const TOKEN = localStorage.getItem("TOKEN");
+
 let LIST_ERRORES = [];
+
+/**
+ *? Obtener un valor del LocalStorage
+ * @param {*} key 
+ * @returns 
+ */
+const getItemLocalStorage = (key) => {
+    //? Validar que existan items
+    if (localStorage.getItem == null) return;
+    //? Obtener el item (text) y lo convertimos a json
+    const data = JSON.parse(localStorage.getItem(key));
+    return data;
+}
+const DATA_USER = getItemLocalStorage("DATA_USER");
+
 
 /* Cambio de avatar en perfil */
 let avatarselect = '';
@@ -103,18 +120,19 @@ let usuarioActual;
 async function cargarDatosUsuario() {
     try {
         // Aqui llamo a mi funcion que tiene los datos de la api
-        usuarioActual = await obtenerUsuario();
+        usuarioActual = await obtenerUsuario(TOKEN.substring(1, TOKEN.length - 1), DATA_USER.id);  // Revisar
 
-        // Lo mando a llamr cada valor en usuarioActual
-        document.getElementById('nombre').value = usuarioActual.userName || '';
-        document.getElementById('segundoNombre').value = usuarioActual.userMiddleName || '';
-        document.getElementById('apellidoPaterno').value = usuarioActual.userLastNameFirst || '';
-        document.getElementById('apellidoMaterno').value = usuarioActual.userLastNameSecond || '';
-        document.getElementById('email').value = usuarioActual.email || '';
-        document.getElementById('telefono').value = usuarioActual.userPhone || '';
+        // Si ya habías guardado cambios, los mostramos; si no, usamos lo que vino de la API.
+        const datosGuardados = JSON.parse(localStorage.getItem('DATOS_PARA_POST')) || usuarioActual;
+        document.getElementById('nombre').value = datosGuardados.userName || '';
+        document.getElementById('segundoNombre').value = datosGuardados.userMiddleName || '';
+        document.getElementById('apellidoPaterno').value = datosGuardados.userLastNameFirst || '';
+        document.getElementById('apellidoMaterno').value = datosGuardados.userLastNameSecond || '';
+        document.getElementById('email').value = datosGuardados.email || '';
+        document.getElementById('telefono').value = datosGuardados.userPhone || '';
 
         // La dirección viene dentro de userAddress en la respuesta.
-        const direccion = usuarioActual.userAddress || {};
+        const direccion = datosGuardados.userAddress || {};     // Revisar
         document.getElementById('calle').value = direccion.street || '';
         document.getElementById('numero').value = direccion.number || '';
         document.getElementById('colonia').value = direccion.sector || '';
@@ -142,19 +160,10 @@ document.addEventListener('click', (e) => {
     }
 });
 
-async function guardarDatosUsuario() {
-    if (!usuarioActual) {
-        mensajeErrorUsuario.textContent = 'Primero hay que cargar los datos del usuario.';
-        mensajeErrorUsuario.classList.remove('d-none');
-        return;
-    }
-
-    // El ID viene del usuario cargado. El 3 y el 1 son valores de respaldo.
-    const userId = usuarioActual && usuarioActual.id ? usuarioActual.id : 1;
+function guardarDatosUsuario() { // Revisar
     const roleId = usuarioActual && usuarioActual.roleId ? usuarioActual.roleId : 1;
-    const updatedUserData = {
+    const datosParaPost = { // Revisar
         email: document.getElementById('email').value,
-        password: document.getElementById('password').value,
         userName: document.getElementById('nombre').value,
         userMiddleName: document.getElementById('segundoNombre').value,
         userPhone: document.getElementById('telefono').value,
@@ -173,30 +182,22 @@ async function guardarDatosUsuario() {
         }
     };
 
-    try {
-        const response = await fetch(`http://localhost:8080/api/users/${userId}/${roleId}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(updatedUserData)
-        });
-
-        if (!response.ok) {
-            throw new Error(`Error en el servidor (Código ${response.status})`);
-        }
-
-        // Guardamos lo escrito para que siga disponible en la página.
-        const BaseDatosUsuario = {};
-        inputsUsuario.forEach(input => {
-            BaseDatosUsuario[input.id] = input.value;
-            input.disabled = true;
-        });
-        localStorage.setItem('DATA_USER', JSON.stringify(BaseDatosUsuario));
-        mensajeErrorUsuario.classList.add('d-none');
+    try {// Revisar
+        // Guardamos el objeto para poder enviarlo a la API más adelante.
+        localStorage.setItem('DATOS_PARA_POST', JSON.stringify(datosParaPost));
+        document.getElementById('password').value = '';
+        inputsUsuario.forEach(input => input.disabled = true);
+        mensajeErrorUsuario.textContent = 'Datos guardados.';
+        mensajeErrorUsuario.classList.remove('text-danger');
+        mensajeErrorUsuario.classList.add('te       xt-success');
+        mensajeErrorUsuario.classList.remove('d-none');
         if (btnGuardarDatos) btnGuardarDatos.classList.add('d-none');
         if (btnEditarDatos) btnEditarDatos.classList.remove('d-none');
     } catch (error) {
-        console.error('No se pudieron guardar los datos del usuario:', error);
-        mensajeErrorUsuario.textContent = 'No se pudieron guardar tus cambios. Intenta de nuevo.';
+        console.error('No se pudieron guardar los datos en el navegador:', error);
+        mensajeErrorUsuario.textContent = 'No se pudieron guardar los datos en este navegador.';
+        mensajeErrorUsuario.classList.remove('text-success');
+        mensajeErrorUsuario.classList.add('text-danger');  // Revisar
         mensajeErrorUsuario.classList.remove('d-none');
         inputsUsuario.forEach(input => input.disabled = false);
     }
@@ -242,8 +243,7 @@ const formatDateDDMMYYYY = (date) => {
 
 /** ========= STAR: Historial de pedidos ========= */
 // ! IMPORTANTE Cuando se libero el login obtener el id del usuario
-let userId = 2;
-let listHistoryOrders = await getAllOrdersByIdUser(null, userId);
+let listHistoryOrders = await getAllOrdersByIdUser(TOKEN.substring(1, TOKEN.length - 1), DATA_USER.id);
 
 const renderTableHistory = (listMyOrdes) => {
     let rows = ``;
@@ -276,5 +276,8 @@ const getOrdersByIdUser = () => {
     renderTableHistory(listHistoryOrders);
     LIST_ERRORES.push("Error de conexión. Revisa tu acceso a internet");
 };
+
+
+
 
 getOrdersByIdUser();
