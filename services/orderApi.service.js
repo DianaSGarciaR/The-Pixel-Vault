@@ -27,7 +27,7 @@ carrito.forEach(product => {
 
 export const createOrderData = async function (token, usersId, orderObjec, listProductos, ordenTraking) {
     // PRIMER POST (crear Orden)
-    const response = await fetch(`${BASE_URL_ORDER}/users/${usersId}/orders`, {
+    const response = await fetch(`${BASE_URL_ORDER}/${usersId}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

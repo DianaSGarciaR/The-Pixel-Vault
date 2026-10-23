@@ -268,13 +268,6 @@ function iniciarModalPago() {
             orderStatus: "ENVIADO"
         }
 
-        console.log("(TOKEN.substring(1, TOKEN.length - 1)):", (TOKEN.substring(1, TOKEN.length - 1)));
-        console.log(" DATA_USER.id:", DATA_USER.id);
-        console.log("orderObj:", orderObj);
-        console.log("carrito:", carrito);
-        console.log("ordenTraking:", ordenTraking);
-
-
         try {
             createOrderData((TOKEN.substring(1, TOKEN.length - 1)), DATA_USER.id, orderObj, carrito, ordenTraking);
         } catch (error) {
@@ -292,8 +285,7 @@ function iniciarModalPago() {
     });
 }
 
-iniciarModalPago();
-/*
+/*iniciarModalPago();
 carrito.forEach(product => {
     orderApiService.registrarProducto(orderIdValue, product)
         .then(data => {
