@@ -46,8 +46,8 @@ formEl.addEventListener("submit", (event) => {
 
     // Convierte el arreglo de pares clave-valor en un objeto JavaScript.
     const producto = Object.fromEntries(dataArray);
-
-    createProduct(producto,type,category);
+    const token = localStorage.getItem("TOKEN");
+    createProduct(token,producto,type,category);
 
     // Agrega el nuevo producto al arreglo general.
     productos.push(producto);

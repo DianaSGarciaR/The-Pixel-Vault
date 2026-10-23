@@ -98,7 +98,7 @@
                 //Se escucha qué opción se eligió en el seleccionador de tipo y dependiendo de la que escogieron se renderiza la lista pertinente
                 tipoElement.addEventListener("change",(e)=>{
                     const valorSeleccionado = e.target.value;
-                    if(valorSeleccionado==3){
+                    if(valorSeleccionado==2){
                         categoriaElement.innerHTML = "";
                         categoriaElement.insertAdjacentHTML("beforeend",opcionesCategoriasMerch);
                     }else{
