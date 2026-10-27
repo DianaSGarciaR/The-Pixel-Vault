@@ -59,7 +59,7 @@ const renderNavbar = () => {
                         
                         <!-- Centro -->
                         <div class="radial-center">
-                          <img src="../assets/logo_vertical.png" alt="Logo P" class="center-logo"> 
+                          <img src="./assets/logo_vertical.png" alt="Logo P" class="center-logo"> 
                           <!--<h3 class="center-letter head yellow-accent">THE PIXEL <br>VAULT </h3>--!>
                         </div>
 
@@ -113,7 +113,7 @@ const renderNavbar = () => {
       <!-- Imagen - Se anida dentro de este div para evitar que un fragmento del elemento quede visible en pantallas móviles. -->
       <div class="menuinteractivo divNavRight" id="menuinteractivo">
         <!-- Imagen - Se anida dentro de este div para evitar que un fragmento del elemento quede visible en pantallas móviles. -->
-        <img class="insertcoin" src="../assets/insertcoin.webp" rel="insertcoin">
+        <img class="insertcoin" src="./assets/insertcoin.webp" rel="insertcoin">
         <div class="ranura" id="ranura"></div>
         <div class="moneda" id="moneda"></div>
         <div class="boton" id="boton"></div> 
@@ -122,11 +122,11 @@ const renderNavbar = () => {
         </div>
       </div>
     </div>
-    <img class="logo" src="../assets/ThePixelVaultLogo.png" alt="Logo de The Pixel Vault">
+    <img class="logo" src="./assets/ThePixelVaultLogo.png" alt="Logo de The Pixel Vault">
     ${mobileBurgerMenu}
     <div class="contenedorBarras divNavLeft">
         <a href="./miCarrito.html">
-        <img class="barraAzul" src="../assets/carrito.png" alt="Carrito de compras">
+        <img class="barraAzul" src="./assets/carrito.png" alt="Carrito de compras">
         </a>
     </div>
     `;
